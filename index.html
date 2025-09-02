@@ -1,269 +1,668 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Olivier Lavergne - Vidéaste, Créateur de Contenu et Stratégie Marketing Digital à Toulouse">
-  <meta name="keywords" content="vidéaste, motion designer, marketing digital, Toulouse, création de contenu">
-  <meta name="author" content="Olivier Lavergne">
-  <title>Olivier Lavergne | Vidéaste & Marketing Digital</title>
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
-  <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Roboto, Helvetica, Arial, sans-serif;
-      background: radial-gradient(circle at 20% 30%, #0f2027, #203a43, #2c5364);
-      color: #fff; -webkit-font-smoothing: antialiased; overflow-x: hidden;
-    }
-    .container {
-      max-width:900px; margin:3rem auto; padding:2rem;
-      border-radius:28px;
-      background:rgba(255,255,255,0.12); backdrop-filter:blur(25px) saturate(180%);
-      -webkit-backdrop-filter: blur(25px) saturate(180%);
-      border:1px solid rgba(255,255,255,0.3); box-shadow:0 8px 40px rgba(0,0,0,0.2);
-      animation: fadeIn 1.2s ease-out;
-    }
-    @keyframes fadeIn {
-      from { opacity:0; transform:translateY(30px); }
-      to { opacity:1; transform:translateY(0); }
-    }
-    .header {
-      text-align:center; padding:3rem 2rem; border-radius:24px;
-      background:linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
-      position:relative; overflow:hidden;
-    }
-    .header::before {
-      content:""; position:absolute; inset:0;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(0,122,255,0.4), transparent 60%),
-        radial-gradient(circle at 80% 70%, rgba(255,45,85,0.4), transparent 60%);
-      will-change:transform;
-    }
-    .header-content { position: relative; z-index: 2; }
-    .name {
-      font-size:3rem; font-weight:700; letter-spacing:-0.04em;
-      text-shadow: 0 0 20px rgba(255,255,255,0.6);
-      animation: glow 6s ease-in-out infinite alternate;
-    }
-    @keyframes glow {
-      from { text-shadow: 0 0 20px rgba(0,122,255,0.6), 0 0 40px rgba(10,132,255,0.4); }
-      to { text-shadow: 0 0 30px rgba(255,45,85,0.6), 0 0 60px rgba(255,45,85,0.4); }
-    }
-    .title {
-      font-size:1.2rem; color:rgba(255,255,255,0.85); margin-top:0.8rem;
-    }
-    .contact-info {
-      margin-top:2rem;
-      display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-      gap:1rem; font-size:0.95rem; color:rgba(255,255,255,0.9);
-    }
-    .contact-item a { color:#0A84FF; text-decoration:none; font-weight:500; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Olivier Lavergne - Vidéaste, Créateur de Contenu et Stratégie Marketing Digital à Toulouse">
+    <meta name="keywords" content="vidéaste, motion designer, marketing digital, Toulouse, création de contenu">
+    <meta name="author" content="Olivier Lavergne">
+    <title>Olivier Lavergne | Vidéaste & Marketing Digital</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .section {
-      margin-top:3rem; padding:2rem; border-radius:20px;
-      background:rgba(255,255,255,0.08); backdrop-filter:blur(20px);
-      border:1px solid rgba(255,255,255,0.25);
-      transition:transform 0.6s ease, opacity 0.6s ease;
-      opacity:0; transform:translateY(40px);
-    }
-    .section.visible {
-      opacity:1; transform:translateY(0);
-    }
-    .section-title {
-      font-size:1.6rem; margin-bottom:1.5rem; font-weight:600;
-      color:#fff; text-shadow:0 0 10px rgba(255,255,255,0.3);
-    }
-    p, li { color:rgba(255,255,255,0.9); line-height:1.6; }
-    .job-title { font-size:1.3rem; font-weight:600; }
-    .company { font-size:1rem; font-weight:500; color:#0A84FF; margin-bottom:1rem; }
-    ul.job-description { list-style:none; }
-    ul.job-description li::before { content:"• "; color:#0A84FF; }
-    .skill-category-title { font-size:1.2rem; margin-bottom:0.8rem; font-weight:600; }
-    .achievement-number { font-size:2rem; font-weight:700; color:#0A84FF; }
-    .vision-quote { text-align:center; font-style:italic; font-size:1.1rem; }
-    .language-name { font-weight:600; }
-    .language-level { color:#0A84FF; }
-    @media (max-width:768px) {
-      .name { font-size:2.2rem; }
-      .title { font-size:1rem; }
-      .section { padding:1.5rem; }
-    }
-  </style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #1d1d1f;
+            background: #f5f5f7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .header {
+            background: 
+                linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0.1) 100%),
+                linear-gradient(45deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+            backdrop-filter: blur(20px) saturate(1.8);
+            -webkit-backdrop-filter: blur(20px) saturate(1.8);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 
+                inset 0 1px 0 rgba(255,255,255,0.2),
+                0 20px 40px rgba(0,0,0,0.1),
+                0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,119,198,0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(120,219,226,0.2) 0%, transparent 50%);
+            opacity: 0.7;
+            animation: liquidFlow 15s ease-in-out infinite;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                conic-gradient(from 0deg at 50% 50%, 
+                rgba(255,255,255,0.1) 0deg, 
+                rgba(255,255,255,0.05) 120deg, 
+                rgba(255,255,255,0.1) 240deg, 
+                rgba(255,255,255,0.05) 360deg);
+            animation: liquidRotate 20s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes liquidFlow {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.7;
+            }
+            25% {
+                transform: scale(1.05) rotate(90deg);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(0.98) rotate(180deg);
+                opacity: 0.6;
+            }
+            75% {
+                transform: scale(1.02) rotate(270deg);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes liquidRotate {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.1);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .name {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.04em;
+            text-shadow: 
+                0 0 30px rgba(255,255,255,0.5),
+                0 0 60px rgba(255,255,255,0.2);
+            animation: liquidGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes liquidGlow {
+            0% {
+                text-shadow: 
+                    0 0 30px rgba(255,255,255,0.5),
+                    0 0 60px rgba(255,255,255,0.2),
+                    0 0 90px rgba(102,126,234,0.3);
+            }
+            100% {
+                text-shadow: 
+                    0 0 40px rgba(255,255,255,0.7),
+                    0 0 80px rgba(255,255,255,0.3),
+                    0 0 120px rgba(118,75,162,0.4);
+            }
+        }
+
+        .title {
+            font-size: 1.3rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            opacity: 0.9;
+        }
+
+        .contact-item a {
+            color: #007AFF;
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .contact-item a:hover {
+            opacity: 0.8;
+        }
+
+        .section {
+            padding: 2.5rem 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #1d1d1f;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #424245;
+            font-weight: 400;
+        }
+
+        .experience-item, .skill-category, .achievement-item, .language-item, .formation-item {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .experience-item {
+            margin-bottom: 2.5rem;
+            padding: 2rem;
+            background: #f5f5f7;
+            border-radius: 16px;
+            border: 1px solid transparent;
+        }
+
+        .experience-item:hover {
+            background: #ffffff;
+            border-color: #d2d2d7;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .job-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.3rem;
+            letter-spacing: -0.01em;
+        }
+
+        .company {
+            font-size: 1.1rem;
+            color: #007AFF;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-description {
+            list-style: none;
+        }
+
+        .job-description li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.2rem;
+            position: relative;
+            color: #424245;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .job-description li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 4px;
+            height: 4px;
+            background: #007AFF;
+            border-radius: 50%;
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #d2d2d7;
+        }
+
+        .skill-category:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .skill-category-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .skill-list {
+            color: #424245;
+            font-size: 1rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .achievement-item {
+            background: #ffffff;
+            border: 1px solid #d2d2d7;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .achievement-item:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .achievement-number {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #007AFF;
+            letter-spacing: -0.02em;
+        }
+
+        .achievement-text {
+            font-size: 1rem;
+            color: #424245;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .vision-quote {
+            background: #1d1d1f;
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 400;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .languages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .language-item {
+            text-align: center;
+            padding: 2rem;
+            background: #ffffff;
+            border: 1px solid #d2d2d7;
+            border-radius: 16px;
+        }
+
+        .language-item:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .language-level {
+            color: #007AFF;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .formation-item {
+            background: #ffffff;
+            border: 1px solid #d2d2d7;
+            padding: 2rem;
+            border-radius: 16px;
+        }
+
+        .formation-item:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        .formation-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #424245;
+            margin-bottom: 0.5rem;
+        }
+
+        .formation-item p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+
+            .header {
+                padding: 2.5rem 1.5rem;
+            }
+
+            .name {
+                font-size: 2.2rem;
+            }
+
+            .title {
+                font-size: 1.1rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+            }
+
+            .section {
+                padding: 2rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .experience-item, .skill-category, .achievement-item, .language-item, .formation-item {
+                padding: 1.5rem;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .languages {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 2rem 1rem;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 1.5rem 1rem;
+            }
+
+            .experience-item, .skill-category, .achievement-item, .language-item, .formation-item {
+                padding: 1.2rem;
+            }
+
+            .vision-quote {
+                padding: 2rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Print styles for better PDF generation */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .container {
+                box-shadow: none;
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .experience-item, .skill-category, .achievement-item, .language-item, .formation-item {
+                break-inside: avoid;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <header class="header">
-      <div class="header-content">
-        <h1 class="name">Olivier Lavergne</h1>
-        <p class="title">Vidéaste • Créateur de Contenu • Stratégie Marketing Digital</p>
-        <div class="contact-info">
-          <div class="contact-item">📍 Toulouse</div>
-          <div class="contact-item">📞 06 51 04 93 25</div>
-          <div class="contact-item">✉️ olivierlavergne@gmail.com</div>
-          <div class="contact-item">🎬 <a href="https://vimeo.com/679216239" target="_blank">Portfolio vidéo</a></div>
-        </div>
-      </div>
-    </header>
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Olivier Lavergne</h1>
+                <p class="title">Vidéaste • Créateur de Contenu • Stratégie Marketing Digital</p>
+                <div class="contact-info">
+                    <div class="contact-item">📍 Toulouse</div>
+                    <div class="contact-item">📞 06 51 04 93 25</div>
+                    <div class="contact-item">✉️ olivierlavergne@gmail.com</div>
+                    <div class="contact-item">🎬 <a href="https://vimeo.com/679216239" target="_blank">Portfolio vidéo</a></div>
+                </div>
+            </div>
+        </header>
 
-    <section class="section">
-      <h2 class="section-title">À propos</h2>
-      <p>Vidéaste créatif et stratégie marketing digital spécialisé dans la création de contenus visuels performants. Je transforme les idées en histoires captivantes à travers la vidéo, l’animation et le design, avec une approche marketing data-driven. Mon expertise unique combine création artistique et stratégie commerciale, intégrant les dernières innovations IA pour optimiser les processus créatifs et maximiser l’impact des contenus.</p>
-    </section>
+        <section class="section">
+            <h2 class="section-title">À propos</h2>
+            <p class="about-text">
+                <strong>Vidéaste créatif et stratégie marketing digital</strong> spécialisé dans la création de contenus visuels performants. Je transforme les idées en histoires captivantes à travers la vidéo, l'animation et le design, avec une approche marketing data-driven. Mon expertise unique combine création artistique et stratégie commerciale, intégrant les dernières innovations IA pour optimiser les processus créatifs et maximiser l'impact des contenus.
+            </p>
+        </section>
 
-    <section class="section">
-      <h2 class="section-title">Expérience professionnelle</h2>
-      <div class="experience-item">
-        <h3 class="job-title">Vidéaste / Motion Designer</h3>
-        <p class="company">ADONIS Creative • Toulouse</p>
-        <ul class="job-description">
-          <li>Réalisation vidéo corporate pour Airbus (captation, montage, habillage graphique)</li>
-          <li>Couverture événementielle complète (teasers, aftermovies, livestream)</li>
-          <li>Création de contenus marketing pour la cybersécurité (motion design, vulgarisation)</li>
-          <li>Innovation IA : intégration d’outils IA génératifs dans les workflows créatifs</li>
-          <li>ROI mesurable : augmentation de l’engagement vidéo client de +45 % en moyenne</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3 class="job-title">Marketing Designer & Créateur de Contenu</h3>
-        <p class="company">Freelance • Toulouse</p>
-        <ul class="job-description">
-          <li>Gestion de productions 360° (print, web, vidéo) pour 15+ clients</li>
-          <li>Stratégie de marque et community management multicanal</li>
-          <li>Direction créative : coordination équipes agences et freelances</li>
-          <li>Performance : campagnes vidéo générant +2 M de vues cumulées</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3 class="job-title">Marketing Designer</h3>
-        <p class="company">Ethics Group • Toulouse</p>
-        <ul class="job-description">
-          <li>Production de contenus web & mobile orientés conversion</li>
-          <li>Réalisation publicitaire : spots TV, tournages indoor/outdoor</li>
-          <li>Optimisation marketing : A/B testing des créations visuelles</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3 class="job-title">Digital Designer</h3>
-        <p class="company">LaCréa Multimédia (M6 Group) • Toulouse</p>
-        <ul class="job-description">
-          <li>Création publicitaire multiformat (spots, newsletters, affiches, web)</li>
-          <li>Storytelling visuel pour campagnes e-commerce</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3 class="job-title">Art Director</h3>
-        <p class="company">Msmart Inc • New York City</p>
-        <ul class="job-description">
-          <li>Direction artistique internationale (print, web, vidéo, mobile)</li>
-          <li>Adaptation culturelle des contenus pour marchés US/EU</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <h3 class="job-title">DA Junior</h3>
-        <p class="company">123Multimédia – Index Multimédia • Toulouse</p>
-        <ul class="job-description">
-          <li>Création de contenus mobiles : logos, sonneries, SMS Premium (ère pré-iPhone)</li>
-          <li>Innovation mobile : contenu numérique pionnier pour téléphones portables</li>
-          <li>Design adaptatif : optimisation créative pour contraintes techniques mobiles</li>
-        </ul>
-      </div>
-    </section>
+        <section class="section">
+            <h2 class="section-title">Expérience professionnelle</h2>
+            
+            <div class="experience-item">
+                <h3 class="job-title">Vidéaste / Motion Designer</h3>
+                <p class="company">ADONIS Creative • Toulouse</p>
+                <ul class="job-description">
+                    <li><strong>Réalisation vidéo corporate</strong> pour <strong>Airbus</strong> (captation, montage, habillage graphique)</li>
+                    <li><strong>Couverture événementielle</strong> complète (teasers, aftermovies, livestream)</li>
+                    <li><strong>Création de contenus marketing</strong> pour la cybersécurité (motion design, vulgarisation)</li>
+                    <li><strong>Innovation IA</strong> : Intégration d'outils IA génératifs dans les workflows créatifs (conception visuelle, optimisation)</li>
+                    <li><strong>ROI mesurable</strong> : Augmentation de l'engagement vidéo client de +45% en moyenne</li>
+                </ul>
+            </div>
 
-    <section class="section">
-      <h2 class="section-title">Compétences techniques</h2>
-      <div class="skill-category">
-        <h3 class="skill-category-title">Vidéo & Animation</h3>
-        <p>Davinci Resolve / Premiere Pro • After Effects • Cinema 4D • Motion Design 2D/3D • Color Grading</p>
-      </div>
-      <div class="skill-category">
-        <h3 class="skill-category-title">Création Graphique</h3>
-        <p>Direction Artistique • Photoshop • Illustrator • InDesign</p>
-      </div>
-      <div class="skill-category">
-        <h3 class="skill-category-title">Audio & Post-Production</h3>
-        <p>Logic Pro • Sound Design • Mixage • Effets Sonores</p>
-      </div>
-      <div class="skill-category">
-        <h3 class="skill-category-title">Innovation & IA</h3>
-        <p>Outils IA génératifs • Workflows IA créatifs • Automatisation • Prompt Engineering</p>
-      </div>
-      <div class="skill-category">
-        <h3 class="skill-category-title">Marketing Digital</h3>
-        <p>Stratégie Inbound/Outbound • Community Management • Analytics • ROI Tracking • Content Strategy • Storytelling • A/B Testing • Social Media Ads</p>
-      </div>
-    </section>
+            <div class="experience-item">
+                <h3 class="job-title">Marketing Designer & Créateur de Contenu</h3>
+                <p class="company">Freelance • Toulouse</p>
+                <ul class="job-description">
+                    <li><strong>Gestion de productions 360°</strong> (print, web, vidéo) pour 15+ clients</li>
+                    <li><strong>Stratégie de marque</strong> et community management multicanal</li>
+                    <li><strong>Direction créative</strong> : Coordination équipes agences et freelances</li>
+                    <li><strong>Performance</strong> : Campagnes vidéo générant +2M de vues cumulées</li>
+                </ul>
+            </div>
 
-    <section class="section">
-      <h2 class="section-title">Réalisations clés</h2>
-      <div class="achievement-item">
-        <div class="achievement-number">50+</div>
-        <p>Vidéos corporate produites pour grands comptes (Airbus, secteur tech)</p>
-      </div>
-      <div class="achievement-item">
-        <div class="achievement-number">2 M+</div>
-        <p>Vues générées sur contenus vidéo clients</p>
-      </div>
-      <div class="achievement-item">
-        <div class="achievement-number">+45 %</div>
-        <p>Engagement moyen sur productions vidéo</p>
-      </div>
-      <div class="achievement-item">
-        <div class="achievement-number">2022</div>
-        <p>Pionnier IA : intégration précoce d’outils IA génératifs en production</p>
-      </div>
-      <div class="achievement-item">
-        <div class="achievement-number">NYC</div>
-        <p>Expérience internationale : direction artistique à New York</p>
-      </div>
-    </section>
+            <div class="experience-item">
+                <h3 class="job-title">Marketing Designer</h3>
+                <p class="company">Ethics Group • Toulouse</p>
+                <ul class="job-description">
+                    <li><strong>Production de contenus</strong> web & mobile orientés conversion</li>
+                    <li><strong>Réalisation publicitaire</strong> : Spots TV, tournages indoor/outdoor</li>
+                    <li><strong>Optimisation marketing</strong> : A/B testing des créations visuelles</li>
+                </ul>
+            </div>
 
-    <section class="section">
-      <h2 class="section-title">Formation</h2>
-      <p><strong>BTS Réalisateur Multimédia</strong> — CESI</p>
-      <p><strong>Formations continues</strong> — IA générative, Motion Design avancé, Marketing Analytics</p>
-    </section>
+            <div class="experience-item">
+                <h3 class="job-title">Digital Designer</h3>
+                <p class="company">LaCréa Multimédia (M6 Group) • Toulouse</p>
+                <ul class="job-description">
+                    <li><strong>Création publicitaire</strong> multiformat (spots, newsletters, affiches, web)</li>
+                    <li><strong>Storytelling visuel</strong> pour campagnes e-commerce</li>
+                </ul>
+            </div>
 
-    <section class="section">
-      <h2 class="section-title">Langues</h2>
-      <p><span class="language-name">Français</span> — <span class="language-level">Natif</span></p>
-      <p><span class="language-name">Anglais</span> — <span class="language-level">Courant</span></p>
-    </section>
+            <div class="experience-item">
+                <h3 class="job-title">Art Director</h3>
+                <p class="company">Msmart Inc • New York City</p>
+                <ul class="job-description">
+                    <li><strong>Direction artistique</strong> internationale (print, web, vidéo, mobile)</li>
+                    <li><strong>Adaptation culturelle</strong> des contenus pour marchés US/EU</li>
+                </ul>
+            </div>
 
-    <section class="section">
-      <h2 class="section-title">Vision créative</h2>
-      <p class="vision-quote">"Je crois que l’avenir de la création vidéo réside dans la fusion entre intuition artistique et intelligence artificielle. Mon approche consiste à utiliser la technologie pour amplifier la créativité humaine, pas la remplacer, tout en gardant l’efficacité marketing au cœur de chaque production."</p>
-    </section>
-  </div>
+            <div class="experience-item">
+                <h3 class="job-title">DA Junior</h3>
+                <p class="company">123Multimédia - Index Multimédia • Toulouse</p>
+                <ul class="job-description">
+                    <li><strong>Création de contenus mobiles</strong> : Logos, sonneries, SMS Premium (ère pré-iPhone)</li>
+                    <li><strong>Innovation mobile</strong> : Contenu numérique pionnier pour téléphones portables</li>
+                    <li><strong>Design adaptatif</strong> : Optimisation créative pour contraintes techniques mobiles</li>
+                </ul>
+            </div>
+        </section>
 
-  <script>
-    // Fade-in animation for each section
-    const sections = document.querySelectorAll('.section');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    sections.forEach(section => observer.observe(section));
+        <section class="section">
+            <h2 class="section-title">Compétences techniques</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Vidéo & Animation</h3>
+                    <div class="skill-list">
+                        <strong>Davinci Resolve / Premiere Pro</strong> • <strong>After Effects</strong> • <strong>Cinema 4D</strong> • <strong>Motion Design 2D/3D</strong> • <strong>Color Grading</strong>
+                    </div>
+                </div>
 
-    // Parallax effect on header background
-    const ruleList = document.styleSheets[0].cssRules;
-    let headerBeforeRule;
-    for (let rule of ruleList) {
-      if (rule.selectorText === '.header::before') {
-        headerBeforeRule = rule;
-        break;
-      }
-    }
-    window.addEventListener('scroll', () => {
-      const offset = window.scrollY * 0.2;
-      if (headerBeforeRule) {
-        headerBeforeRule.style.transform = `translateY(${offset}px)`;
-      }
-    });
-  </script>
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Création Graphique</h3>
+                    <div class="skill-list">
+                        <strong>Direction Artistique</strong> • <strong>Photoshop</strong> • <strong>Illustrator</strong> • <strong>InDesign</strong>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Audio & Post-Production</h3>
+                    <div class="skill-list">
+                        <strong>Logic Pro</strong> • <strong>Sound Design</strong> • <strong>Mixage</strong> • <strong>Effets Sonores</strong>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Innovation & IA</h3>
+                    <div class="skill-list">
+                        <strong>Outils IA génératifs</strong> • <strong>Workflows IA créatifs</strong> • <strong>Automatisation</strong> • <strong>Prompt Engineering</strong>
+                    </div>
+                </div>
+
+                <div class="skill-category">
+                    <h3 class="skill-category-title">Marketing Digital</h3>
+                    <div class="skill-list">
+                        <strong>Stratégie Inbound/Outbound</strong> • <strong>Community Management</strong> • <strong>Analytics</strong> • <strong>ROI Tracking</strong><br>
+                        <strong>Content Strategy</strong> • <strong>Storytelling</strong> • <strong>A/B Testing</strong> • <strong>Social Media Ads</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Réalisations clés</h2>
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <div class="achievement-number">50+</div>
+                    <div class="achievement-text">Vidéos corporate produites pour grands comptes (Airbus, secteur tech)</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-number">2M+</div>
+                    <div class="achievement-text">Vues générées sur contenus vidéo clients</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-number">+45%</div>
+                    <div class="achievement-text">Engagement moyen sur productions vidéo</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-number">2022</div>
+                    <div class="achievement-text">Pionnier IA : Intégration précoce d'outils IA génératifs en production</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-number">NYC</div>
+                    <div class="achievement-text">Expérience internationale : Direction artistique à New York</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Formation</h2>
+            <div class="formation-item">
+                <p><strong>BTS Réalisateur Multimédia</strong> — CESI</p>
+                <p><strong>Formations continues</strong> — IA générative, Motion Design avancé, Marketing Analytics</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Langues</h2>
+            <div class="languages">
+                <div class="language-item">
+                    <div class="language-name">Français</div>
+                    <div class="language-level">Natif</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-name">Anglais</div>
+                    <div class="language-level">Courant</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Vision créative</h2>
+            <div class="vision-quote">
+                "Je crois que l'avenir de la création vidéo réside dans la fusion entre intuition artistique et intelligence artificielle. Mon approche consiste à utiliser la technologie pour amplifier la créativité humaine, pas la remplacer, tout en gardant l'efficacité marketing au cœur de chaque production."
+            </div>
+        </section>
+    </div>
 </body>
 </html>
