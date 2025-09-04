@@ -16,11 +16,6 @@
         }
 
         :root {
-            --liquid-glass-primary: rgba(255, 255, 255, 0.12);
-            --liquid-glass-secondary: rgba(255, 255, 255, 0.08);
-            --liquid-glass-border: rgba(255, 255, 255, 0.2);
-            --liquid-glass-highlight: rgba(255, 255, 255, 0.3);
-            --specular-light: rgba(255, 255, 255, 0.4);
             --accent-gold: #ffd700;
             --accent-blue: #00d4ff;
             --accent-purple: #c77dff;
@@ -29,12 +24,9 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            color: #1d1d1f;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3), transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 77, 77, 0.15), transparent 50%),
-                linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 70%, #f5576c 100%);
-            background-attachment: fixed;
+            color: #ffffff;
+            background-color: #000000 !important;
+            background: #000000 !important;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
@@ -44,18 +36,17 @@
         .container {
             max-width: 900px;
             margin: 0 auto;
-            background: var(--liquid-glass-primary);
-            backdrop-filter: blur(40px) saturate(1.8) brightness(1.1);
-            -webkit-backdrop-filter: blur(40px) saturate(1.8) brightness(1.1);
-            border: 1px solid var(--liquid-glass-border);
+            background: rgba(20, 20, 20, 0.95);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 24px;
             overflow: hidden;
             margin-top: 20px;
             margin-bottom: 20px;
             box-shadow: 
-                0 20px 60px rgba(31, 38, 135, 0.4),
-                inset 0 1px 0 var(--liquid-glass-highlight),
-                0 1px 3px rgba(0, 0, 0, 0.12);
+                0 20px 60px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             position: relative;
         }
 
@@ -81,14 +72,14 @@
         }
 
         .header {
-            background: var(--liquid-glass-primary);
-            backdrop-filter: blur(60px) saturate(2) brightness(1.3);
-            -webkit-backdrop-filter: blur(60px) saturate(2) brightness(1.3);
+            background: rgba(15, 15, 15, 0.9);
+            backdrop-filter: blur(60px);
+            -webkit-backdrop-filter: blur(60px);
             color: white;
             padding: 4rem 2rem;
             text-align: center;
             position: relative;
-            border-bottom: 1px solid var(--liquid-glass-border);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
         }
 
@@ -100,9 +91,8 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, rgba(199, 125, 255, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 50% 100%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+                radial-gradient(circle at 30% 30%, rgba(40, 40, 40, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(50, 50, 50, 0.15) 0%, transparent 50%);
             animation: liquidFlow 15s ease-in-out infinite;
         }
 
@@ -157,6 +147,7 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .experience-badge {
@@ -211,20 +202,20 @@
             gap: 0.8rem;
             opacity: 0.95;
             padding: 0.8rem 1.2rem;
-            background: var(--liquid-glass-secondary);
+            background: rgba(30, 30, 30, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--liquid-glass-border);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
         }
 
         .contact-item:hover {
-            background: var(--liquid-glass-primary);
+            background: rgba(40, 40, 40, 0.9);
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-            border-color: var(--liquid-glass-highlight);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .contact-item a {
@@ -239,7 +230,7 @@
 
         .section {
             padding: 3rem 2rem;
-            border-bottom: 1px solid var(--liquid-glass-border);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             position: relative;
         }
 
@@ -277,8 +268,8 @@
         }
 
         .value-proposition {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 212, 255, 0.15));
-            border: 1px solid rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(40, 40, 40, 0.6));
+            border: 1px solid rgba(255, 215, 0, 0.3);
             padding: 2rem;
             border-radius: 16px;
             color: rgba(255, 255, 255, 0.95);
@@ -306,10 +297,10 @@
 
         /* Liquid Glass Cards Enhanced */
         .liquid-glass-card {
-            background: var(--liquid-glass-secondary);
-            backdrop-filter: blur(30px) saturate(1.5);
-            -webkit-backdrop-filter: blur(30px) saturate(1.5);
-            border: 1px solid var(--liquid-glass-border);
+            background: rgba(25, 25, 25, 0.8);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
@@ -335,12 +326,12 @@
         }
 
         .liquid-glass-card:hover {
-            background: var(--liquid-glass-primary);
+            background: rgba(35, 35, 35, 0.9);
             transform: translateY(-6px) scale(1.02);
             box-shadow: 
-                0 20px 60px rgba(31, 38, 135, 0.5),
-                inset 0 1px 0 var(--liquid-glass-highlight);
-            border-color: var(--liquid-glass-highlight);
+                0 20px 60px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .experience-item {
@@ -369,16 +360,6 @@
             font-size: 1.1rem;
             color: var(--accent-blue);
             font-weight: 600;
-        }
-
-        .job-period {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.8);
-            background: rgba(255, 255, 255, 0.15);
-            padding: 0.4rem 1rem;
-            border-radius: 12px;
-            white-space: nowrap;
-            font-weight: 500;
         }
 
         .job-description {
@@ -451,7 +432,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             letter-spacing: -0.02em;
-            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
         }
 
         .achievement-text {
@@ -462,10 +442,10 @@
         }
 
         .vision-quote {
-            background: var(--liquid-glass-primary);
-            backdrop-filter: blur(50px) saturate(2);
-            -webkit-backdrop-filter: blur(50px) saturate(2);
-            border: 1px solid var(--liquid-glass-border);
+            background: rgba(20, 20, 20, 0.9);
+            backdrop-filter: blur(50px);
+            -webkit-backdrop-filter: blur(50px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             color: white;
             padding: 3rem;
             border-radius: 20px;
@@ -530,7 +510,8 @@
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-blue) 100%);
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid rgba(255, 215, 0, 0.3);
             text-align: center;
             padding: 3rem;
             position: relative;
@@ -545,8 +526,8 @@
             right: 0;
             bottom: 0;
             background: 
-                radial-gradient(circle at 30% 70%, rgba(255, 255, 255, 0.2) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+                radial-gradient(circle at 30% 70%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(60, 60, 60, 0.1) 0%, transparent 50%);
             animation: ctaGlow 10s ease-in-out infinite;
         }
 
@@ -561,10 +542,9 @@
         }
 
         .cta-text {
-            color: #1d1d1f;
+            color: rgba(255, 255, 255, 0.95);
             font-size: 1.1rem;
             font-weight: 700;
-            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         /* Responsive Design Enhanced */
@@ -743,7 +723,7 @@
                     <li><strong>Gestion de productions 360°</strong> (print, web, vidéo) pour 15+ clients diversifiés</li>
                     <li><strong>Stratégie de marque</strong> et community management multicanal avec KPI tracking</li>
                     <li><strong>Direction créative</strong> : Coordination équipes agences et freelances (5-8 personnes)</li>
-                    <li><strong>Performance exceptional</strong> : Campagnes vidéo générant +2M de vues cumulées</li>
+                    <li><strong>Performance exceptionnelle</strong> : Campagnes vidéo générant +2M de vues cumulées</li>
                 </ul>
             </div>
 
@@ -826,7 +806,7 @@
                 <div class="skill-category liquid-glass-card">
                     <h3 class="skill-category-title">🎨 Création Graphique</h3>
                     <div class="skill-list">
-                        <strong>Adobe CC :</strong> Photoshop, Illustrator, InDesign (Expert niveau)</br>
+                        <strong>Adobe CC :</strong> Photoshop, Illustrator, InDesign (Expert niveau)<br>
                         <strong>Direction :</strong> Direction Artistique, Brand Identity, UI/UX<br>
                         <strong>Print/Digital :</strong> Tous supports, gestion contraintes techniques<br>
                         <strong>Typographie :</strong> Design éditorial, hiérarchie visuelle
