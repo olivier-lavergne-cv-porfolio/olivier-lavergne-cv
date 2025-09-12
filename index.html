@@ -172,7 +172,7 @@
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
@@ -180,9 +180,9 @@
         }
 
         @keyframes shimmer {
-            0% { left: -100%; }
-            50% { left: 100%; }
-            100% { left: 100%; }
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+            100% { transform: translateX(100%); }
         }
 
         .contact-info {
@@ -295,7 +295,6 @@
             50% { transform: translateX(100%) translateY(100%); }
         }
 
-        /* Liquid Glass Cards Enhanced */
         .liquid-glass-card {
             background: rgba(25, 25, 25, 0.8);
             backdrop-filter: blur(30px);
@@ -311,18 +310,19 @@
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, 
                 transparent, 
                 rgba(255, 255, 255, 0.15), 
                 transparent);
-            transition: left 0.8s ease;
+            transition: transform 0.8s ease;
+            transform: translateX(-100%);
         }
 
         .liquid-glass-card:hover::before {
-            left: 100%;
+            transform: translateX(100%);
         }
 
         .liquid-glass-card:hover {
@@ -508,7 +508,6 @@
             margin-bottom: 0;
         }
 
-        /* CTA Section */
         .cta-section {
             background: rgba(10, 10, 10, 0.95);
             border: 1px solid rgba(255, 215, 0, 0.3);
@@ -547,7 +546,6 @@
             font-weight: 700;
         }
 
-        /* Responsive Design Enhanced */
         @media (max-width: 768px) {
             .container {
                 margin: 0;
@@ -614,7 +612,6 @@
             }
         }
 
-        /* Scroll animations */
         .fade-in-up {
             opacity: 0;
             transform: translateY(30px);
@@ -628,7 +625,6 @@
             }
         }
 
-        /* Enhanced accessibility */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -637,7 +633,6 @@
             }
         }
 
-        /* Print styles */
         @media print {
             body {
                 background: white !important;
@@ -668,19 +663,19 @@
                 <p class="title">Vidéaste Motion Designer • Créateur de Contenus Intelligents • Stratégie Marketing </p>
                 <div class="contact-info">
                     <div class="contact-item">
-                        <span>📍</span> Toulouse & au-delà
+                        <span role="img" aria-hidden="true">📍</span> Toulouse & au-delà
+                    </div>
+                    <div class="contact-item" data-copy="0651049325">
+                        <span role="img" aria-hidden="true">📲</span> <a href="tel:+33651049325">06 51 04 93 25</a>
+                    </div>
+                    <div class="contact-item" data-copy="olivierlavergne@gmail.com">
+                        <span role="img" aria-hidden="true">✉️</span> <a href="mailto:olivierlavergne@gmail.com">Contact direct</a>
                     </div>
                     <div class="contact-item">
-                        <span>📲</span> <a href="tel:+33651049325">06 51 04 93 25</a>
+                        <span role="img" aria-hidden="true">🎬</span> <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" rel="noopener noreferrer">Portfolio vidéo</a>
                     </div>
                     <div class="contact-item">
-                        <span>✉️</span> <a href="mailto:olivierlavergne@gmail.com">Contact direct</a>
-                    </div>
-                    <div class="contact-item">
-                        <span>🎬</span> <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank">Portfolio vidéo</a>
-                    </div>
-                    <div class="contact-item">
-                        <span>🎥</span> <a href="https://youtube.com/shorts/0kBfVG1fZxs" target="_blank">Short vidéo</a>
+                        <span role="img" aria-hidden="true">🎥</span> <a href="https://youtube.com/shorts/0kBfVG1fZxs" target="_blank" rel="noopener noreferrer">Short vidéo</a>
                     </div>
                 </div>
             </div>
@@ -914,69 +909,44 @@
     </div>
 
     <script>
-        // Smooth scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationDelay = '0.2s';
-                    entry.target.classList.add('fade-in-up');
-                }
-            });
-        }, observerOptions);
-
-        // Observe all sections
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
-
-        // Enhanced hover effects for contact items
-        document.querySelectorAll('.contact-item').forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                item.style.transform = 'translateY(-3px) scale(1.02)';
-            });
-            
-            item.addEventListener('mouseleave', () => {
-                item.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Click to copy functionality for contact info
-        document.querySelectorAll('.contact-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const text = item.textContent.trim();
-                if (text.includes('@') || text.includes('+33') || text.includes('06')) {
-                    const textToCopy = text.includes('@') ? 
-                        'olivierlavergne@gmail.com' : 
-                        text.includes('+33') ? '+33651049325' : text;
-                    
-                    navigator.clipboard.writeText(textToCopy).then(() => {
-                        // Visual feedback
-                        const original = item.style.background;
-                        item.style.background = 'rgba(0, 212, 255, 0.3)';
-                        setTimeout(() => {
-                            item.style.background = original;
-                        }, 1000);
-                    });
-                }
-            });
-        });
-
-        // Performance optimization
         document.addEventListener('DOMContentLoaded', () => {
-            // Preload critical animations
-            document.body.style.opacity = '1';
-            
-            // Lazy load non-critical animations
-            setTimeout(() => {
-                document.querySelectorAll('.liquid-glass-card').forEach((card, index) => {
-                    card.style.animationDelay = `${index * 0.1}s`;
+            // Smooth scroll animations with IntersectionObserver
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up');
+                        observer.unobserve(entry.target); // Optional: stop observing once animated
+                    }
                 });
-            }, 500);
+            }, observerOptions);
+
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Click to copy functionality
+            document.querySelectorAll('.contact-item[data-copy]').forEach(item => {
+                item.addEventListener('click', () => {
+                    const textToCopy = item.dataset.copy;
+                    if (textToCopy) {
+                        navigator.clipboard.writeText(textToCopy).then(() => {
+                            // Visual feedback
+                            const originalBackground = item.style.background;
+                            item.style.background = 'rgba(0, 212, 255, 0.3)';
+                            setTimeout(() => {
+                                item.style.background = originalBackground;
+                            }, 1000);
+                        }).catch(err => {
+                            console.error('Failed to copy text: ', err);
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
