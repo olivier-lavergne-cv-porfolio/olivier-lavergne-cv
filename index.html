@@ -210,6 +210,10 @@
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: pointer;
         }
+        
+        .contact-item.is-copied {
+            background: rgba(0, 212, 255, 0.3);
+        }
 
         .contact-item:hover {
             background: rgba(40, 40, 40, 0.9);
@@ -295,7 +299,7 @@
             50% { transform: translateX(100%) translateY(100%); }
         }
 
-        .liquid-glass-card {
+        .card {
             background: rgba(25, 25, 25, 0.8);
             backdrop-filter: blur(30px);
             -webkit-backdrop-filter: blur(30px);
@@ -304,6 +308,7 @@
             transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             position: relative;
             overflow: hidden;
+            padding: 2.5rem;
         }
 
         .liquid-glass-card::before {
@@ -336,7 +341,6 @@
 
         .experience-item {
             margin-bottom: 2.5rem;
-            padding: 2.5rem;
         }
 
         .job-header {
@@ -393,10 +397,6 @@
             gap: 2rem;
         }
 
-        .skill-category {
-            padding: 2.5rem;
-        }
-
         .skill-category-title {
             font-size: 1.4rem;
             font-weight: 700;
@@ -417,9 +417,8 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
         }
-
+        
         .achievement-item {
-            padding: 2.5rem;
             text-align: center;
         }
 
@@ -476,7 +475,6 @@
 
         .language-item {
             text-align: center;
-            padding: 2.5rem;
         }
 
         .language-name {
@@ -490,10 +488,6 @@
             color: var(--accent-blue);
             font-size: 1rem;
             font-weight: 600;
-        }
-
-        .formation-item {
-            padding: 2.5rem;
         }
 
         .formation-item p {
@@ -646,7 +640,7 @@
                 box-shadow: none !important;
             }
             
-            .liquid-glass-card {
+            .card, .liquid-glass-card {
                 background: #f8f9fa !important;
                 backdrop-filter: none !important;
                 border: 1px solid #ddd !important;
@@ -694,7 +688,7 @@
         <section class="section fade-in-up">
             <h2 class="section-title">Expérience Professionnelle</h2>
             
-            <div class="experience-item liquid-glass-card">
+            <div class="experience-item card liquid-glass-card">
                 <div class="job-header">
                     <div>
                         <h3 class="job-title">🎨 Designer Marketing & Créateur de Contenus Intelligents</h3>
@@ -709,7 +703,7 @@
                 </ul>
             </div>
 
-            <div class="experience-item liquid-glass-card">
+            <div class="experience-item card liquid-glass-card">
                 <div class="job-header">
                     <div>
                         <h3 class="job-title">🎬 Vidéaste / Motion Designer</h3>
@@ -724,7 +718,7 @@
                 </ul>
             </div>
 
-            <div class="experience-item liquid-glass-card">
+            <div class="experience-item card liquid-glass-card">
                 <div class="job-header">
                     <div>
                         <h3 class="job-title">📱 Marketing Designer</h3>
@@ -739,7 +733,7 @@
                 </ul>
             </div>
             
-            <div class="experience-item liquid-glass-card">
+            <div class="experience-item card liquid-glass-card">
                 <div class="job-header">
                     <div>
                         <h3 class="job-title">📺 Designer Digital</h3>
@@ -754,7 +748,7 @@
                 </ul>
             </div>
 
-             <div class="experience-item liquid-glass-card">
+             <div class="experience-item card liquid-glass-card">
                 <div class="job-header">
                     <div>
                         <h3 class="job-title">🌍 Directeur Artistique & Motion Designer</h3>
@@ -769,7 +763,7 @@
                 </ul>
             </div>
 
-            <div class="experience-item liquid-glass-card">
+            <div class="experience-item card liquid-glass-card">
                 <div class="job-header">
                     <div>
                         <h3 class="job-title">💡 Directeur Artistique Junior</h3>
@@ -788,7 +782,7 @@
         <section class="section fade-in-up">
             <h2 class="section-title">Compétences Techniques</h2>
             <div class="skills-grid">
-                <div class="skill-category liquid-glass-card">
+                <div class="skill-category card liquid-glass-card">
                     <h3 class="skill-category-title">🚀 IA & Innovation</h3>
                     <div class="skill-list">
                         <strong>IA Générative :</strong> GPT-5, Claude 4, Gemini 2.5 Mistral, DeepSeek, Grok<br>
@@ -798,7 +792,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category liquid-glass-card">
+                <div class="skill-category card liquid-glass-card">
                     <h3 class="skill-category-title">📊 Marketing & Analytics</h3>
                     <div class="skill-list">
                         <strong>Strategy :</strong> ROI Tracking, KPI Marketing, A/B Testing<br>
@@ -808,7 +802,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category liquid-glass-card">
+                <div class="skill-category card liquid-glass-card">
                     <h3 class="skill-category-title">🎨 Création Graphique</h3>
                     <div class="skill-list">
                         <strong>Adobe CC :</strong> Photoshop, Illustrator, InDesign (Expert niveau)<br>
@@ -818,7 +812,7 @@
                     </div>
                 </div>
 
-                <div class="skill-category liquid-glass-card">
+                <div class="skill-category card liquid-glass-card">
                     <h3 class="skill-category-title">🎵🎬 Audio & Vidéo</h3>
                     <div class="skill-list">
                         <strong>Production :</strong> Habillage sonore & vidéo<br>
@@ -833,35 +827,35 @@
         <section class="section fade-in-up">
             <h2 class="section-title">Performances & Réalisations</h2>
             <div class="achievements-grid">
-                <div class="achievement-item liquid-glass-card">
+                <div class="achievement-item card liquid-glass-card">
                     <div class="achievement-number">250+</div>
                     <div class="achievement-text">Vidéos corporate grands comptes (Airbus, M6 Group)</div>
                 </div>
-                <div class="achievement-item liquid-glass-card">
+                <div class="achievement-item card liquid-glass-card">
                     <div class="achievement-number">2M+</div>
                     <div class="achievement-text">Vues générées sur contenus clients</div>
                 </div>
-                <div class="achievement-item liquid-glass-card">
+                <div class="achievement-item card liquid-glass-card">
                     <div class="achievement-number">+45%</div>
                     <div class="achievement-text">Engagement moyen vs benchmark secteur</div>
                 </div>
-                <div class="achievement-item liquid-glass-card">
+                <div class="achievement-item card liquid-glass-card">
                     <div class="achievement-number">-30%</div>
                     <div class="achievement-text">Réduction temps production grâce à l'IA</div>
                 </div>
-                <div class="achievement-item liquid-glass-card">
+                <div class="achievement-item card liquid-glass-card">
                     <div class="achievement-number">25+</div>
                     <div class="achievement-text">Clients accompagnés en stratégie digitale</div>
                 </div>
-                <div class="achievement-item liquid-glass-card">
+                <div class="achievement-item card liquid-glass-card">
                     <div class="achievement-number">2018</div>
                     <div class="achievement-text">Pionnier IA créative en France</div>
                 </div>
-                <div class="achievement-item liquid-glass-card">
+                <div class="achievement-item card liquid-glass-card">
                     <div class="achievement-number">NYC</div>
                     <div class="achievement-text">Expérience internationale confirmée</div>
                 </div>
-                <div class="achievement-item liquid-glass-card">
+                <div class="achievement-item card liquid-glass-card">
                     <div class="achievement-number">15+</div>
                     <div class="achievement-text">Années d'expertise créative et marketing</div>
                 </div>
@@ -870,7 +864,7 @@
 
         <section class="section fade-in-up">
             <h2 class="section-title">Formation & Certifications</h2>
-            <div class="formation-item liquid-glass-card">
+            <div class="formation-item card liquid-glass-card">
                 <p><strong>🎓 BTS Réalisateur Multimédia</strong> — CESI, Toulouse</p>
                 <p><strong>📊 Marketing Digital :</strong> Google Analytics 4, Youtube Ads, LinkedIn Ads</p>
                 <p><strong>🎬 Spécialisations :</strong> Motion Design Avancé, Color Grading DaVinci, Direction Studio</p>
@@ -881,11 +875,11 @@
         <section class="section fade-in-up">
             <h2 class="section-title">Langues</h2>
             <div class="languages">
-                <div class="language-item liquid-glass-card">
+                <div class="language-item card liquid-glass-card">
                     <div class="language-name">🇫🇷 Français</div>
                     <div class="language-level">Natif</div>
                 </div>
-                <div class="language-item liquid-glass-card">
+                <div class="language-item card liquid-glass-card">
                     <div class="language-name">🇺🇸 Anglais</div>
                     <div class="language-level">Courant</div>
                 </div>
@@ -899,13 +893,13 @@
             </div>
         </section>
 
-        <section class="section cta-section">
+        <footer class="section cta-section">
             <div class="cta-content">
                 <p class="cta-text">
                     🚀 <strong>Vidéaste Motion Designer |</strong>  Créateur de Contenus Intelligents | Stratégie Marketing
                 </p>
             </div>
-        </section>
+        </footer>
     </div>
 
     <script>
@@ -920,7 +914,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('fade-in-up');
-                        observer.unobserve(entry.target); // Optional: stop observing once animated
+                        observer.unobserve(entry.target);
                     }
                 });
             }, observerOptions);
@@ -935,11 +929,10 @@
                     const textToCopy = item.dataset.copy;
                     if (textToCopy) {
                         navigator.clipboard.writeText(textToCopy).then(() => {
-                            // Visual feedback
-                            const originalBackground = item.style.background;
-                            item.style.background = 'rgba(0, 212, 255, 0.3)';
+                            // Visual feedback by toggling a class
+                            item.classList.add('is-copied');
                             setTimeout(() => {
-                                item.style.background = originalBackground;
+                                item.classList.remove('is-copied');
                             }, 1000);
                         }).catch(err => {
                             console.error('Failed to copy text: ', err);
