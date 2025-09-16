@@ -19,18 +19,23 @@
             --accent-gold: #ffd700;
             --accent-blue: #00d4ff;
             --accent-purple: #c77dff;
+            --dark-bg: #000000;
+            --light-bg: #f5f5f7;
+            --dark-text: #ffffff;
+            --light-text: #1d1d1f;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
-            color: #ffffff;
-            background-color: #000000 !important;
-            background: #000000 !important;
+            color: var(--dark-text);
+            background-color: var(--dark-bg) !important;
+            background: var(--dark-bg) !important;
             min-height: 100vh;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
@@ -48,6 +53,7 @@
                 0 20px 60px rgba(0, 0, 0, 0.8),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             position: relative;
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .container::before {
@@ -82,6 +88,35 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
         }
+        
+        /* --- NOUVEAU : Theme Switcher --- */
+        .theme-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        #theme-toggle {
+            background: rgba(50, 50, 50, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.1) rotate(15deg);
+            background: rgba(70, 70, 70, 0.9);
+        }
+        /* --- FIN Theme Switcher --- */
 
         .header::before {
             content: '';
@@ -97,24 +132,12 @@
         }
 
         @keyframes liquidFlow {
-            0%, 100% {
-                transform: scale(1) rotate(0deg);
-                opacity: 0.8;
-            }
-            33% {
-                transform: scale(1.1) rotate(120deg);
-                opacity: 1;
-            }
-            66% {
-                transform: scale(0.9) rotate(240deg);
-                opacity: 0.9;
-            }
+            0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.8; }
+            33% { transform: scale(1.1) rotate(120deg); opacity: 1; }
+            66% { transform: scale(0.9) rotate(240deg); opacity: 0.9; }
         }
 
-        .header-content {
-            position: relative;
-            z-index: 10;
-        }
+        .header-content { position: relative; z-index: 10; }
 
         .name {
             font-size: 3.2rem;
@@ -130,12 +153,8 @@
         }
 
         @keyframes textGlow {
-            0% {
-                filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-            }
-            100% {
-                filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
-            }
+            0% { filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)); }
+            100% { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4)); }
         }
 
         .title {
@@ -161,9 +180,7 @@
             margin-bottom: 2rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            box-shadow:
-                0 4px 20px rgba(255, 215, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -211,40 +228,26 @@
             cursor: pointer;
         }
 
-        .contact-item.is-copied {
-            background: rgba(0, 212, 255, 0.3);
-        }
-
+        .contact-item.is-copied { background: rgba(0, 212, 255, 0.3); }
         .contact-item:hover {
             background: rgba(40, 40, 40, 0.9);
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
             border-color: rgba(255, 255, 255, 0.2);
         }
-
-        .contact-item a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover a {
-            color: var(--accent-blue);
-        }
+        .contact-item a { color: #ffffff; text-decoration: none; transition: all 0.3s ease; }
+        .contact-item:hover a { color: var(--accent-blue); }
 
         .section {
             padding: 3rem 2rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             position: relative;
         }
-
-        .section:last-child {
-            border-bottom: none;
-        }
+        .section:last-child { border-bottom: none; }
 
         .section-title {
             font-size: 2rem;
-            color: white;
+            color: var(--dark-text);
             margin-bottom: 2.5rem;
             font-weight: 700;
             letter-spacing: -0.02em;
@@ -270,7 +273,7 @@
             font-weight: 400;
             margin-bottom: 2rem;
         }
-
+        
         .value-proposition {
             background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(40, 40, 40, 0.6));
             border: 1px solid rgba(255, 215, 0, 0.3);
@@ -282,23 +285,7 @@
             position: relative;
             overflow: hidden;
         }
-
-        .value-proposition::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-            animation: valueShine 6s ease-in-out infinite;
-        }
-
-        @keyframes valueShine {
-            0%, 100% { transform: translateX(-100%) translateY(-100%); }
-            50% { transform: translateX(100%) translateY(100%); }
-        }
-
+        
         .card {
             background: rgba(25, 25, 25, 0.8);
             border-radius: 20px;
@@ -317,388 +304,146 @@
             box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
             transition: all 0.3s ease;
         }
-
         .liquid-glass-card:hover {
             background: rgba(35, 35, 35, 0.75);
             transform: translateY(-8px);
             border-color: rgba(255, 255, 255, 0.25);
-            box-shadow:
-                0 30px 80px rgba(0, 0, 0, 0.6),
-                inset 0 1px 1px rgba(255, 255, 255, 0.2),
-                inset 0 -1px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.2), inset 0 -1px 1px rgba(0, 0, 0, 0.2);
         }
-        
         .liquid-glass-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             border-radius: 20px;
             background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, 0.15), transparent 40%);
             opacity: 0;
             transition: opacity 0.5s;
             pointer-events: none;
         }
-
-        .liquid-glass-card:hover::before {
-            opacity: 1;
-        }
-        
+        .liquid-glass-card:hover::before { opacity: 1; }
         .liquid-glass-card::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             border-radius: 20px;
             border: 2px solid transparent;
             background: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0)) border-box;
-            -webkit-mask:
-                linear-gradient(#fff 0 0) content-box,
-                linear-gradient(#fff 0 0);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
             -webkit-mask-composite: destination-out;
             mask-composite: exclude;
             pointer-events: none;
         }
+        
+        .job-description li, .skill-list, .formation-item p { color: rgba(255, 255, 255, 0.9); }
+        .job-title, .skill-category-title, .language-name { color: white; }
 
-        .experience-item {
-            margin-bottom: 2.5rem;
+        /* --- STYLES RESTANTS (identiques à avant) --- */
+        .value-proposition::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%); animation: valueShine 6s ease-in-out infinite; }
+        @keyframes valueShine { 0%, 100% { transform: translateX(-100%) translateY(-100%); } 50% { transform: translateX(100%) translateY(100%); } }
+        .experience-item { margin-bottom: 2.5rem; }
+        .job-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+        .job-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.01em; }
+        .company { font-size: 1.1rem; color: var(--accent-blue); font-weight: 600; }
+        .job-description { list-style: none; }
+        .job-description li { margin-bottom: 1rem; padding-left: 1.5rem; position: relative; font-size: 1.05rem; line-height: 1.6; }
+        .job-description li::before { content: ''; position: absolute; left: 0; top: 0.8rem; width: 6px; height: 6px; background: linear-gradient(45deg, var(--accent-gold), var(--accent-blue)); border-radius: 50%; box-shadow: 0 0 8px rgba(255, 215, 0, 0.4); }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .skill-category-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; letter-spacing: -0.01em; }
+        .skill-list { font-size: 1.05rem; line-height: 1.8; font-weight: 500; }
+        .achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+        .achievement-item { text-align: center; }
+        .achievement-number { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.02em; }
+        .achievement-text { font-size: 1rem; color: rgba(255, 255, 255, 0.85); line-height: 1.5; font-weight: 500; }
+        .vision-quote { background: rgba(20, 20, 20, 0.9); backdrop-filter: blur(50px); -webkit-backdrop-filter: blur(50px); border: 1px solid rgba(255, 255, 255, 0.1); color: white; padding: 3rem; border-radius: 20px; font-size: 1.2rem; line-height: 1.7; font-weight: 500; font-style: italic; text-align: center; position: relative; }
+        .vision-quote::before { content: '"'; font-size: 5rem; position: absolute; top: -15px; left: 30px; opacity: 0.4; color: var(--accent-gold); font-family: Georgia, serif; }
+        .languages { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .language-item { text-align: center; }
+        .language-name { font-weight: 700; margin-bottom: 0.8rem; font-size: 1.2rem; }
+        .language-level { color: var(--accent-blue); font-size: 1rem; font-weight: 600; }
+        .formation-item p { font-size: 1.05rem; line-height: 1.7; margin-bottom: 1rem; font-weight: 500; }
+        .formation-item p:last-child { margin-bottom: 0; }
+        .cta-section { background: rgba(10, 10, 10, 0.95); border: 1px solid rgba(255, 215, 0, 0.3); text-align: center; padding: 3rem; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 30% 70%, rgba(255, 215, 0, 0.08) 0%, transparent 50%), radial-gradient(circle at 70% 30%, rgba(60, 60, 60, 0.1) 0%, transparent 50%); animation: ctaGlow 10s ease-in-out infinite; }
+        @keyframes ctaGlow { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+        .cta-content { position: relative; z-index: 10; }
+        .cta-text { color: rgba(255, 255, 255, 0.95); font-size: 1.1rem; font-weight: 700; }
+        
+        /* --- NOUVEAU : Light Mode Styles --- */
+        body.light-mode {
+            background-color: var(--light-bg) !important;
+            color: var(--light-text);
         }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+        body.light-mode .container {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
         }
-
-        .job-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
+        body.light-mode .header {
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
-
-        .company {
-            font-size: 1.1rem;
-            color: var(--accent-blue);
-            font-weight: 600;
+        body.light-mode #theme-toggle {
+            background: rgba(220, 220, 220, 0.7);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            color: var(--light-text);
         }
-
-        .job-description {
-            list-style: none;
-        }
-
-        .job-description li {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-            position: relative;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.05rem;
-            line-height: 1.6;
-        }
-
-        .job-description li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.8rem;
-            width: 6px;
-            height: 6px;
-            background: linear-gradient(45deg, var(--accent-gold), var(--accent-blue));
-            border-radius: 50%;
-            box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .skill-list {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.05rem;
-            line-height: 1.8;
-            font-weight: 500;
-        }
-
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .achievement-item {
-            text-align: center;
-        }
-
-        .achievement-number {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-blue) 100%);
+        body.light-mode .name {
+            background: linear-gradient(135deg, #2c2c2c 0%, #005c97 50%, #363795 100%);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.02em;
         }
-
-        .achievement-text {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.5;
-            font-weight: 500;
+        body.light-mode .title, body.light-mode .contact-item a { color: #333; }
+        body.light-mode .contact-item { background: rgba(230, 230, 230, 0.8); border: 1px solid rgba(0, 0, 0, 0.1); }
+        body.light-mode .contact-item:hover { background: rgba(220, 220, 220, 0.9); border-color: rgba(0, 0, 0, 0.2); }
+        body.light-mode .section { border-bottom: 1px solid rgba(0, 0, 0, 0.08); }
+        body.light-mode .section-title { color: var(--light-text); }
+        body.light-mode .about-text { color: rgba(0, 0, 0, 0.8); }
+        body.light-mode .value-proposition {
+            background: linear-gradient(135deg, rgba(0, 100, 255, 0.05), rgba(220, 220, 220, 0.6));
+            border: 1px solid rgba(0, 80, 200, 0.3);
+            color: var(--light-text);
         }
-
-        .vision-quote {
-            background: rgba(20, 20, 20, 0.9);
-            backdrop-filter: blur(50px);
-            -webkit-backdrop-filter: blur(50px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: white;
-            padding: 3rem;
-            border-radius: 20px;
-            font-size: 1.2rem;
-            line-height: 1.7;
-            font-weight: 500;
-            font-style: italic;
-            text-align: center;
-            position: relative;
+        body.light-mode .liquid-glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
         }
-
-        .vision-quote::before {
-            content: '"';
-            font-size: 5rem;
-            position: absolute;
-            top: -15px;
-            left: 30px;
-            opacity: 0.4;
-            color: var(--accent-gold);
-            font-family: Georgia, serif;
+        body.light-mode .liquid-glass-card:hover {
+            background: rgba(255, 255, 255, 0.75);
+            border-color: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.8), inset 0 -1px 1px rgba(0, 0, 0, 0.1);
         }
-
-        .languages {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .language-item {
-            text-align: center;
-        }
-
-        .language-name {
-            font-weight: 700;
-            color: white;
-            margin-bottom: 0.8rem;
-            font-size: 1.2rem;
-        }
-
-        .language-level {
-            color: var(--accent-blue);
-            font-size: 1rem;
-            font-weight: 600;
-        }
-
-        .formation-item p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .formation-item p:last-child {
-            margin-bottom: 0;
-        }
-
-        .cta-section {
-            background: rgba(10, 10, 10, 0.95);
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            text-align: center;
-            padding: 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 30% 70%, rgba(255, 215, 0, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 70% 30%, rgba(60, 60, 60, 0.1) 0%, transparent 50%);
-            animation: ctaGlow 10s ease-in-out infinite;
-        }
-
-        @keyframes ctaGlow {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 10;
-        }
-
-        .cta-text {
-            color: rgba(255, 255, 255, 0.95);
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                margin: 0;
-                border-radius: 0;
-            }
-
-            .header {
-                padding: 3rem 1.5rem;
-            }
-
-            .name {
-                font-size: 2.5rem;
-            }
-
-            .title {
-                font-size: 1.2rem;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .section {
-                padding: 2.5rem 1.5rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .achievements-grid {
-                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            }
-
-            .languages {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header {
-                padding: 2.5rem 1rem;
-            }
-
-            .name {
-                font-size: 2.2rem;
-            }
-
-            .section {
-                padding: 2rem 1rem;
-            }
-
-            .vision-quote {
-                padding: 2rem;
-            }
-
-            .achievements-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-        }
-
-        @media print {
-            body {
-                background: white !important;
-                color: black !important;
-            }
-
-            .container {
-                background: white !important;
-                backdrop-filter: none !important;
-                border: 1px solid #ccc !important;
-                box-shadow: none !important;
-            }
-
-            .card, .liquid-glass-card {
-                background: #f8f9fa !important;
-                backdrop-filter: none !important;
-                border: 1px solid #ddd !important;
-            }
-        }
+        body.light-mode .liquid-glass-card::before { background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(0, 0, 0, 0.08), transparent 40%); }
+        body.light-mode .liquid-glass-card::after { background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0)) border-box; }
+        body.light-mode .job-title, body.light-mode .skill-category-title, body.light-mode .language-name { color: var(--light-text); }
+        body.light-mode .job-description li, body.light-mode .skill-list, body.light-mode .formation-item p, body.light-mode .achievement-text { color: rgba(0, 0, 0, 0.8); }
+        body.light-mode .vision-quote { background: rgba(240, 240, 240, 0.9); border: 1px solid rgba(0, 0, 0, 0.1); color: var(--light-text); }
+        body.light-mode .cta-section, body.light-mode .cta-text { background: #eee; color: var(--light-text); border: 1px solid rgba(0, 0, 0, 0.1); }
+        
+        /* Media Queries & Animations (inchangés) */
+        @media (max-width: 768px) { .container { margin: 0; border-radius: 0; } .header { padding: 3rem 1.5rem; } .name { font-size: 2.5rem; } .title { font-size: 1.2rem; } .contact-info { grid-template-columns: 1fr; gap: 1rem; } .section { padding: 2.5rem 1.5rem; } .section-title { font-size: 1.8rem; } .skills-grid, .languages { grid-template-columns: 1fr; } .achievements-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); } }
+        @media (max-width: 480px) { .header { padding: 2.5rem 1rem; } .name { font-size: 2.2rem; } .section { padding: 2rem 1rem; } .vision-quote { padding: 2rem; } .achievements-grid { grid-template-columns: 1fr; } }
+        .fade-in-up { opacity: 0; transform: translateY(30px); animation: fadeInUp 0.8s ease forwards; }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; } }
     </style>
 </head>
 <body>
     <div class="container">
         <header class="header">
+            <div class="theme-switcher">
+                <button id="theme-toggle" aria-label="Changer de thème">☀️</button>
+            </div>
             <div class="header-content">
                 <h1 class="name">Olivier Lavergne</h1>
                 <div class="experience-badge">+15 années d'expertise</div>
                 <p class="title">Vidéaste Motion Designer • Créateur de Contenus Intelligents • Stratégie Marketing </p>
                 <div class="contact-info">
-                    <div class="contact-item">
-                        <span role="img" aria-hidden="true">📍</span> Toulouse & au-delà
-                    </div>
-                    <div class="contact-item" data-copy="0651049325">
-                        <span role="img" aria-hidden="true">📲</span> <a href="tel:+33651049325">06 51 04 93 25</a>
-                    </div>
-                    <div class="contact-item" data-copy="olivierlavergne@gmail.com">
-                        <span role="img" aria-hidden="true">✉️</span> <a href="mailto:olivierlavergne@gmail.com">Contact direct</a>
-                    </div>
-                    <div class="contact-item">
-                        <span role="img" aria-hidden="true">🎬</span> <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" rel="noopener noreferrer">Portfolio vidéo</a>
-                    </div>
-                    <div class="contact-item">
-                        <span role="img" aria-hidden="true">🎥</span> <a href="https://youtube.com/shorts/uLMkjJjTc9s" target="_blank" rel="noopener noreferrer">Short vidéo</a>
-                    </div>
-                    <div class="contact-item">
-                        <span role="img" aria-hidden="true">🎥</span> <a href="https://youtube.com/shorts/0kBfVG1fZxs" target="_blank" rel="noopener noreferrer">Short vidéo</a>
-                    </div>
+                    <div class="contact-item"><span role="img" aria-hidden="true">📍</span> Toulouse & au-delà</div>
+                    <div class="contact-item" data-copy="0651049325"><span role="img" aria-hidden="true">📲</span> <a href="tel:+33651049325">06 51 04 93 25</a></div>
+                    <div class="contact-item" data-copy="olivierlavergne@gmail.com"><span role="img" aria-hidden="true">✉️</span> <a href="mailto:olivierlavergne@gmail.com">Contact direct</a></div>
+                    <div class="contact-item"><span role="img" aria-hidden="true">🎬</span> <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" rel="noopener noreferrer">Portfolio vidéo</a></div>
+                    <div class="contact-item"><span role="img" aria-hidden="true">🎥</span> <a href="https://youtube.com/shorts/uLMkjJjTc9s" target="_blank" rel="noopener noreferrer">Short vidéo</a></div>
+                    <div class="contact-item"><span role="img" aria-hidden="true">🎥</span> <a href="https://youtube.com/shorts/0kBfVG1fZxs" target="_blank" rel="noopener noreferrer">Short vidéo</a></div>
                 </div>
             </div>
         </header>
@@ -715,229 +460,50 @@
 
         <section class="section fade-in-up">
             <h2 class="section-title">Expérience Professionnelle</h2>
-
-            <div class="experience-item card liquid-glass-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">🎨 Designer Marketing & Créateur de Contenus Intelligents</h3>
-                        <p class="company">Freelance • Toulouse • depuis 2008</p>
-                    </div>
-                </div>
-                <ul class="job-description">
-                    <li>Stratégie inbound (contenu, réseaux sociaux)</li>
-                    <li>Direction artistique identités visuelles print/digital</li>
-                    <li>Coordination équipes agences/freelances</li>
-                    <li>Exécution de campagnes print, web et vidéo</li>
-                </ul>
-            </div>
-
-            <div class="experience-item card liquid-glass-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">🎬 Vidéaste / Motion Designer</h3>
-                        <p class="company">ADONIS Créative • Toulouse • 2022/2024</p>
-                    </div>
-                </div>
-                <ul class="job-description">
-                    <li>Réalisation de vidéos et motion design pour Airbus / Airbus Defence Space</li>
-                    <li>Couverture évènementielle 360°</li>
-                    <li>Création de contenus marketing cybersécurité</li>
-                    <li>Innovation IA : Intégration d'outils IA génératifs</li>
-                </ul>
-            </div>
-
-            <div class="experience-item card liquid-glass-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">📱 Marketing Designer</h3>
-                        <p class="company">Ethics Group • Toulouse • 2015/2018</p>
-                    </div>
-                </div>
-                <ul class="job-description">
-                    <li>Gestion de la production print web et vidéo</li>
-                    <li>Positionnement des marques com' Interne/Externe</li>
-                    <li>Coordination des créatifs, agences, freelances</li>
-                    <li>Tournage indoor/outdoor, shooting photos</li>
-                </ul>
-            </div>
-
-            <div class="experience-item card liquid-glass-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">📺 Designer Digital</h3>
-                        <p class="company">LaCréa Multimédia (M6 Group) • Toulouse • 2011/2015</p>
-                    </div>
-                </div>
-                <ul class="job-description">
-                    <li>Conception de spots TV campagnes web et mobile</li>
-                    <li>Storytelling visuel pour maximiser les conversions</li>
-                    <li>Production haute cadence qualité broadcast</li>
-                    <li>Créations newsletters, affiches et web</li>
-                </ul>
-            </div>
-
-             <div class="experience-item card liquid-glass-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">🌍 Directeur Artistique & Motion Designer</h3>
-                        <p class="company">Msmart Inc • New York City • 2006/2008</p>
-                    </div>
-                </div>
-                <ul class="job-description">
-                    <li>Direction artistique et motion design</li>
-                    <li>Spots TV pour BET et MTV, axés urban content</li>
-                    <li>Adaptation culturelle pour marchés US/EU</li>
-                    <li>Supervision de campagnes multicanal (print, digital)</li>
-                </ul>
-            </div>
-
-            <div class="experience-item card liquid-glass-card">
-                <div class="job-header">
-                    <div>
-                        <h3 class="job-title">💡 Directeur Artistique Junior</h3>
-                        <p class="company">123Multimédia - Index Multimédia • Toulouse • 2002/2005</p>
-                    </div>
-                </div>
-                <ul class="job-description">
-                    <li>Direction artistique de campagnes print (12 pays)</li>
-                    <li>Logos, sonneries, modèle SMS Premium</li>
-                    <li>Design adaptatif mobile/web/tv</li>
-                    <li>Gestion équipe créative (6 personnes)</li>
-                </ul>
-            </div>
+            <div class="experience-item card liquid-glass-card"><div class="job-header"><div><h3 class="job-title">🎨 Designer Marketing & Créateur de Contenus Intelligents</h3><p class="company">Freelance • Toulouse • depuis 2008</p></div></div><ul class="job-description"><li>Stratégie inbound (contenu, réseaux sociaux)</li><li>Direction artistique identités visuelles print/digital</li><li>Coordination équipes agences/freelances</li><li>Exécution de campagnes print, web et vidéo</li></ul></div>
+            <div class="experience-item card liquid-glass-card"><div class="job-header"><div><h3 class="job-title">🎬 Vidéaste / Motion Designer</h3><p class="company">ADONIS Créative • Toulouse • 2022/2024</p></div></div><ul class="job-description"><li>Réalisation de vidéos et motion design pour Airbus / Airbus Defence Space</li><li>Couverture évènementielle 360°</li><li>Création de contenus marketing cybersécurité</li><li>Innovation IA : Intégration d'outils IA génératifs</li></ul></div>
+            <div class="experience-item card liquid-glass-card"><div class="job-header"><div><h3 class="job-title">📱 Marketing Designer</h3><p class="company">Ethics Group • Toulouse • 2015/2018</p></div></div><ul class="job-description"><li>Gestion de la production print web et vidéo</li><li>Positionnement des marques com' Interne/Externe</li><li>Coordination des créatifs, agences, freelances</li><li>Tournage indoor/outdoor, shooting photos</li></ul></div>
+            <div class="experience-item card liquid-glass-card"><div class="job-header"><div><h3 class="job-title">📺 Designer Digital</h3><p class="company">LaCréa Multimédia (M6 Group) • Toulouse • 2011/2015</p></div></div><ul class="job-description"><li>Conception de spots TV campagnes web et mobile</li><li>Storytelling visuel pour maximiser les conversions</li><li>Production haute cadence qualité broadcast</li><li>Créations newsletters, affiches et web</li></ul></div>
+            <div class="experience-item card liquid-glass-card"><div class="job-header"><div><h3 class="job-title">🌍 Directeur Artistique & Motion Designer</h3><p class="company">Msmart Inc • New York City • 2006/2008</p></div></div><ul class="job-description"><li>Direction artistique et motion design</li><li>Spots TV pour BET et MTV, axés urban content</li><li>Adaptation culturelle pour marchés US/EU</li><li>Supervision de campagnes multicanal (print, digital)</li></ul></div>
+            <div class="experience-item card liquid-glass-card"><div class="job-header"><div><h3 class="job-title">💡 Directeur Artistique Junior</h3><p class="company">123Multimédia - Index Multimédia • Toulouse • 2002/2005</p></div></div><ul class="job-description"><li>Direction artistique de campagnes print (12 pays)</li><li>Logos, sonneries, modèle SMS Premium</li><li>Design adaptatif mobile/web/tv</li><li>Gestion équipe créative (6 personnes)</li></ul></div>
         </section>
 
-        <section class="section fade-in-up">
-            <h2 class="section-title">Compétences Techniques</h2>
-            <div class="skills-grid">
-                <div class="skill-category card liquid-glass-card">
-                    <h3 class="skill-category-title">🚀 IA & Innovation</h3>
-                    <div class="skill-list">
-                        <strong>IA Générative :</strong> GPT-5, Claude 4, Gemini 2.5 Mistral, DeepSeek, Grok<br>
-                        <strong>Workflows :</strong> Automatisation, Prompt Engineering avancé<br>
-                        <strong>Vidéo :</strong>Google Veo3, Runway Gen-3, Seeddance, Kaiber, HeyGen<br>
-                        <strong>Image :</strong>Midjourney V7, Ideogram 3.0 Lovart, FLUX.1 Kontext
-                    </div>
-                </div>
-
-                <div class="skill-category card liquid-glass-card">
-                    <h3 class="skill-category-title">📊 Marketing & Analytics</h3>
-                    <div class="skill-list">
-                        <strong>Strategy :</strong> ROI Tracking, KPI Marketing, A/B Testing<br>
-                        <strong>Content :</strong> Storytelling data-driven, Community Management<br>
-                        <strong>Tools :</strong> Google Analytics 4, Social Media Ads, SEO/SEM<br>
-                        <strong>Performance :</strong> Conversion optimization, Funnel analysis
-                    </div>
-                </div>
-
-                <div class="skill-category card liquid-glass-card">
-                    <h3 class="skill-category-title">🎨 Création Graphique</h3>
-                    <div class="skill-list">
-                        <strong>Adobe CC :</strong> Photoshop, Illustrator, InDesign (Expert niveau)<br>
-                        <strong>Direction :</strong> Direction Artistique, Brand Identity, UI/UX<br>
-                        <strong>Print/Digital :</strong> Tous supports, gestion contraintes techniques<br>
-                        <strong>Typographie :</strong> Design éditorial, hiérarchie visuelle
-                    </div>
-                </div>
-
-                <div class="skill-category card liquid-glass-card">
-                    <h3 class="skill-category-title">🎵🎬 Audio & Vidéo</h3>
-                    <div class="skill-list">
-                        <strong>Production :</strong> Habillage sonore & vidéo<br>
-                        <strong>Audio :</strong> Logic Pro X, FL Studio, Mixage, Mastering (Ozonne)<br>
-                        <strong>Vidéo :</strong> After Effect, Davinci Resolve, Premiere Pro, CapCut<br>
-                        <strong>Podcast :</strong> Production complète, traitement vocal
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section fade-in-up">
-            <h2 class="section-title">Performances & Réalisations</h2>
-            <div class="achievements-grid">
-                <div class="achievement-item card liquid-glass-card">
-                    <div class="achievement-number">250+</div>
-                    <div class="achievement-text">Vidéos corporate grands comptes (Airbus, M6 Group)</div>
-                </div>
-                <div class="achievement-item card liquid-glass-card">
-                    <div class="achievement-number">2M+</div>
-                    <div class="achievement-text">Vues générées sur contenus clients</div>
-                </div>
-                <div class="achievement-item card liquid-glass-card">
-                    <div class="achievement-number">+45%</div>
-                    <div class="achievement-text">Engagement moyen vs benchmark secteur</div>
-                </div>
-                <div class="achievement-item card liquid-glass-card">
-                    <div class="achievement-number">-30%</div>
-                    <div class="achievement-text">Réduction temps production grâce à l'IA</div>
-                </div>
-                <div class="achievement-item card liquid-glass-card">
-                    <div class="achievement-number">25+</div>
-                    <div class="achievement-text">Clients accompagnés en stratégie digitale</div>
-                </div>
-                <div class="achievement-item card liquid-glass-card">
-                    <div class="achievement-number">2018</div>
-                    <div class="achievement-text">Pionnier IA créative en France</div>
-                </div>
-                <div class="achievement-item card liquid-glass-card">
-                    <div class="achievement-number">NYC</div>
-                    <div class="achievement-text">Expérience internationale confirmée</div>
-                </div>
-                <div class="achievement-item card liquid-glass-card">
-                    <div class="achievement-number">15+</div>
-                    <div class="achievement-text">Années d'expertise créative et marketing</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section fade-in-up">
-            <h2 class="section-title">Formation & Certifications</h2>
-            <div class="formation-item card liquid-glass-card">
-                <p><strong>🎓 BTS Réalisateur Multimédia</strong> — CESI, Toulouse</p>
-                <p><strong>📊 Marketing Digital :</strong> Google Analytics 4, Youtube Ads, LinkedIn Ads</p>
-                <p><strong>🎬 Spécialisations :</strong> Motion Design Avancé, Color Grading DaVinci, Direction Studio</p>
-                <p><strong>📚 Veille continue :</strong> Formation permanente outils émergents IA</p>
-            </div>
-        </section>
-
-        <section class="section fade-in-up">
-            <h2 class="section-title">Langues</h2>
-            <div class="languages">
-                <div class="language-item card liquid-glass-card">
-                    <div class="language-name">🇫🇷 Français</div>
-                    <div class="language-level">Natif</div>
-                </div>
-                <div class="language-item card liquid-glass-card">
-                    <div class="language-name">🇺🇸 Anglais</div>
-                    <div class="language-level">Courant</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section fade-in-up">
-            <h2 class="section-title">Vision & Approche</h2>
-            <div class="vision-quote">
-                L'avenir de la création vidéo réside dans la symbiose entre intuition artistique et intelligence artificielle. Mon approche unique combine créativité humaine et efficacité IA pour générer un ROI marketing maximum, tout en conservant l'authenticité émotionnelle qui fait la différence dans un monde digital saturé.
-            </div>
-        </section>
-
-        <footer class="section cta-section">
-            <div class="cta-content">
-                <p class="cta-text">
-                    🚀 <strong>Vidéaste Motion Designer |</strong>  Créateur de Contenus Intelligents | Stratégie Marketing
-                </p>
-            </div>
-        </footer>
+        <section class="section fade-in-up"><h2 class="section-title">Compétences Techniques</h2><div class="skills-grid"><div class="skill-category card liquid-glass-card"><h3 class="skill-category-title">🚀 IA & Innovation</h3><div class="skill-list"><strong>IA Générative :</strong> GPT-5, Claude 4, Gemini 2.5 Mistral, DeepSeek, Grok<br><strong>Workflows :</strong> Automatisation, Prompt Engineering avancé<br><strong>Vidéo :</strong>Google Veo3, Runway Gen-3, Seeddance, Kaiber, HeyGen<br><strong>Image :</strong>Midjourney V7, Ideogram 3.0 Lovart, FLUX.1 Kontext</div></div><div class="skill-category card liquid-glass-card"><h3 class="skill-category-title">📊 Marketing & Analytics</h3><div class="skill-list"><strong>Strategy :</strong> ROI Tracking, KPI Marketing, A/B Testing<br><strong>Content :</strong> Storytelling data-driven, Community Management<br><strong>Tools :</strong> Google Analytics 4, Social Media Ads, SEO/SEM<br><strong>Performance :</strong> Conversion optimization, Funnel analysis</div></div><div class="skill-category card liquid-glass-card"><h3 class="skill-category-title">🎨 Création Graphique</h3><div class="skill-list"><strong>Adobe CC :</strong> Photoshop, Illustrator, InDesign (Expert niveau)<br><strong>Direction :</strong> Direction Artistique, Brand Identity, UI/UX<br><strong>Print/Digital :</strong> Tous supports, gestion contraintes techniques<br><strong>Typographie :</strong> Design éditorial, hiérarchie visuelle</div></div><div class="skill-category card liquid-glass-card"><h3 class="skill-category-title">🎵🎬 Audio & Vidéo</h3><div class="skill-list"><strong>Production :</strong> Habillage sonore & vidéo<br><strong>Audio :</strong> Logic Pro X, FL Studio, Mixage, Mastering (Ozonne)<br><strong>Vidéo :</strong> After Effect, Davinci Resolve, Premiere Pro, CapCut<br><strong>Podcast :</strong> Production complète, traitement vocal</div></div></div></section>
+        <section class="section fade-in-up"><h2 class="section-title">Performances & Réalisations</h2><div class="achievements-grid"><div class="achievement-item card liquid-glass-card"><div class="achievement-number">250+</div><div class="achievement-text">Vidéos corporate grands comptes (Airbus, M6 Group)</div></div><div class="achievement-item card liquid-glass-card"><div class="achievement-number">2M+</div><div class="achievement-text">Vues générées sur contenus clients</div></div><div class="achievement-item card liquid-glass-card"><div class="achievement-number">+45%</div><div class="achievement-text">Engagement moyen vs benchmark secteur</div></div><div class="achievement-item card liquid-glass-card"><div class="achievement-number">-30%</div><div class="achievement-text">Réduction temps production grâce à l'IA</div></div><div class="achievement-item card liquid-glass-card"><div class="achievement-number">25+</div><div class="achievement-text">Clients accompagnés en stratégie digitale</div></div><div class="achievement-item card liquid-glass-card"><div class="achievement-number">2018</div><div class="achievement-text">Pionnier IA créative en France</div></div><div class="achievement-item card liquid-glass-card"><div class="achievement-number">NYC</div><div class="achievement-text">Expérience internationale confirmée</div></div><div class="achievement-item card liquid-glass-card"><div class="achievement-number">15+</div><div class="achievement-text">Années d'expertise créative et marketing</div></div></div></section>
+        <section class="section fade-in-up"><h2 class="section-title">Formation & Certifications</h2><div class="formation-item card liquid-glass-card"><p><strong>🎓 BTS Réalisateur Multimédia</strong> — CESI, Toulouse</p><p><strong>📊 Marketing Digital :</strong> Google Analytics 4, Youtube Ads, LinkedIn Ads</p><p><strong>🎬 Spécialisations :</strong> Motion Design Avancé, Color Grading DaVinci, Direction Studio</p><p><strong>📚 Veille continue :</strong> Formation permanente outils émergents IA</p></div></section>
+        <section class="section fade-in-up"><h2 class="section-title">Langues</h2><div class="languages"><div class="language-item card liquid-glass-card"><div class="language-name">🇫🇷 Français</div><div class="language-level">Natif</div></div><div class="language-item card liquid-glass-card"><div class="language-name">🇺🇸 Anglais</div><div class="language-level">Courant</div></div></div></section>
+        <section class="section fade-in-up"><h2 class="section-title">Vision & Approche</h2><div class="vision-quote">L'avenir de la création vidéo réside dans la symbiose entre intuition artistique et intelligence artificielle. Mon approche unique combine créativité humaine et efficacité IA pour générer un ROI marketing maximum, tout en conservant l'authenticité émotionnelle qui fait la différence dans un monde digital saturé.</div></section>
+        <footer class="section cta-section"><div class="cta-content"><p class="cta-text">🚀 <strong>Vidéaste Motion Designer |</strong>  Créateur de Contenus Intelligents | Stratégie Marketing</p></div></footer>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Smooth scroll animations with IntersectionObserver
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+            // --- NOUVEAU CODE POUR LE THÈME ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const currentTheme = localStorage.getItem('theme');
 
+            // Appliquer le thème sauvegardé au chargement de la page
+            if (currentTheme === 'light') {
+                document.body.classList.add('light-mode');
+                themeToggle.textContent = '🌙';
+            }
+
+            // Gérer le clic sur le bouton
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-mode');
+                
+                let theme = 'dark'; // Thème par défaut
+                if (document.body.classList.contains('light-mode')) {
+                    theme = 'light';
+                    themeToggle.textContent = '🌙';
+                } else {
+                    themeToggle.textContent = '☀️';
+                }
+                localStorage.setItem('theme', theme); // Sauvegarder le choix
+            });
+            
+            // --- CODE EXISTANT ---
+            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -946,30 +512,20 @@
                     }
                 });
             }, observerOptions);
+            document.querySelectorAll('.section').forEach(section => { observer.observe(section); });
 
-            document.querySelectorAll('.section').forEach(section => {
-                observer.observe(section);
-            });
-
-            // Click to copy functionality
             document.querySelectorAll('.contact-item[data-copy]').forEach(item => {
                 item.addEventListener('click', () => {
                     const textToCopy = item.dataset.copy;
                     if (textToCopy) {
                         navigator.clipboard.writeText(textToCopy).then(() => {
-                            // Visual feedback by toggling a class
                             item.classList.add('is-copied');
-                            setTimeout(() => {
-                                item.classList.remove('is-copied');
-                            }, 1000);
-                        }).catch(err => {
-                            console.error('Failed to copy text: ', err);
-                        });
+                            setTimeout(() => { item.classList.remove('is-copied'); }, 1000);
+                        }).catch(err => { console.error('Failed to copy text: ', err); });
                     }
                 });
             });
             
-            // --- NOUVEAU CODE POUR L'EFFET LIQUID GLASS ---
             document.querySelectorAll('.liquid-glass-card').forEach(card => {
                 card.addEventListener('mousemove', e => {
                     const rect = card.getBoundingClientRect();
