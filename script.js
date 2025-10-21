@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         translatableElements.forEach(el => {
             const text = el.dataset[lang === 'en' ? 'langEn' : 'langFr'];
             if (text) {
-                // Utilise innerHTML pour conserver les balises comme <strong>
                 el.innerHTML = text;
             }
         });
@@ -17,11 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('language', lang);
     };
 
-    // Initialise la langue au chargement de la page
     const currentLang = localStorage.getItem('language') || 'fr';
     setLanguage(currentLang);
 
-    // Gère le clic sur le bouton de langue
     langToggle.addEventListener('click', () => {
         const newLang = localStorage.getItem('language') === 'fr' ? 'en' : 'fr';
         setLanguage(newLang);
