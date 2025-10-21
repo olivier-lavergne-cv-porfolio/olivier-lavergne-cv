@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Olivier Lavergne - Vidéaste Motion Designer & Stratège IA">
-    <title>Olivier Lavergne | Vidéaste Motion Designer</title>
+    <meta name="description" content="Olivier Lavergne - Vidéaste Motion Designer & Créateur de Contenus Intelligents">
+    <title>Olivier Lavergne | Vidéaste & Motion Designer</title>
     <style>
         * {
             margin: 0;
@@ -13,883 +13,1297 @@
         }
 
         :root {
-            --black: #1a1a1a;
-            --dark-gray: #2a2a2a;
-            --light: #ffffff;
-            --neon-yellow: #d4ff00;
-            --neon-cyan: #00d4ff;
-            --neon-purple: #c77dff;
-            --gray: #888888;
+            --primary: #000000;
+            --secondary: #ffffff;
+            --accent-cyan: #00d4ff;
+            --accent-gold: #ffd700;
+            --accent-purple: #c77dff;
+            --gray: #1a1a1a;
         }
 
-        html, body {
-            width: 100%;
-            height: 100%;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
-            line-height: 1.5;
-            color: var(--light);
-            background-color: var(--black);
-            font-size: 16px;
-            font-weight: 400;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary);
+            color: var(--secondary);
             overflow-x: hidden;
-        }
-
-        /* Canvas Background */
-        #canvas-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .content {
-            position: relative;
-            z-index: 1;
+            line-height: 1.6;
         }
 
         /* HEADER */
         header {
-            padding: 30px 80px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky; /* Changed to sticky */
-            top: 0;
-            z-index: 100;
-            background: rgba(26, 26, 26, 0.8);
+        }
+
+        /* THEME SWITCHER */
+        .theme-switcher {
+            display: flex;
+            gap: 0;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0.4rem;
         }
 
-        .logo {
-            font-size: 1.4rem;
-            font-weight: 900;
-            letter-spacing: -0.02em;
+        .theme-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 0.6rem 1rem;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
         }
 
-        .logo span {
-            background: var(--neon-yellow);
-            color: var(--black);
-            padding: 4px 8px;
-            margin-left: 8px;
-            display: inline-block;
-            font-size: 0.8rem;
+        .theme-btn.active {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: var(--primary);
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
         }
 
-        nav a {
-            color: var(--light);
-            text-decoration: none;
-            margin: 0 25px;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
+        .theme-btn:hover:not(.active) {
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        nav a:hover {
-            color: var(--neon-yellow);
+        /* LIGHT MODE */
+        body.light-mode {
+            background: #f5f5f5;
+            color: #1d1d1f;
         }
 
-        .cta-header {
-            background: var(--neon-yellow);
-            color: var(--black);
-            padding: 12px 24px;
-            border-radius: 8px;
+        body.light-mode header {
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .theme-switcher {
+            background: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.15);
+        }
+
+        body.light-mode .theme-btn {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        body.light-mode .theme-btn:hover:not(.active) {
+            color: rgba(0, 0, 0, 0.9);
+        }
+
+        body.light-mode .lang-switcher {
+            background: rgba(0, 0, 0, 0.08);
+            border-color: rgba(0, 0, 0, 0.15);
+        }
+
+        body.light-mode .lang-btn {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        body.light-mode .lang-btn:hover:not(.active) {
+            color: rgba(0, 0, 0, 0.9);
+        }
+
+        body.light-mode .hero {
+            background: linear-gradient(135deg, 
+                #f5f5f5 0%, 
+                #e8e0f5 25%,
+                #e8e8f5 50%,
+                #e0e8f5 75%,
+                #f5f5f5 100%);
+        }
+
+        body.light-mode .hero-content h1 {
+            background: linear-gradient(135deg, #1d1d1f 0%, #003d7a 50%, #1a0070 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        body.light-mode .hero .subtitle {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        body.light-mode section {
+            background: #f5f5f5;
+        }
+
+        body.light-mode .section-title {
+            color: #1d1d1f;
+        }
+
+        body.light-mode .section-subtitle {
+            color: rgba(0, 0, 0, 0.65);
+        }
+
+        body.light-mode .about-text p {
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        body.light-mode .about-highlight {
+            background: rgba(0, 100, 255, 0.05);
+            border-color: rgba(0, 100, 255, 0.3);
+            color: rgba(0, 0, 0, 0.85);
+        }
+
+        body.light-mode .stat-label {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        body.light-mode .experience {
+            background: #efefef;
+        }
+
+        body.light-mode .experience-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .experience-card:hover {
+            border-color: #0064ff;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        body.light-mode .experience-title {
+            color: #1d1d1f;
+        }
+
+        body.light-mode .experience-company {
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        body.light-mode .experience-description {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        body.light-mode .skill-card {
+            background: linear-gradient(135deg, rgba(0, 100, 255, 0.05), rgba(100, 50, 200, 0.05));
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .skill-card:hover {
+            border-color: #0064ff;
+            background: linear-gradient(135deg, rgba(0, 100, 255, 0.1), rgba(100, 50, 200, 0.1));
+        }
+
+        body.light-mode .skill-title {
+            color: #1d1d1f;
+        }
+
+        body.light-mode .skill-list {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        body.light-mode .portfolio-item {
+            background: rgba(255, 255, 255, 0.8);
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .portfolio-item:hover {
+            border-color: #0064ff;
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        body.light-mode .portfolio-info h3 {
+            color: #1d1d1f;
+        }
+
+        body.light-mode .portfolio-info p {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        body.light-mode footer {
+            background: #efefef;
+            border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        body.light-mode .footer-title {
+            color: #1d1d1f;
+        }
+
+        body.light-mode .contact-links a {
+            border-color: rgba(0, 0, 0, 0.3);
+            color: #1d1d1f;
+        }
+
+        body.light-mode .contact-links a:hover {
+            color: white;
+        }
+
+        body.light-mode .footer-credit {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* LANGUAGE SWITCHER */
+        .lang-switcher {
+            display: flex;
+            gap: 0;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0.4rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 0.6rem 1.2rem;
             font-weight: 700;
             font-size: 0.9rem;
-            text-decoration: none;
             cursor: pointer;
-            border: none;
+            border-radius: 50px;
             transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
-        .cta-header:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(212, 255, 0, 0.4);
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: var(--primary);
+            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
         }
 
-        /* HERO SECTION */
+        .lang-btn:hover:not(.active) {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* HERO GRADIENT SECTION */
         .hero {
-            min-height: 100vh;
+            min-height: 120vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
-            padding: 80px 80px;
+            align-items: center;
+            text-align: center;
             position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, 
+                #000000 0%, 
+                #1a0033 25%,
+                #000033 50%,
+                #001a33 75%,
+                #000000 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            margin-top: 0;
+            padding-top: 6rem;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15), transparent);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            filter: blur(80px);
+            animation: float 20s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(199, 125, 255, 0.1), transparent);
+            border-radius: 50%;
+            bottom: -100px;
+            left: -150px;
+            filter: blur(80px);
+            animation: float 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-60px); }
         }
 
         .hero-content {
-            max-width: 900px;
             position: relative;
             z-index: 2;
+            max-width: 1100px;
+            padding: 2rem;
+        }
+
+        .hero-overline {
+            font-size: 0.95rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease 0.2s both;
         }
 
         .hero h1 {
-            font-size: 5.5rem;
+            font-size: clamp(3.5rem, 14vw, 7rem);
             font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 30px;
+            line-height: 1.05;
+            margin-bottom: 1.5rem;
             letter-spacing: -0.03em;
-            text-transform: uppercase;
+            background: linear-gradient(135deg, 
+                var(--secondary) 0%, 
+                var(--accent-cyan) 50%, 
+                var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 1s ease 0.4s both;
         }
 
-        .hero-tagline {
-            font-size: 1.3rem;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.85);
-            margin-bottom: 60px;
-            line-height: 1.7;
-            max-width: 700px;
+        .hero .subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.6rem);
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 400;
+            margin-bottom: 3rem;
+            max-width: 750px;
+            line-height: 1.5;
+            animation: fadeInUp 1s ease 0.6s both;
         }
 
-        .hero-cta {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 14px 36px;
-            border-radius: 4px;
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: var(--primary);
             text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            cursor: pointer;
             border: none;
-            transition: all 0.3s ease;
-            font-family: inherit;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+            animation: fadeInUp 1s ease 0.8s both;
         }
 
-        .btn-primary {
-            background: var(--neon-yellow);
-            color: var(--black);
+        .cta-button:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 80px rgba(0, 212, 255, 0.5);
         }
 
-        .btn-primary:hover {
-            transform: translateX(8px);
-            box-shadow: 0 0 30px rgba(212, 255, 0, 0.5);
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--light);
-            border: 2px solid var(--light);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--neon-yellow);
-            color: var(--neon-yellow);
-            box-shadow: 0 0 20px rgba(212, 255, 0, 0.3);
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* SECTIONS */
         section {
-            padding: 100px 80px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8rem 2rem;
             position: relative;
+            z-index: 1;
         }
 
-        section:last-of-type {
-            border-bottom: none;
+        .section-header {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .section-eyebrow {
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
+        .section-overline {
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--neon-yellow);
-            margin-bottom: 20px;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            margin-bottom: 1rem;
         }
 
         .section-title {
-            font-size: 4rem;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
             font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            color: var(--light);
-            margin-bottom: 50px;
-            text-transform: uppercase;
-        }
-
-        .section-description {
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-            max-width: 700px;
-            margin-bottom: 40px;
-        }
-
-        /* EXPERIENCE */
-        .experience-grid {
-            display: grid;
-            gap: 40px;
-        }
-
-        .experience-item {
-            padding: 40px;
-            border-left: 3px solid var(--neon-cyan);
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .experience-item:hover {
-            background: rgba(212, 255, 0, 0.08);
-            border-left-color: var(--neon-yellow);
-            transform: translateX(10px);
-            box-shadow: 0 0 20px rgba(212, 255, 0, 0.2);
-        }
-
-        .exp-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .exp-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--light);
-            text-transform: uppercase;
-        }
-
-        .exp-company {
-            font-size: 0.85rem;
-            color: var(--neon-yellow);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .exp-period {
-            font-size: 0.95rem;
-            color: var(--gray);
-            font-weight: 600;
-        }
-
-        .exp-description {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.75);
-            line-height: 1.8;
-            list-style: none;
-        }
-
-        .exp-description li {
-            margin-bottom: 12px;
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .exp-description li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--neon-cyan);
-            font-weight: 700;
-        }
-
-        /* ACHIEVEMENTS */
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 30px;
-        }
-
-        .achievement {
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 255, 0, 0.2);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .achievement:hover {
-            background: rgba(212, 255, 0, 0.1);
-            border-color: var(--neon-yellow);
-            transform: translateY(-10px);
-            box-shadow: 0 0 30px rgba(212, 255, 0, 0.3);
-        }
-
-        .achievement-number {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 2rem;
+            line-height: 1.15;
             letter-spacing: -0.02em;
-            color: var(--neon-yellow);
         }
 
-        .achievement-label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            line-height: 1.6;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
+        .section-title .accent {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* SKILLS */
-        .skills-layout {
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 3rem;
+            max-width: 650px;
+            line-height: 1.7;
+        }
+
+        /* ABOUT SECTION */
+        .about {
+            background: var(--primary);
+        }
+
+        .about-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .skill-block {
-            padding: 40px;
-            border: 1px solid rgba(212, 255, 0, 0.3);
-            background: rgba(255, 255, 255, 0.03);
+        .about-text {
+            max-width: 550px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .about-text strong {
+            color: var(--secondary);
+        }
+
+        .about-highlight {
+            padding: 2rem;
+            border-left: 3px solid var(--accent-cyan);
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.8;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .stat {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
         }
 
-        .skill-block:hover {
-            background: rgba(212, 255, 0, 0.08);
-            border-color: var(--neon-yellow);
-            box-shadow: 0 0 25px rgba(212, 255, 0, 0.25);
+        .stat:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border-color: var(--accent-cyan);
+            transform: translateY(-8px);
         }
 
-        .skill-block h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--neon-yellow);
-            margin-bottom: 25px;
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            font-weight: 600;
         }
 
-        .skill-block p {
+        /* EXPERIENCE SECTION */
+        .experience {
+            background: var(--gray);
+        }
+
+        .experience-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .experience-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--accent-cyan);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .experience-card:hover::before {
+            opacity: 1;
+        }
+
+        .experience-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .experience-year {
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .experience-company {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-description {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        /* PORTFOLIO SECTION */
+        .portfolio {
+            background: var(--primary);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-12px);
+            border-color: var(--accent-cyan);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .portfolio-info {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+        }
+
+        .portfolio-info p {
             font-size: 0.95rem;
             color: rgba(255, 255, 255, 0.75);
-            line-height: 1.9;
-            font-weight: 400;
+            line-height: 1.6;
+            flex-grow: 1;
         }
 
-        /* CONTACT */
-        .contact-section {
-            background: rgba(42, 42, 42, 0.8);
+        /* SKILLS SECTION */
+        .skills {
+            background: var(--primary);
         }
 
-        .contact-grid {
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .contact-box {
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(212, 255, 0, 0.2);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+        .skill-card {
+            padding: 2.5rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(199, 125, 255, 0.08));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
         }
 
-        .contact-box:hover {
-            background: rgba(212, 255, 0, 0.1);
-            border-color: var(--neon-yellow);
-            box-shadow: 0 0 25px rgba(212, 255, 0, 0.3);
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.3), transparent);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.6s ease;
         }
 
-        .contact-label {
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--neon-yellow);
-            margin-bottom: 12px;
+        .skill-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--accent-cyan);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(199, 125, 255, 0.15));
         }
 
-        .contact-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--light);
+        .skill-card:hover::before {
+            opacity: 1;
+            top: -20%;
+            right: -20%;
         }
 
-        .contact-value a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s ease;
+        .skill-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
         }
 
-        .contact-value a:hover {
-            color: var(--neon-yellow);
+        .skill-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            color: var(--secondary);
+        }
+
+        .skill-list {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            color: rgba(255, 255, 255, 0.75);
         }
 
         /* FOOTER */
         footer {
-            padding: 60px 80px;
+            background: linear-gradient(135deg, 
+                #1a1a1a 0%, 
+                #2d1a4d 25%,
+                #1a1a33 50%,
+                #1a2d33 75%,
+                #1a1a1a 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: var(--secondary);
+            padding: 6rem 2rem;
             text-align: center;
-            background: rgba(26, 26, 26, 0.95);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
         }
 
-        .footer-text {
-            font-size: 1.5rem;
-            font-weight: 700;
-            line-height: 1.5;
-            margin-bottom: 40px;
-            text-transform: uppercase;
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 212, 255, 0.1), transparent);
+            pointer-events: none;
         }
 
-        .footer-links {
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-title {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 3rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        .footer-title .accent {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-links {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 1.5rem;
             flex-wrap: wrap;
+            margin-bottom: 3rem;
         }
 
-        .footer-links a {
-            color: var(--light);
+        .contact-links a {
+            color: var(--secondary);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
+            font-size: 1rem;
+            font-weight: 700;
+            padding: 0.8rem 1.8rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: transparent;
         }
 
-        .footer-links a:hover {
-            color: var(--neon-yellow);
+        .contact-links a:hover {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            border-color: transparent;
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .footer-credit {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-top: 3rem;
         }
 
         /* RESPONSIVE */
-        @media (max-width: 1024px) {
-            header, .hero, section {
-                padding: 40px;
-            }
-
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-        }
-
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            nav {
-                display: none;
-            }
-
-            .hero, section {
-                padding: 40px 20px;
+            .hero {
+                min-height: 90vh;
             }
 
             .hero h1 {
                 font-size: 2.5rem;
             }
 
-            .hero-tagline {
-                font-size: 1rem;
+            .hero .subtitle {
+                font-size: 1.1rem;
             }
 
-            .section-title {
-                font-size: 1.8rem;
+            section {
+                padding: 4rem 1.5rem;
             }
 
-            .skills-layout {
+            .about-content {
                 grid-template-columns: 1fr;
             }
 
-            .achievements-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .stats-grid {
+                grid-template-columns: 1fr;
             }
 
-            footer {
-                padding: 40px 20px;
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-links {
+                gap: 1rem;
+                flex-direction: column;
+            }
+
+            .contact-links a {
+                width: 100%;
             }
         }
 
         @media (max-width: 480px) {
+            .hero {
+                min-height: 70vh;
+            }
+
             .hero h1 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .footer-title {
                 font-size: 1.8rem;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-            }
-
-            .btn {
-                padding: 12px 24px;
-                font-size: 0.8rem;
-            }
-
-            .achievements-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <canvas id="canvas-background"></canvas>
 
-    <div class="content">
-        <header>
-            <div class="logo">OLIVIER<span>LAVERGNE</span></div>
-            <nav>
-                <a href="#about">À propos</a>
-                <a href="#experience">Expérience</a>
-                <a href="#skills">Compétences</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <a href="#contact" class="cta-header">PARLONS</a>
-        </header>
+    <!-- HEADER -->
+    <header>
+        <div class="theme-switcher">
+            <button class="theme-btn active" data-theme="dark">🌙</button>
+            <button class="theme-btn" data-theme="light">☀️</button>
+        </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" data-lang="fr">FR</button>
+            <button class="lang-btn" data-lang="en">US</button>
+        </div>
+    </header>
 
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Créateur de<br>Contenus<br>Intelligents</h1>
-                <p class="hero-tagline">
-                    Vidéaste Motion Designer spécialisé en stratégie marketing digital et intégration IA générative.
-                    15+ années d'expertise pour transformer vos idées en succès mesurables.
-                </p>
-                <div class="hero-cta">
-                    <a href="#contact" class="btn btn-primary">Parlons de votre projet</a>
-                    <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Voir le portfolio</a>
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-overline" data-fr="🚀 Vidéaste & Motion Designer" data-en="🚀 Videographer & Motion Designer">🚀 Vidéaste & Motion Designer</div>
+            <h1 data-fr="Créateur de<br><span>Contenus</span><br>Extraordinaires" data-en="Creator of<br><span>Extraordinary</span><br>Content">Créateur de<br><span>Contenus</span><br>Extraordinaires</h1>
+            <p class="subtitle" data-fr="Transformez vos défis marketing en succès mesurables grâce à une approche créative data-driven boostée par l'IA générative." data-en="Transform your marketing challenges into measurable success through a data-driven creative approach powered by generative AI.">Transformez vos défis marketing en succès mesurables grâce à une approche créative data-driven boostée par l'IA générative.</p>
+            <a href="#about" class="cta-button" data-fr="Découvrir mon approche" data-en="Discover my approach">Découvrir mon approche</a>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="section-header">
+            <div class="section-overline" data-fr="À PROPOS" data-en="ABOUT">À PROPOS</div>
+            <h2 class="section-title" data-fr="Vidéaste créatif & stratège <span class='accent'>marketing</span>" data-en="Creative videographer & <span class='accent'>marketing</span> strategist">Vidéaste créatif & stratège <span class="accent">marketing</span></h2>
+            <p class="section-subtitle" data-fr="Plus de 15 années d'expertise dans la création de contenus visuels d'impact." data-en="Over 15 years of expertise in creating high-impact visual content.">Plus de 15 années d'expertise dans la création de contenus visuels d'impact.</p>
+        </div>
+
+        <div class="about-content">
+            <div class="about-text">
+                <p data-fr="<strong>Spécialiste en création vidéo et motion design</strong> avec une expérience confirmée auprès de grands comptes (Airbus, M6 Group, secteur tech)." data-en="<strong>Specialist in video creation and motion design</strong> with confirmed experience working with major accounts (Airbus, M6 Group, tech sector)."><strong>Spécialiste en création vidéo et motion design</strong> avec une expérience confirmée auprès de grands comptes (Airbus, M6 Group, secteur tech).</p>
+                
+                <p data-fr="Je maîtrise l'intégration des outils IA générative pour optimiser les workflows créatifs, réduire les délais de production de 30% et maximiser le ROI marketing." data-en="I master the integration of generative AI tools to optimize creative workflows, reduce production time by 30%, and maximize marketing ROI.">Je maîtrise l'intégration des outils IA générative pour optimiser les workflows créatifs, réduire les délais de production de 30% et maximiser le ROI marketing.</p>
+
+                <div class="about-highlight" data-fr="L'avenir de la création vidéo réside dans la symbiose entre intuition artistique et intelligence artificielle." data-en="The future of video creation lies in the symbiosis between artistic intuition and artificial intelligence.">L'avenir de la création vidéo réside dans la symbiose entre intuition artistique et intelligence artificielle.</div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number">2M+</div>
+                    <div class="stat-label" data-fr="Vues générées" data-en="Views generated">Vues générées</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">+45%</div>
+                    <div class="stat-label" data-fr="Engagement moyen" data-en="Average engagement">Engagement moyen</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label" data-fr="Vidéos réalisées" data-en="Videos produced">Vidéos réalisées</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label" data-fr="Années d'expérience" data-en="Years of experience">Années d'expérience</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="about">
-            <div class="section-eyebrow">Vision & Approche</div>
-            <h2 class="section-title">Profil Expert</h2>
-            <p class="section-description">
-                Je combine intuition artistique et intelligence artificielle pour générer un ROI marketing maximum.
-                Spécialisé en création vidéo, motion design et intégration d'IA générative pour optimiser les workflows
-                et réduire les temps de production jusqu'à 30%.
-            </p>
-        </section>
+    <!-- EXPERIENCE SECTION -->
+    <section class="experience">
+        <div class="section-header">
+            <div class="section-overline" data-fr="PARCOURS" data-en="EXPERIENCE">PARCOURS</div>
+            <h2 class="section-title" data-fr="Expérience <span class='accent'>Professionnelle</span>" data-en="Professional <span class='accent'>Experience</span>">Expérience <span class="accent">Professionnelle</span></h2>
+        </div>
 
-        <section id="experience">
-            <div class="section-eyebrow">Parcours</div>
-            <h2 class="section-title">Expérience Professionnelle</h2>
-
-            <div class="experience-grid">
-                <div class="experience-item">
-                    <div class="exp-meta">
-                        <div>
-                            <h3 class="exp-title">Designer Marketing & Créateur de Contenus</h3>
-                            <p class="exp-company">Freelance</p>
-                        </div>
-                        <span class="exp-period">Depuis 2008</span>
-                    </div>
-                    <ul class="exp-description">
-                        <li>Stratégie inbound : contenu, réseaux sociaux</li>
-                        <li>Direction artistique d'identités visuelles print & digital</li>
-                        <li>Coordination d'équipes créatives</li>
-                    </ul>
-                </div>
-                 <div class="experience-item">
-                    <div class="exp-meta">
-                        <div>
-                            <h3 class="exp-title">Vidéaste / Motion Designer</h3>
-                            <p class="exp-company">ADONIS Créative (pour Airbus)</p>
-                        </div>
-                        <span class="exp-period">2022-2024</span>
-                    </div>
-                    <ul class="exp-description">
-                        <li>Réalisation de vidéos & motion design pour Airbus</li>
-                        <li>Couverture événementielle 360° et contenus marketing</li>
-                        <li>Innovation et intégration d'outils IA génératifs</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <div class="exp-meta">
-                        <div>
-                            <h3 class="exp-title">Directeur Artistique & Motion Designer</h3>
-                            <p class="exp-company">Msmart Inc, New York City</p>
-                        </div>
-                        <span class="exp-period">2006-2008</span>
-                    </div>
-                    <ul class="exp-description">
-                        <li>Direction artistique et motion design pour des spots TV (BET, MTV)</li>
-                        <li>Adaptation culturelle pour les marchés US/EU</li>
-                        <li>Supervision de campagnes multicanal</li>
-                    </ul>
+        <div class="experience-grid">
+            <div class="experience-card">
+                <div class="experience-card-content">
+                    <div class="experience-year" data-fr="2008 - Présent" data-en="2008 - Present">2008 - Présent</div>
+                    <div class="experience-title" data-fr="Designer Marketing" data-en="Marketing Designer">Designer Marketing</div>
+                    <div class="experience-company">Freelance • Toulouse</div>
+                    <div class="experience-description" data-fr="Stratégie inbound, direction artistique, coordination d'équipes, campagnes print/web/vidéo." data-en="Inbound strategy, art direction, team coordination, print/web/video campaigns.">Stratégie inbound, direction artistique, coordination d'équipes, campagnes print/web/vidéo.</div>
                 </div>
             </div>
-        </section>
 
-        <section>
-            <div class="section-eyebrow">Performances</div>
-            <h2 class="section-title">Réalisations Clés</h2>
-
-            <div class="achievements-grid">
-                <div class="achievement">
-                    <div class="achievement-number">250+</div>
-                    <div class="achievement-label">Vidéos corporate grands comptes</div>
-                </div>
-                <div class="achievement">
-                    <div class="achievement-number">2M+</div>
-                    <div class="achievement-label">Vues générées sur les contenus</div>
-                </div>
-                <div class="achievement">
-                    <div class="achievement-number">+45%</div>
-                    <div class="achievement-label">Engagement moyen vs benchmark</div>
-                </div>
-                <div class="achievement">
-                    <div class="achievement-number">-30%</div>
-                    <div class="achievement-label">Réduction du temps de production (IA)</div>
+            <div class="experience-card">
+                <div class="experience-card-content">
+                    <div class="experience-year">2022 - 2024</div>
+                    <div class="experience-title" data-fr="Vidéaste / Motion Designer" data-en="Videographer / Motion Designer">Vidéaste / Motion Designer</div>
+                    <div class="experience-company">ADONIS Créative • Toulouse</div>
+                    <div class="experience-description" data-fr="Réalisation de vidéos et motion design pour Airbus. Intégration d'outils IA génératifs pour optimiser les workflows." data-en="Video production and motion design for Airbus. Integration of generative AI tools to optimize workflows.">Réalisation de vidéos et motion design pour Airbus. Intégration d'outils IA génératifs pour optimiser les workflows.</div>
                 </div>
             </div>
-        </section>
 
-        <section id="skills">
-            <div class="section-eyebrow">Boîte à outils</div>
-            <h2 class="section-title">Compétences Techniques</h2>
-
-            <div class="skills-layout">
-                <div class="skill-block">
-                    <h3>🤖 IA & Innovation</h3>
-                    <p>IA Générative (Vidéo & Image) : GPT-5, Claude 4, Gemini 2.5, Google Veo3, Runway Gen-3, Midjourney V7. Prompt Engineering avancé.</p>
-                </div>
-                <div class="skill-block">
-                    <h3>📊 Marketing & Analytics</h3>
-                    <p>ROI Tracking, KPI Marketing, Google Analytics 4, A/B Testing, Optimisation de la conversion, Storytelling data-driven.</p>
-                </div>
-                 <div class="skill-block">
-                    <h3>🎬 Audio & Vidéo</h3>
-                    <p>Suite Adobe (After Effects, Premiere Pro), DaVinci Resolve, Logic Pro X, Mixage & Mastering Audio. Production de podcasts.</p>
-                </div>
-                <div class="skill-block">
-                    <h3>🎨 Création & Design</h3>
-                    <p>Adobe Creative Suite (Photoshop, Illustrator, InDesign), Direction Artistique, Brand Identity, UI/UX, Motion Design Avancé.</p>
+            <div class="experience-card">
+                <div class="experience-card-content">
+                    <div class="experience-year">2015 - 2018</div>
+                    <div class="experience-title" data-fr="Marketing Designer" data-en="Marketing Designer">Marketing Designer</div>
+                    <div class="experience-company">Ethics Group • Toulouse</div>
+                    <div class="experience-description" data-fr="Production print, web et vidéo. Positionnement des marques. Coordination d'équipes créatives." data-en="Print, web and video production. Brand positioning. Coordination of creative teams.">Production print, web et vidéo. Positionnement des marques. Coordination d'équipes créatives.</div>
                 </div>
             </div>
-        </section>
 
-        <section class="contact-section" id="contact">
-            <div class="section-eyebrow">Discutons</div>
-            <h2 class="section-title">Entrons en contact</h2>
-
-            <div class="contact-grid">
-                <div class="contact-box">
-                    <div class="contact-label">📱 Téléphone</div>
-                    <div class="contact-value"><a href="tel:+33651049325">06 51 04 93 25</a></div>
-                </div>
-                <div class="contact-box">
-                    <div class="contact-label">✉️ Email</div>
-                    <div class="contact-value"><a href="mailto:olivierlavergne@gmail.com">olivierlavergne@gmail.com</a></div>
-                </div>
-                <div class="contact-box">
-                    <div class="contact-label">📍 Localisation</div>
-                    <div class="contact-value">Toulouse & à distance</div>
-                </div>
-                <div class="contact-box">
-                    <div class="contact-label">🎬 Portfolio</div>
-                    <div class="contact-value"><a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" rel="noopener noreferrer">Voir mes vidéos</a></div>
+            <div class="experience-card">
+                <div class="experience-card-content">
+                    <div class="experience-year">2011 - 2015</div>
+                    <div class="experience-title" data-fr="Designer Digital" data-en="Digital Designer">Designer Digital</div>
+                    <div class="experience-company">LaCréa Multimédia (M6) • Toulouse</div>
+                    <div class="experience-description" data-fr="Conception de spots TV, campagnes web et mobile. Production haute cadence qualité broadcast." data-en="Design of TV spots, web and mobile campaigns. High-speed broadcast quality production.">Conception de spots TV, campagnes web et mobile. Production haute cadence qualité broadcast.</div>
                 </div>
             </div>
-        </section>
 
-        <footer>
-            <p class="footer-text">Prêt à créer ensemble ? 🚀</p>
-            <div class="footer-links">
-                <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" rel="noopener noreferrer">Portfolio Vidéo</a>
-                <a href="https://youtube.com/shorts/uLMkjJjTc9s" target="_blank" rel="noopener noreferrer">Short #1</a>
-                <a href="https://youtube.com/shorts/0kBfVG1fZxs" target="_blank" rel="noopener noreferrer">Short #2</a>
-                <a href="mailto:olivierlavergne@gmail.com">Contactez-moi</a>
+            <div class="experience-card">
+                <div class="experience-card-content">
+                    <div class="experience-year">2006 - 2008</div>
+                    <div class="experience-title" data-fr="Directeur Artistique" data-en="Art Director">Directeur Artistique</div>
+                    <div class="experience-company">Msmart Inc • New York City</div>
+                    <div class="experience-description" data-fr="Direction artistique et motion design. Spots TV pour BET et MTV. Adaptation culturelle US/EU." data-en="Art direction and motion design. TV spots for BET and MTV. Cultural adaptation US/EU.">Direction artistique et motion design. Spots TV pour BET et MTV. Adaptation culturelle US/EU.</div>
+                </div>
             </div>
-        </footer>
-    </div>
+
+            <div class="experience-card">
+                <div class="experience-card-content">
+                    <div class="experience-year">2002 - 2005</div>
+                    <div class="experience-title" data-fr="Directeur Artistique Junior" data-en="Junior Art Director">Directeur Artistique Junior</div>
+                    <div class="experience-company">123Multimédia • Toulouse</div>
+                    <div class="experience-description" data-fr="Direction artistique de campagnes print 12 pays. Gestion équipe créative 6 personnes." data-en="Art direction for print campaigns in 12 countries. Management of 6-person creative team.">Direction artistique de campagnes print 12 pays. Gestion équipe créative 6 personnes.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+                    <div class="experience-title">Directeur Artistique</div>
+                    <div class="experience-company">Msmart Inc • New York City</div>
+                    <div class="experience-description">Direction artistique et motion design. Spots TV pour BET et MTV. Adaptation culturelle US/EU.</div>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-card-content">
+                    <div class="experience-year">2008 - Présent</div>
+                    <div class="experience-title">Designer Marketing</div>
+                    <div class="experience-company">Freelance • Toulouse</div>
+                    <div class="experience-description">Stratégie inbound, direction artistique, coordination d'équipes, campagnes print/web/vidéo.</div>
+                </div>
+            </div>
+
+            <div class="experience-card">
+                <div class="experience-card-content">
+                    <div class="experience-year">2002 - 2005</div>
+                    <div class="experience-title">Directeur Artistique Junior</div>
+                    <div class="experience-company">123Multimédia • Toulouse</div>
+                    <div class="experience-description">Direction artistique de campagnes print 12 pays. Gestion équipe créative 6 personnes.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section class="portfolio">
+        <div class="section-header">
+            <div class="section-overline" data-fr="PORTFOLIO" data-en="PORTFOLIO">PORTFOLIO</div>
+            <h2 class="section-title" data-fr="Projets & <span class='accent'>Réalisations</span>" data-en="Projects & <span class='accent'>Creations</span>">Projets & <span class="accent">Réalisations</span></h2>
+            <p class="section-subtitle" data-fr="Une sélection de mes meilleures créations vidéo et motion design." data-en="A selection of my best video and motion design creations.">Une sélection de mes meilleures créations vidéo et motion design.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="video-container">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Fp3g5hr6RAU" title="Portfolio Principal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="portfolio-info">
+                    <h3 data-fr="Portfolio Principal" data-en="Main Portfolio">Portfolio Principal</h3>
+                    <p data-fr="Compilation de mes meilleurs projets vidéo et motion design pour grandes entreprises." data-en="Compilation of my best video and motion design projects for major companies.">Compilation de mes meilleurs projets vidéo et motion design pour grandes entreprises.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="video-container">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/uLMkjJjTc9s" title="Short Vidéo 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="portfolio-info">
+                    <h3 data-fr="Contenu Court Format" data-en="Short Form Content">Contenu Court Format</h3>
+                    <p data-fr="Créations optimisées pour les réseaux sociaux et le short-form content." data-en="Creations optimized for social networks and short-form content.">Créations optimisées pour les réseaux sociaux et le short-form content.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <div class="video-container">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/0kBfVG1fZxs" title="Short Vidéo 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="portfolio-info">
+                    <h3 data-fr="Motion Design & Effects" data-en="Motion Design & Effects">Motion Design & Effects</h3>
+                    <p data-fr="Démonstration de techniques avancées en motion design et effets visuels." data-en="Demonstration of advanced motion design and visual effects techniques.">Démonstration de techniques avancées en motion design et effets visuels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="skills">
+        <div class="section-header">
+            <div class="section-overline">COMPÉTENCES</div>
+            <h2 class="section-title">Expertise <span class="accent">Technique</span></h2>
+            <p class="section-subtitle">Maîtrise des outils modernes et des technologies créatives du moment.</p>
+        </div>
+
+        <div class="skills-grid">
+            <div class="skill-card">
+                <div class="skill-icon">🚀</div>
+                <div class="skill-title">IA & Innovation</div>
+                <div class="skill-list">
+                    <strong>IA Générative:</strong> GPT-5, Claude 4, Gemini 2.5<br>
+                    <strong>Vidéo:</strong> Google Veo3, Runway Gen-3<br>
+                    <strong>Image:</strong> Midjourney V7, FLUX.1<br>
+                    <strong>Automation:</strong> Prompt Engineering avancé
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">📊</div>
+                <div class="skill-title">Marketing & Analytics</div>
+                <div class="skill-list">
+                    <strong>Strategy:</strong> ROI Tracking, KPI Marketing<br>
+                    <strong>Tools:</strong> Google Analytics 4, YouTube Ads<br>
+                    <strong>Content:</strong> Data-driven Storytelling<br>
+                    <strong>Performance:</strong> A/B Testing, SEO/SEM
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🎨</div>
+                <div class="skill-title">Création Graphique</div>
+                <div class="skill-list">
+                    <strong>Adobe CC:</strong> Photoshop, Illustrator, InDesign<br>
+                    <strong>Direction:</strong> Branding & Brand Identity<br>
+                    <strong>Design:</strong> UI/UX, Editorial Design<br>
+                    <strong>Typo:</strong> Hiérarchie visuelle, Typography
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🎬</div>
+                <div class="skill-title">Audio & Vidéo</div>
+                <div class="skill-list">
+                    <strong>Vidéo:</strong> After Effects, DaVinci Resolve<br>
+                    <strong>Montage:</strong> Premiere Pro, CapCut<br>
+                    <strong>Audio:</strong> Logic Pro X, FL Studio<br>
+                    <strong>Post-prod:</strong> Color Grading, Mastering
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">👥</div>
+                <div class="skill-title">Management & Leadership</div>
+                <div class="skill-list">
+                    <strong>Coordination:</strong> Équipes, agences, freelances<br>
+                    <strong>Project Mgmt:</strong> Gestion de projets complexes<br>
+                    <strong>Direction:</strong> Direction artistique, Creative Lead<br>
+                    <strong>Soft Skills:</strong> Communication, Collaboration
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="skill-icon">🌍</div>
+                <div class="skill-title">International & Langues</div>
+                <div class="skill-list">
+                    <strong>Langues:</strong> 🇫🇷 Français (Natif), 🇺🇸 Anglais (Courant)<br>
+                    <strong>Expérience:</strong> USA, EU, International<br>
+                    <strong>Adaptation:</strong> Culturelle, stratégique<br>
+                    <strong>Réseaux:</strong> Global networking
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <h2 class="footer-title">Créons l'<span class="accent">extraordinaire</span><br>ensemble 🚀</h2>
+            
+            <div class="contact-links">
+                <a href="tel:+33651049325">📲 Appeler</a>
+                <a href="mailto:olivierlavergne@gmail.com">✉️ Email</a>
+                <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank">🎬 Portfolio</a>
+                <a href="https://youtube.com/shorts/uLMkjJjTc9s" target="_blank">🎥 Vidéos</a>
+            </div>
+
+            <div class="footer-credit">
+                © 2025 Olivier Lavergne • Toulouse & Beyond<br>
+                Vidéaste Motion Designer • Créateur de Contenus Intelligents
+            </div>
+        </div>
+    </footer>
 
     <script>
-        // Canvas background animation - ADNIGHT ultra realistic style
-        const canvas = document.getElementById('canvas-background');
-        const ctx = canvas.getContext('2d');
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let time = 0;
-
-        // Star particles
-        const stars = [];
-        for (let i = 0; i < 200; i++) {
-            stars.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                size: Math.random() * 1.5,
-                opacity: Math.random() * 0.7 + 0.1,
-                twinkleSpeed: Math.random() * 0.05 + 0.01,
-                pulse: Math.random() * Math.PI * 2
-            });
-        }
-
-        // Planet properties
-        const planet = {
-            x: canvas.width * 0.7,
-            y: canvas.height * 0.4,
-            radius: Math.min(canvas.width, canvas.height) * 0.25,
-            rotation: 0
-        };
-
-        // Orbits properties
-        const orbits = [
-            { radius: planet.radius * 1.4, speed: 0.0006, opacity: 0.5, width: 2, tilt: 0.3 },
-            { radius: planet.radius * 1.9, speed: 0.0004, opacity: 0.35, width: 1.5, tilt: -0.25 },
-            { radius: planet.radius * 2.5, speed: 0.0002, opacity: 0.2, width: 1, tilt: 0.4 }
-        ];
-
-        function drawGrain() {
-            for (let i = 0; i < 80; i++) {
-                const x = Math.random() * canvas.width;
-                const y = Math.random() * canvas.height;
-                const size = Math.random() * 0.5;
-                ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.05})`;
-                ctx.fillRect(x, y, size, size);
-            }
-        }
-
-        function drawStars() {
-            stars.forEach(star => {
-                star.pulse += star.twinkleSpeed;
-                const twinkle = Math.sin(star.pulse) * 0.5 + 0.5;
-                const opacity = star.opacity * twinkle;
-                
-                ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
-        }
-
-        function drawPlanet() {
-            const gradient = ctx.createRadialGradient(planet.x - 50, planet.y - 50, 0, planet.x, planet.y, planet.radius * 1.2);
-            gradient.addColorStop(0, 'rgba(150, 150, 150, 0.8)');
-            gradient.addColorStop(0.5, 'rgba(80, 80, 80, 0.6)');
-            gradient.addColorStop(1, 'rgba(30, 30, 30, 0.2)');
-
-            ctx.fillStyle = gradient;
-            ctx.beginPath();
-            ctx.arc(planet.x, planet.y, planet.radius, 0, Math.PI * 2);
-            ctx.fill();
-            
-            ctx.strokeStyle = `rgba(255, 255, 255, 0.3)`;
-            ctx.lineWidth = 2;
-            ctx.beginPath();
-            ctx.arc(planet.x, planet.y, planet.radius, 0, Math.PI * 2);
-            ctx.stroke();
-
-            // Center point glow
-            const centerGlow = ctx.createRadialGradient(planet.x, planet.y, 0, planet.x, planet.y, 15);
-            centerGlow.addColorStop(0, 'rgba(255, 255, 255, 1)');
-            centerGlow.addColorStop(0.5, 'rgba(212, 255, 0, 0.6)');
-            centerGlow.addColorStop(1, 'rgba(212, 255, 0, 0)');
-            
-            ctx.fillStyle = centerGlow;
-            ctx.beginPath();
-            ctx.arc(planet.x, planet.y, 15, 0, Math.PI * 2);
-            ctx.fill();
-        }
-
-        function drawOrbits() {
-            orbits.forEach((orbit, idx) => {
-                const rotation = time * orbit.speed;
-                
-                ctx.strokeStyle = `rgba(255, 255, 255, ${orbit.opacity * 0.5})`;
-                ctx.lineWidth = orbit.width;
-                ctx.beginPath();
-                ctx.ellipse(planet.x, planet.y, orbit.radius, orbit.radius * 0.5, planet.rotation + orbit.tilt, 0, Math.PI * 2);
-                ctx.stroke();
-                
-                ctx.setLineDash([2, 8]);
-                ctx.strokeStyle = `rgba(255, 255, 255, ${orbit.opacity * 0.2})`;
-                ctx.lineWidth = 0.5;
-                ctx.beginPath();
-                ctx.ellipse(planet.x, planet.y, orbit.radius, orbit.radius * 0.5, planet.rotation + orbit.tilt, 0, Math.PI * 2);
-                ctx.stroke();
-                ctx.setLineDash([]);
-            });
-        }
+        // Theme Switcher
+        const themeBtns = document.querySelectorAll('.theme-btn');
         
-        function drawOrbitParticles() {
-             orbits.forEach((orbit, orbitIdx) => {
-                for (let i = 0; i < 3; i++) {
-                    const angle = (i / 3) * Math.PI * 2 + time * orbit.speed * (1 + i * 0.5);
-                    const ellipseX = Math.cos(angle) * orbit.radius;
-                    const ellipseY = Math.sin(angle) * orbit.radius * 0.5;
-
-                    const rotatedX = ellipseX * Math.cos(planet.rotation + orbit.tilt) - ellipseY * Math.sin(planet.rotation + orbit.tilt);
-                    const rotatedY = ellipseX * Math.sin(planet.rotation + orbit.tilt) + ellipseY * Math.cos(planet.rotation + orbit.tilt);
-
-                    const x = planet.x + rotatedX;
-                    const y = planet.y + rotatedY;
-                    
-                    const size = Math.random() * 1.2 + 0.5;
-                    
-                    ctx.fillStyle = `rgba(212, 255, 0, 0.9)`;
-                    ctx.beginPath();
-                    ctx.arc(x, y, size, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-             });
-        }
-
-        function animate() {
-            ctx.fillStyle = 'rgba(26, 26, 26, 0.1)';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            drawGrain();
+        let currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        function setTheme(theme) {
+            currentTheme = theme;
             
-            time += 1;
-            planet.rotation += 0.0002;
-
-            drawStars();
-            drawOrbits();
-            drawPlanet();
-            drawOrbitParticles();
-            
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            planet.x = canvas.width * 0.7;
-            planet.y = canvas.height * 0.4;
-            planet.radius = Math.min(canvas.width, canvas.height) * 0.25;
-            orbits[0].radius = planet.radius * 1.4;
-            orbits[1].radius = planet.radius * 1.9;
-            orbits[2].radius = planet.radius * 2.5;
-            stars.length = 0; // Clear and repopulate stars on resize
-            for (let i = 0; i < 200; i++) {
-                stars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 1.5,
-                    opacity: Math.random() * 0.7 + 0.1,
-                    twinkleSpeed: Math.random() * 0.05 + 0.01,
-                    pulse: Math.random() * Math.PI * 2
-                });
+            if (theme === 'light') {
+                document.body.classList.add('light-mode');
+            } else {
+                document.body.classList.remove('light-mode');
             }
+            
+            themeBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === theme);
+            });
+            
+            localStorage.setItem('theme', theme);
+        }
+
+        // Load saved theme preference
+        setTheme(currentTheme);
+
+        // Add event listeners for theme
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                setTheme(btn.dataset.theme);
+            });
+        });
+
+        // Language Switcher
+        const langBtns = document.querySelectorAll('.lang-btn');
+        const translatableElements = document.querySelectorAll('[data-fr]');
+
+        let currentLang = localStorage.getItem('language') || 'fr';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            
+            // Update active button
+            langBtns.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Update content
+            translatableElements.forEach(el => {
+                const text = el.getAttribute(`data-${lang}`);
+                if (text) {
+                    el.innerHTML = text;
+                }
+            });
+
+            // Save preference
+            localStorage.setItem('language', lang);
+        }
+
+        // Load saved language preference
+        setLanguage(currentLang);
+
+        // Add event listeners for language
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.dataset.lang);
+            });
+        });
+
+        // Smooth scroll for links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         });
     </script>
 </body>
