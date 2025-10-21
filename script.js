@@ -1,55 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
-            const themeToggle = document.getElementById('theme-toggle');
-            const currentTheme = localStorage.getItem('theme');
 
-            if (currentTheme === 'light') {
-                document.body.classList.add('light-mode');
-                themeToggle.textContent = '🌙';
+    // --- Logique pour le changement de langue ---
+    const langToggle = document.getElementById('lang-toggle');
+    const translatableElements = document.querySelectorAll('[data-lang-fr]');
+
+    const setLanguage = (lang) => {
+        translatableElements.forEach(el => {
+            const text = el.dataset[lang === 'en' ? 'langEn' : 'langFr'];
+            if (text) {
+                // Utilise innerHTML pour conserver les balises comme <strong>
+                el.innerHTML = text;
             }
-
-            themeToggle.addEventListener('click', () => {
-                document.body.classList.toggle('light-mode');
-
-                let theme = 'dark';
-                if (document.body.classList.contains('light-mode')) {
-                    theme = 'light';
-                    themeToggle.textContent = '🌙';
-                } else {
-                    themeToggle.textContent = '☀️';
-                }
-                localStorage.setItem('theme', theme);
-            });
-
-            const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in-up');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            document.querySelectorAll('.section').forEach(section => { observer.observe(section); });
-
-            document.querySelectorAll('.contact-item[data-copy]').forEach(item => {
-                item.addEventListener('click', () => {
-                    const textToCopy = item.dataset.copy;
-                    if (textToCopy) {
-                        navigator.clipboard.writeText(textToCopy).then(() => {
-                            item.classList.add('is-copied');
-                            setTimeout(() => { item.classList.remove('is-copied'); }, 1000);
-                        }).catch(err => { console.error('Failed to copy text: ', err); });
-                    }
-                });
-            });
-
-            document.querySelectorAll('.liquid-glass-card').forEach(card => {
-                card.addEventListener('mousemove', e => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    card.style.setProperty('--mouse-x', `${x}px`);
-                    card.style.setProperty('--mouse-y', `${y}px`);
-                });
-            });
         });
+        document.documentElement.lang = lang;
+        langToggle.textContent = lang === 'en' ? 'FR' : 'EN';
+        localStorage.setItem('language', lang);
+    };
+
+    // Initialise la langue au chargement de la page
+    const currentLang = localStorage.getItem('language') || 'fr';
+    setLanguage(currentLang);
+
+    // Gère le clic sur le bouton de langue
+    langToggle.addEventListener('click', () => {
+        const newLang = localStorage.getItem('language') === 'fr' ? 'en' : 'fr';
+        setLanguage(newLang);
+    });
+
+
+    // --- Logique pour l'animation au défilement ---
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    animatedElements.forEach(el => {
+        observer.observe(el);
+    });
+
+});
