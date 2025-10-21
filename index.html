@@ -3,132 +3,924 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Olivier Lavergne, Vidéaste Motion Designer, Créateur de Contenus Intelligents, Stratégie Marketing Digital à Toulouse. 15+ années d'expérience, spécialisé en IA générative et ROI marketing.">
-    <meta name="author" content="Olivier Lavergne">
-    <title data-lang-fr="Olivier Lavergne | Vidéaste & Stratège Marketing" data-lang-en="Olivier Lavergne | Videographer & Marketing Strategist">Olivier Lavergne | Vidéaste & Stratège Marketing</title>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    <meta name="description" content="Olivier Lavergne - Vidéaste Motion Designer">
+    <title>Olivier Lavergne | Vidéaste Motion Designer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #1a1a1a;
+            --dark-gray: #2a2a2a;
+            --light: #ffffff;
+            --neon-yellow: #d4ff00;
+            --neon-cyan: #00d4ff;
+            --neon-purple: #c77dff;
+            --gray: #888888;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
+            line-height: 1.5;
+            color: var(--light);
+            background-color: var(--black);
+            font-size: 16px;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            overflow-x: hidden;
+        }
+
+        /* Canvas Background */
+        #canvas-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* HEADER */
+        header {
+            padding: 30px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 100;
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+
+        .logo span {
+            background: var(--neon-yellow);
+            color: var(--black);
+            padding: 4px 8px;
+            margin-left: 8px;
+            display: inline-block;
+            font-size: 0.8rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            margin: 0 25px;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--neon-yellow);
+        }
+
+        .cta-header {
+            background: var(--neon-yellow);
+            color: var(--black);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-header:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(212, 255, 0, 0.4);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 80px 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 60px;
+            line-height: 1.7;
+            max-width: 700px;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 36px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--neon-yellow);
+            color: var(--black);
+        }
+
+        .btn-primary:hover {
+            transform: translateX(8px);
+            box-shadow: 0 0 30px rgba(212, 255, 0, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid var(--light);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--neon-yellow);
+            color: var(--neon-yellow);
+            box-shadow: 0 0 20px rgba(212, 255, 0, 0.3);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 100px 80px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-eyebrow {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--neon-yellow);
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            color: var(--light);
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        /* EXPERIENCE */
+        .experience-grid {
+            display: grid;
+            gap: 40px;
+        }
+
+        .experience-item {
+            padding: 40px;
+            border-left: 3px solid var(--neon-cyan);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .experience-item:hover {
+            background: rgba(212, 255, 0, 0.08);
+            border-left-color: var(--neon-yellow);
+            transform: translateX(10px);
+            box-shadow: 0 0 20px rgba(212, 255, 0, 0.2);
+        }
+
+        .exp-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .exp-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--light);
+            text-transform: uppercase;
+        }
+
+        .exp-company {
+            font-size: 0.85rem;
+            color: var(--neon-yellow);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .exp-period {
+            font-size: 0.95rem;
+            color: var(--gray);
+            font-weight: 600;
+        }
+
+        .exp-description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.8;
+            list-style: none;
+        }
+
+        .exp-description li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .exp-description li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--neon-cyan);
+            font-weight: 700;
+        }
+
+        /* ACHIEVEMENTS */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+        }
+
+        .achievement {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 255, 0, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .achievement:hover {
+            background: rgba(212, 255, 0, 0.1);
+            border-color: var(--neon-yellow);
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(212, 255, 0, 0.3);
+        }
+
+        .achievement-number {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+            color: var(--neon-yellow);
+        }
+
+        .achievement-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+        }
+
+        /* SKILLS */
+        .skills-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-block {
+            padding: 40px;
+            border: 1px solid rgba(212, 255, 0, 0.3);
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .skill-block:hover {
+            background: rgba(212, 255, 0, 0.08);
+            border-color: var(--neon-yellow);
+            box-shadow: 0 0 25px rgba(212, 255, 0, 0.25);
+        }
+
+        .skill-block h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--neon-yellow);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .skill-block p {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.9;
+            font-weight: 400;
+        }
+
+        /* CONTACT */
+        .contact-section {
+            background: rgba(42, 42, 42, 0.8);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-box {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 255, 0, 0.2);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .contact-box:hover {
+            background: rgba(212, 255, 0, 0.1);
+            border-color: var(--neon-yellow);
+            box-shadow: 0 0 25px rgba(212, 255, 0, 0.3);
+        }
+
+        .contact-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--neon-yellow);
+            margin-bottom: 12px;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--light);
+        }
+
+        .contact-value a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: var(--neon-yellow);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 80px;
+            text-align: center;
+            background: rgba(26, 26, 26, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--neon-yellow);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            header, .hero, section {
+                padding: 40px;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero, section {
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .skills-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .achievements-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            footer {
+                padding: 40px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.8rem;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Canvas pour le background animé -->
+    <canvas id="canvas-background"></canvas>
 
-    <div class="container">
-        
-        <header class="header">
-            <h1 class="header__name">Olivier Lavergne</h1>
-            <div class="header__contact">
-                <a href="mailto:olivierlavergne@gmail.com" data-lang-fr="Contact" data-lang-en="Contact">Contact</a>
-                <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" rel="noopener noreferrer" data-lang-fr="Portfolio" data-lang-en="Portfolio">Portfolio</a>
-                <button id="lang-toggle" aria-label="Changer de langue">EN</button>
-            </div>
+    <div class="content">
+        <!-- HEADER -->
+        <header>
+            <div class="logo">OLIVIER<span>OLV</span></div>
+            <nav>
+                <a href="#about">À propos</a>
+                <a href="#experience">Expérience</a>
+                <a href="#skills">Compétences</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <button class="cta-header">PARLONS</button>
         </header>
 
-        <main>
-            <section class="intro animate-on-scroll">
-                <div class="intro__title-container">
-                    <p data-lang-fr="Vidéaste &" data-lang-en="Videographer &">Vidéaste &</p>
-                    <p data-lang-fr="Stratège IA" data-lang-en="AI Strategist">Stratège IA</p>
-                </div>
-                <p class="intro__description" data-lang-fr="Créateur de contenus visuels à fort impact, avec 15+ années d'expertise en marketing et une spécialisation en IA générative pour maximiser le ROI." data-lang-en="Creator of high-impact visual content, with 15+ years of marketing expertise and a specialization in generative AI to maximize ROI.">
-                    Créateur de contenus visuels à fort impact, avec 15+ années d'expertise en marketing et une spécialisation en IA générative pour maximiser le ROI.
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Créateur de<br>Contenus<br>Intelligents</h1>
+                <p class="hero-tagline">
+                    Vidéaste Motion Designer spécialisé en stratégie marketing digital et intégration IA générative.
+                    15+ années d'expertise pour transformer vos idées en succès mesurables.
                 </p>
-            </section>
-
-            <section class="experience animate-on-scroll">
-                <h2 class="section-title" data-lang-fr="Expérience" data-lang-en="Experience">Expérience</h2>
-                <div class="experience__grid">
-                    <article class="job">
-                        <p class="job__period" data-lang-fr="depuis 2008" data-lang-en="since 2008">depuis 2008</p>
-                        <h3 class="job__title" data-lang-fr="Designer Marketing & Créateur" data-lang-en="Marketing Designer & Creator">Designer Marketing & Créateur</h3>
-                        <p class="job__company">Freelance, Toulouse</p>
-                    </article>
-                    <article class="job">
-                        <p class="job__period">2022 – 2024</p>
-                        <h3 class="job__title" data-lang-fr="Vidéaste / Motion Designer" data-lang-en="Videographer / Motion Designer">Vidéaste / Motion Designer</h3>
-                        <p class="job__company">ADONIS Créative (pour Airbus)</p>
-                    </article>
-                    <article class="job">
-                        <p class="job__period">2015 – 2018</p>
-                        <h3 class="job__title">Marketing Designer</h3>
-                        <p class="job__company">Ethics Group</p>
-                    </article>
-                     <article class="job">
-                        <p class="job__period">2011 – 2015</p>
-                        <h3 class="job__title" data-lang-fr="Designer Digital" data-lang-en="Digital Designer">Designer Digital</h3>
-                        <p class="job__company">LaCréa Multimédia (M6 Group)</p>
-                    </article>
-                    <article class="job">
-                        <p class="job__period">2006 – 2008</p>
-                        <h3 class="job__title" data-lang-fr="Directeur Artistique" data-lang-en="Art Director">Directeur Artistique</h3>
-                        <p class="job__company">Msmart Inc, New York City</p>
-                    </article>
+                <div class="hero-cta">
+                    <button class="btn btn-primary">Parlons de votre projet</button>
+                    <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" class="btn btn-secondary">Voir le portfolio</a>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="skills animate-on-scroll">
-                 <h2 class="section-title" data-lang-fr="Compétences" data-lang-en="Skills">Compétences</h2>
-                 <div class="skills__grid">
-                    <div>
-                        <h3 data-lang-fr="IA & Innovation" data-lang-en="AI & Innovation">IA & Innovation</h3>
-                        <p data-lang-fr="IA Générative (Vidéo & Image), Prompt Engineering, Automatisation des workflows." data-lang-en="Generative AI (Video & Image), Prompt Engineering, Workflow Automation.">IA Générative (Vidéo & Image), Prompt Engineering, Automatisation.</p>
-                    </div>
-                     <div>
-                        <h3 data-lang-fr="Vidéo & Audio" data-lang-en="Video & Audio">Vidéo & Audio</h3>
-                        <p>After Effects, DaVinci Resolve, Premiere Pro, Logic Pro X, Mixage & Mastering.</p>
-                    </div>
-                     <div>
-                        <h3 data-lang-fr="Stratégie Marketing" data-lang-en="Marketing Strategy">Stratégie Marketing</h3>
-                        <p data-lang-fr="ROI Tracking, KPI, A/B Testing, Storytelling data-driven, SEO/SEM." data-lang-en="ROI Tracking, KPIs, A/B Testing, Data-driven Storytelling, SEO/SEM.">ROI Tracking, KPI, A/B Testing, Storytelling, SEO/SEM.</p>
-                    </div>
-                     <div>
-                        <h3 data-lang-fr="Création Graphique" data-lang-en="Graphic Design">Création Graphique</h3>
-                        <p>Adobe CC (Photoshop, Illustrator, InDesign), Direction Artistique, UI/UX.</p>
-                    </div>
-                 </div>
-            </section>
-            
-            <section class="achievements animate-on-scroll">
-                <h2 class="section-title" data-lang-fr="Réalisations Clés" data-lang-en="Key Achievements">Réalisations Clés</h2>
-                <div class="achievements__grid">
-                    <div class="achievement">
-                        <span class="achievement__number">2M+</span>
-                        <p class="achievement__text" data-lang-fr="Vues générées" data-lang-en="Views generated">Vues générées</p>
-                    </div>
-                    <div class="achievement">
-                        <span class="achievement__number">+45%</span>
-                        <p class="achievement__text" data-lang-fr="Engagement moyen" data-lang-en="Average engagement">Engagement moyen</p>
-                    </div>
-                    <div class="achievement">
-                        <span class="achievement__number">250+</span>
-                        <p class="achievement__text" data-lang-fr="Vidéos grands comptes" data-lang-en="Corporate videos">Vidéos grands comptes</p>
-                    </div>
-                    <div class="achievement">
-                        <span class="achievement__number">-30%</span>
-                        <p class="achievement__text" data-lang-fr="Temps de production (IA)" data-lang-en="Production time (AI)">Temps de production (IA)</p>
-                    </div>
-                </div>
-            </section>
+        <!-- ABOUT -->
+        <section id="about">
+            <div class="section-eyebrow">À propos</div>
+            <h2 class="section-title">Profil Expert</h2>
+            <p class="section-description">
+                Je combine intuition artistique et intelligence artificielle pour générer un ROI marketing maximum. 
+                Spécialisé en création vidéo, motion design et intégration IA générative pour optimiser les workflows 
+                et réduire les temps de production de 30%.
+            </p>
+        </section>
 
-            <footer class="footer animate-on-scroll">
-                <div class="footer__vision">
-                    <h2 class="section-title" data-lang-fr="Vision" data-lang-en="Vision">Vision</h2>
-                    <p data-lang-fr="Combiner créativité humaine et efficacité de l'IA pour générer un ROI maximal, tout en conservant une authenticité émotionnelle forte." data-lang-en="Combining human creativity and AI efficiency to generate maximum ROI, while maintaining strong emotional authenticity.">
-                        Combiner créativité humaine et efficacité de l'IA pour générer un ROI maximal, tout en conservant une authenticité émotionnelle forte.
-                    </p>
-                </div>
-                <div class="footer__contact">
-                     <a href="mailto:olivierlavergne@gmail.com">olivierlavergne@gmail.com</a>
-                     <p>Toulouse, France</p>
-                </div>
-            </footer>
+        <!-- EXPERIENCE -->
+        <section id="experience">
+            <div class="section-eyebrow">Parcours</div>
+            <h2 class="section-title">Expérience</h2>
 
-        </main>
+            <div class="experience-grid">
+                <div class="experience-item">
+                    <div class="exp-meta">
+                        <div>
+                            <h3 class="exp-title">Designer Marketing</h3>
+                            <p class="exp-company">Freelance</p>
+                        </div>
+                        <span class="exp-period">Depuis 2008</span>
+                    </div>
+                    <ul class="exp-description">
+                        <li>Stratégie inbound : contenu, réseaux sociaux, community management</li>
+                        <li>Direction artistique identités visuelles print & digital</li>
+                        <li>Coordination d'équipes créatives</li>
+                        <li>Campagnes intégrées print, web, vidéo</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-meta">
+                        <div>
+                            <h3 class="exp-title">Vidéaste / Motion Designer</h3>
+                            <p class="exp-company">ADONIS Créative</p>
+                        </div>
+                        <span class="exp-period">2022/2024</span>
+                    </div>
+                    <ul class="exp-description">
+                        <li>Vidéos & motion design pour Airbus & Airbus Defence Space</li>
+                        <li>Couverture événementielle 360°</li>
+                        <li>Contenus marketing cybersécurité haute valeur</li>
+                        <li>Innovation IA : intégration d'outils IA génératifs</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="exp-meta">
+                        <div>
+                            <h3 class="exp-title">Marketing Designer</h3>
+                            <p class="exp-company">Ethics Group</p>
+                        </div>
+                        <span class="exp-period">2015/2018</span>
+                    </div>
+                    <ul class="exp-description">
+                        <li>Gestion production print, web & vidéo</li>
+                        <li>Positionnement marques, communication</li>
+                        <li>Tournage indoor/outdoor, shooting photos</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACHIEVEMENTS -->
+        <section>
+            <div class="section-eyebrow">Track Record</div>
+            <h2 class="section-title">Réalisations</h2>
+
+            <div class="achievements-grid">
+                <div class="achievement">
+                    <div class="achievement-number">250+</div>
+                    <div class="achievement-label">Vidéos corporate</div>
+                </div>
+                <div class="achievement">
+                    <div class="achievement-number">2M+</div>
+                    <div class="achievement-label">Vues générées</div>
+                </div>
+                <div class="achievement">
+                    <div class="achievement-number">+45%</div>
+                    <div class="achievement-label">Engagement moyen</div>
+                </div>
+                <div class="achievement">
+                    <div class="achievement-number">-30%</div>
+                    <div class="achievement-label">Temps production</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills">
+            <div class="section-eyebrow">Compétences</div>
+            <h2 class="section-title">Expertise</h2>
+
+            <div class="skills-layout">
+                <div class="skill-block">
+                    <h3>🤖 IA & Innovation</h3>
+                    <p>GPT-5, Claude 4, Gemini 2.5, Google Veo3, Runway Gen-3, Midjourney V7, FLUX.1, Prompt Engineering avancé</p>
+                </div>
+                <div class="skill-block">
+                    <h3>📊 Marketing & Analytics</h3>
+                    <p>ROI Tracking, KPI Marketing, Google Analytics 4, A/B Testing, Conversion Optimization, Storytelling data-driven</p>
+                </div>
+                <div class="skill-block">
+                    <h3>🎨 Création & Design</h3>
+                    <p>Adobe Creative Suite (Expert), Direction Artistique, Brand Identity, UI/UX, Motion Design Avancé</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="contact-section" id="contact">
+            <div class="section-eyebrow">Entrons en contact</div>
+            <h2 class="section-title">Parlons de votre projet</h2>
+
+            <div class="contact-grid">
+                <div class="contact-box">
+                    <div class="contact-label">📱 Téléphone</div>
+                    <div class="contact-value"><a href="tel:+33651049325">06 51 04 93 25</a></div>
+                </div>
+                <div class="contact-box">
+                    <div class="contact-label">✉️ Email</div>
+                    <div class="contact-value"><a href="mailto:olivierlavergne@gmail.com">olivier@lavergne.com</a></div>
+                </div>
+                <div class="contact-box">
+                    <div class="contact-label">📍 Localisation</div>
+                    <div class="contact-value">Toulouse & au-delà</div>
+                </div>
+                <div class="contact-box">
+                    <div class="contact-label">🎬 Portfolio</div>
+                    <div class="contact-value"><a href="https://youtu.be/Fp3g5hr6RAU" target="_blank">Voir mes vidéos</a></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <p class="footer-text">Créons ensemble l'extraordinaire 🚀</p>
+            <div class="footer-links">
+                <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank">Portfolio</a>
+                <a href="https://youtube.com/shorts/uLMkjJjTc9s" target="_blank">Shorts #1</a>
+                <a href="https://youtube.com/shorts/0kBfVG1fZxs" target="_blank">Shorts #2</a>
+                <a href="mailto:olivierlavergne@gmail.com">Contact</a>
+            </div>
+        </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Canvas background animation - ADNIGHT planetary style
+        const canvas = document.getElementById('canvas-background');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let time = 0;
+
+        // Star particles
+        const stars = [];
+        for (let i = 0; i < 150; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 1.5,
+                opacity: Math.random() * 0.7 + 0.2,
+                twinkleSpeed: Math.random() * 0.05 + 0.01
+            });
+        }
+
+        // Planet properties
+        const planet = {
+            x: canvas.width * 0.65,
+            y: canvas.height * 0.35,
+            radius: 220,
+            rotation: 0
+        };
+
+        // Orbits
+        const orbits = [
+            { radius: 350, speed: 0.0008, opacity: 0.4, width: 1.5 },
+            { radius: 450, speed: 0.0005, opacity: 0.25, width: 1 },
+            { radius: 550, speed: 0.0003, opacity: 0.15, width: 0.8 }
+        ];
+
+        // Orbit particles
+        const orbitParticles = [];
+        orbits.forEach((orbit, idx) => {
+            for (let i = 0; i < 12; i++) {
+                orbitParticles.push({
+                    orbitIndex: idx,
+                    angle: (i / 12) * Math.PI * 2,
+                    size: Math.random() * 2 + 0.5
+                });
+            }
+        });
+
+        function drawStars() {
+            stars.forEach(star => {
+                const twinkle = Math.sin(time * star.twinkleSpeed) * 0.5 + 0.5;
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity * twinkle})`;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Star glow
+                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity * twinkle * 0.3})`;
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size * 3, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        function drawPlanet() {
+            // Planet sphere with glow
+            const gradient = ctx.createRadialGradient(planet.x, planet.y, 0, planet.x, planet.y, planet.radius);
+            gradient.addColorStop(0, 'rgba(120, 120, 120, 0.8)');
+            gradient.addColorStop(0.7, 'rgba(40, 40, 40, 0.5)');
+            gradient.addColorStop(1, 'rgba(20, 20, 20, 0.2)');
+
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(planet.x, planet.y, planet.radius, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Planet outline glow
+            ctx.strokeStyle = `rgba(255, 255, 255, 0.4)`;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(planet.x, planet.y, planet.radius, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Atmospheric glow
+            ctx.strokeStyle = `rgba(212, 255, 0, 0.15)`;
+            ctx.lineWidth = 40;
+            ctx.beginPath();
+            ctx.arc(planet.x, planet.y, planet.radius, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Surface texture with lines
+            ctx.strokeStyle = `rgba(255, 255, 255, 0.2)`;
+            ctx.lineWidth = 1;
+            for (let i = 0; i < 5; i++) {
+                const angle = (i / 5) * Math.PI + planet.rotation;
+                const startX = planet.x + Math.cos(angle) * planet.radius * 0.3;
+                const startY = planet.y + Math.sin(angle) * planet.radius * 0.3;
+                const endX = planet.x + Math.cos(angle + Math.PI) * planet.radius * 0.6;
+                const endY = planet.y + Math.sin(angle + Math.PI) * planet.radius * 0.6;
+
+                ctx.beginPath();
+                ctx.moveTo(startX, startY);
+                ctx.lineTo(endX, endY);
+                ctx.stroke();
+            }
+        }
+
+        function drawOrbits() {
+            orbits.forEach((orbit, idx) => {
+                // Orbital line
+                ctx.strokeStyle = `rgba(255, 255, 255, ${orbit.opacity * 0.3})`;
+                ctx.lineWidth = orbit.width;
+                ctx.beginPath();
+                ctx.arc(planet.x, planet.y, orbit.radius, 0, Math.PI * 2);
+                ctx.stroke();
+
+                // Orbital glow
+                ctx.strokeStyle = `rgba(212, 255, 0, ${orbit.opacity * 0.15})`;
+                ctx.lineWidth = orbit.width * 3;
+                ctx.beginPath();
+                ctx.arc(planet.x, planet.y, orbit.radius, 0, Math.PI * 2);
+                ctx.stroke();
+            });
+        }
+
+        function drawOrbitParticles() {
+            orbitParticles.forEach(particle => {
+                const orbit = orbits[particle.orbitIndex];
+                const angle = particle.angle + time * orbit.speed;
+
+                const x = planet.x + Math.cos(angle) * orbit.radius;
+                const y = planet.y + Math.sin(angle) * orbit.radius;
+
+                // Particle glow
+                const glowSize = particle.size * 4;
+                const glowGradient = ctx.createRadialGradient(x, y, 0, x, y, glowSize);
+                glowGradient.addColorStop(0, `rgba(212, 255, 0, 0.6)`);
+                glowGradient.addColorStop(1, `rgba(212, 255, 0, 0)`);
+
+                ctx.fillStyle = glowGradient;
+                ctx.beginPath();
+                ctx.arc(x, y, glowSize, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Particle
+                ctx.fillStyle = `rgba(212, 255, 0, 0.9)`;
+                ctx.beginPath();
+                ctx.arc(x, y, particle.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        function drawConnections() {
+            // Draw lines connecting to center planet
+            orbitParticles.slice(0, 8).forEach(particle => {
+                const orbit = orbits[particle.orbitIndex];
+                const angle = particle.angle + time * orbit.speed;
+
+                const x = planet.x + Math.cos(angle) * orbit.radius;
+                const y = planet.y + Math.sin(angle) * orbit.radius;
+
+                ctx.strokeStyle = `rgba(212, 255, 0, 0.1)`;
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+                ctx.lineTo(planet.x, planet.y);
+                ctx.stroke();
+            });
+        }
+
+        function animate() {
+            // Fade trail effect
+            ctx.fillStyle = 'rgba(26, 26, 26, 0.15)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            time += 1;
+            planet.rotation += 0.001;
+
+            drawStars();
+            drawOrbits();
+            drawConnections();
+            drawPlanet();
+            drawOrbitParticles();
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
