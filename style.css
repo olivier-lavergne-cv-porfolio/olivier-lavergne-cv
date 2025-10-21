@@ -1,18 +1,31 @@
 /* --- Réinitialisation et variables --- */
 :root {
-    --background-color: #F8F5F2; /* Un blanc cassé doux */
-    --text-color: #1a1a1a;
-    --accent-color: #0077ff; /* Un bleu vif mais sobre */
-    --border-color: #e0e0e0;
+    --background-color: #121212;
+    --text-color: #EAEAEA;
+    --accent-color: #D7FF00; /* Le jaune-vert néon */
+    --border-color: rgba(255, 255, 255, 0.15);
     
     --font-sans: 'Inter', sans-serif;
-    --font-serif: 'Playfair Display', serif;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* --- Effet de grain sur le fond --- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXVoaGhvb29ra2uCgoN0dHRecnJ9fX1tbW1jY2NlZWV+fn5ydnZ/f39wcHBsbGxucnJ6enpaWlpQUFBXV1eDwOkdAAAAFnRSTlMABH5A3I13b2VnZ2NjY2NjY2NjY2OP22fFAAAAn0lEQVRIx83VRxKAIAwEUBdlJMk8/M/b244dQLQt2e3LODMEAAAAAPsAAY9Yftz33xeZ/3x/9/2lY+ACgABQf8A7xtkP0gQBAHAYCgYMAJgYdG2sY+Ajo83p/fIq33wSV89dWm8dJ+BKvL29Rz9ugJvX29rI/QApmAcT2YVwsxLA9/4kAAAAAElFTkSuQmCC');
+    opacity: 0.05;
+    z-index: -1;
+    pointer-events: none;
 }
 
 body {
@@ -43,12 +56,15 @@ a:hover {
 /* --- Titres de section --- */
 .section-title {
     font-family: var(--font-sans);
-    font-size: 1rem;
-    font-weight: 500;
-    color: #888;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-color);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    grid-column: 1 / 2; /* Pour le positionnement dans les grilles */
+    letter-spacing: 1px;
+    grid-column: 1 / -1; /* Occupe toute la largeur */
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
 }
 
 /* --- Header --- */
@@ -57,14 +73,14 @@ a:hover {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border-color);
     margin-bottom: 4rem;
 }
 
 .header__name {
-    font-family: var(--font-sans);
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .header__contact {
@@ -81,187 +97,143 @@ a:hover {
 #lang-toggle {
     background: none;
     border: 1px solid var(--text-color);
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
+    color: var(--text-color);
+    border-radius: 4px;
+    width: 40px;
+    height: 30px;
     cursor: pointer;
     font-weight: 700;
     transition: all 0.3s ease;
 }
 #lang-toggle:hover {
-    background-color: var(--text-color);
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
     color: var(--background-color);
 }
 
 /* --- Section Intro --- */
 .intro {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 2rem;
-    padding: 6rem 0;
-    align-items: center;
+    padding: 4rem 0 6rem 0;
 }
 
 .intro__title-container {
-    font-family: var(--font-serif);
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    line-height: 1.1;
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.9;
     font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    letter-spacing: -0.04em;
+}
+.intro__title-container p {
+    margin: 0;
 }
 
 .intro__description {
-    font-size: 1.25rem;
-    max-width: 45ch;
+    font-size: 1.5rem;
+    max-width: 50ch;
+    line-height: 1.4;
+    color: #b1b1b1;
 }
 
-/* --- Section Expérience --- */
-.experience {
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 2rem;
-    padding: 6rem 0;
+/* --- Sections Générales (Exp, Compétences, etc.) --- */
+.experience, .skills, .achievements, .footer {
+    padding: 4rem 0;
     border-top: 1px solid var(--border-color);
 }
 
+/* --- Expérience --- */
 .experience__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
 }
-
 .job__period {
     color: #888;
     margin-bottom: 0.5rem;
+    font-size: 0.9rem;
 }
-
 .job__title {
-    font-family: var(--font-serif);
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 0.25rem;
+    text-transform: uppercase;
 }
-
 .job__company {
     font-size: 1rem;
     font-weight: 500;
+    color: #a0a0a0;
 }
 
-/* --- Section Compétences --- */
-.skills {
-    padding: 6rem 0;
-    border-top: 1px solid var(--border-color);
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 2rem;
-}
-
+/* --- Compétences --- */
 .skills__grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
 .skills__grid h3 {
-    font-family: var(--font-serif);
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
 }
 .skills__grid p {
-    color: #555;
-    max-width: 40ch;
+    color: #b1b1b1;
 }
 
-/* --- Section Réalisations --- */
-.achievements {
-    padding: 6rem 0;
-    border-top: 1px solid var(--border-color);
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 2rem;
-}
+/* --- Réalisations --- */
 .achievements__grid {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
-    width: 100%;
 }
 .achievement {
-    text-align: center;
+    text-align: left;
+    background: rgba(0,0,0,0.1);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
 }
 .achievement__number {
-    font-family: var(--font-serif);
     font-size: 3rem;
     font-weight: 700;
     line-height: 1;
+    color: var(--accent-color);
 }
 .achievement__text {
     font-weight: 500;
-    color: #888;
     margin-top: 0.5rem;
 }
 
 /* --- Footer --- */
-.footer {
-    padding: 6rem 0;
-    border-top: 1px solid var(--border-color);
-    display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 2rem;
-}
 .footer__vision p {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     line-height: 1.4;
-    max-width: 40ch;
-}
-.footer__contact {
-    place-self: end;
-    text-align: right;
+    max-width: 45ch;
+    font-weight: 500;
+    margin-bottom: 3rem;
 }
 .footer__contact a, .footer__contact p {
     font-size: 1.1rem;
     font-weight: 500;
 }
-
+.footer__contact a:hover {
+    text-decoration: underline;
+}
 
 /* --- Animations & Responsive --- */
 .animate-on-scroll {
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 .animate-on-scroll.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     body { padding: 1.5rem; }
-    .intro, .experience, .skills, .achievements, .footer {
-        grid-template-columns: 1fr;
-        padding: 4rem 0;
-    }
-    .section-title {
-        margin-bottom: 2rem;
-    }
-    .intro__title-container {
-      font-size: clamp(2rem, 10vw, 3rem);
-    }
-    .achievements__grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    .footer__vision p { font-size: 1.25rem; }
-    .footer__contact { place-self: start; text-align: left; margin-top: 2rem; }
-}
-
-@media (max-width: 600px) {
-    .experience__grid, .skills__grid {
-        grid-template-columns: 1fr;
-    }
-    .header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-    }
+    .intro__title-container { font-size: clamp(2.5rem, 15vw, 4rem); }
+    .intro__description { font-size: 1.2rem; }
+    .footer__vision p { font-size: 1.5rem; }
 }
