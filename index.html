@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Olivier Lavergne - Vidéaste Motion Designer">
+    <meta name="description" content="Olivier Lavergne - Vidéaste Motion Designer & Stratège IA">
     <title>Olivier Lavergne | Vidéaste Motion Designer</title>
     <style>
         * {
@@ -62,7 +62,8 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
+            position: sticky; /* Changed to sticky */
+            top: 0;
             z-index: 100;
             background: rgba(26, 26, 26, 0.8);
             backdrop-filter: blur(10px);
@@ -245,7 +246,6 @@
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
-            cursor: pointer;
         }
 
         .experience-item:hover {
@@ -547,23 +547,20 @@
     </style>
 </head>
 <body>
-    <!-- Canvas pour le background animé -->
     <canvas id="canvas-background"></canvas>
 
     <div class="content">
-        <!-- HEADER -->
         <header>
-            <div class="logo">OLIVIER<span>OLV</span></div>
+            <div class="logo">OLIVIER<span>LAVERGNE</span></div>
             <nav>
                 <a href="#about">À propos</a>
                 <a href="#experience">Expérience</a>
                 <a href="#skills">Compétences</a>
                 <a href="#contact">Contact</a>
             </nav>
-            <button class="cta-header">PARLONS</button>
+            <a href="#contact" class="cta-header">PARLONS</a>
         </header>
 
-        <!-- HERO -->
         <section class="hero">
             <div class="hero-content">
                 <h1>Créateur de<br>Contenus<br>Intelligents</h1>
@@ -572,128 +569,123 @@
                     15+ années d'expertise pour transformer vos idées en succès mesurables.
                 </p>
                 <div class="hero-cta">
-                    <button class="btn btn-primary">Parlons de votre projet</button>
-                    <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" class="btn btn-secondary">Voir le portfolio</a>
+                    <a href="#contact" class="btn btn-primary">Parlons de votre projet</a>
+                    <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Voir le portfolio</a>
                 </div>
             </div>
         </section>
 
-        <!-- ABOUT -->
         <section id="about">
-            <div class="section-eyebrow">À propos</div>
+            <div class="section-eyebrow">Vision & Approche</div>
             <h2 class="section-title">Profil Expert</h2>
             <p class="section-description">
-                Je combine intuition artistique et intelligence artificielle pour générer un ROI marketing maximum. 
-                Spécialisé en création vidéo, motion design et intégration IA générative pour optimiser les workflows 
-                et réduire les temps de production de 30%.
+                Je combine intuition artistique et intelligence artificielle pour générer un ROI marketing maximum.
+                Spécialisé en création vidéo, motion design et intégration d'IA générative pour optimiser les workflows
+                et réduire les temps de production jusqu'à 30%.
             </p>
         </section>
 
-        <!-- EXPERIENCE -->
         <section id="experience">
             <div class="section-eyebrow">Parcours</div>
-            <h2 class="section-title">Expérience</h2>
+            <h2 class="section-title">Expérience Professionnelle</h2>
 
             <div class="experience-grid">
                 <div class="experience-item">
                     <div class="exp-meta">
                         <div>
-                            <h3 class="exp-title">Designer Marketing</h3>
+                            <h3 class="exp-title">Designer Marketing & Créateur de Contenus</h3>
                             <p class="exp-company">Freelance</p>
                         </div>
                         <span class="exp-period">Depuis 2008</span>
                     </div>
                     <ul class="exp-description">
-                        <li>Stratégie inbound : contenu, réseaux sociaux, community management</li>
-                        <li>Direction artistique identités visuelles print & digital</li>
+                        <li>Stratégie inbound : contenu, réseaux sociaux</li>
+                        <li>Direction artistique d'identités visuelles print & digital</li>
                         <li>Coordination d'équipes créatives</li>
-                        <li>Campagnes intégrées print, web, vidéo</li>
                     </ul>
                 </div>
-
-                <div class="experience-item">
+                 <div class="experience-item">
                     <div class="exp-meta">
                         <div>
                             <h3 class="exp-title">Vidéaste / Motion Designer</h3>
-                            <p class="exp-company">ADONIS Créative</p>
+                            <p class="exp-company">ADONIS Créative (pour Airbus)</p>
                         </div>
-                        <span class="exp-period">2022/2024</span>
+                        <span class="exp-period">2022-2024</span>
                     </div>
                     <ul class="exp-description">
-                        <li>Vidéos & motion design pour Airbus & Airbus Defence Space</li>
-                        <li>Couverture événementielle 360°</li>
-                        <li>Contenus marketing cybersécurité haute valeur</li>
-                        <li>Innovation IA : intégration d'outils IA génératifs</li>
+                        <li>Réalisation de vidéos & motion design pour Airbus</li>
+                        <li>Couverture événementielle 360° et contenus marketing</li>
+                        <li>Innovation et intégration d'outils IA génératifs</li>
                     </ul>
                 </div>
-
                 <div class="experience-item">
                     <div class="exp-meta">
                         <div>
-                            <h3 class="exp-title">Marketing Designer</h3>
-                            <p class="exp-company">Ethics Group</p>
+                            <h3 class="exp-title">Directeur Artistique & Motion Designer</h3>
+                            <p class="exp-company">Msmart Inc, New York City</p>
                         </div>
-                        <span class="exp-period">2015/2018</span>
+                        <span class="exp-period">2006-2008</span>
                     </div>
                     <ul class="exp-description">
-                        <li>Gestion production print, web & vidéo</li>
-                        <li>Positionnement marques, communication</li>
-                        <li>Tournage indoor/outdoor, shooting photos</li>
+                        <li>Direction artistique et motion design pour des spots TV (BET, MTV)</li>
+                        <li>Adaptation culturelle pour les marchés US/EU</li>
+                        <li>Supervision de campagnes multicanal</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- ACHIEVEMENTS -->
         <section>
-            <div class="section-eyebrow">Track Record</div>
-            <h2 class="section-title">Réalisations</h2>
+            <div class="section-eyebrow">Performances</div>
+            <h2 class="section-title">Réalisations Clés</h2>
 
             <div class="achievements-grid">
                 <div class="achievement">
                     <div class="achievement-number">250+</div>
-                    <div class="achievement-label">Vidéos corporate</div>
+                    <div class="achievement-label">Vidéos corporate grands comptes</div>
                 </div>
                 <div class="achievement">
                     <div class="achievement-number">2M+</div>
-                    <div class="achievement-label">Vues générées</div>
+                    <div class="achievement-label">Vues générées sur les contenus</div>
                 </div>
                 <div class="achievement">
                     <div class="achievement-number">+45%</div>
-                    <div class="achievement-label">Engagement moyen</div>
+                    <div class="achievement-label">Engagement moyen vs benchmark</div>
                 </div>
                 <div class="achievement">
                     <div class="achievement-number">-30%</div>
-                    <div class="achievement-label">Temps production</div>
+                    <div class="achievement-label">Réduction du temps de production (IA)</div>
                 </div>
             </div>
         </section>
 
-        <!-- SKILLS -->
         <section id="skills">
-            <div class="section-eyebrow">Compétences</div>
-            <h2 class="section-title">Expertise</h2>
+            <div class="section-eyebrow">Boîte à outils</div>
+            <h2 class="section-title">Compétences Techniques</h2>
 
             <div class="skills-layout">
                 <div class="skill-block">
                     <h3>🤖 IA & Innovation</h3>
-                    <p>GPT-5, Claude 4, Gemini 2.5, Google Veo3, Runway Gen-3, Midjourney V7, FLUX.1, Prompt Engineering avancé</p>
+                    <p>IA Générative (Vidéo & Image) : GPT-5, Claude 4, Gemini 2.5, Google Veo3, Runway Gen-3, Midjourney V7. Prompt Engineering avancé.</p>
                 </div>
                 <div class="skill-block">
                     <h3>📊 Marketing & Analytics</h3>
-                    <p>ROI Tracking, KPI Marketing, Google Analytics 4, A/B Testing, Conversion Optimization, Storytelling data-driven</p>
+                    <p>ROI Tracking, KPI Marketing, Google Analytics 4, A/B Testing, Optimisation de la conversion, Storytelling data-driven.</p>
+                </div>
+                 <div class="skill-block">
+                    <h3>🎬 Audio & Vidéo</h3>
+                    <p>Suite Adobe (After Effects, Premiere Pro), DaVinci Resolve, Logic Pro X, Mixage & Mastering Audio. Production de podcasts.</p>
                 </div>
                 <div class="skill-block">
                     <h3>🎨 Création & Design</h3>
-                    <p>Adobe Creative Suite (Expert), Direction Artistique, Brand Identity, UI/UX, Motion Design Avancé</p>
+                    <p>Adobe Creative Suite (Photoshop, Illustrator, InDesign), Direction Artistique, Brand Identity, UI/UX, Motion Design Avancé.</p>
                 </div>
             </div>
         </section>
 
-        <!-- CONTACT -->
         <section class="contact-section" id="contact">
-            <div class="section-eyebrow">Entrons en contact</div>
-            <h2 class="section-title">Parlons de votre projet</h2>
+            <div class="section-eyebrow">Discutons</div>
+            <h2 class="section-title">Entrons en contact</h2>
 
             <div class="contact-grid">
                 <div class="contact-box">
@@ -702,33 +694,32 @@
                 </div>
                 <div class="contact-box">
                     <div class="contact-label">✉️ Email</div>
-                    <div class="contact-value"><a href="mailto:olivierlavergne@gmail.com">olivier@lavergne.com</a></div>
+                    <div class="contact-value"><a href="mailto:olivierlavergne@gmail.com">olivierlavergne@gmail.com</a></div>
                 </div>
                 <div class="contact-box">
                     <div class="contact-label">📍 Localisation</div>
-                    <div class="contact-value">Toulouse & au-delà</div>
+                    <div class="contact-value">Toulouse & à distance</div>
                 </div>
                 <div class="contact-box">
                     <div class="contact-label">🎬 Portfolio</div>
-                    <div class="contact-value"><a href="https://youtu.be/Fp3g5hr6RAU" target="_blank">Voir mes vidéos</a></div>
+                    <div class="contact-value"><a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" rel="noopener noreferrer">Voir mes vidéos</a></div>
                 </div>
             </div>
         </section>
 
-        <!-- FOOTER -->
         <footer>
-            <p class="footer-text">Créons ensemble l'extraordinaire 🚀</p>
+            <p class="footer-text">Prêt à créer ensemble ? 🚀</p>
             <div class="footer-links">
-                <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank">Portfolio</a>
-                <a href="https://youtube.com/shorts/uLMkjJjTc9s" target="_blank">Shorts #1</a>
-                <a href="https://youtube.com/shorts/0kBfVG1fZxs" target="_blank">Shorts #2</a>
-                <a href="mailto:olivierlavergne@gmail.com">Contact</a>
+                <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" rel="noopener noreferrer">Portfolio Vidéo</a>
+                <a href="https://youtube.com/shorts/uLMkjJjTc9s" target="_blank" rel="noopener noreferrer">Short #1</a>
+                <a href="https://youtube.com/shorts/0kBfVG1fZxs" target="_blank" rel="noopener noreferrer">Short #2</a>
+                <a href="mailto:olivierlavergne@gmail.com">Contactez-moi</a>
             </div>
         </footer>
     </div>
 
     <script>
-        // Canvas background animation - ADNIGHT planetary style
+        // Canvas background animation - ADNIGHT ultra realistic style
         const canvas = document.getElementById('canvas-background');
         const ctx = canvas.getContext('2d');
 
@@ -739,179 +730,141 @@
 
         // Star particles
         const stars = [];
-        for (let i = 0; i < 150; i++) {
+        for (let i = 0; i < 200; i++) {
             stars.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 size: Math.random() * 1.5,
-                opacity: Math.random() * 0.7 + 0.2,
-                twinkleSpeed: Math.random() * 0.05 + 0.01
+                opacity: Math.random() * 0.7 + 0.1,
+                twinkleSpeed: Math.random() * 0.05 + 0.01,
+                pulse: Math.random() * Math.PI * 2
             });
         }
 
         // Planet properties
         const planet = {
-            x: canvas.width * 0.65,
-            y: canvas.height * 0.35,
-            radius: 220,
+            x: canvas.width * 0.7,
+            y: canvas.height * 0.4,
+            radius: Math.min(canvas.width, canvas.height) * 0.25,
             rotation: 0
         };
 
-        // Orbits
+        // Orbits properties
         const orbits = [
-            { radius: 350, speed: 0.0008, opacity: 0.4, width: 1.5 },
-            { radius: 450, speed: 0.0005, opacity: 0.25, width: 1 },
-            { radius: 550, speed: 0.0003, opacity: 0.15, width: 0.8 }
+            { radius: planet.radius * 1.4, speed: 0.0006, opacity: 0.5, width: 2, tilt: 0.3 },
+            { radius: planet.radius * 1.9, speed: 0.0004, opacity: 0.35, width: 1.5, tilt: -0.25 },
+            { radius: planet.radius * 2.5, speed: 0.0002, opacity: 0.2, width: 1, tilt: 0.4 }
         ];
 
-        // Orbit particles
-        const orbitParticles = [];
-        orbits.forEach((orbit, idx) => {
-            for (let i = 0; i < 12; i++) {
-                orbitParticles.push({
-                    orbitIndex: idx,
-                    angle: (i / 12) * Math.PI * 2,
-                    size: Math.random() * 2 + 0.5
-                });
+        function drawGrain() {
+            for (let i = 0; i < 80; i++) {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * canvas.height;
+                const size = Math.random() * 0.5;
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.05})`;
+                ctx.fillRect(x, y, size, size);
             }
-        });
+        }
 
         function drawStars() {
             stars.forEach(star => {
-                const twinkle = Math.sin(time * star.twinkleSpeed) * 0.5 + 0.5;
-                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity * twinkle})`;
+                star.pulse += star.twinkleSpeed;
+                const twinkle = Math.sin(star.pulse) * 0.5 + 0.5;
+                const opacity = star.opacity * twinkle;
+                
+                ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
                 ctx.beginPath();
                 ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Star glow
-                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity * twinkle * 0.3})`;
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.size * 3, 0, Math.PI * 2);
                 ctx.fill();
             });
         }
 
         function drawPlanet() {
-            // Planet sphere with glow
-            const gradient = ctx.createRadialGradient(planet.x, planet.y, 0, planet.x, planet.y, planet.radius);
-            gradient.addColorStop(0, 'rgba(120, 120, 120, 0.8)');
-            gradient.addColorStop(0.7, 'rgba(40, 40, 40, 0.5)');
-            gradient.addColorStop(1, 'rgba(20, 20, 20, 0.2)');
+            const gradient = ctx.createRadialGradient(planet.x - 50, planet.y - 50, 0, planet.x, planet.y, planet.radius * 1.2);
+            gradient.addColorStop(0, 'rgba(150, 150, 150, 0.8)');
+            gradient.addColorStop(0.5, 'rgba(80, 80, 80, 0.6)');
+            gradient.addColorStop(1, 'rgba(30, 30, 30, 0.2)');
 
             ctx.fillStyle = gradient;
             ctx.beginPath();
             ctx.arc(planet.x, planet.y, planet.radius, 0, Math.PI * 2);
             ctx.fill();
-
-            // Planet outline glow
-            ctx.strokeStyle = `rgba(255, 255, 255, 0.4)`;
-            ctx.lineWidth = 3;
+            
+            ctx.strokeStyle = `rgba(255, 255, 255, 0.3)`;
+            ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.arc(planet.x, planet.y, planet.radius, 0, Math.PI * 2);
             ctx.stroke();
 
-            // Atmospheric glow
-            ctx.strokeStyle = `rgba(212, 255, 0, 0.15)`;
-            ctx.lineWidth = 40;
+            // Center point glow
+            const centerGlow = ctx.createRadialGradient(planet.x, planet.y, 0, planet.x, planet.y, 15);
+            centerGlow.addColorStop(0, 'rgba(255, 255, 255, 1)');
+            centerGlow.addColorStop(0.5, 'rgba(212, 255, 0, 0.6)');
+            centerGlow.addColorStop(1, 'rgba(212, 255, 0, 0)');
+            
+            ctx.fillStyle = centerGlow;
             ctx.beginPath();
-            ctx.arc(planet.x, planet.y, planet.radius, 0, Math.PI * 2);
-            ctx.stroke();
-
-            // Surface texture with lines
-            ctx.strokeStyle = `rgba(255, 255, 255, 0.2)`;
-            ctx.lineWidth = 1;
-            for (let i = 0; i < 5; i++) {
-                const angle = (i / 5) * Math.PI + planet.rotation;
-                const startX = planet.x + Math.cos(angle) * planet.radius * 0.3;
-                const startY = planet.y + Math.sin(angle) * planet.radius * 0.3;
-                const endX = planet.x + Math.cos(angle + Math.PI) * planet.radius * 0.6;
-                const endY = planet.y + Math.sin(angle + Math.PI) * planet.radius * 0.6;
-
-                ctx.beginPath();
-                ctx.moveTo(startX, startY);
-                ctx.lineTo(endX, endY);
-                ctx.stroke();
-            }
+            ctx.arc(planet.x, planet.y, 15, 0, Math.PI * 2);
+            ctx.fill();
         }
 
         function drawOrbits() {
             orbits.forEach((orbit, idx) => {
-                // Orbital line
-                ctx.strokeStyle = `rgba(255, 255, 255, ${orbit.opacity * 0.3})`;
+                const rotation = time * orbit.speed;
+                
+                ctx.strokeStyle = `rgba(255, 255, 255, ${orbit.opacity * 0.5})`;
                 ctx.lineWidth = orbit.width;
                 ctx.beginPath();
-                ctx.arc(planet.x, planet.y, orbit.radius, 0, Math.PI * 2);
+                ctx.ellipse(planet.x, planet.y, orbit.radius, orbit.radius * 0.5, planet.rotation + orbit.tilt, 0, Math.PI * 2);
                 ctx.stroke();
-
-                // Orbital glow
-                ctx.strokeStyle = `rgba(212, 255, 0, ${orbit.opacity * 0.15})`;
-                ctx.lineWidth = orbit.width * 3;
-                ctx.beginPath();
-                ctx.arc(planet.x, planet.y, orbit.radius, 0, Math.PI * 2);
-                ctx.stroke();
-            });
-        }
-
-        function drawOrbitParticles() {
-            orbitParticles.forEach(particle => {
-                const orbit = orbits[particle.orbitIndex];
-                const angle = particle.angle + time * orbit.speed;
-
-                const x = planet.x + Math.cos(angle) * orbit.radius;
-                const y = planet.y + Math.sin(angle) * orbit.radius;
-
-                // Particle glow
-                const glowSize = particle.size * 4;
-                const glowGradient = ctx.createRadialGradient(x, y, 0, x, y, glowSize);
-                glowGradient.addColorStop(0, `rgba(212, 255, 0, 0.6)`);
-                glowGradient.addColorStop(1, `rgba(212, 255, 0, 0)`);
-
-                ctx.fillStyle = glowGradient;
-                ctx.beginPath();
-                ctx.arc(x, y, glowSize, 0, Math.PI * 2);
-                ctx.fill();
-
-                // Particle
-                ctx.fillStyle = `rgba(212, 255, 0, 0.9)`;
-                ctx.beginPath();
-                ctx.arc(x, y, particle.size, 0, Math.PI * 2);
-                ctx.fill();
-            });
-        }
-
-        function drawConnections() {
-            // Draw lines connecting to center planet
-            orbitParticles.slice(0, 8).forEach(particle => {
-                const orbit = orbits[particle.orbitIndex];
-                const angle = particle.angle + time * orbit.speed;
-
-                const x = planet.x + Math.cos(angle) * orbit.radius;
-                const y = planet.y + Math.sin(angle) * orbit.radius;
-
-                ctx.strokeStyle = `rgba(212, 255, 0, 0.1)`;
+                
+                ctx.setLineDash([2, 8]);
+                ctx.strokeStyle = `rgba(255, 255, 255, ${orbit.opacity * 0.2})`;
                 ctx.lineWidth = 0.5;
                 ctx.beginPath();
-                ctx.moveTo(x, y);
-                ctx.lineTo(planet.x, planet.y);
+                ctx.ellipse(planet.x, planet.y, orbit.radius, orbit.radius * 0.5, planet.rotation + orbit.tilt, 0, Math.PI * 2);
                 ctx.stroke();
+                ctx.setLineDash([]);
             });
+        }
+        
+        function drawOrbitParticles() {
+             orbits.forEach((orbit, orbitIdx) => {
+                for (let i = 0; i < 3; i++) {
+                    const angle = (i / 3) * Math.PI * 2 + time * orbit.speed * (1 + i * 0.5);
+                    const ellipseX = Math.cos(angle) * orbit.radius;
+                    const ellipseY = Math.sin(angle) * orbit.radius * 0.5;
+
+                    const rotatedX = ellipseX * Math.cos(planet.rotation + orbit.tilt) - ellipseY * Math.sin(planet.rotation + orbit.tilt);
+                    const rotatedY = ellipseX * Math.sin(planet.rotation + orbit.tilt) + ellipseY * Math.cos(planet.rotation + orbit.tilt);
+
+                    const x = planet.x + rotatedX;
+                    const y = planet.y + rotatedY;
+                    
+                    const size = Math.random() * 1.2 + 0.5;
+                    
+                    ctx.fillStyle = `rgba(212, 255, 0, 0.9)`;
+                    ctx.beginPath();
+                    ctx.arc(x, y, size, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+             });
         }
 
         function animate() {
-            // Fade trail effect
-            ctx.fillStyle = 'rgba(26, 26, 26, 0.15)';
+            ctx.fillStyle = 'rgba(26, 26, 26, 0.1)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+            drawGrain();
+            
             time += 1;
-            planet.rotation += 0.001;
+            planet.rotation += 0.0002;
 
             drawStars();
             drawOrbits();
-            drawConnections();
             drawPlanet();
             drawOrbitParticles();
-
+            
             requestAnimationFrame(animate);
         }
 
@@ -920,6 +873,23 @@
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            planet.x = canvas.width * 0.7;
+            planet.y = canvas.height * 0.4;
+            planet.radius = Math.min(canvas.width, canvas.height) * 0.25;
+            orbits[0].radius = planet.radius * 1.4;
+            orbits[1].radius = planet.radius * 1.9;
+            orbits[2].radius = planet.radius * 2.5;
+            stars.length = 0; // Clear and repopulate stars on resize
+            for (let i = 0; i < 200; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.5,
+                    opacity: Math.random() * 0.7 + 0.1,
+                    twinkleSpeed: Math.random() * 0.05 + 0.01,
+                    pulse: Math.random() * Math.PI * 2
+                });
+            }
         });
     </script>
 </body>
