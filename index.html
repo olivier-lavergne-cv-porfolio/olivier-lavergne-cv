@@ -46,23 +46,6 @@
             -webkit-backdrop-filter: blur(20px);
             padding: 1.5rem 2rem;
             display: flex;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        /* HEADER */
-        header {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.7);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 1.5rem 2rem;
-            display: flex;
             justify-content: space-between;
             align-items: center;
         }
@@ -1064,31 +1047,6 @@
             </div>
         </div>
     </section>
-                    <div class="experience-title">Directeur Artistique</div>
-                    <div class="experience-company">Msmart Inc • New York City</div>
-                    <div class="experience-description">Direction artistique et motion design. Spots TV pour BET et MTV. Adaptation culturelle US/EU.</div>
-                </div>
-            </div>
-
-            <div class="experience-card">
-                <div class="experience-card-content">
-                    <div class="experience-year">2008 - Présent</div>
-                    <div class="experience-title">Designer Marketing</div>
-                    <div class="experience-company">Freelance • Toulouse</div>
-                    <div class="experience-description">Stratégie inbound, direction artistique, coordination d'équipes, campagnes print/web/vidéo.</div>
-                </div>
-            </div>
-
-            <div class="experience-card">
-                <div class="experience-card-content">
-                    <div class="experience-year">2002 - 2005</div>
-                    <div class="experience-title">Directeur Artistique Junior</div>
-                    <div class="experience-company">123Multimédia • Toulouse</div>
-                    <div class="experience-description">Direction artistique de campagnes print 12 pays. Gestion équipe créative 6 personnes.</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- PORTFOLIO SECTION -->
     <section class="portfolio">
@@ -1231,7 +1189,7 @@
         // Theme Switcher
         const themeBtns = document.querySelectorAll('.theme-btn');
         
-        let currentTheme = localStorage.getItem('theme') || 'dark';
+        let currentTheme = 'dark';
         
         function setTheme(theme) {
             currentTheme = theme;
@@ -1245,8 +1203,6 @@
             themeBtns.forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.theme === theme);
             });
-            
-            localStorage.setItem('theme', theme);
         }
 
         // Load saved theme preference
@@ -1263,7 +1219,7 @@
         const langBtns = document.querySelectorAll('.lang-btn');
         const translatableElements = document.querySelectorAll('[data-fr]');
 
-        let currentLang = localStorage.getItem('language') || 'fr';
+        let currentLang = 'fr';
 
         function setLanguage(lang) {
             currentLang = lang;
@@ -1280,9 +1236,6 @@
                     el.innerHTML = text;
                 }
             });
-
-            // Save preference
-            localStorage.setItem('language', lang);
         }
 
         // Load saved language preference
