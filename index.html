@@ -6,12 +6,6 @@
     <meta name="description" content="Olivier Lavergne - Vidéaste Motion Designer & Créateur de Contenus Intelligents">
     <title>Olivier Lavergne | Vidéaste & Motion Designer</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
             --primary: #000000;
             --secondary: #ffffff;
@@ -19,6 +13,12 @@
             --accent-gold: #ffd700;
             --accent-purple: #c77dff;
             --gray: #1a1a1a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         html {
@@ -33,7 +33,28 @@
             line-height: 1.6;
         }
 
-        /* HEADER */
+        /* ===== ANIMATIONS ===== */
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-60px); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== HEADER ===== */
         header {
             position: fixed;
             top: 0;
@@ -43,49 +64,56 @@
             background: rgba(0, 0, 0, 0.7);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
             padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        /* THEME SWITCHER */
-        .theme-switcher {
+        .theme-switcher,
+        .lang-switcher {
             display: flex;
             gap: 0;
             background: rgba(255, 255, 255, 0.08);
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 50px;
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             padding: 0.4rem;
         }
 
-        .theme-btn {
+        .theme-btn,
+        .lang-btn {
             background: transparent;
             border: none;
             color: rgba(255, 255, 255, 0.6);
             padding: 0.6rem 1rem;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
             border-radius: 50px;
             transition: all 0.3s ease;
             letter-spacing: 0.05em;
+            text-transform: uppercase;
         }
 
-        .theme-btn.active {
+        .lang-btn {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        .theme-btn.active,
+        .lang-btn.active {
             background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
             color: var(--primary);
             box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
         }
 
-        .theme-btn:hover:not(.active) {
+        .theme-btn:hover:not(.active),
+        .lang-btn:hover:not(.active) {
             color: rgba(255, 255, 255, 0.9);
         }
 
-        /* LIGHT MODE */
+        /* ===== LIGHT MODE ===== */
         body.light-mode {
             background: #f5f5f5;
             color: #1d1d1f;
@@ -96,42 +124,27 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        body.light-mode .theme-switcher {
-            background: rgba(0, 0, 0, 0.08);
-            border-color: rgba(0, 0, 0, 0.15);
-        }
-
-        body.light-mode .theme-btn {
-            color: rgba(0, 0, 0, 0.6);
-        }
-
-        body.light-mode .theme-btn:hover:not(.active) {
-            color: rgba(0, 0, 0, 0.9);
-        }
-
+        body.light-mode .theme-switcher,
         body.light-mode .lang-switcher {
             background: rgba(0, 0, 0, 0.08);
             border-color: rgba(0, 0, 0, 0.15);
         }
 
+        body.light-mode .theme-btn,
         body.light-mode .lang-btn {
             color: rgba(0, 0, 0, 0.6);
         }
 
+        body.light-mode .theme-btn:hover:not(.active),
         body.light-mode .lang-btn:hover:not(.active) {
             color: rgba(0, 0, 0, 0.9);
         }
 
         body.light-mode .hero {
-            background: linear-gradient(135deg, 
-                #f5f5f5 0%, 
-                #e8e0f5 25%,
-                #e8e8f5 50%,
-                #e0e8f5 75%,
-                #f5f5f5 100%);
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e0f5 25%, #e8e8f5 50%, #e0e8f5 75%, #f5f5f5 100%);
         }
 
-        body.light-mode .hero-content h1 {
+        body.light-mode .hero h1 {
             background: linear-gradient(135deg, #1d1d1f 0%, #003d7a 50%, #1a0070 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -150,12 +163,18 @@
             color: #1d1d1f;
         }
 
-        body.light-mode .section-subtitle {
-            color: rgba(0, 0, 0, 0.65);
+        body.light-mode .section-subtitle,
+        body.light-mode .about-text p,
+        body.light-mode .stat-label,
+        body.light-mode .experience-description,
+        body.light-mode .portfolio-info p,
+        body.light-mode .skill-list {
+            color: rgba(0, 0, 0, 0.7);
         }
 
-        body.light-mode .about-text p {
-            color: rgba(0, 0, 0, 0.8);
+        body.light-mode .about-text strong,
+        body.light-mode .experience-title {
+            color: #1d1d1f;
         }
 
         body.light-mode .about-highlight {
@@ -164,34 +183,25 @@
             color: rgba(0, 0, 0, 0.85);
         }
 
-        body.light-mode .stat-label {
-            color: rgba(0, 0, 0, 0.7);
-        }
-
-        body.light-mode .experience {
+        body.light-mode .experience,
+        body.light-mode footer {
             background: #efefef;
         }
 
-        body.light-mode .experience-card {
+        body.light-mode .experience-card,
+        body.light-mode .portfolio-item {
             background: rgba(255, 255, 255, 0.8);
             border-color: rgba(0, 0, 0, 0.1);
         }
 
-        body.light-mode .experience-card:hover {
+        body.light-mode .experience-card:hover,
+        body.light-mode .portfolio-item:hover {
             border-color: #0064ff;
             background: rgba(255, 255, 255, 0.95);
         }
 
-        body.light-mode .experience-title {
-            color: #1d1d1f;
-        }
-
         body.light-mode .experience-company {
             color: rgba(0, 0, 0, 0.6);
-        }
-
-        body.light-mode .experience-description {
-            color: rgba(0, 0, 0, 0.7);
         }
 
         body.light-mode .skill-card {
@@ -204,35 +214,9 @@
             background: linear-gradient(135deg, rgba(0, 100, 255, 0.1), rgba(100, 50, 200, 0.1));
         }
 
-        body.light-mode .skill-title {
-            color: #1d1d1f;
-        }
-
-        body.light-mode .skill-list {
-            color: rgba(0, 0, 0, 0.7);
-        }
-
-        body.light-mode .portfolio-item {
-            background: rgba(255, 255, 255, 0.8);
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-mode .portfolio-item:hover {
-            border-color: #0064ff;
-            background: rgba(255, 255, 255, 0.95);
-        }
-
+        body.light-mode .skill-title,
         body.light-mode .portfolio-info h3 {
             color: #1d1d1f;
-        }
-
-        body.light-mode .portfolio-info p {
-            color: rgba(0, 0, 0, 0.7);
-        }
-
-        body.light-mode footer {
-            background: #efefef;
-            border-color: rgba(0, 0, 0, 0.1);
         }
 
         body.light-mode .footer-title {
@@ -244,51 +228,11 @@
             color: #1d1d1f;
         }
 
-        body.light-mode .contact-links a:hover {
-            color: white;
-        }
-
         body.light-mode .footer-credit {
             color: rgba(0, 0, 0, 0.5);
         }
 
-        /* LANGUAGE SWITCHER */
-        .lang-switcher {
-            display: flex;
-            gap: 0;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            padding: 0.4rem;
-        }
-
-        .lang-btn {
-            background: transparent;
-            border: none;
-            color: rgba(255, 255, 255, 0.6);
-            padding: 0.6rem 1.2rem;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .lang-btn.active {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            color: var(--primary);
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
-        }
-
-        .lang-btn:hover:not(.active) {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* HERO GRADIENT SECTION */
+        /* ===== HERO SECTION ===== */
         .hero {
             min-height: 120vh;
             display: flex;
@@ -298,54 +242,37 @@
             text-align: center;
             position: relative;
             overflow: hidden;
-            background: linear-gradient(135deg, 
-                #000000 0%, 
-                #1a0033 25%,
-                #000033 50%,
-                #001a33 75%,
-                #000000 100%);
+            background: linear-gradient(135deg, #000000 0%, #1a0033 25%, #000033 50%, #001a33 75%, #000000 100%);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
-            margin-top: 0;
             padding-top: 6rem;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .hero::before,
+        .hero::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
         }
 
         .hero::before {
-            content: '';
-            position: absolute;
             width: 800px;
             height: 800px;
             background: radial-gradient(circle, rgba(0, 212, 255, 0.15), transparent);
-            border-radius: 50%;
             top: -200px;
             right: -200px;
-            filter: blur(80px);
             animation: float 20s ease-in-out infinite;
             z-index: 1;
         }
 
         .hero::after {
-            content: '';
-            position: absolute;
             width: 600px;
             height: 600px;
             background: radial-gradient(circle, rgba(199, 125, 255, 0.1), transparent);
-            border-radius: 50%;
             bottom: -100px;
             left: -150px;
-            filter: blur(80px);
             animation: float 25s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-60px); }
         }
 
         .hero-content {
@@ -371,10 +298,7 @@
             line-height: 1.05;
             margin-bottom: 1.5rem;
             letter-spacing: -0.03em;
-            background: linear-gradient(135deg, 
-                var(--secondary) 0%, 
-                var(--accent-cyan) 50%, 
-                var(--accent-purple) 100%);
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent-cyan) 50%, var(--accent-purple) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -412,29 +336,7 @@
             box-shadow: 0 30px 80px rgba(0, 212, 255, 0.5);
         }
 
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* SECTIONS */
+        /* ===== SECTIONS ===== */
         section {
             padding: 8rem 2rem;
             position: relative;
@@ -478,7 +380,7 @@
             line-height: 1.7;
         }
 
-        /* ABOUT SECTION */
+        /* ===== ABOUT SECTION ===== */
         .about {
             background: var(--primary);
         }
@@ -557,7 +459,7 @@
             font-weight: 600;
         }
 
-        /* EXPERIENCE SECTION */
+        /* ===== EXPERIENCE SECTION ===== */
         .experience {
             background: var(--gray);
         }
@@ -584,10 +486,7 @@
         .experience-card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0;
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), transparent);
             opacity: 0;
             transition: opacity 0.4s ease;
@@ -636,7 +535,7 @@
             color: rgba(255, 255, 255, 0.75);
         }
 
-        /* PORTFOLIO SECTION */
+        /* ===== PORTFOLIO SECTION ===== */
         .portfolio {
             background: var(--primary);
         }
@@ -669,7 +568,7 @@
         .video-container {
             position: relative;
             width: 100%;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             background: #000;
@@ -677,8 +576,7 @@
 
         .video-container iframe {
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
             border: none;
@@ -705,7 +603,7 @@
             flex-grow: 1;
         }
 
-        /* SKILLS SECTION */
+        /* ===== SKILLS SECTION ===== */
         .skills {
             background: var(--primary);
         }
@@ -771,14 +669,9 @@
             color: rgba(255, 255, 255, 0.75);
         }
 
-        /* FOOTER */
+        /* ===== FOOTER ===== */
         footer {
-            background: linear-gradient(135deg, 
-                #1a1a1a 0%, 
-                #2d1a4d 25%,
-                #1a1a33 50%,
-                #1a2d33 75%,
-                #1a1a1a 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1a4d 25%, #1a1a33 50%, #1a2d33 75%, #1a1a1a 100%);
             background-size: 400% 400%;
             animation: gradientShift 15s ease infinite;
             color: var(--secondary);
@@ -791,10 +684,7 @@
         footer::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            inset: 0 0 auto 0;
             background: radial-gradient(circle at 50% 0%, rgba(0, 212, 255, 0.1), transparent);
             pointer-events: none;
         }
@@ -855,70 +745,26 @@
             margin-top: 3rem;
         }
 
-        /* RESPONSIVE */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .hero {
-                min-height: 90vh;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1.1rem;
-            }
-
-            section {
-                padding: 4rem 1.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-links {
-                gap: 1rem;
-                flex-direction: column;
-            }
-
-            .contact-links a {
-                width: 100%;
-            }
+            .hero { min-height: 90vh; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero .subtitle { font-size: 1.1rem; }
+            section { padding: 4rem 1.5rem; }
+            .about-content,
+            .stats-grid,
+            .experience-grid,
+            .skills-grid,
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .contact-links { gap: 1rem; flex-direction: column; }
+            .contact-links a { width: 100%; }
         }
 
         @media (max-width: 480px) {
-            .hero {
-                min-height: 70vh;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            section {
-                padding: 3rem 1rem;
-            }
-
-            .footer-title {
-                font-size: 1.8rem;
-            }
+            .hero { min-height: 70vh; }
+            .hero h1 { font-size: 2rem; }
+            section { padding: 3rem 1rem; }
+            .footer-title { font-size: 1.8rem; }
         }
     </style>
 </head>
@@ -1059,7 +905,7 @@
         <div class="portfolio-grid">
             <div class="portfolio-item">
                 <div class="video-container">
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/Fp3g5hr6RAU" title="Portfolio Principal" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/Fp3g5hr6RAU" title="Portfolio Principal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="portfolio-info">
                     <h3 data-fr="Portfolio Principal" data-en="Main Portfolio">Portfolio Principal</h3>
@@ -1069,7 +915,7 @@
 
             <div class="portfolio-item">
                 <div class="video-container">
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/uLMkjJjTc9s" title="Short Vidéo 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/uLMkjJjTc9s" title="Short Vidéo 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="portfolio-info">
                     <h3 data-fr="Contenu Court Format" data-en="Short Form Content">Contenu Court Format</h3>
@@ -1079,7 +925,7 @@
 
             <div class="portfolio-item">
                 <div class="video-container">
-                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/0kBfVG1fZxs" title="Short Vidéo 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/0kBfVG1fZxs" title="Short Vidéo 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="portfolio-info">
                     <h3 data-fr="Motion Design & Effects" data-en="Motion Design & Effects">Motion Design & Effects</h3>
@@ -1101,67 +947,37 @@
             <div class="skill-card">
                 <div class="skill-icon">🚀</div>
                 <div class="skill-title">IA & Innovation</div>
-                <div class="skill-list">
-                    <strong>IA Générative:</strong> GPT-5, Claude 4, Gemini 2.5<br>
-                    <strong>Vidéo:</strong> Google Veo3, Runway Gen-3<br>
-                    <strong>Image:</strong> Midjourney V7, FLUX.1<br>
-                    <strong>Automation:</strong> Prompt Engineering avancé
-                </div>
+                <div class="skill-list"><strong>IA Générative:</strong> GPT-5, Claude 4, Gemini 2.5<br><strong>Vidéo:</strong> Google Veo3, Runway Gen-3<br><strong>Image:</strong> Midjourney V7, FLUX.1<br><strong>Automation:</strong> Prompt Engineering avancé</div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon">📊</div>
                 <div class="skill-title">Marketing & Analytics</div>
-                <div class="skill-list">
-                    <strong>Strategy:</strong> ROI Tracking, KPI Marketing<br>
-                    <strong>Tools:</strong> Google Analytics 4, YouTube Ads<br>
-                    <strong>Content:</strong> Data-driven Storytelling<br>
-                    <strong>Performance:</strong> A/B Testing, SEO/SEM
-                </div>
+                <div class="skill-list"><strong>Strategy:</strong> ROI Tracking, KPI Marketing<br><strong>Tools:</strong> Google Analytics 4, YouTube Ads<br><strong>Content:</strong> Data-driven Storytelling<br><strong>Performance:</strong> A/B Testing, SEO/SEM</div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon">🎨</div>
                 <div class="skill-title">Création Graphique</div>
-                <div class="skill-list">
-                    <strong>Adobe CC:</strong> Photoshop, Illustrator, InDesign<br>
-                    <strong>Direction:</strong> Branding & Brand Identity<br>
-                    <strong>Design:</strong> UI/UX, Editorial Design<br>
-                    <strong>Typo:</strong> Hiérarchie visuelle, Typography
-                </div>
+                <div class="skill-list"><strong>Adobe CC:</strong> Photoshop, Illustrator, InDesign<br><strong>Direction:</strong> Branding & Brand Identity<br><strong>Design:</strong> UI/UX, Editorial Design<br><strong>Typo:</strong> Hiérarchie visuelle, Typography</div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon">🎬</div>
                 <div class="skill-title">Audio & Vidéo</div>
-                <div class="skill-list">
-                    <strong>Vidéo:</strong> After Effects, DaVinci Resolve<br>
-                    <strong>Montage:</strong> Premiere Pro, CapCut<br>
-                    <strong>Audio:</strong> Logic Pro X, FL Studio<br>
-                    <strong>Post-prod:</strong> Color Grading, Mastering
-                </div>
+                <div class="skill-list"><strong>Vidéo:</strong> After Effects, DaVinci Resolve<br><strong>Montage:</strong> Premiere Pro, CapCut<br><strong>Audio:</strong> Logic Pro X, FL Studio<br><strong>Post-prod:</strong> Color Grading, Mastering</div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon">👥</div>
                 <div class="skill-title">Management & Leadership</div>
-                <div class="skill-list">
-                    <strong>Coordination:</strong> Équipes, agences, freelances<br>
-                    <strong>Project Mgmt:</strong> Gestion de projets complexes<br>
-                    <strong>Direction:</strong> Direction artistique, Creative Lead<br>
-                    <strong>Soft Skills:</strong> Communication, Collaboration
-                </div>
+                <div class="skill-list"><strong>Coordination:</strong> Équipes, agences, freelances<br><strong>Project Mgmt:</strong> Gestion de projets complexes<br><strong>Direction:</strong> Direction artistique, Creative Lead<br><strong>Soft Skills:</strong> Communication, Collaboration</div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon">🌍</div>
                 <div class="skill-title">International & Langues</div>
-                <div class="skill-list">
-                    <strong>Langues:</strong> 🇫🇷 Français (Natif), 🇺🇸 Anglais (Courant)<br>
-                    <strong>Expérience:</strong> USA, EU, International<br>
-                    <strong>Adaptation:</strong> Culturelle, stratégique<br>
-                    <strong>Réseaux:</strong> Global networking
-                </div>
+                <div class="skill-list"><strong>Langues:</strong> 🇫🇷 Français (Natif), 🇺🇸 Anglais (Courant)<br><strong>Expérience:</strong> USA, EU, International<br><strong>Adaptation:</strong> Culturelle, stratégique<br><strong>Réseaux:</strong> Global networking</div>
             </div>
         </div>
     </section>
@@ -1178,84 +994,44 @@
                 <a href="https://youtube.com/shorts/uLMkjJjTc9s" target="_blank">🎥 Vidéos</a>
             </div>
 
-            <div class="footer-credit">
-                © 2025 Olivier Lavergne • Toulouse & Beyond<br>
-                Vidéaste Motion Designer • Créateur de Contenus Intelligents
-            </div>
+            <div class="footer-credit">© 2025 Olivier Lavergne • Toulouse & Beyond<br>Vidéaste Motion Designer • Créateur de Contenus Intelligents</div>
         </div>
     </footer>
 
     <script>
-        // Theme Switcher
         const themeBtns = document.querySelectorAll('.theme-btn');
-        
-        let currentTheme = 'dark';
-        
-        function setTheme(theme) {
-            currentTheme = theme;
-            
-            if (theme === 'light') {
-                document.body.classList.add('light-mode');
-            } else {
-                document.body.classList.remove('light-mode');
-            }
-            
-            themeBtns.forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.theme === theme);
-            });
-        }
-
-        // Load saved theme preference
-        setTheme(currentTheme);
-
-        // Add event listeners for theme
-        themeBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                setTheme(btn.dataset.theme);
-            });
-        });
-
-        // Language Switcher
         const langBtns = document.querySelectorAll('.lang-btn');
         const translatableElements = document.querySelectorAll('[data-fr]');
 
+        let currentTheme = 'dark';
         let currentLang = 'fr';
+
+        function setTheme(theme) {
+            currentTheme = theme;
+            document.body.classList.toggle('light-mode', theme === 'light');
+            themeBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.theme === theme));
+        }
 
         function setLanguage(lang) {
             currentLang = lang;
-            
-            // Update active button
-            langBtns.forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.lang === lang);
-            });
-
-            // Update content
+            langBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
             translatableElements.forEach(el => {
                 const text = el.getAttribute(`data-${lang}`);
-                if (text) {
-                    el.innerHTML = text;
-                }
+                if (text) el.innerHTML = text;
             });
         }
 
-        // Load saved language preference
+        setTheme(currentTheme);
         setLanguage(currentLang);
 
-        // Add event listeners for language
-        langBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                setLanguage(btn.dataset.lang);
-            });
-        });
+        themeBtns.forEach(btn => btn.addEventListener('click', () => setTheme(btn.dataset.theme)));
+        langBtns.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
 
-        // Smooth scroll for links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', e => {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
+                const target = document.querySelector(anchor.getAttribute('href'));
+                target?.scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>
