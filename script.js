@@ -1,46 +1,97 @@
-document.addEventListener('DOMContentLoaded', () => {
+/* ==============================
+   Olivier Lavergne | script.js
+   Optimized 2025 version
+   ============================== */
 
-    // --- Logique pour le changement de langue ---
-    const langToggle = document.getElementById('lang-toggle');
-    const translatableElements = document.querySelectorAll('[data-lang-fr]');
+// === LANGUAGE & THEME STORAGE ===
+const storage = {
+  getTheme: () => localStorage.getItem("theme") || "dark",
+  setTheme: (theme) => localStorage.setItem("theme", theme),
+  getLang: () => localStorage.getItem("lang") || "fr",
+  setLang: (lang) => localStorage.setItem("lang", lang),
+};
 
-    const setLanguage = (lang) => {
-        translatableElements.forEach(el => {
-            const text = el.dataset[lang === 'en' ? 'langEn' : 'langFr'];
-            if (text) {
-                el.innerHTML = text;
-            }
-        });
-        document.documentElement.lang = lang;
-        langToggle.textContent = lang === 'en' ? 'FR' : 'EN';
-        localStorage.setItem('language', lang);
-    };
+// === THEME SWITCHER ===
+function initTheme() {
+  const theme = storage.getTheme();
+  document.body.classList.toggle("light-mode", theme === "light");
+  document.querySelectorAll(".theme-btn").forEach(btn =>
+    btn.classList.toggle("active", btn.dataset.theme === theme)
+  );
+}
+document.querySelectorAll(".theme-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const selected = btn.dataset.theme;
+    storage.setTheme(selected);
+    initTheme();
+  });
+});
 
-    const currentLang = localStorage.getItem('language') || 'fr';
-    setLanguage(currentLang);
+// === LANGUAGE SWITCHER ===
+function initLanguage() {
+  const lang = storage.getLang();
+  document.documentElement.lang = lang;
+  document.querySelectorAll(".lang-btn").forEach(btn =>
+    btn.classList.toggle("active", btn.dataset.lang === lang)
+  );
 
-    langToggle.addEventListener('click', () => {
-        const newLang = localStorage.getItem('language') === 'fr' ? 'en' : 'fr';
-        setLanguage(newLang);
-    });
+  // Text translation (lightweight dictionary)
+  const dict = {
+    en: {
+      title: "Videographer & Motion Designer",
+      subtitle: "Transform your marketing challenges into measurable success with a creative, AI-driven approach.",
+      discover: "Discover my approach",
+      about: "Creative Videographer & Marketing Strategist",
+      contact: "Let's create something extraordinary together 🚀",
+    },
+    fr: {
+      title: "Vidéaste & Motion Designer",
+      subtitle: "Transformez vos défis marketing en succès mesurables grâce à une approche créative data-driven boostée par l’IA générative.",
+      discover: "Découvrir mon approche",
+      about: "Vidéaste créatif & stratège marketing",
+      contact: "Créons l'extraordinaire ensemble 🚀",
+    },
+  };
 
+  // Update visible text if selectors exist
+  const t = dict[lang];
+  document.querySelector("[data-i18n='title']")?.textContent = t.title;
+  document.querySelector("[data-i18n='subtitle']")?.textContent = t.subtitle;
+  document.querySelector("[data-i18n='discover']")?.textContent = t.discover;
+  document.querySelector("[data-i18n='about']")?.textContent = t.about;
+  document.querySelector("[data-i18n='contact']")?.textContent = t.contact;
+}
+document.querySelectorAll(".lang-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const selected = btn.dataset.lang;
+    storage.setLang(selected);
+    initLanguage();
+  });
+});
 
-    // --- Logique pour l'animation au défilement ---
-    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+// === SMOOTH SCROLL ===
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", e => {
+    e.preventDefault();
+    const target = document.querySelector(anchor.getAttribute("href"));
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+});
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1
-    });
+// === HEADER EFFECT ON SCROLL ===
+window.addEventListener("scroll", () => {
+  const header = document.querySelector("header");
+  if (window.scrollY > 60) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
+  }
+});
 
-    animatedElements.forEach(el => {
-        observer.observe(el);
-    });
-
+// === INIT EVERYTHING ===
+document.addEventListener("DOMContentLoaded", () => {
+  initTheme();
+  initLanguage();
 });
