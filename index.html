@@ -3,770 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Olivier Lavergne - Vidéaste Motion Designer & Créateur de Contenus Intelligents">
-    <title>Olivier Lavergne | Vidéaste & Motion Designer</title>
-    <style>
-        :root {
-            --primary: #000000;
-            --secondary: #ffffff;
-            --accent-cyan: #00d4ff;
-            --accent-gold: #ffd700;
-            --accent-purple: #c77dff;
-            --gray: #1a1a1a;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-            background: var(--primary);
-            color: var(--secondary);
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-60px); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ===== HEADER ===== */
-        header {
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.7);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .theme-switcher,
-        .lang-switcher {
-            display: flex;
-            gap: 0;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            padding: 0.4rem;
-        }
-
-        .theme-btn,
-        .lang-btn {
-            background: transparent;
-            border: none;
-            color: rgba(255, 255, 255, 0.6);
-            padding: 0.6rem 1rem;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .lang-btn {
-            padding: 0.6rem 1.2rem;
-            font-size: 0.9rem;
-        }
-
-        .theme-btn.active,
-        .lang-btn.active {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            color: var(--primary);
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
-        }
-
-        .theme-btn:hover:not(.active),
-        .lang-btn:hover:not(.active) {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        /* ===== LIGHT MODE ===== */
-        body.light-mode {
-            background: #f5f5f5;
-            color: #1d1d1f;
-        }
-
-        body.light-mode header {
-            background: rgba(255, 255, 255, 0.8);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-mode .theme-switcher,
-        body.light-mode .lang-switcher {
-            background: rgba(0, 0, 0, 0.08);
-            border-color: rgba(0, 0, 0, 0.15);
-        }
-
-        body.light-mode .theme-btn,
-        body.light-mode .lang-btn {
-            color: rgba(0, 0, 0, 0.6);
-        }
-
-        body.light-mode .theme-btn:hover:not(.active),
-        body.light-mode .lang-btn:hover:not(.active) {
-            color: rgba(0, 0, 0, 0.9);
-        }
-
-        body.light-mode .hero {
-            background: linear-gradient(135deg, #f5f5f5 0%, #e8e0f5 25%, #e8e8f5 50%, #e0e8f5 75%, #f5f5f5 100%);
-        }
-
-        body.light-mode .hero h1 {
-            background: linear-gradient(135deg, #1d1d1f 0%, #003d7a 50%, #1a0070 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        body.light-mode .hero .subtitle {
-            color: rgba(0, 0, 0, 0.7);
-        }
-
-        body.light-mode section {
-            background: #f5f5f5;
-        }
-
-        body.light-mode .section-title {
-            color: #1d1d1f;
-        }
-
-        body.light-mode .section-subtitle,
-        body.light-mode .about-text p,
-        body.light-mode .stat-label,
-        body.light-mode .experience-description,
-        body.light-mode .portfolio-info p,
-        body.light-mode .skill-list {
-            color: rgba(0, 0, 0, 0.7);
-        }
-
-        body.light-mode .about-text strong,
-        body.light-mode .experience-title {
-            color: #1d1d1f;
-        }
-
-        body.light-mode .about-highlight {
-            background: rgba(0, 100, 255, 0.05);
-            border-color: rgba(0, 100, 255, 0.3);
-            color: rgba(0, 0, 0, 0.85);
-        }
-
-        body.light-mode .experience,
-        body.light-mode footer {
-            background: #efefef;
-        }
-
-        body.light-mode .experience-card,
-        body.light-mode .portfolio-item {
-            background: rgba(255, 255, 255, 0.8);
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-mode .experience-card:hover,
-        body.light-mode .portfolio-item:hover {
-            border-color: #0064ff;
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        body.light-mode .experience-company {
-            color: rgba(0, 0, 0, 0.6);
-        }
-
-        body.light-mode .skill-card {
-            background: linear-gradient(135deg, rgba(0, 100, 255, 0.05), rgba(100, 50, 200, 0.05));
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-mode .skill-card:hover {
-            border-color: #0064ff;
-            background: linear-gradient(135deg, rgba(0, 100, 255, 0.1), rgba(100, 50, 200, 0.1));
-        }
-
-        body.light-mode .skill-title,
-        body.light-mode .portfolio-info h3 {
-            color: #1d1d1f;
-        }
-
-        body.light-mode .footer-title {
-            color: #1d1d1f;
-        }
-
-        body.light-mode .contact-links a {
-            border-color: rgba(0, 0, 0, 0.3);
-            color: #1d1d1f;
-        }
-
-        body.light-mode .footer-credit {
-            color: rgba(0, 0, 0, 0.5);
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            min-height: 120vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #000000 0%, #1a0033 25%, #000033 50%, #001a33 75%, #000000 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            padding-top: 6rem;
-        }
-
-        .hero::before,
-        .hero::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-        }
-
-        .hero::before {
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.15), transparent);
-            top: -200px;
-            right: -200px;
-            animation: float 20s ease-in-out infinite;
-            z-index: 1;
-        }
-
-        .hero::after {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(199, 125, 255, 0.1), transparent);
-            bottom: -100px;
-            left: -150px;
-            animation: float 25s ease-in-out infinite reverse;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1100px;
-            padding: 2rem;
-        }
-
-        .hero-overline {
-            font-size: 0.95rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent-cyan);
-            font-weight: 600;
-            margin-bottom: 2rem;
-            animation: fadeInDown 1s ease 0.2s both;
-        }
-
-        .hero h1 {
-            font-size: clamp(3.5rem, 14vw, 7rem);
-            font-weight: 900;
-            line-height: 1.05;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent-cyan) 50%, var(--accent-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInDown 1s ease 0.4s both;
-        }
-
-        .hero .subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            color: rgba(255, 255, 255, 0.75);
-            font-weight: 400;
-            margin-bottom: 3rem;
-            max-width: 750px;
-            line-height: 1.5;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            color: var(--primary);
-            text-decoration: none;
-            border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
-            animation: fadeInUp 1s ease 0.8s both;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 30px 80px rgba(0, 212, 255, 0.5);
-        }
-
-        /* ===== SECTIONS ===== */
-        section {
-            padding: 8rem 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-header {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-overline {
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--accent-cyan);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 900;
-            margin-bottom: 2rem;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-        }
-
-        .section-title .accent {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 3rem;
-            max-width: 650px;
-            line-height: 1.7;
-        }
-
-        /* ===== ABOUT SECTION ===== */
-        .about {
-            background: var(--primary);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .about-text {
-            max-width: 550px;
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin-bottom: 2rem;
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        .about-text strong {
-            color: var(--secondary);
-        }
-
-        .about-highlight {
-            padding: 2rem;
-            border-left: 3px solid var(--accent-cyan);
-            background: rgba(0, 212, 255, 0.05);
-            border-radius: 8px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-            font-weight: 600;
-            line-height: 1.8;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-
-        .stat {
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .stat:hover {
-            background: rgba(0, 212, 255, 0.1);
-            border-color: var(--accent-cyan);
-            transform: translateY(-8px);
-        }
-
-        .stat-number {
-            font-size: 2.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
-        }
-
-        /* ===== EXPERIENCE SECTION ===== */
-        .experience {
-            background: var(--gray);
-        }
-
-        .experience-grid {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .experience-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 3rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .experience-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-12px);
-            border-color: var(--accent-cyan);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .experience-card:hover::before {
-            opacity: 1;
-        }
-
-        .experience-card-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .experience-year {
-            font-size: 0.9rem;
-            color: var(--accent-cyan);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-        }
-
-        .experience-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
-        }
-
-        .experience-company {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 1.5rem;
-        }
-
-        .experience-description {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.75);
-        }
-
-        /* ===== PORTFOLIO SECTION ===== */
-        .portfolio {
-            background: var(--primary);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .portfolio-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-12px);
-            border-color: var(--accent-cyan);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .portfolio-info {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .portfolio-info h3 {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 0.8rem;
-        }
-
-        .portfolio-info p {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.75);
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        /* ===== SKILLS SECTION ===== */
-        .skills {
-            background: var(--primary);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .skill-card {
-            padding: 2.5rem;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(199, 125, 255, 0.08));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.3), transparent);
-            border-radius: 50%;
-            opacity: 0;
-            transition: all 0.6s ease;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-12px);
-            border-color: var(--accent-cyan);
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(199, 125, 255, 0.15));
-        }
-
-        .skill-card:hover::before {
-            opacity: 1;
-            top: -20%;
-            right: -20%;
-        }
-
-        .skill-icon {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 1.2rem;
-            color: var(--secondary);
-        }
-
-        .skill-list {
-            font-size: 0.95rem;
-            line-height: 1.9;
-            color: rgba(255, 255, 255, 0.75);
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d1a4d 25%, #1a1a33 50%, #1a2d33 75%, #1a1a1a 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            color: var(--secondary);
-            padding: 6rem 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            inset: 0 0 auto 0;
-            background: radial-gradient(circle at 50% 0%, rgba(0, 212, 255, 0.1), transparent);
-            pointer-events: none;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-title {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 900;
-            margin-bottom: 3rem;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-        }
-
-        .footer-title .accent {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 3rem;
-        }
-
-        .contact-links a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 700;
-            padding: 0.8rem 1.8rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            background: transparent;
-        }
-
-        .contact-links a:hover {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            border-color: transparent;
-            color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
-        }
-
-        .footer-credit {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-top: 3rem;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .hero { min-height: 90vh; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero .subtitle { font-size: 1.1rem; }
-            section { padding: 4rem 1.5rem; }
-            .about-content,
-            .stats-grid,
-            .experience-grid,
-            .skills-grid,
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .contact-links { gap: 1rem; flex-direction: column; }
-            .contact-links a { width: 100%; }
-        }
-
-        @media (max-width: 480px) {
-            .hero { min-height: 70vh; }
-            .hero h1 { font-size: 2rem; }
-            section { padding: 3rem 1rem; }
-            .footer-title { font-size: 1.8rem; }
-        }
-    </style>
+    <meta name="description" data-i18n="meta.description" content="Olivier Lavergne - Vidéaste Motion Designer & Créateur de Contenus Intelligents">
+    <title data-i18n="meta.title">Olivier Lavergne | Vidéaste & Motion Designer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -785,46 +24,44 @@
     <!-- HERO SECTION -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <div class="hero-overline" data-fr="🚀 Vidéaste & Motion Designer" data-en="🚀 Videographer & Motion Designer">🚀 Vidéaste & Motion Designer</div>
-            <h1 data-fr="Créateur</span><br>de contenus</span><br>intelligents ;)" data-en="Creator of<br><span>Extraordinary</span><br>Content">Créateur de<br><span>Contenus</span><br>Extraordinaires</h1>
-            <p class="subtitle" data-fr="Transformez vos défis marketing en succès mesurables grâce à une approche créative data-driven boostée par l'IA générative." data-en="Transform your marketing challenges into measurable success through a data-driven creative approach powered by generative AI.">Transformez vos défis marketing en succès mesurables grâce à une approche créative data-driven boostée par l'IA générative.</p>
-            <a href="#about" class="cta-button" data-fr="Découvrir mon approche" data-en="Discover my approach">Découvrir mon approche</a>
+            <div class="hero-overline" data-i18n="hero.overline"></div>
+            <h1 data-i18n="hero.title"></h1>
+            <p class="subtitle" data-i18n="hero.subtitle"></p>
+            <a href="#about" class="cta-button" data-i18n="hero.cta"></a>
         </div>
     </section>
 
     <!-- ABOUT SECTION -->
     <section class="about" id="about">
         <div class="section-header">
-            <div class="section-overline" data-fr="À PROPOS" data-en="ABOUT">À PROPOS</div>
-            <h2 class="section-title" data-fr="Vidéaste créatif & stratège <span class='accent'>marketing</span>" data-en="Creative videographer & <span class='accent'>marketing</span> strategist">Vidéaste créatif & stratège <span class="accent">marketing</span></h2>
-            <p class="section-subtitle" data-fr="Plus de 15 années d'expertise dans la création de contenus visuels d'impact." data-en="Over 15 years of expertise in creating high-impact visual content.">Plus de 15 années d'expertise dans la création de contenus visuels d'impact.</p>
+            <div class="section-overline" data-i18n="about.overline"></div>
+            <h2 class="section-title" data-i18n="about.title"></h2>
+            <p class="section-subtitle" data-i18n="about.subtitle"></p>
         </div>
 
         <div class="about-content">
             <div class="about-text">
-                <p data-fr="<strong>Spécialiste en création vidéo et motion design</strong> avec une expérience confirmée auprès de grands comptes (Airbus, M6 Group, secteur tech)." data-en="<strong>Specialist in video creation and motion design</strong> with confirmed experience working with major accounts (Airbus, M6 Group, tech sector)."><strong>Spécialiste en création vidéo et motion design</strong> avec une expérience confirmée auprès de grands comptes (Airbus, M6 Group, secteur tech).</p>
-                
-                <p data-fr="Je maîtrise l'intégration des outils IA générative pour optimiser les workflows créatifs, réduire les délais de production de 30% et maximiser le ROI marketing." data-en="I master the integration of generative AI tools to optimize creative workflows, reduce production time by 30%, and maximize marketing ROI.">Je maîtrise l'intégration des outils IA générative pour optimiser les workflows créatifs, réduire les délais de production de 30% et maximiser le ROI marketing.</p>
-
-                <div class="about-highlight" data-fr="L'avenir de la création vidéo réside dans la symbiose entre intuition artistique et intelligence artificielle." data-en="The future of video creation lies in the symbiosis between artistic intuition and artificial intelligence.">L'avenir de la création vidéo réside dans la symbiose entre intuition artistique et intelligence artificielle.</div>
+                <p data-i18n="about.p1"></p>
+                <p data-i18n="about.p2"></p>
+                <div class="about-highlight" data-i18n="about.highlight"></div>
             </div>
 
             <div class="stats-grid">
                 <div class="stat">
                     <div class="stat-number">2M+</div>
-                    <div class="stat-label" data-fr="Vues générées" data-en="Views generated">Vues générées</div>
+                    <div class="stat-label" data-i18n="about.stat1"></div>
                 </div>
                 <div class="stat">
                     <div class="stat-number">+45%</div>
-                    <div class="stat-label" data-fr="Engagement moyen" data-en="Average engagement">Engagement moyen</div>
+                    <div class="stat-label" data-i18n="about.stat2"></div>
                 </div>
                 <div class="stat">
                     <div class="stat-number">250+</div>
-                    <div class="stat-label" data-fr="Vidéos réalisées" data-en="Videos produced">Vidéos réalisées</div>
+                    <div class="stat-label" data-i18n="about.stat3"></div>
                 </div>
                 <div class="stat">
                     <div class="stat-number">15+</div>
-                    <div class="stat-label" data-fr="Années d'expérience" data-en="Years of experience">Années d'expérience</div>
+                    <div class="stat-label" data-i18n="about.stat4"></div>
                 </div>
             </div>
         </div>
@@ -833,62 +70,62 @@
     <!-- EXPERIENCE SECTION -->
     <section class="experience">
         <div class="section-header">
-            <div class="section-overline" data-fr="PARCOURS" data-en="EXPERIENCE">PARCOURS</div>
-            <h2 class="section-title" data-fr="Expérience <span class='accent'>Professionnelle</span>" data-en="Professional <span class='accent'>Experience</span>">Expérience <span class="accent">Professionnelle</span></h2>
+            <div class="section-overline" data-i18n="experience.overline"></div>
+            <h2 class="section-title" data-i18n="experience.title"></h2>
         </div>
 
         <div class="experience-grid">
             <div class="experience-card">
                 <div class="experience-card-content">
-                    <div class="experience-year" data-fr="2008 - Présent" data-en="2008 - Present">2008 - Présent</div>
-                    <div class="experience-title" data-fr="Designer Marketing" data-en="Marketing Designer">Designer Marketing</div>
+                    <div class="experience-year" data-i18n="experience.job1.year"></div>
+                    <div class="experience-title" data-i18n="experience.job1.title"></div>
                     <div class="experience-company">Freelance • Toulouse</div>
-                    <div class="experience-description" data-fr="Stratégie inbound, direction artistique, coordination d'équipes, campagnes print/web/vidéo." data-en="Inbound strategy, art direction, team coordination, print/web/video campaigns.">Stratégie inbound, direction artistique, coordination d'équipes, campagnes print/web/vidéo.</div>
+                    <div class="experience-description" data-i18n="experience.job1.description"></div>
                 </div>
             </div>
 
             <div class="experience-card">
                 <div class="experience-card-content">
                     <div class="experience-year">2022 - 2024</div>
-                    <div class="experience-title" data-fr="Vidéaste / Motion Designer" data-en="Videographer / Motion Designer">Vidéaste / Motion Designer</div>
+                    <div class="experience-title" data-i18n="experience.job2.title"></div>
                     <div class="experience-company">ADONIS Créative • Toulouse</div>
-                    <div class="experience-description" data-fr="Réalisation de vidéos et motion design pour Airbus. Intégration d'outils IA génératifs pour optimiser les workflows." data-en="Video production and motion design for Airbus. Integration of generative AI tools to optimize workflows.">Réalisation de vidéos et motion design pour Airbus. Intégration d'outils IA génératifs pour optimiser les workflows.</div>
+                    <div class="experience-description" data-i18n="experience.job2.description"></div>
                 </div>
             </div>
 
             <div class="experience-card">
                 <div class="experience-card-content">
                     <div class="experience-year">2015 - 2018</div>
-                    <div class="experience-title" data-fr="Marketing Designer" data-en="Marketing Designer">Marketing Designer</div>
+                    <div class="experience-title" data-i18n="experience.job3.title"></div>
                     <div class="experience-company">Ethics Group • Toulouse</div>
-                    <div class="experience-description" data-fr="Production print, web et vidéo. Positionnement des marques. Coordination d'équipes créatives." data-en="Print, web and video production. Brand positioning. Coordination of creative teams.">Production print, web et vidéo. Positionnement des marques. Coordination d'équipes créatives.</div>
+                    <div class="experience-description" data-i18n="experience.job3.description"></div>
                 </div>
             </div>
 
             <div class="experience-card">
                 <div class="experience-card-content">
                     <div class="experience-year">2011 - 2015</div>
-                    <div class="experience-title" data-fr="Designer Digital" data-en="Digital Designer">Designer Digital</div>
+                    <div class="experience-title" data-i18n="experience.job4.title"></div>
                     <div class="experience-company">LaCréa Multimédia (M6) • Toulouse</div>
-                    <div class="experience-description" data-fr="Conception de spots TV, campagnes web et mobile. Production haute cadence qualité broadcast." data-en="Design of TV spots, web and mobile campaigns. High-speed broadcast quality production.">Conception de spots TV, campagnes web et mobile. Production haute cadence qualité broadcast.</div>
+                    <div class="experience-description" data-i18n="experience.job4.description"></div>
                 </div>
             </div>
 
             <div class="experience-card">
                 <div class="experience-card-content">
                     <div class="experience-year">2006 - 2008</div>
-                    <div class="experience-title" data-fr="Directeur Artistique" data-en="Art Director">Directeur Artistique</div>
+                    <div class="experience-title" data-i18n="experience.job5.title"></div>
                     <div class="experience-company">Msmart Inc • New York City</div>
-                    <div class="experience-description" data-fr="Direction artistique et motion design. Spots TV pour BET et MTV. Adaptation culturelle US/EU." data-en="Art direction and motion design. TV spots for BET and MTV. Cultural adaptation US/EU.">Direction artistique et motion design. Spots TV pour BET et MTV. Adaptation culturelle US/EU.</div>
+                    <div class="experience-description" data-i18n="experience.job5.description"></div>
                 </div>
             </div>
 
             <div class="experience-card">
                 <div class="experience-card-content">
                     <div class="experience-year">2002 - 2005</div>
-                    <div class="experience-title" data-fr="Directeur Artistique Junior" data-en="Junior Art Director">Directeur Artistique Junior</div>
+                    <div class="experience-title" data-i18n="experience.job6.title"></div>
                     <div class="experience-company">123Multimédia • Toulouse</div>
-                    <div class="experience-description" data-fr="Direction artistique de campagnes print 12 pays. Gestion équipe créative 6 personnes." data-en="Art direction for print campaigns in 12 countries. Management of 6-person creative team.">Direction artistique de campagnes print 12 pays. Gestion équipe créative 6 personnes.</div>
+                    <div class="experience-description" data-i18n="experience.job6.description"></div>
                 </div>
             </div>
         </div>
@@ -897,9 +134,9 @@
     <!-- PORTFOLIO SECTION -->
     <section class="portfolio">
         <div class="section-header">
-            <div class="section-overline" data-fr="PORTFOLIO" data-en="PORTFOLIO">PORTFOLIO</div>
-            <h2 class="section-title" data-fr="Projets & <span class='accent'>Réalisations</span>" data-en="Projects & <span class='accent'>Creations</span>">Projets & <span class="accent">Réalisations</span></h2>
-            <p class="section-subtitle" data-fr="Une sélection de mes meilleures créations vidéo et motion design." data-en="A selection of my best video and motion design creations.">Une sélection de mes meilleures créations vidéo et motion design.</p>
+            <div class="section-overline" data-i18n="portfolio.overline"></div>
+            <h2 class="section-title" data-i18n="portfolio.title"></h2>
+            <p class="section-subtitle" data-i18n="portfolio.subtitle"></p>
         </div>
 
         <div class="portfolio-grid">
@@ -908,8 +145,8 @@
                     <iframe src="https://www.youtube.com/embed/Fp3g5hr6RAU" title="Portfolio Principal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="portfolio-info">
-                    <h3 data-fr="Portfolio Principal" data-en="Main Portfolio">Portfolio Principal</h3>
-                    <p data-fr="Compilation de mes meilleurs projets vidéo et motion design pour grandes entreprises." data-en="Compilation of my best video and motion design projects for major companies.">Compilation de mes meilleurs projets vidéo et motion design pour grandes entreprises.</p>
+                    <h3 data-i18n="portfolio.item1.title"></h3>
+                    <p data-i18n="portfolio.item1.description"></p>
                 </div>
             </div>
 
@@ -918,8 +155,8 @@
                     <iframe src="https://www.youtube.com/embed/uLMkjJjTc9s" title="Short Vidéo 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="portfolio-info">
-                    <h3 data-fr="Contenu Court Format" data-en="Short Form Content">Contenu Court Format</h3>
-                    <p data-fr="Créations optimisées pour les réseaux sociaux et le short-form content." data-en="Creations optimized for social networks and short-form content.">Créations optimisées pour les réseaux sociaux et le short-form content.</p>
+                    <h3 data-i18n="portfolio.item2.title"></h3>
+                    <p data-i18n="portfolio.item2.description"></p>
                 </div>
             </div>
 
@@ -928,8 +165,8 @@
                     <iframe src="https://www.youtube.com/embed/0kBfVG1fZxs" title="Short Vidéo 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="portfolio-info">
-                    <h3 data-fr="Motion Design & Effects" data-en="Motion Design & Effects">Motion Design & Effects</h3>
-                    <p data-fr="Démonstration de techniques avancées en motion design et effets visuels." data-en="Demonstration of advanced motion design and visual effects techniques.">Démonstration de techniques avancées en motion design et effets visuels.</p>
+                    <h3 data-i18n="portfolio.item3.title"></h3>
+                    <p data-i18n="portfolio.item3.description"></p>
                 </div>
             </div>
         </div>
@@ -938,46 +175,46 @@
     <!-- SKILLS SECTION -->
     <section class="skills">
         <div class="section-header">
-            <div class="section-overline">COMPÉTENCES</div>
-            <h2 class="section-title">Expertise <span class="accent">Technique</span></h2>
-            <p class="section-subtitle">Maîtrise des outils modernes et des technologies créatives du moment.</p>
+            <div class="section-overline" data-i18n="skills.overline"></div>
+            <h2 class="section-title" data-i18n="skills.title"></h2>
+            <p class="section-subtitle" data-i18n="skills.subtitle"></p>
         </div>
 
         <div class="skills-grid">
             <div class="skill-card">
                 <div class="skill-icon">🚀</div>
-                <div class="skill-title">IA & Innovation</div>
-                <div class="skill-list"><strong>IA Générative:</strong> GPT-5, Claude 4, Gemini 2.5<br><strong>Vidéo:</strong> Google Veo3, Runway Gen-3<br><strong>Image:</strong> Midjourney V7, FLUX.1<br><strong>Automation:</strong> Prompt Engineering avancé</div>
+                <div class="skill-title" data-i18n="skills.skill1.title"></div>
+                <div class="skill-list" data-i18n="skills.skill1.list"></div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon">📊</div>
-                <div class="skill-title">Marketing & Analytics</div>
-                <div class="skill-list"><strong>Strategy:</strong> ROI Tracking, KPI Marketing<br><strong>Tools:</strong> Google Analytics 4, YouTube Ads<br><strong>Content:</strong> Data-driven Storytelling<br><strong>Performance:</strong> A/B Testing, SEO/SEM</div>
+                <div class="skill-title" data-i18n="skills.skill2.title"></div>
+                <div class="skill-list" data-i18n="skills.skill2.list"></div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon">🎨</div>
-                <div class="skill-title">Création Graphique</div>
-                <div class="skill-list"><strong>Adobe CC:</strong> Photoshop, Illustrator, InDesign<br><strong>Direction:</strong> Branding & Brand Identity<br><strong>Design:</strong> UI/UX, Editorial Design<br><strong>Typo:</strong> Hiérarchie visuelle, Typography</div>
+                <div class="skill-title" data-i18n="skills.skill3.title"></div>
+                <div class="skill-list" data-i18n="skills.skill3.list"></div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon">🎬</div>
-                <div class="skill-title">Audio & Vidéo</div>
-                <div class="skill-list"><strong>Vidéo:</strong> After Effects, DaVinci Resolve<br><strong>Montage:</strong> Premiere Pro, CapCut<br><strong>Audio:</strong> Logic Pro X, FL Studio<br><strong>Post-prod:</strong> Color Grading, Mastering</div>
+                <div class="skill-title" data-i18n="skills.skill4.title"></div>
+                <div class="skill-list" data-i18n="skills.skill4.list"></div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon">👥</div>
-                <div class="skill-title">Management & Leadership</div>
-                <div class="skill-list"><strong>Coordination:</strong> Équipes, agences, freelances<br><strong>Project Mgmt:</strong> Gestion de projets complexes<br><strong>Direction:</strong> Direction artistique, Creative Lead<br><strong>Soft Skills:</strong> Communication, Collaboration</div>
+                <div class="skill-title" data-i18n="skills.skill5.title"></div>
+                <div class="skill-list" data-i18n="skills.skill5.list"></div>
             </div>
 
             <div class="skill-card">
                 <div class="skill-icon">🌍</div>
-                <div class="skill-title">International & Langues</div>
-                <div class="skill-list"><strong>Langues:</strong> 🇫🇷 Français (Natif), 🇺🇸 Anglais (Courant)<br><strong>Expérience:</strong> USA, EU, International<br><strong>Adaptation:</strong> Culturelle, stratégique<br><strong>Réseaux:</strong> Global networking</div>
+                <div class="skill-title" data-i18n="skills.skill6.title"></div>
+                <div class="skill-list" data-i18n="skills.skill6.list"></div>
             </div>
         </div>
     </section>
@@ -985,55 +222,19 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-content">
-            <h2 class="footer-title">Créons l'<span class="accent">extraordinaire</span><br>ensemble 🚀</h2>
+            <h2 class="footer-title" data-i18n="footer.title"></h2>
             
             <div class="contact-links">
-                <a href="tel:+33651049325">📲 Appeler</a>
-                <a href="mailto:olivierlavergne@gmail.com">✉️ Email</a>
-                <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank">🎬 Portfolio</a>
-                <a href="https://youtube.com/shorts/uLMkjJjTc9s" target="_blank">🎥 Vidéos</a>
+                <a href="tel:+33651049325" data-i18n="footer.call"></a>
+                <a href="mailto:olivierlavergne@gmail.com" data-i18n="footer.email"></a>
+                <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" data-i18n="footer.portfolio"></a>
+                <a href="https://youtube.com/shorts/uLMkjJjTc9s" target="_blank" data-i18n="footer.videos"></a>
             </div>
 
-            <div class="footer-credit">© 2025 Olivier Lavergne • Toulouse & Beyond<br>Vidéaste Motion Designer • Créateur de Contenus Intelligents</div>
+            <div class="footer-credit" data-i18n="footer.credit"></div>
         </div>
     </footer>
 
-    <script>
-        const themeBtns = document.querySelectorAll('.theme-btn');
-        const langBtns = document.querySelectorAll('.lang-btn');
-        const translatableElements = document.querySelectorAll('[data-fr]');
-
-        let currentTheme = 'dark';
-        let currentLang = 'fr';
-
-        function setTheme(theme) {
-            currentTheme = theme;
-            document.body.classList.toggle('light-mode', theme === 'light');
-            themeBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.theme === theme));
-        }
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            langBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.lang === lang));
-            translatableElements.forEach(el => {
-                const text = el.getAttribute(`data-${lang}`);
-                if (text) el.innerHTML = text;
-            });
-        }
-
-        setTheme(currentTheme);
-        setLanguage(currentLang);
-
-        themeBtns.forEach(btn => btn.addEventListener('click', () => setTheme(btn.dataset.theme)));
-        langBtns.forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', e => {
-                e.preventDefault();
-                const target = document.querySelector(anchor.getAttribute('href'));
-                target?.scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
