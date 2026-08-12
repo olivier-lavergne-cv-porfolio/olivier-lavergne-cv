@@ -3,663 +3,575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Olivier Lavergne - Vidéaste, Motion Designer & Expert IA Générative Créative | Toulouse & au-delà">
-    <title>Olivier Lavergne | Vidéaste & Expert IA Générative</title>
+    <meta name="description" content="Olivier Lavergne — Vidéaste, Motion Designer & Expert IA Générative Créative. Toulouse & au-delà.">
+    <title>Olivier Lavergne — Vidéaste & Expert IA Générative</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Inter:wght@400;500;600;700&display=swap">
+
     <style>
+        /* ============================================================
+           EDITORIAL STUDIO — Olivier Lavergne
+           Direction: crème / noir chaud / terracotta
+           ============================================================ */
+
         :root {
-            --primary: #000000;
-            --secondary: #ffffff;
-            --accent-cyan: #00d4ff;
-            --accent-gold: #ffd700;
-            --accent-purple: #c77dff;
-            --gray: #1a1a1a;
+            --bg: #F4F1EA;
+            --bg-alt: #EAE5DA;
+            --text: #1A1614;
+            --text-muted: #5C554D;
+            --accent: #B04A2E;
+            --accent-warm: #8A5A2B;
+            --border: rgba(26, 22, 20, 0.14);
+            --border-strong: rgba(26, 22, 20, 0.32);
+            --card: #FFFFFF;
+            --shadow-sm: 0 1px 2px rgba(26, 22, 20, 0.04);
+            --shadow-md: 0 8px 24px rgba(26, 22, 20, 0.08);
+            --serif: 'Fraunces', ui-serif, Georgia, serif;
+            --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        body.dark-mode {
+            --bg: #14110F;
+            --bg-alt: #1C1815;
+            --text: #EDE6D6;
+            --text-muted: #9A9084;
+            --accent: #D4A017;
+            --accent-warm: #C97B5C;
+            --border: rgba(237, 230, 214, 0.14);
+            --border-strong: rgba(237, 230, 214, 0.32);
+            --card: #1A1614;
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-            background: var(--primary);
-            color: var(--secondary);
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
             line-height: 1.6;
+            font-weight: 400;
+            font-feature-settings: "ss01", "cv11";
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
-        /* ===== ANIMATIONS ===== */
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        h1, h2, h3, .serif {
+            font-family: var(--serif);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            font-feature-settings: "ss01", "ss02";
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-60px); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        a { color: inherit; }
 
         /* ===== HEADER ===== */
         header {
             position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
+            top: 0; right: 0; left: 0;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.7);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            padding: 1.5rem 2rem;
+            background: color-mix(in srgb, var(--bg) 88%, transparent);
+            border-bottom: 1px solid transparent;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        header.scrolled {
+            border-bottom-color: var(--border);
+        }
+
+        .brand {
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .header-controls {
+            display: flex;
+            gap: 0.75rem;
             align-items: center;
         }
 
         .theme-switcher,
         .lang-switcher {
             display: flex;
-            gap: 0;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            padding: 0.4rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--card);
         }
 
         .theme-btn,
         .lang-btn {
             background: transparent;
             border: none;
-            color: rgba(255, 255, 255, 0.6);
-            padding: 0.6rem 1rem;
-            font-weight: 700;
-            font-size: 0.95rem;
+            color: var(--text-muted);
+            padding: 0.4rem 0.75rem;
+            font-family: var(--sans);
+            font-weight: 500;
+            font-size: 0.8rem;
             cursor: pointer;
-            border-radius: 50px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             letter-spacing: 0.05em;
             text-transform: uppercase;
         }
 
-        .lang-btn {
-            padding: 0.6rem 1.2rem;
-            font-size: 0.9rem;
-        }
-
         .theme-btn.active,
         .lang-btn.active {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            color: var(--primary);
-            box-shadow: 0 8px 24px rgba(0, 212, 255, 0.3);
+            background: var(--text);
+            color: var(--bg);
         }
 
         .theme-btn:hover:not(.active),
         .lang-btn:hover:not(.active) {
-            color: rgba(255, 255, 255, 0.9);
+            color: var(--text);
         }
 
-        /* ===== LIGHT MODE ===== */
-        body.light-mode {
-            background: #f5f5f5;
-            color: #1d1d1f;
-        }
-
-        body.light-mode header {
-            background: rgba(255, 255, 255, 0.8);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-mode .theme-switcher,
-        body.light-mode .lang-switcher {
-            background: rgba(0, 0, 0, 0.08);
-            border-color: rgba(0, 0, 0, 0.15);
-        }
-
-        body.light-mode .theme-btn,
-        body.light-mode .lang-btn {
-            color: rgba(0, 0, 0, 0.6);
-        }
-
-        body.light-mode .theme-btn:hover:not(.active),
-        body.light-mode .lang-btn:hover:not(.active) {
-            color: rgba(0, 0, 0, 0.9);
-        }
-
-        body.light-mode .hero {
-            background: linear-gradient(135deg, #f5f5f5 0%, #e8e0f5 25%, #e8e8f5 50%, #e0e8f5 75%, #f5f5f5 100%);
-        }
-
-        body.light-mode .hero h1 {
-            background: linear-gradient(135deg, #1d1d1f 0%, #003d7a 50%, #1a0070 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        body.light-mode .hero .subtitle {
-            color: rgba(0, 0, 0, 0.7);
-        }
-
-        body.light-mode section {
-            background: #f5f5f5;
-        }
-
-        body.light-mode .section-title {
-            color: #1d1d1f;
-        }
-
-        body.light-mode .section-subtitle,
-        body.light-mode .about-text p,
-        body.light-mode .stat-label,
-        body.light-mode .experience-description,
-        body.light-mode .portfolio-info p,
-        body.light-mode .skill-list {
-            color: rgba(0, 0, 0, 0.7);
-        }
-
-        body.light-mode .about-text strong,
-        body.light-mode .experience-title {
-            color: #1d1d1f;
-        }
-
-        body.light-mode .about-highlight {
-            background: rgba(0, 100, 255, 0.05);
-            border-color: rgba(0, 100, 255, 0.3);
-            color: rgba(0, 0, 0, 0.85);
-        }
-
-        body.light-mode .experience,
-        body.light-mode footer {
-            background: #efefef;
-        }
-
-        body.light-mode .experience-card,
-        body.light-mode .portfolio-item {
-            background: rgba(255, 255, 255, 0.8);
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-mode .experience-card:hover,
-        body.light-mode .portfolio-item:hover {
-            border-color: #0064ff;
-            background: rgba(255, 255, 255, 0.95);
-        }
-
-        body.light-mode .experience-company {
-            color: rgba(0, 0, 0, 0.6);
-        }
-
-        body.light-mode .skill-card {
-            background: linear-gradient(135deg, rgba(0, 100, 255, 0.05), rgba(100, 50, 200, 0.05));
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-
-        body.light-mode .skill-card:hover {
-            border-color: #0064ff;
-            background: linear-gradient(135deg, rgba(0, 100, 255, 0.1), rgba(100, 50, 200, 0.1));
-        }
-
-        body.light-mode .skill-title,
-        body.light-mode .portfolio-info h3 {
-            color: #1d1d1f;
-        }
-
-        body.light-mode .footer-title {
-            color: #1d1d1f;
-        }
-
-        body.light-mode .contact-links a {
-            border-color: rgba(0, 0, 0, 0.3);
-            color: #1d1d1f;
-        }
-
-        body.light-mode .footer-credit {
-            color: rgba(0, 0, 0, 0.5);
-        }
-
-        /* ===== HERO SECTION ===== */
+        /* ===== HERO ===== */
         .hero {
-            min-height: 120vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
+            align-items: flex-start;
+            padding: 8rem 2rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
             position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #000000 0%, #1a0033 25%, #000033 50%, #001a33 75%, #000000 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            padding-top: 6rem;
-        }
-
-        .hero::before,
-        .hero::after {
-            content: '';
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-        }
-
-        .hero::before {
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.15), transparent);
-            top: -200px;
-            right: -200px;
-            animation: float 20s ease-in-out infinite;
-            z-index: 1;
-        }
-
-        .hero::after {
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(199, 125, 255, 0.1), transparent);
-            bottom: -100px;
-            left: -150px;
-            animation: float 25s ease-in-out infinite reverse;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1100px;
-            padding: 2rem;
         }
 
         .hero-overline {
-            font-size: 0.95rem;
-            letter-spacing: 0.1em;
+            font-family: var(--sans);
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--accent-cyan);
+            color: var(--accent);
             font-weight: 600;
             margin-bottom: 2rem;
-            animation: fadeInDown 1s ease 0.2s both;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-overline::before {
+            content: '';
+            width: 40px;
+            height: 1px;
+            background: var(--accent);
         }
 
         .hero h1 {
-            font-size: clamp(3.5rem, 14vw, 7rem);
-            font-weight: 900;
-            line-height: 1.05;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--accent-cyan) 50%, var(--accent-purple) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInDown 1s ease 0.4s both;
+            font-size: clamp(3rem, 10vw, 7.5rem);
+            font-weight: 400;
+            line-height: 1;
+            letter-spacing: -0.04em;
+            margin-bottom: 2rem;
+            max-width: 12ch;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent);
         }
 
         .hero .subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.6rem);
-            color: rgba(255, 255, 255, 0.75);
+            font-family: var(--sans);
+            font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+            color: var(--text-muted);
             font-weight: 400;
             margin-bottom: 3rem;
-            max-width: 750px;
-            line-height: 1.5;
-            animation: fadeInUp 1s ease 0.6s both;
+            max-width: 55ch;
+            line-height: 1.6;
         }
 
         .cta-button {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            color: var(--primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.75rem;
+            background: var(--text);
+            color: var(--bg);
             text-decoration: none;
             border: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1rem;
+            border-radius: 2px;
+            font-family: var(--sans);
+            font-weight: 500;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
-            animation: fadeInUp 1s ease 0.8s both;
+            letter-spacing: 0.02em;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .cta-button::after {
+            content: '→';
+            transition: transform 0.2s ease;
         }
 
         .cta-button:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 30px 80px rgba(0, 212, 255, 0.5);
+            background: var(--accent);
+        }
+
+        .cta-button:hover::after {
+            transform: translateX(4px);
         }
 
         /* ===== SECTIONS ===== */
         section {
-            padding: 8rem 2rem;
+            padding: 6rem 2rem;
             position: relative;
-            z-index: 1;
+        }
+
+        .section-inner {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .section-header {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 0 auto 4rem;
         }
 
         .section-overline {
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--accent-cyan);
+            color: var(--accent);
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-overline::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: var(--accent);
         }
 
         .section-title {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 900;
-            margin-bottom: 2rem;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
+            font-family: var(--serif);
+            font-size: clamp(2.25rem, 5vw, 3.75rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            max-width: 20ch;
         }
 
+        .section-title em,
         .section-title .accent {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--accent);
         }
 
         .section-subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 3rem;
-            max-width: 650px;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 60ch;
             line-height: 1.7;
         }
 
-        /* ===== ABOUT SECTION ===== */
+        /* ===== ABOUT ===== */
         .about {
-            background: var(--primary);
+            background: var(--bg);
+            border-top: 1px solid var(--border);
         }
 
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 5rem;
+            align-items: start;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .about-text {
-            max-width: 550px;
-        }
-
         .about-text p {
-            font-size: 1.1rem;
-            line-height: 1.9;
-            margin-bottom: 2rem;
-            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--text);
         }
 
         .about-text strong {
-            color: var(--secondary);
+            font-weight: 600;
         }
 
         .about-highlight {
             padding: 2rem;
-            border-left: 3px solid var(--accent-cyan);
-            background: rgba(0, 212, 255, 0.05);
-            border-radius: 8px;
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
-            font-weight: 600;
-            line-height: 1.8;
+            border-left: 2px solid var(--accent);
+            background: var(--bg-alt);
+            font-family: var(--serif);
+            font-size: 1.15rem;
+            font-weight: 400;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--text);
+            margin-top: 2rem;
         }
 
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
         }
 
         .stat {
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+            padding: 2rem 1.5rem;
+            background: var(--bg);
+            transition: background 0.2s ease;
         }
 
         .stat:hover {
-            background: rgba(0, 212, 255, 0.1);
-            border-color: var(--accent-cyan);
-            transform: translateY(-8px);
+            background: var(--card);
         }
 
         .stat-number {
-            font-size: 2.8rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-family: var(--serif);
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1;
             margin-bottom: 0.5rem;
+            color: var(--text);
+            letter-spacing: -0.03em;
         }
 
         .stat-label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.75rem;
+            color: var(--text-muted);
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            font-weight: 600;
+            letter-spacing: 0.1em;
+            font-weight: 500;
         }
 
-        /* ===== EXPERIENCE SECTION ===== */
+        /* ===== EXPERIENCE ===== */
         .experience {
-            background: var(--gray);
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border);
         }
 
         .experience-grid {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 0;
+            border: 1px solid var(--border);
+            background: var(--border);
         }
 
         .experience-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 3rem;
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .experience-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), transparent);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .experience-card:hover {
-            transform: translateY(-12px);
-            border-color: var(--accent-cyan);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .experience-card:hover::before {
-            opacity: 1;
-        }
-
-        .experience-card-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .experience-year {
-            font-size: 0.9rem;
-            color: var(--accent-cyan);
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-        }
-
-        .experience-title {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
-        }
-
-        .experience-company {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 1.5rem;
-        }
-
-        .experience-description {
-            font-size: 0.95rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.75);
-        }
-
-        /* ===== PORTFOLIO SECTION ===== */
-        .portfolio {
-            background: var(--primary);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .portfolio-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            background: var(--bg);
+            padding: 2.5rem;
+            transition: background 0.3s ease;
             display: flex;
             flex-direction: column;
         }
 
-        .portfolio-item:hover {
-            transform: translateY(-12px);
-            border-color: var(--accent-cyan);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
+        .experience-card:hover {
+            background: var(--card);
         }
 
-        /* ===== PORTFOLIO ROW LABEL ===== */
+        .experience-year {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1.25rem;
+        }
+
+        .experience-title {
+            font-family: var(--serif);
+            font-size: 1.35rem;
+            font-weight: 500;
+            margin-bottom: 0.4rem;
+            color: var(--text);
+            letter-spacing: -0.01em;
+            line-height: 1.3;
+        }
+
+        .experience-company {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+            font-style: italic;
+        }
+
+        .experience-description {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--text-muted);
+        }
+
+        /* ===== PORTFOLIO ===== */
+        .portfolio {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+        }
+
         .portfolio-row-label {
             max-width: 1200px;
-            margin: 0 auto 2rem auto;
-            font-size: 1rem;
-            color: rgba(255,255,255,0.55);
-            letter-spacing: 0.04em;
+            margin: 0 auto 2rem;
+            font-family: var(--sans);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
             text-transform: uppercase;
-            border-left: 3px solid var(--accent-cyan);
-            padding-left: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
-        .portfolio-row-label strong {
-            color: var(--accent-cyan);
-        }
-        body.light-mode .portfolio-row-label { color: rgba(0,0,0,0.5); }
 
-        /* ===== INSTAGRAM REEL CONTAINER ===== */
-        .reel-container {
+        .portfolio-row-label strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .portfolio-row-label--spaced {
+            margin-top: 5rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .portfolio-grid--mixed {
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== REEL CARD (custom thumbnail) ===== */
+        .reel-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .reel-poster {
             position: relative;
             width: 100%;
-            aspect-ratio: 3 / 4;
+            aspect-ratio: 1 / 1;
             overflow: hidden;
-            background: #000;
-            border-radius: 12px 12px 0 0;
-        }
-        .reel-container iframe {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
+            background: var(--bg-alt);
         }
 
-        /* ===== SITE PREVIEW IMAGE CARD ===== */
+        .reel-poster img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+        }
+
+        .reel-link:hover .reel-poster img {
+            transform: scale(1.04);
+        }
+
+        .reel-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(20, 17, 15, 0.72) 0%, rgba(20, 17, 15, 0) 45%);
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .reel-link:hover .reel-overlay {
+            opacity: 1;
+        }
+
+        .reel-cta {
+            font-family: var(--sans);
+            color: #F4F1EA;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        /* ===== SITE PREVIEW CARD ===== */
+        .site-preview-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
         .site-img-container {
             position: relative;
             width: 100%;
             overflow: hidden;
-            border-radius: 12px 12px 0 0;
-            aspect-ratio: 3 / 4;
+            aspect-ratio: 1 / 1;
+            background: var(--bg-alt);
         }
+
         .site-preview-img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: top;
             display: block;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
         }
-        .site-img-container:hover .site-preview-img {
+
+        .site-preview-link:hover .site-preview-img {
             transform: scale(1.04);
         }
+
         .site-img-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 60%);
+            background: linear-gradient(to top, rgba(20, 17, 15, 0.72) 0%, rgba(20, 17, 15, 0) 45%);
             display: flex;
             align-items: flex-end;
-            justify-content: center;
-            padding: 1.5rem;
+            padding: 1rem;
             opacity: 0;
-            transition: opacity 0.35s ease;
+            transition: opacity 0.3s ease;
         }
-        .site-img-container:hover .site-img-overlay {
+
+        .site-preview-link:hover .site-img-overlay {
             opacity: 1;
         }
+
         .site-img-overlay span {
-            color: #fff;
-            font-size: 0.95rem;
-            font-weight: 700;
+            color: #F4F1EA;
+            font-size: 0.8rem;
+            font-weight: 500;
             letter-spacing: 0.05em;
-            background: rgba(0,212,255,0.85);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
+            text-transform: uppercase;
         }
 
-        /* External link button */
-        .portfolio-external-link {
-            display: inline-block;
-            margin-top: 1rem;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            text-decoration: none;
-            border: 1px solid rgba(0,212,255,0.3);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-        }
-        .portfolio-external-link:hover {
-            background: var(--accent-cyan);
-            color: #000;
-            border-color: var(--accent-cyan);
-        }
-
+        /* ===== YOUTUBE VIDEO CARD ===== */
         .video-container {
             position: relative;
             width: 100%;
@@ -677,189 +589,196 @@
             border: none;
         }
 
+        /* ===== PORTFOLIO INFO ===== */
         .portfolio-info {
-            padding: 2rem;
+            padding: 1rem 0 0;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .portfolio-info h3 {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 0.8rem;
+            font-family: var(--serif);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.01em;
         }
 
         .portfolio-info p {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.75);
-            line-height: 1.6;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.55;
             flex-grow: 1;
         }
 
-        /* ===== SKILLS SECTION ===== */
+        .portfolio-external-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent);
+            padding-bottom: 2px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            transition: color 0.2s ease, border-color 0.2s ease;
+            align-self: flex-start;
+        }
+
+        .portfolio-external-link:hover {
+            color: var(--text);
+            border-bottom-color: var(--text);
+        }
+
+        /* ===== SKILLS ===== */
         .skills {
-            background: var(--primary);
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border);
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 0;
             max-width: 1200px;
             margin: 0 auto;
+            background: var(--border);
+            border: 1px solid var(--border);
+            gap: 1px;
         }
 
         .skill-card {
-            padding: 2.5rem;
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08), rgba(199, 125, 255, 0.08));
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200px;
-            height: 200px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.3), transparent);
-            border-radius: 50%;
-            opacity: 0;
-            transition: all 0.6s ease;
+            padding: 2.5rem 2rem;
+            background: var(--bg);
+            transition: background 0.3s ease;
         }
 
         .skill-card:hover {
-            transform: translateY(-12px);
-            border-color: var(--accent-cyan);
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(199, 125, 255, 0.15));
-        }
-
-        .skill-card:hover::before {
-            opacity: 1;
-            top: -20%;
-            right: -20%;
+            background: var(--card);
         }
 
         .skill-icon {
-            font-size: 2.2rem;
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            line-height: 32px;
+            text-align: center;
+            border: 1px solid var(--border-strong);
+            border-radius: 50%;
+            font-size: 0.9rem;
             margin-bottom: 1.5rem;
+            color: var(--accent);
         }
 
         .skill-title {
-            font-size: 1.3rem;
-            font-weight: 800;
-            margin-bottom: 1.2rem;
-            color: var(--secondary);
+            font-family: var(--serif);
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: var(--text);
+            letter-spacing: -0.01em;
         }
 
         .skill-list {
-            font-size: 0.95rem;
-            line-height: 1.9;
-            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.9rem;
+            line-height: 1.75;
+            color: var(--text-muted);
+        }
+
+        .skill-list strong {
+            color: var(--text);
+            font-weight: 600;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d1a4d 25%, #1a1a33 50%, #1a2d33 75%, #1a1a1a 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            color: var(--secondary);
-            padding: 6rem 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
+            background: var(--text);
+            color: var(--bg);
+            padding: 6rem 2rem 3rem;
+            border-top: 1px solid var(--border);
         }
 
-        footer::before {
-            content: '';
-            position: absolute;
-            inset: 0 0 auto 0;
-            background: radial-gradient(circle at 50% 0%, rgba(0, 212, 255, 0.1), transparent);
-            pointer-events: none;
+        body.dark-mode footer {
+            background: var(--bg-alt);
+            color: var(--text);
         }
 
         .footer-content {
             max-width: 1200px;
             margin: 0 auto;
-            position: relative;
-            z-index: 1;
         }
 
         .footer-title {
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            font-weight: 900;
+            font-family: var(--serif);
+            font-size: clamp(2rem, 5vw, 3.25rem);
+            font-weight: 400;
             margin-bottom: 3rem;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            max-width: 22ch;
         }
 
+        .footer-title em,
         .footer-title .accent {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            font-style: italic;
+            color: var(--accent);
         }
 
         .contact-links {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
+            gap: 2rem;
             flex-wrap: wrap;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .contact-links a {
-            color: var(--secondary);
+            color: inherit;
             text-decoration: none;
-            font-size: 1rem;
-            font-weight: 700;
-            padding: 0.8rem 1.8rem;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            background: transparent;
+            font-size: 0.95rem;
+            font-weight: 400;
+            border-bottom: 1px solid currentColor;
+            padding-bottom: 3px;
+            transition: color 0.2s ease, border-color 0.2s ease;
         }
 
         .contact-links a:hover {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            border-color: transparent;
-            color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
+            color: var(--accent);
+            border-bottom-color: var(--accent);
         }
 
         .footer-credit {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-top: 3rem;
+            font-size: 0.8rem;
+            opacity: 0.6;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(244, 241, 234, 0.15);
+            line-height: 1.6;
+        }
+
+        body.dark-mode .footer-credit {
+            border-top-color: var(--border);
         }
 
         /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .about-content { grid-template-columns: 1fr; gap: 3rem; }
+        }
+
         @media (max-width: 768px) {
-            .hero { min-height: 90vh; }
-            .hero h1 { font-size: 2.5rem; }
-            .hero .subtitle { font-size: 1.1rem; }
-            section { padding: 4rem 1.5rem; }
-            .about-content,
-            .stats-grid,
-            .experience-grid,
-            .skills-grid,
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .contact-links { gap: 1rem; flex-direction: column; }
-            .contact-links a { width: 100%; }
+            header { padding: 0.75rem 1.25rem; }
+            .brand { display: none; }
+            .hero { padding: 6rem 1.25rem 3rem; min-height: 85vh; }
+            section { padding: 4rem 1.25rem; }
+            .section-header { margin-bottom: 3rem; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .contact-links { flex-direction: column; gap: 1rem; }
         }
 
         @media (max-width: 480px) {
-            .hero { min-height: 70vh; }
-            .hero h1 { font-size: 2rem; }
-            section { padding: 3rem 1rem; }
-            .footer-title { font-size: 1.8rem; }
+            .hero { padding-top: 5rem; }
+            .theme-btn, .lang-btn { padding: 0.35rem 0.55rem; font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -867,41 +786,42 @@
 
     <!-- HEADER -->
     <header>
-        <div class="theme-switcher">
-            <button class="theme-btn active" data-theme="dark">🌙</button>
-            <button class="theme-btn" data-theme="light">☀️</button>
-        </div>
-        <div class="lang-switcher">
-            <button class="lang-btn active" data-lang="fr">FR</button>
-            <button class="lang-btn" data-lang="en">EN</button>
+        <div class="brand">Olivier Lavergne</div>
+        <div class="header-controls">
+            <div class="theme-switcher">
+                <button type="button" class="theme-btn active" data-theme="light" aria-label="Mode clair">Day</button>
+                <button type="button" class="theme-btn" data-theme="dark" aria-label="Mode sombre">Night</button>
+            </div>
+            <div class="lang-switcher">
+                <button type="button" class="lang-btn active" data-lang="fr" aria-label="Français">FR</button>
+                <button type="button" class="lang-btn" data-lang="en" aria-label="English">EN</button>
+            </div>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero" id="hero">
-        <div class="hero-content">
-            <div class="hero-overline" data-fr="🚀 Vidéaste · Motion Designer · Expert IA Générative Créative" data-en="🚀 Videographer · Motion Designer · Generative AI Creative Expert">🚀 Vidéaste · Motion Designer · Expert IA Générative Créative</div>
-            <h1 data-fr="Expert<br><span>IA Générative</span><br>& Vidéaste" data-en="Generative AI<br><span>Creative</span><br>Expert & Filmmaker">Expert<br><span>IA Générative</span><br>& Vidéaste</h1>
-            <p class="subtitle" data-fr="20 ans d'expertise audiovisuelle & pionnier de l'intégration de l'IA générative dans les workflows créatifs — de la stratégie à la diffusion multicanal." data-en="20 years of audiovisual expertise & pioneer in integrating generative AI into creative workflows — from strategy to multichannel distribution.">20 ans d'expertise audiovisuelle & pionnier de l'intégration de l'IA générative dans les workflows créatifs — de la stratégie à la diffusion multicanal.</p>
-            <a href="#about" class="cta-button" data-fr="Découvrir mon profil" data-en="Discover my profile">Découvrir mon profil</a>
-        </div>
+        <div class="hero-overline" data-fr="Vidéaste · Motion Designer · Expert IA Générative" data-en="Videographer · Motion Designer · Generative AI Expert">Vidéaste · Motion Designer · Expert IA Générative</div>
+        <h1 data-fr="Vingt ans<br>d'<em>images</em>,<br>d'<em>IA</em> et<br>de récits." data-en="Twenty years<br>of <em>images</em>,<br><em>AI</em> and<br>storytelling.">Vingt ans<br>d'<em>images</em>,<br>d'<em>IA</em> et<br>de récits.</h1>
+        <p class="subtitle" data-fr="Direction artistique, production audiovisuelle et intégration d'IA générative dans les workflows créatifs — de la stratégie à la diffusion multicanal." data-en="Art direction, audiovisual production and generative AI integration in creative workflows — from strategy to multichannel distribution.">Direction artistique, production audiovisuelle et intégration d'IA générative dans les workflows créatifs — de la stratégie à la diffusion multicanal.</p>
+        <a href="#about" class="cta-button" data-fr="Découvrir le profil" data-en="Discover the profile">Découvrir le profil</a>
     </section>
 
-    <!-- ABOUT SECTION -->
+    <!-- ABOUT -->
     <section class="about" id="about">
         <div class="section-header">
-            <div class="section-overline" data-fr="À PROPOS" data-en="ABOUT">À PROPOS</div>
-            <h2 class="section-title" data-fr="Vidéaste, Motion Designer &amp; <span class='accent'>Expert IA Générative</span>" data-en="Videographer, Motion Designer &amp; <span class='accent'>Generative AI Expert</span>">Vidéaste, Motion Designer &amp; <span class="accent">Expert IA Générative</span></h2>
+            <div class="section-overline" data-fr="À propos" data-en="About">À propos</div>
+            <h2 class="section-title" data-fr="Vidéaste, motion designer &amp; <em>expert IA générative</em>" data-en="Videographer, motion designer &amp; <em>generative AI expert</em>">Vidéaste, motion designer &amp; <em>expert IA générative</em></h2>
             <p class="section-subtitle" data-fr="Plus de 20 ans d'expertise en production audiovisuelle et direction artistique pour grands comptes et marchés internationaux." data-en="Over 20 years of expertise in audiovisual production and art direction for major accounts and international markets.">Plus de 20 ans d'expertise en production audiovisuelle et direction artistique pour grands comptes et marchés internationaux.</p>
         </div>
 
         <div class="about-content">
             <div class="about-text">
                 <p data-fr="<strong>Vidéaste, motion designer et directeur artistique</strong> avec plus de 20 ans d'expérience en production audiovisuelle pour grands comptes (Airbus, M6 Group) et marchés internationaux (New York)." data-en="<strong>Videographer, motion designer and art director</strong> with over 20 years of experience in audiovisual production for major accounts (Airbus, M6 Group) and international markets (New York)."><strong>Vidéaste, motion designer et directeur artistique</strong> avec plus de 20 ans d'expérience en production audiovisuelle pour grands comptes (Airbus, M6 Group) et marchés internationaux (New York).</p>
-                
-                <p data-fr="Pionnier de l'intégration des IA génératives (vidéo, image, contenu, automatisation) dans les workflows de production. Maîtrise complète de la chaîne : stratégie, tournage, montage, étalonnage, motion design, sound design et diffusion multicanal." data-en="Pioneer in integrating generative AI (video, image, content, automation) into production workflows. Full mastery of the chain: strategy, filming, editing, color grading, motion design, sound design and multichannel distribution.">Pionnier de l'intégration des IA génératives dans les workflows de production. Maîtrise complète de la chaîne : stratégie, tournage, montage, étalonnage, motion design, sound design et diffusion multicanal.</p>
 
-                <div class="about-highlight" data-fr="Force de proposition sur l'innovation IA et l'optimisation des processus créatifs, avec un impact direct sur les délais, les coûts et la performance des campagnes." data-en="Proactive leader in AI innovation and creative process optimization, with a direct impact on deadlines, costs and campaign performance.">Force de proposition sur l'innovation IA et l'optimisation des processus créatifs, avec un impact direct sur les délais, les coûts et la performance des campagnes.</div>
+                <p data-fr="Pionnier de l'intégration des IA génératives dans les workflows de production. Maîtrise complète de la chaîne&nbsp;: stratégie, tournage, montage, étalonnage, motion design, sound design et diffusion multicanal." data-en="Pioneer in integrating generative AI into production workflows. Full mastery of the chain: strategy, filming, editing, color grading, motion design, sound design and multichannel distribution.">Pionnier de l'intégration des IA génératives dans les workflows de production. Maîtrise complète de la chaîne&nbsp;: stratégie, tournage, montage, étalonnage, motion design, sound design et diffusion multicanal.</p>
+
+                <div class="about-highlight" data-fr="Force de proposition sur l'innovation IA et l'optimisation des processus créatifs — avec un impact direct sur les délais, les coûts et la performance des campagnes." data-en="Proactive leader in AI innovation and creative process optimization — with a direct impact on deadlines, costs and campaign performance.">Force de proposition sur l'innovation IA et l'optimisation des processus créatifs — avec un impact direct sur les délais, les coûts et la performance des campagnes.</div>
             </div>
 
             <div class="stats-grid">
@@ -925,178 +845,152 @@
         </div>
     </section>
 
-    <!-- EXPERIENCE SECTION -->
+    <!-- EXPERIENCE -->
     <section class="experience">
         <div class="section-header">
-            <div class="section-overline" data-fr="PARCOURS" data-en="EXPERIENCE">PARCOURS</div>
-            <h2 class="section-title" data-fr="Expérience <span class='accent'>Professionnelle</span>" data-en="Professional <span class='accent'>Experience</span>">Expérience <span class="accent">Professionnelle</span></h2>
+            <div class="section-overline" data-fr="Parcours" data-en="Experience">Parcours</div>
+            <h2 class="section-title" data-fr="Expérience <em>professionnelle</em>" data-en="Professional <em>experience</em>">Expérience <em>professionnelle</em></h2>
         </div>
 
         <div class="experience-grid">
             <div class="experience-card">
-                <div class="experience-card-content">
-                    <div class="experience-year" data-fr="2008 - Présent" data-en="2008 - Present">2008 - Présent</div>
-                    <div class="experience-title" data-fr="Designer Marketing & Créateur de Contenus Intelligents" data-en="Marketing Designer & Smart Content Creator">Designer Marketing & Créateur de Contenus Intelligents</div>
-                    <div class="experience-company">Freelance • Toulouse</div>
-                    <div class="experience-description" data-fr="Stratégie inbound (contenu, réseaux sociaux) et direction artistique d'identités visuelles print/digital. Coordination d'équipes agences/freelances. Développement de la marque Onesiker (artiste contemporain) : stratégie de marque, production de contenu, site e-commerce." data-en="Inbound strategy (content, social media) and art direction of print/digital visual identities. Coordination of agency/freelance teams. Development of the Onesiker brand (contemporary artist): brand strategy, content production, e-commerce website.">Stratégie inbound (contenu, réseaux sociaux) et direction artistique d'identités visuelles print/digital. Coordination d'équipes agences/freelances. Développement de la marque Onesiker : stratégie de marque, production de contenu, site e-commerce.</div>
-                </div>
+                <div class="experience-year" data-fr="2008 — Présent" data-en="2008 — Present">2008 — Présent</div>
+                <div class="experience-title" data-fr="Designer Marketing &amp; Créateur de Contenus Intelligents" data-en="Marketing Designer &amp; Smart Content Creator">Designer Marketing &amp; Créateur de Contenus Intelligents</div>
+                <div class="experience-company">Freelance · Toulouse</div>
+                <div class="experience-description" data-fr="Stratégie inbound (contenu, réseaux sociaux) et direction artistique d'identités visuelles print/digital. Coordination d'équipes agences/freelances. Développement de la marque Onesiker&nbsp;: stratégie de marque, production de contenu, site e-commerce." data-en="Inbound strategy (content, social media) and art direction of print/digital visual identities. Coordination of agency/freelance teams. Development of the Onesiker brand: brand strategy, content production, e-commerce website.">Stratégie inbound (contenu, réseaux sociaux) et direction artistique d'identités visuelles print/digital. Coordination d'équipes agences/freelances. Développement de la marque Onesiker&nbsp;: stratégie de marque, production de contenu, site e-commerce.</div>
             </div>
 
             <div class="experience-card">
-                <div class="experience-card-content">
-                    <div class="experience-year">2022 - 2024</div>
-                    <div class="experience-title" data-fr="Vidéaste / Motion Designer" data-en="Videographer / Motion Designer">Vidéaste / Motion Designer</div>
-                    <div class="experience-company">Adonis Créative • Toulouse</div>
-                    <div class="experience-description" data-fr="Réalisation vidéo pour Airbus / Airbus Defence &amp; Space. Couverture évènementielle 360° et création de contenus marketing cybersécurité. Innovation IA : intégration d'outils IA génératifs dans les processus de production." data-en="Video production for Airbus / Airbus Defence &amp; Space. 360° event coverage and cybersecurity marketing content creation. AI Innovation: integration of generative AI tools into production workflows.">Réalisation vidéo pour Airbus / Airbus Defence &amp; Space. Couverture évènementielle 360° et création de contenus marketing cybersécurité. Innovation IA : intégration d'outils IA génératifs dans les processus de production.</div>
-                </div>
+                <div class="experience-year">2022 — 2024</div>
+                <div class="experience-title" data-fr="Vidéaste / Motion Designer" data-en="Videographer / Motion Designer">Vidéaste / Motion Designer</div>
+                <div class="experience-company">Adonis Créative · Toulouse</div>
+                <div class="experience-description" data-fr="Réalisation vidéo pour Airbus / Airbus Defence &amp; Space. Couverture évènementielle 360° et création de contenus marketing cybersécurité. Innovation IA&nbsp;: intégration d'outils IA génératifs dans les processus de production." data-en="Video production for Airbus / Airbus Defence &amp; Space. 360° event coverage and cybersecurity marketing content creation. AI Innovation: integration of generative AI tools into production workflows.">Réalisation vidéo pour Airbus / Airbus Defence &amp; Space. Couverture évènementielle 360° et création de contenus marketing cybersécurité. Innovation IA&nbsp;: intégration d'outils IA génératifs dans les processus de production.</div>
             </div>
 
             <div class="experience-card">
-                <div class="experience-card-content">
-                    <div class="experience-year">2015 - 2018</div>
-                    <div class="experience-title" data-fr="Motion Designer / Marketing Designer" data-en="Motion Designer / Marketing Designer">Motion Designer / Marketing Designer</div>
-                    <div class="experience-company">Ethics Group • Toulouse</div>
-                    <div class="experience-description" data-fr="Gestion de la production print, web et vidéo ; positionnement des marques (com' interne/externe). Coordination des créatifs, agences et freelances ; tournage indoor/outdoor, shooting photo." data-en="Management of print, web and video production; brand positioning (internal/external communications). Coordination of creatives, agencies and freelancers; indoor/outdoor filming, photo shoots.">Gestion de la production print, web et vidéo ; positionnement des marques. Coordination des créatifs, agences et freelances ; tournage indoor/outdoor, shooting photo.</div>
-                </div>
+                <div class="experience-year">2015 — 2018</div>
+                <div class="experience-title" data-fr="Motion Designer / Marketing Designer" data-en="Motion Designer / Marketing Designer">Motion Designer / Marketing Designer</div>
+                <div class="experience-company">Ethics Group · Toulouse</div>
+                <div class="experience-description" data-fr="Gestion de la production print, web et vidéo ; positionnement des marques. Coordination des créatifs, agences et freelances ; tournage indoor/outdoor, shooting photo." data-en="Management of print, web and video production; brand positioning. Coordination of creatives, agencies and freelancers; indoor/outdoor filming, photo shoots.">Gestion de la production print, web et vidéo ; positionnement des marques. Coordination des créatifs, agences et freelances ; tournage indoor/outdoor, shooting photo.</div>
             </div>
 
             <div class="experience-card">
-                <div class="experience-card-content">
-                    <div class="experience-year">2011 - 2015</div>
-                    <div class="experience-title" data-fr="Motion Designer / Designer Digital" data-en="Motion Designer / Digital Designer">Motion Designer / Designer Digital</div>
-                    <div class="experience-company">LaCréa — M6 Group • Toulouse</div>
-                    <div class="experience-description" data-fr="Conception de spots TV pour campagnes web et mobile ; storytelling visuel orienté conversion. Production haute cadence qualité broadcast ; créations newsletters, affiches et web." data-en="Design of TV spots for web and mobile campaigns; conversion-oriented visual storytelling. High-speed broadcast quality production; newsletter, poster and web creations.">Conception de spots TV pour campagnes web et mobile ; storytelling visuel orienté conversion. Production haute cadence qualité broadcast.</div>
-                </div>
+                <div class="experience-year">2011 — 2015</div>
+                <div class="experience-title" data-fr="Motion Designer / Designer Digital" data-en="Motion Designer / Digital Designer">Motion Designer / Designer Digital</div>
+                <div class="experience-company">LaCréa — M6 Group · Toulouse</div>
+                <div class="experience-description" data-fr="Conception de spots TV pour campagnes web et mobile ; storytelling visuel orienté conversion. Production haute cadence qualité broadcast." data-en="Design of TV spots for web and mobile campaigns; conversion-oriented visual storytelling. High-speed broadcast quality production.">Conception de spots TV pour campagnes web et mobile ; storytelling visuel orienté conversion. Production haute cadence qualité broadcast.</div>
             </div>
 
             <div class="experience-card">
-                <div class="experience-card-content">
-                    <div class="experience-year">2006 - 2008</div>
-                    <div class="experience-title" data-fr="Directeur Artistique & Motion Designer" data-en="Art Director & Motion Designer">Directeur Artistique & Motion Designer</div>
-                    <div class="experience-company">MSMART / QMobile • New York City</div>
-                    <div class="experience-description" data-fr="Direction artistique et motion design pour spots TV BET et MTV, urban content. Adaptation culturelle pour marchés US/EU ; supervision de campagnes multicanal." data-en="Art direction and motion design for BET and MTV TV spots, urban content. Cultural adaptation for US/EU markets; supervision of multichannel campaigns.">Direction artistique et motion design pour spots TV BET et MTV, urban content. Adaptation culturelle US/EU ; supervision de campagnes multicanal.</div>
-                </div>
+                <div class="experience-year">2006 — 2008</div>
+                <div class="experience-title" data-fr="Directeur Artistique &amp; Motion Designer" data-en="Art Director &amp; Motion Designer">Directeur Artistique &amp; Motion Designer</div>
+                <div class="experience-company">MSMART / QMobile · New York City</div>
+                <div class="experience-description" data-fr="Direction artistique et motion design pour spots TV BET et MTV, urban content. Adaptation culturelle US/EU ; supervision de campagnes multicanal." data-en="Art direction and motion design for BET and MTV TV spots, urban content. US/EU cultural adaptation; multichannel campaign supervision.">Direction artistique et motion design pour spots TV BET et MTV, urban content. Adaptation culturelle US/EU ; supervision de campagnes multicanal.</div>
             </div>
 
             <div class="experience-card">
-                <div class="experience-card-content">
-                    <div class="experience-year">2002 - 2005</div>
-                    <div class="experience-title" data-fr="Directeur Artistique Junior" data-en="Junior Art Director">Directeur Artistique Junior</div>
-                    <div class="experience-company">123 / Index Multimédia • Toulouse</div>
-                    <div class="experience-description" data-fr="Direction artistique de campagnes print (12 pays) ; gestion d'une équipe créative de 6 personnes." data-en="Art direction for print campaigns (12 countries); management of a 6-person creative team.">Direction artistique de campagnes print (12 pays) ; gestion d'une équipe créative de 6 personnes.</div>
-                </div>
+                <div class="experience-year">2002 — 2005</div>
+                <div class="experience-title" data-fr="Directeur Artistique Junior" data-en="Junior Art Director">Directeur Artistique Junior</div>
+                <div class="experience-company">123 / Index Multimédia · Toulouse</div>
+                <div class="experience-description" data-fr="Direction artistique de campagnes print (12 pays) ; gestion d'une équipe créative de 6 personnes." data-en="Art direction for print campaigns (12 countries); management of a 6-person creative team.">Direction artistique de campagnes print (12 pays) ; gestion d'une équipe créative de 6 personnes.</div>
             </div>
         </div>
     </section>
 
-    <!-- PORTFOLIO SECTION -->
+    <!-- PORTFOLIO -->
     <section class="portfolio">
         <div class="section-header">
-            <div class="section-overline" data-fr="PORTFOLIO" data-en="PORTFOLIO">PORTFOLIO</div>
-            <h2 class="section-title" data-fr="Projets & <span class='accent'>Réalisations</span>" data-en="Projects & <span class='accent'>Creations</span>">Projets & <span class="accent">Réalisations</span></h2>
-            <p class="section-subtitle" data-fr="Une sélection de mes meilleures créations vidéo et motion design." data-en="A selection of my best video and motion design creations.">Une sélection de mes meilleures créations vidéo et motion design.</p>
+            <div class="section-overline" data-fr="Portfolio" data-en="Portfolio">Portfolio</div>
+            <h2 class="section-title" data-fr="Projets &amp; <em>réalisations</em>" data-en="Projects &amp; <em>creations</em>">Projets &amp; <em>réalisations</em></h2>
+            <p class="section-subtitle" data-fr="Une sélection de créations vidéo, motion design et projets de marque." data-en="A selection of video, motion design and brand projects.">Une sélection de créations vidéo, motion design et projets de marque.</p>
         </div>
 
         <div class="portfolio-row-label">
-            <span>🎨 <strong>Onesiker</strong> — Artiste contemporain &amp; contenu IA</span>
+            <span>Onesiker — <strong>Artiste contemporain</strong></span>
         </div>
 
         <div class="portfolio-grid portfolio-grid--mixed">
-            <!-- Instagram Reel 1 -->
-            <div class="portfolio-item portfolio-item--reel">
-                <div class="reel-container">
-                    <iframe src="https://www.instagram.com/reel/DbVV4h1C8au/embed/" title="Onesiker Reel 1" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen scrolling="no" frameborder="0" loading="lazy"></iframe>
-                </div>
+            <div class="portfolio-item">
+                <a href="https://www.instagram.com/reel/DbVV4h1C8au/" target="_blank" rel="noopener" class="reel-link">
+                    <div class="reel-poster">
+                        <img src="reels/reel-DbVV4h1C8au.jpg" alt="Onesiker — Reel Instagram" loading="lazy" width="640" height="640">
+                        <div class="reel-overlay"><span class="reel-cta" data-fr="Voir sur Instagram ↗" data-en="View on Instagram ↗">Voir sur Instagram ↗</span></div>
+                    </div>
+                </a>
                 <div class="portfolio-info">
-                    <h3>Onesiker — Réalisation Vidéo</h3>
-                    <p data-fr="Réalisation, tournage et montage pour la marque artistique Onesiker (@onesiker)." data-en="Directing, filming, and editing for the Onesiker artistic brand (@onesiker).">Réalisation, tournage et montage pour la marque artistique Onesiker (@onesiker).</p>
+                    <h3>Onesiker — Réalisation vidéo</h3>
+                    <p data-fr="Réalisation, tournage et montage pour la marque artistique Onesiker." data-en="Directing, filming and editing for the Onesiker artistic brand.">Réalisation, tournage et montage pour la marque artistique Onesiker.</p>
                 </div>
             </div>
 
-            <!-- Onesiker.org Site Card -->
-            <div class="portfolio-item portfolio-item--site">
-                <a href="https://onesiker.org" target="_blank" class="site-preview-link">
+            <div class="portfolio-item">
+                <a href="https://onesiker.org" target="_blank" rel="noopener" class="site-preview-link">
                     <div class="site-img-container">
-                        <img src="onesiker-preview.png" alt="Onesiker — Graffiti Art Premium depuis 1990" class="site-preview-img">
-                        <div class="site-img-overlay">
-                            <span>🌐 Visiter onesiker.org →</span>
-                        </div>
+                        <img src="onesiker-preview.png" alt="onesiker.org — Graffiti Art Premium" class="site-preview-img" loading="lazy">
+                        <div class="site-img-overlay"><span data-fr="Visiter onesiker.org ↗" data-en="Visit onesiker.org ↗">Visiter onesiker.org ↗</span></div>
                     </div>
                 </a>
                 <div class="portfolio-info">
                     <h3>onesiker.org</h3>
-                    <p data-fr="Site e-commerce et portfolio de la marque artistique Onesiker — stratégie de marque, production de contenu et direction artistique." data-en="E-commerce site and portfolio of the Onesiker artistic brand — brand strategy, content production and art direction.">Site e-commerce et portfolio de la marque artistique Onesiker — stratégie de marque, direction artistique et contenu IA.</p>
-                    <a href="https://onesiker.org" target="_blank" class="portfolio-external-link">🌐 Visiter onesiker.org</a>
+                    <p data-fr="Site e-commerce et portfolio — stratégie de marque, direction artistique, contenu IA." data-en="E-commerce and portfolio site — brand strategy, art direction, AI content.">Site e-commerce et portfolio — stratégie de marque, direction artistique, contenu IA.</p>
                 </div>
             </div>
 
-            <!-- Instagram Reel 2 -->
-            <div class="portfolio-item portfolio-item--reel">
-                <div class="reel-container">
-                    <iframe src="https://www.instagram.com/reel/DYbmc6UiU-X/embed/" title="Onesiker Reel 2" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen scrolling="no" frameborder="0" loading="lazy"></iframe>
-                </div>
+            <div class="portfolio-item">
+                <a href="https://www.instagram.com/reel/DYbmc6UiU-X/" target="_blank" rel="noopener" class="reel-link">
+                    <div class="reel-poster">
+                        <img src="reels/reel-DYbmc6UiU-X.jpg" alt="Onesiker — Reel Instagram" loading="lazy" width="640" height="640">
+                        <div class="reel-overlay"><span class="reel-cta" data-fr="Voir sur Instagram ↗" data-en="View on Instagram ↗">Voir sur Instagram ↗</span></div>
+                    </div>
+                </a>
                 <div class="portfolio-info">
-                    <h3>Onesiker — Réalisation Vidéo</h3>
-                    <p data-fr="Réalisation, tournage et montage pour la marque artistique Onesiker (@onesiker)." data-en="Directing, filming, and editing for the Onesiker artistic brand (@onesiker).">Réalisation, tournage et montage pour la marque artistique Onesiker (@onesiker).</p>
+                    <h3>Onesiker — Réalisation vidéo</h3>
+                    <p data-fr="Réalisation, tournage et montage pour la marque artistique Onesiker." data-en="Directing, filming and editing for the Onesiker artistic brand.">Réalisation, tournage et montage pour la marque artistique Onesiker.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="https://www.instagram.com/reel/DZhYxvCiM_7/" target="_blank" rel="noopener" class="reel-link">
+                    <div class="reel-poster">
+                        <img src="reels/reel-DZhYxvCiM_7.jpg" alt="Onesiker — Reel Instagram" loading="lazy" width="640" height="640">
+                        <div class="reel-overlay"><span class="reel-cta" data-fr="Voir sur Instagram ↗" data-en="View on Instagram ↗">Voir sur Instagram ↗</span></div>
+                    </div>
+                </a>
+                <div class="portfolio-info">
+                    <h3>Onesiker — Réalisation vidéo</h3>
+                    <p data-fr="Réalisation, tournage et montage pour la marque artistique Onesiker." data-en="Directing, filming and editing for the Onesiker artistic brand.">Réalisation, tournage et montage pour la marque artistique Onesiker.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="https://www.instagram.com/reel/DZNcPmYigB0/" target="_blank" rel="noopener" class="reel-link">
+                    <div class="reel-poster">
+                        <img src="reels/reel-DZNcPmYigB0.jpg" alt="Onesiker — Reel Instagram" loading="lazy" width="640" height="640">
+                        <div class="reel-overlay"><span class="reel-cta" data-fr="Voir sur Instagram ↗" data-en="View on Instagram ↗">Voir sur Instagram ↗</span></div>
+                    </div>
+                </a>
+                <div class="portfolio-info">
+                    <h3>Onesiker — Réalisation vidéo</h3>
+                    <p data-fr="Réalisation, tournage et montage pour la marque artistique Onesiker." data-en="Directing, filming and editing for the Onesiker artistic brand.">Réalisation, tournage et montage pour la marque artistique Onesiker.</p>
+                </div>
+            </div>
+
+            <div class="portfolio-item">
+                <a href="https://www.instagram.com/reel/DYeWSwHiHQW/" target="_blank" rel="noopener" class="reel-link">
+                    <div class="reel-poster">
+                        <img src="reels/reel-DYeWSwHiHQW.jpg" alt="Onesiker — Reel Instagram" loading="lazy" width="640" height="640">
+                        <div class="reel-overlay"><span class="reel-cta" data-fr="Voir sur Instagram ↗" data-en="View on Instagram ↗">Voir sur Instagram ↗</span></div>
+                    </div>
+                </a>
+                <div class="portfolio-info">
+                    <h3>Onesiker — Réalisation vidéo</h3>
+                    <p data-fr="Réalisation, tournage et montage pour la marque artistique Onesiker." data-en="Directing, filming and editing for the Onesiker artistic brand.">Réalisation, tournage et montage pour la marque artistique Onesiker.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Onesiker Row 2 : 3 Reels supplémentaires -->
-        <div class="portfolio-grid portfolio-grid--mixed" style="margin-top: 2rem;">
-
-            <div class="portfolio-item portfolio-item--reel">
-                <div class="reel-container">
-                    <iframe
-                        src="https://www.instagram.com/reel/DZhYxvCiM_7/embed/"
-                        title="Onesiker Reel 3"
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-                        allowfullscreen scrolling="no" frameborder="0" loading="lazy">
-                    </iframe>
-                </div>
-                <div class="portfolio-info">
-                    <h3>Onesiker — Réalisation Vidéo</h3>
-                    <p data-fr="Réalisation, tournage et montage pour la marque artistique Onesiker (@onesiker)." data-en="Directing, filming, and editing for the Onesiker artistic brand (@onesiker).">Réalisation, tournage et montage pour la marque artistique Onesiker (@onesiker).</p>
-                    <a href="https://www.instagram.com/reel/DZhYxvCiM_7/" target="_blank" class="portfolio-external-link">▶ Voir sur Instagram</a>
-                </div>
-            </div>
-
-            <div class="portfolio-item portfolio-item--reel">
-                <div class="reel-container">
-                    <iframe
-                        src="https://www.instagram.com/reel/DZNcPmYigB0/embed/"
-                        title="Onesiker Reel 4"
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-                        allowfullscreen scrolling="no" frameborder="0" loading="lazy">
-                    </iframe>
-                </div>
-                <div class="portfolio-info">
-                    <h3>Onesiker — Réalisation Vidéo</h3>
-                    <p data-fr="Réalisation, tournage et montage pour la marque artistique Onesiker (@onesiker)." data-en="Directing, filming, and editing for the Onesiker artistic brand (@onesiker).">Réalisation, tournage et montage pour la marque artistique Onesiker (@onesiker).</p>
-                    <a href="https://www.instagram.com/reel/DZNcPmYigB0/" target="_blank" class="portfolio-external-link">▶ Voir sur Instagram</a>
-                </div>
-            </div>
-
-            <div class="portfolio-item portfolio-item--reel">
-                <div class="reel-container">
-                    <iframe
-                        src="https://www.instagram.com/reel/DYeWSwHiHQW/embed/"
-                        title="Onesiker Reel 5"
-                        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-                        allowfullscreen scrolling="no" frameborder="0" loading="lazy">
-                    </iframe>
-                </div>
-                <div class="portfolio-info">
-                    <h3>Onesiker — Réalisation Vidéo</h3>
-                    <p data-fr="Réalisation, tournage et montage pour la marque artistique Onesiker (@onesiker)." data-en="Directing, filming, and editing for the Onesiker artistic brand (@onesiker).">Réalisation, tournage et montage pour la marque artistique Onesiker (@onesiker).</p>
-                    <a href="https://www.instagram.com/reel/DYeWSwHiHQW/" target="_blank" class="portfolio-external-link">▶ Voir sur Instagram</a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="portfolio-row-label" style="margin-top: 4rem;">
-            <span>🎬 <strong>Showreel &amp; Vidéos</strong> — Motion design &amp; corporate</span>
+        <div class="portfolio-row-label portfolio-row-label--spaced">
+            <span>Showreel &amp; vidéos — <strong>Motion design &amp; corporate</strong></span>
         </div>
 
         <div class="portfolio-grid">
@@ -1105,7 +999,7 @@
                     <iframe src="https://www.youtube.com/embed/Fp3g5hr6RAU" title="Portfolio Principal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="portfolio-info">
-                    <h3 data-fr="Portfolio Principal" data-en="Main Portfolio">Portfolio Principal</h3>
+                    <h3 data-fr="Portfolio principal" data-en="Main portfolio">Portfolio principal</h3>
                     <p data-fr="Compilation de mes meilleurs projets vidéo et motion design pour grandes entreprises." data-en="Compilation of my best video and motion design projects for major companies.">Compilation de mes meilleurs projets vidéo et motion design pour grandes entreprises.</p>
                 </div>
             </div>
@@ -1115,7 +1009,7 @@
                     <iframe src="https://www.youtube.com/embed/uLMkjJjTc9s" title="Short Vidéo 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="portfolio-info">
-                    <h3 data-fr="Contenu Court Format" data-en="Short Form Content">Contenu Court Format</h3>
+                    <h3 data-fr="Contenu court format" data-en="Short form content">Contenu court format</h3>
                     <p data-fr="Créations optimisées pour les réseaux sociaux et le short-form content." data-en="Creations optimized for social networks and short-form content.">Créations optimisées pour les réseaux sociaux et le short-form content.</p>
                 </div>
             </div>
@@ -1125,55 +1019,55 @@
                     <iframe src="https://www.youtube.com/embed/0kBfVG1fZxs" title="Short Vidéo 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                 </div>
                 <div class="portfolio-info">
-                    <h3 data-fr="Motion Design & Effects" data-en="Motion Design & Effects">Motion Design & Effects</h3>
+                    <h3 data-fr="Motion design &amp; effects" data-en="Motion design &amp; effects">Motion design &amp; effects</h3>
                     <p data-fr="Démonstration de techniques avancées en motion design et effets visuels." data-en="Demonstration of advanced motion design and visual effects techniques.">Démonstration de techniques avancées en motion design et effets visuels.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SKILLS SECTION -->
+    <!-- SKILLS -->
     <section class="skills">
         <div class="section-header">
-            <div class="section-overline" data-fr="COMPÉTENCES" data-en="SKILLS">COMPÉTENCES</div>
-            <h2 class="section-title" data-fr="Expertise <span class='accent'>Technique</span>" data-en="Technical <span class='accent'>Expertise</span>">Expertise <span class="accent">Technique</span></h2>
+            <div class="section-overline" data-fr="Compétences" data-en="Skills">Compétences</div>
+            <h2 class="section-title" data-fr="Expertise <em>technique</em>" data-en="Technical <em>expertise</em>">Expertise <em>technique</em></h2>
             <p class="section-subtitle" data-fr="Maîtrise des outils modernes et des technologies créatives du moment." data-en="Mastery of modern tools and current creative technologies.">Maîtrise des outils modernes et des technologies créatives du moment.</p>
         </div>
 
         <div class="skills-grid">
             <div class="skill-card">
-                <div class="skill-icon">🤖</div>
+                <div class="skill-icon">01</div>
                 <div class="skill-title" data-fr="IA Générative Vidéo" data-en="Generative AI Video">IA Générative Vidéo</div>
                 <div class="skill-list" data-fr="<strong>Génération vidéo :</strong> Gemini / Veo, Runway, Kling<br>Luma, Pika, Seedance, Higgsfield, HeyGen<br><strong>Workflows :</strong> Reels, TikTok, social media<br><strong>Veille :</strong> Test permanent des nouveaux outils" data-en="<strong>Video generation:</strong> Gemini / Veo, Runway, Kling<br>Luma, Pika, Seedance, Higgsfield, HeyGen<br><strong>Workflows:</strong> Reels, TikTok, social media<br><strong>Monitoring:</strong> Continuous testing of new tools"><strong>Génération vidéo :</strong> Gemini / Veo, Runway, Kling<br>Luma, Pika, Seedance, Higgsfield, HeyGen<br><strong>Workflows :</strong> Reels, TikTok, social media<br><strong>Veille :</strong> Test permanent des nouveaux outils</div>
             </div>
 
             <div class="skill-card">
-                <div class="skill-icon">🎨</div>
-                <div class="skill-title" data-fr="IA Générative Image & DA" data-en="Generative AI Image & Art Direction">IA Générative Image & DA</div>
-                <div class="skill-list" data-fr="<strong>Génération image :</strong> Midjourney, GPT Image<br>Nano Banana (Gemini), Adobe Firefly<br><strong>IA conversationnelles :</strong> ChatGPT, Claude<br>Gemini, Mistral — rédaction & automatisation" data-en="<strong>Image generation:</strong> Midjourney, GPT Image<br>Nano Banana (Gemini), Adobe Firefly<br><strong>Conversational AI:</strong> ChatGPT, Claude<br>Gemini, Mistral — writing & automation"><strong>Génération image :</strong> Midjourney, GPT Image<br>Nano Banana (Gemini), Adobe Firefly<br><strong>IA conversationnelles :</strong> ChatGPT, Claude<br>Gemini, Mistral — rédaction & automatisation</div>
+                <div class="skill-icon">02</div>
+                <div class="skill-title" data-fr="IA Générative Image &amp; DA" data-en="Generative AI Image &amp; Art Direction">IA Générative Image &amp; DA</div>
+                <div class="skill-list" data-fr="<strong>Génération image :</strong> Midjourney, GPT Image<br>Nano Banana (Gemini), Adobe Firefly<br><strong>IA conversationnelles :</strong> ChatGPT, Claude<br>Gemini, Mistral — rédaction &amp; automatisation" data-en="<strong>Image generation:</strong> Midjourney, GPT Image<br>Nano Banana (Gemini), Adobe Firefly<br><strong>Conversational AI:</strong> ChatGPT, Claude<br>Gemini, Mistral — writing &amp; automation"><strong>Génération image :</strong> Midjourney, GPT Image<br>Nano Banana (Gemini), Adobe Firefly<br><strong>IA conversationnelles :</strong> ChatGPT, Claude<br>Gemini, Mistral — rédaction &amp; automatisation</div>
             </div>
 
             <div class="skill-card">
-                <div class="skill-icon">🎬</div>
-                <div class="skill-title" data-fr="Vidéo & Audio" data-en="Video & Audio">Vidéo & Audio</div>
+                <div class="skill-icon">03</div>
+                <div class="skill-title" data-fr="Vidéo &amp; Audio" data-en="Video &amp; Audio">Vidéo &amp; Audio</div>
                 <div class="skill-list" data-fr="<strong>Montage :</strong> DaVinci Resolve, Premiere Pro<br>After Effects, CapCut<br><strong>Audio :</strong> Logic Pro X, sound design<br>Mixage, mastering (Ozone)" data-en="<strong>Editing:</strong> DaVinci Resolve, Premiere Pro<br>After Effects, CapCut<br><strong>Audio:</strong> Logic Pro X, sound design<br>Mixing, mastering (Ozone)"><strong>Montage :</strong> DaVinci Resolve, Premiere Pro<br>After Effects, CapCut<br><strong>Audio :</strong> Logic Pro X, sound design<br>Mixage, mastering (Ozone)</div>
             </div>
 
             <div class="skill-card">
-                <div class="skill-icon">✏️</div>
+                <div class="skill-icon">04</div>
                 <div class="skill-title" data-fr="Création Graphique" data-en="Graphic Design">Création Graphique</div>
-                <div class="skill-list" data-fr="<strong>Adobe CC :</strong> Photoshop, Illustrator, InDesign<br><strong>Autres :</strong> Pixelmator Pro, Canva, Topaz<br><strong>Direction :</strong> Branding & identité visuelle<br><strong>Print & digital :</strong> 12 pays d'expérience" data-en="<strong>Adobe CC:</strong> Photoshop, Illustrator, InDesign<br><strong>Others:</strong> Pixelmator Pro, Canva, Topaz<br><strong>Direction:</strong> Branding & visual identity<br><strong>Print & digital:</strong> 12 countries of experience"><strong>Adobe CC :</strong> Photoshop, Illustrator, InDesign<br><strong>Autres :</strong> Pixelmator Pro, Canva, Topaz<br><strong>Direction :</strong> Branding & identité visuelle<br><strong>Print & digital :</strong> 12 pays d'expérience</div>
+                <div class="skill-list" data-fr="<strong>Adobe CC :</strong> Photoshop, Illustrator, InDesign<br><strong>Autres :</strong> Pixelmator Pro, Canva, Topaz<br><strong>Direction :</strong> Branding &amp; identité visuelle<br><strong>Print &amp; digital :</strong> 12 pays d'expérience" data-en="<strong>Adobe CC:</strong> Photoshop, Illustrator, InDesign<br><strong>Others:</strong> Pixelmator Pro, Canva, Topaz<br><strong>Direction:</strong> Branding &amp; visual identity<br><strong>Print &amp; digital:</strong> 12 countries of experience"><strong>Adobe CC :</strong> Photoshop, Illustrator, InDesign<br><strong>Autres :</strong> Pixelmator Pro, Canva, Topaz<br><strong>Direction :</strong> Branding &amp; identité visuelle<br><strong>Print &amp; digital :</strong> 12 pays d'expérience</div>
             </div>
 
             <div class="skill-card">
-                <div class="skill-icon">⚙️</div>
-                <div class="skill-title" data-fr="Développement & Automatisation" data-en="Development & Automation">Développement & Automatisation</div>
+                <div class="skill-icon">05</div>
+                <div class="skill-title" data-fr="Développement &amp; Automatisation" data-en="Development &amp; Automation">Développement &amp; Automatisation</div>
                 <div class="skill-list" data-fr="<strong>Code :</strong> Claude Code, protocole MCP<br><strong>Orchestration :</strong> Composio, Apify<br><strong>Connexions :</strong> Figma, Canva, Notion, Slack<br>LinkedIn, Instagram — via agents IA" data-en="<strong>Code:</strong> Claude Code, MCP protocol<br><strong>Orchestration:</strong> Composio, Apify<br><strong>Connections:</strong> Figma, Canva, Notion, Slack<br>LinkedIn, Instagram — via AI agents"><strong>Code :</strong> Claude Code, protocole MCP<br><strong>Orchestration :</strong> Composio, Apify<br><strong>Connexions :</strong> Figma, Canva, Notion, Slack<br>LinkedIn, Instagram — via agents IA</div>
             </div>
 
             <div class="skill-card">
-                <div class="skill-icon">🌍</div>
-                <div class="skill-title" data-fr="International & Langues" data-en="International & Languages">International & Langues</div>
+                <div class="skill-icon">06</div>
+                <div class="skill-title" data-fr="International &amp; Langues" data-en="International &amp; Languages">International &amp; Langues</div>
                 <div class="skill-list" data-fr="<strong>Français :</strong> Natif<br><strong>Anglais :</strong> Courant<br><strong>Expériences :</strong> New York City, EU, 12 pays<br><strong>Formation :</strong> BTS Réalisateur Multimédia — CESI, 2001" data-en="<strong>French:</strong> Native<br><strong>English:</strong> Fluent<br><strong>Experience:</strong> New York City, EU, 12 countries<br><strong>Education:</strong> BTS Multimedia Director — CESI, 2001"><strong>Français :</strong> Natif<br><strong>Anglais :</strong> Courant<br><strong>Expériences :</strong> New York City, EU, 12 pays<br><strong>Formation :</strong> BTS Réalisateur Multimédia — CESI, 2001</div>
             </div>
         </div>
@@ -1182,16 +1076,16 @@
     <!-- FOOTER -->
     <footer>
         <div class="footer-content">
-            <h2 class="footer-title" data-fr="Travaillons sur votre prochain<br><span class='accent'>projet IA & Vidéo</span> 🚀" data-en="Let's work on your next<br><span class='accent'>AI & Video project</span> 🚀">Travaillons sur votre prochain<br><span class="accent">projet IA & Vidéo</span> 🚀</h2>
+            <h2 class="footer-title" data-fr="Créons votre prochain<br><em>projet IA &amp; vidéo</em>." data-en="Let's create your next<br><em>AI &amp; video project</em>.">Créons votre prochain<br><em>projet IA &amp; vidéo</em>.</h2>
 
             <div class="contact-links">
-                <a href="tel:+33651049325">📲 +33 6 51 04 93 25</a>
-                <a href="mailto:olivierlavergne@gmail.com">✉️ olivierlavergne@gmail.com</a>
-                <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" data-fr="🎬 Portfolio Vidéo" data-en="🎬 Video Portfolio">🎬 Portfolio Vidéo</a>
-                <a href="https://youtube.com/shorts/uLMkjJjTc9s" target="_blank" data-fr="🎥 Contenus Courts" data-en="🎥 Short Content">🎥 Contenus Courts</a>
+                <a href="tel:+33651049325">+33 6 51 04 93 25</a>
+                <a href="mailto:olivierlavergne@gmail.com">olivierlavergne@gmail.com</a>
+                <a href="https://youtu.be/Fp3g5hr6RAU" target="_blank" rel="noopener" data-fr="Portfolio vidéo ↗" data-en="Video portfolio ↗">Portfolio vidéo ↗</a>
+                <a href="https://www.instagram.com/onesiker/" target="_blank" rel="noopener">Instagram ↗</a>
             </div>
 
-            <div class="footer-credit" data-fr="© 2026 Olivier Lavergne • Toulouse & au-delà<br>Vidéaste · Motion Designer · Expert IA Générative Créative" data-en="© 2026 Olivier Lavergne • Toulouse & beyond<br>Videographer · Motion Designer · Generative AI Creative Expert">© 2026 Olivier Lavergne • Toulouse & au-delà<br>Vidéaste · Motion Designer · Expert IA Générative Créative</div>
+            <div class="footer-credit" data-fr="© 2026 Olivier Lavergne · Toulouse &amp; au-delà<br>Vidéaste · Motion Designer · Expert IA Générative Créative" data-en="© 2026 Olivier Lavergne · Toulouse &amp; beyond<br>Videographer · Motion Designer · Generative AI Creative Expert">© 2026 Olivier Lavergne · Toulouse &amp; au-delà<br>Vidéaste · Motion Designer · Expert IA Générative Créative</div>
         </div>
     </footer>
 
@@ -1199,9 +1093,10 @@
         const themeBtns = document.querySelectorAll('.theme-btn');
         const langBtns = document.querySelectorAll('.lang-btn');
         const translatableElements = document.querySelectorAll('[data-fr]');
+        const header = document.querySelector('header');
 
         function setTheme(theme) {
-            document.body.classList.toggle('light-mode', theme === 'light');
+            document.body.classList.toggle('dark-mode', theme === 'dark');
             themeBtns.forEach(btn => btn.classList.toggle('active', btn.dataset.theme === theme));
             localStorage.setItem('theme', theme);
         }
@@ -1216,7 +1111,7 @@
             localStorage.setItem('lang', lang);
         }
 
-        setTheme(localStorage.getItem('theme') || 'dark');
+        setTheme(localStorage.getItem('theme') || 'light');
         setLanguage(localStorage.getItem('lang') || 'fr');
 
         themeBtns.forEach(btn => btn.addEventListener('click', () => setTheme(btn.dataset.theme)));
@@ -1229,6 +1124,10 @@
                 target?.scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 40);
+        }, { passive: true });
     </script>
 </body>
 </html>
