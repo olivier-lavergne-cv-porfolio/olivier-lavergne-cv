@@ -1,0 +1,105 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@media print {
+  @page {
+    size: A4;
+    margin: 1.5cm;
+  }
+
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Hide interactive UI elements */
+  header, 
+  nav,
+  .fixed, 
+  button {
+    display: none !important;
+  }
+
+  /* Hide the large "Let's talk" action in footer */
+  footer > div:nth-child(2) {
+    display: none !important;
+  }
+
+  /* Optimize Bento grid layout into a vertical flow for printing */
+  main > div.grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Reset card styling for ink-saving and readability */
+  section, 
+  footer > div:first-child,
+  .rounded-\[2\.5rem\],
+  .rounded-\[2rem\] {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important; /* slate-300 */
+    box-shadow: none !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    margin-bottom: 0 !important;
+    color: #0f172a !important; /* slate-900 */
+  }
+
+  /* Remove gradient backgrounds and absolute decorations */
+  .bg-gradient-to-br,
+  .absolute.top-0.right-0 {
+    display: none !important;
+  }
+
+  /* Force high contrast text colors (overriding dark mode classes) */
+  .text-white, 
+  .dark\:text-white,
+  .text-slate-400,
+  .dark\:text-slate-400,
+  .text-slate-300,
+  .dark\:text-slate-300,
+  .text-slate-200,
+  .dark\:text-slate-200,
+  .text-slate-500,
+  .dark\:text-slate-500 {
+    color: #334155 !important; /* slate-700 */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000 !important;
+  }
+
+  /* Keep accent colors for brand identity */
+  .text-indigo-400, 
+  .dark\:text-indigo-400,
+  .text-indigo-600 {
+    color: #4338ca !important; /* indigo-700 */
+  }
+
+  .bg-indigo-600,
+  .bg-indigo-500,
+  .dark\:bg-indigo-500,
+  .dark\:bg-indigo-600 {
+    background-color: #4f46e5 !important;
+    color: #ffffff !important;
+  }
+  
+  .bg-indigo-600 *,
+  .bg-indigo-500 *,
+  .dark\:bg-indigo-500 *,
+  .dark\:bg-indigo-600 * {
+    color: #ffffff !important;
+  }
+
+  /* Simplify borders for tags */
+  .bg-slate-100,
+  .dark\:bg-zinc-800,
+  .bg-slate-50 {
+    background-color: #f8fafc !important; /* slate-50 */
+    border: 1px solid #e2e8f0 !important; /* slate-200 */
+    color: #0f172a !important;
+  }
+}
