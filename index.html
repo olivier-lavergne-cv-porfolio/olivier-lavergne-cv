@@ -565,6 +565,152 @@
             box-shadow: 0 20px 60px rgba(0, 212, 255, 0.2);
         }
 
+        /* ===== PORTFOLIO ROW LABEL ===== */
+        .portfolio-row-label {
+            max-width: 1200px;
+            margin: 0 auto 2rem auto;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.55);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border-left: 3px solid var(--accent-cyan);
+            padding-left: 1rem;
+        }
+        .portfolio-row-label strong {
+            color: var(--accent-cyan);
+        }
+        body.light-mode .portfolio-row-label { color: rgba(0,0,0,0.5); }
+
+        /* ===== INSTAGRAM REEL CONTAINER ===== */
+        .reel-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 130%;   /* portrait 9:16 approx */
+            height: 0;
+            overflow: hidden;
+            background: #000;
+            border-radius: 12px 12px 0 0;
+        }
+        .reel-container iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== SITE PREVIEW CARD ===== */
+        .site-preview-link {
+            display: block;
+            text-decoration: none;
+            padding: 0;
+            flex-grow: 0;
+        }
+        .site-preview-visual {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #0a0a1a, #1a0a33);
+        }
+        .site-preview-browser {
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+        }
+        .browser-bar {
+            background: rgba(255,255,255,0.06);
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .browser-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            display: inline-block;
+        }
+        .browser-dot:nth-child(1) { background: #ff5f57; }
+        .browser-dot:nth-child(2) { background: #febc2e; }
+        .browser-dot:nth-child(3) { background: #28c840; }
+        .browser-url {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.4);
+            margin-left: 0.5rem;
+            font-family: monospace;
+        }
+        .site-preview-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2.5rem 1.5rem;
+            gap: 1rem;
+            background: linear-gradient(160deg, #0d0d1f 0%, #1a0830 50%, #0d1520 100%);
+        }
+        .site-preview-logo {
+            font-size: 2.2rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .site-preview-tagline {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .site-preview-tags {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .site-preview-tags span {
+            font-size: 0.8rem;
+            padding: 0.3rem 0.8rem;
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            color: rgba(255,255,255,0.6);
+        }
+        .site-preview-cta {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 0.05em;
+            margin-top: 0.5rem;
+        }
+        .portfolio-item--site:hover .site-preview-logo {
+            filter: brightness(1.2);
+        }
+
+        /* External link button */
+        .portfolio-external-link {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            border: 1px solid rgba(0,212,255,0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        .portfolio-external-link:hover {
+            background: var(--accent-cyan);
+            color: #000;
+            border-color: var(--accent-cyan);
+        }
+
         .video-container {
             position: relative;
             width: 100%;
@@ -900,6 +1046,59 @@
             <div class="section-overline" data-fr="PORTFOLIO" data-en="PORTFOLIO">PORTFOLIO</div>
             <h2 class="section-title" data-fr="Projets & <span class='accent'>Réalisations</span>" data-en="Projects & <span class='accent'>Creations</span>">Projets & <span class="accent">Réalisations</span></h2>
             <p class="section-subtitle" data-fr="Une sélection de mes meilleures créations vidéo et motion design." data-en="A selection of my best video and motion design creations.">Une sélection de mes meilleures créations vidéo et motion design.</p>
+        </div>
+
+        <div class="portfolio-row-label">
+            <span>🎨 <strong>Onesiker</strong> — Artiste contemporain &amp; contenu IA</span>
+        </div>
+
+        <div class="portfolio-grid portfolio-grid--mixed">
+            <!-- Instagram Reel 1 -->
+            <div class="portfolio-item portfolio-item--reel">
+                <div class="reel-container">
+                    <iframe src="https://www.instagram.com/reel/DbVV4h1C8au/embed/" title="Onesiker Reel 1" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen scrolling="no" frameborder="0"></iframe>
+                </div>
+                <div class="portfolio-info">
+                    <h3>Onesiker — Reel IA</h3>
+                    <p data-fr="Création vidéo IA générative pour la marque artistique Onesiker (@onesiker)." data-en="Generative AI video creation for the Onesiker artistic brand (@onesiker).">Création vidéo IA générative pour la marque artistique Onesiker (@onesiker).</p>
+                </div>
+            </div>
+
+            <!-- Onesiker.org Site Card -->
+            <div class="portfolio-item portfolio-item--site">
+                <a href="https://onesiker.org" target="_blank" class="site-preview-link">
+                    <div class="site-preview-browser">
+                        <div class="browser-bar">
+                            <span class="browser-dot"></span><span class="browser-dot"></span><span class="browser-dot"></span>
+                            <span class="browser-url">onesiker.org</span>
+                        </div>
+                        <div class="site-preview-content">
+                            <div class="site-preview-logo">ONESIKER</div>
+                            <div class="site-preview-tagline">Artiste Contemporain</div>
+                            <div class="site-preview-cta">Visiter le site →</div>
+                        </div>
+                    </div>
+                </a>
+                <div class="portfolio-info">
+                    <h3>onesiker.org</h3>
+                    <p data-fr="Site e-commerce et portfolio de la marque artistique Onesiker." data-en="E-commerce site and portfolio of the Onesiker artistic brand.">Site e-commerce et portfolio de la marque artistique Onesiker.</p>
+                </div>
+            </div>
+
+            <!-- Instagram Reel 2 -->
+            <div class="portfolio-item portfolio-item--reel">
+                <div class="reel-container">
+                    <iframe src="https://www.instagram.com/reel/DYbmc6UiU-X/embed/" title="Onesiker Reel 2" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen scrolling="no" frameborder="0"></iframe>
+                </div>
+                <div class="portfolio-info">
+                    <h3>Onesiker — Reel IA</h3>
+                    <p data-fr="Création vidéo IA générative pour la marque artistique Onesiker (@onesiker)." data-en="Generative AI video creation for the Onesiker artistic brand (@onesiker).">Création vidéo IA générative pour la marque artistique Onesiker (@onesiker).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="portfolio-row-label" style="margin-top: 4rem;">
+            <span>🎬 <strong>Showreel &amp; Vidéos</strong> — Motion design &amp; corporate</span>
         </div>
 
         <div class="portfolio-grid">
