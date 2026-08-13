@@ -12,7 +12,7 @@ export function About() {
       className="col-span-1 md:col-span-4 bg-white dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-2 overflow-hidden relative flex flex-col min-h-[300px] transition duration-500 hover:-translate-y-1 hover:shadow-xl hover:dark:shadow-[0_0_40px_rgba(99,102,241,0.15)] hover:border-slate-300 dark:hover:border-zinc-700/80 group"
     >
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/10 dark:from-indigo-500/20 to-transparent"></div>
-      <div className="flex-1 w-full rounded-[2rem] bg-slate-50/80 dark:bg-zinc-800/80 backdrop-blur-md flex flex-col items-center justify-center border border-slate-200 dark:border-zinc-700 p-8 text-center relative z-10 transition-colors duration-300">
+      <div className="flex-1 w-full rounded-[2rem] bg-slate-50 dark:bg-zinc-800 flex flex-col items-center justify-center border border-slate-200 dark:border-zinc-700 p-8 text-center relative z-10 transition-colors duration-300">
         <div className="w-24 h-24 bg-slate-200 dark:bg-slate-700 rounded-full mx-auto mb-4 border-4 border-white dark:border-zinc-900 shadow-xl flex items-center justify-center text-4xl transition-colors duration-300">
           🎥
         </div>

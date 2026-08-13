@@ -21,14 +21,14 @@ export function Hero() {
     >
       <motion.div
         style={{ y: bgY, opacity: bgOpacity }}
-        className="absolute top-0 right-0 p-8 text-6xl md:text-8xl font-black text-slate-900 dark:text-white pointer-events-none tracking-tighter will-change-transform"
+        className="absolute top-0 right-0 p-8 text-6xl md:text-8xl font-black text-slate-900 dark:text-white pointer-events-none tracking-tighter"
       >
         EXPERT
       </motion.div>
 
       <motion.div
         style={{ y: contentY, opacity: contentOpacity }}
-        className="z-10 relative will-change-transform"
+        className="z-10 relative"
       >
         <span className="bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase inline-block mb-4">
           {t.name}
