@@ -8,7 +8,7 @@ export function Hero() {
   const { scrollY } = useScroll();
 
   const bgY = useTransform(scrollY, [0, 600], reduce ? [0, 0] : [0, -180]);
-  const bgOpacity = useTransform(scrollY, [0, 400], reduce ? [1, 1] : [1, 0]);
+  const bgOpacity = useTransform(scrollY, [0, 400], reduce ? [0.03, 0.03] : [0.03, 0]);
   const contentY = useTransform(scrollY, [0, 500], reduce ? [0, 0] : [0, 60]);
   const contentOpacity = useTransform(scrollY, [0, 500], reduce ? [1, 1] : [1, 0.4]);
 
@@ -21,7 +21,7 @@ export function Hero() {
     >
       <motion.div
         style={{ y: bgY, opacity: bgOpacity }}
-        className="absolute top-0 right-0 p-8 text-6xl md:text-8xl opacity-[0.03] font-black text-slate-900 dark:text-white pointer-events-none tracking-tighter will-change-transform"
+        className="absolute top-0 right-0 p-8 text-6xl md:text-8xl font-black text-slate-900 dark:text-white pointer-events-none tracking-tighter will-change-transform"
       >
         EXPERT
       </motion.div>

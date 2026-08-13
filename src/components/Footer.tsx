@@ -10,8 +10,8 @@ export function Footer() {
       className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-4 pb-12"
     >
       <motion.div
-        initial={{ opacity: 0, y: 60, scale: 0.97 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="col-span-1 md:col-span-8 bg-white dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 flex flex-col md:flex-row justify-between items-center gap-6 shadow-xl text-center md:text-left transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:dark:shadow-[0_0_40px_rgba(99,102,241,0.15)] hover:border-slate-300 dark:hover:border-zinc-700/80"
@@ -41,8 +41,8 @@ export function Footer() {
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 60, scale: 0.97 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
         className="col-span-1 md:col-span-4 bg-slate-900 dark:bg-white rounded-full flex items-center justify-center font-bold text-white dark:text-black gap-2 shadow-xl transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:bg-slate-800 dark:hover:bg-slate-200 cursor-pointer group py-8 md:py-0"
