@@ -1,6 +1,17 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+html {
+  background-color: #f8fafc;
+}
+html.dark {
+  background-color: #09090b;
+}
+body {
+  background-color: inherit;
+  min-height: 100dvh;
+}
+
 @media print {
   @page {
     size: A4;
