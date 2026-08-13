@@ -66,8 +66,8 @@ export default function App() {
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 auto-rows-min">
           <Hero />
           <About />
-          <Skills />
           <Portfolio />
+          <Skills />
           <Experience />
         </div>
       </main>

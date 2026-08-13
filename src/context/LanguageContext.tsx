@@ -19,6 +19,12 @@ interface LanguageContextType {
     letsTalk: string;
     skillsTitle: string;
     experienceTitle: string;
+    portfolioTitle: string;
+    portfolioDesc: string;
+    videosLabel: string;
+    onesikerLabel: string;
+    watchOn: string;
+    visitSite: string;
   }
 }
 
@@ -34,6 +40,12 @@ const UI_FR = {
   letsTalk: "Let's talk",
   skillsTitle: "Compétences",
   experienceTitle: "Parcours & Expérience",
+  portfolioTitle: "Production, Réalisation & Motion Design",
+  portfolioDesc: "Vingt ans de production audiovisuelle : réalisation, prise de vue, montage, motion design et sound design — enrichis par l'intégration des IA génératives dans les workflows créatifs.",
+  videosLabel: "Vidéos & Motion Design",
+  onesikerLabel: "Onesiker — Artiste contemporain",
+  watchOn: "Voir sur",
+  visitSite: "Visiter le site",
 };
 
 const UI_EN = {
@@ -48,6 +60,12 @@ const UI_EN = {
   letsTalk: "Let's talk",
   skillsTitle: "Skills",
   experienceTitle: "Career & Experience",
+  portfolioTitle: "Production, Direction & Motion Design",
+  portfolioDesc: "Twenty years of audiovisual production: directing, filming, editing, motion design and sound design — enriched by generative AI integration in creative workflows.",
+  videosLabel: "Videos & Motion Design",
+  onesikerLabel: "Onesiker — Contemporary Artist",
+  watchOn: "Watch on",
+  visitSite: "Visit site",
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
