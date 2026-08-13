@@ -1,4 +1,3 @@
-import { motion } from "motion/react";
 import { ExternalLink, Play, Globe } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -43,39 +42,27 @@ function platformLabel(item: MediaItem) {
   return "onesiker.org";
 }
 
-function MediaCard({
-  item,
-  index,
-  aspect,
-}: {
-  item: MediaItem;
-  index: number;
-  aspect: "video" | "portrait";
-}) {
+function MediaCard({ item, aspect }: { item: MediaItem; aspect: "video" | "portrait" }) {
   const BASE = import.meta.env.BASE_URL;
   const Icon = item.kind === "site" ? Globe : Play;
   const aspectClass = aspect === "video" ? "aspect-video" : "aspect-[9/16]";
 
   return (
-    <motion.a
+    <a
       href={item.url}
       target="_blank"
       rel="noopener"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-30px" }}
-      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
-      className={`group relative block ${aspectClass} rounded-2xl overflow-hidden border border-slate-200 dark:border-zinc-800 bg-slate-100 dark:bg-zinc-900 transition duration-500 hover:-translate-y-1 hover:shadow-2xl hover:dark:shadow-[0_0_40px_rgba(99,102,241,0.2)] hover:border-indigo-400 dark:hover:border-indigo-500/50`}
+      className={`group relative block ${aspectClass} rounded-2xl overflow-hidden border border-slate-200 dark:border-zinc-800 bg-slate-100 dark:bg-zinc-900`}
     >
       <img
         src={thumbUrl(item, BASE)}
         alt={platformLabel(item)}
         loading="lazy"
-        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        className="w-full h-full object-cover"
       />
 
-      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
-        <div className="w-14 h-14 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-xl">
+      <div className="absolute inset-0 hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/40">
+        <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center shadow-xl">
           <Icon className="w-6 h-6 text-slate-900" />
         </div>
       </div>
@@ -85,7 +72,7 @@ function MediaCard({
           {platformLabel(item)} <ExternalLink className="w-3 h-3" />
         </span>
       </div>
-    </motion.a>
+    </a>
   );
 }
 
@@ -93,17 +80,13 @@ export function Portfolio() {
   const { ui } = useLanguage();
 
   return (
-    <motion.section
+    <section
       id="portfolio"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="col-span-1 md:col-span-12 bg-white dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 md:p-10 shadow-xl transition duration-500"
+      className="col-span-1 md:col-span-12 bg-white dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 md:p-10 shadow-xl"
     >
       <div className="mb-10">
         <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3 mb-3">
-          <span className="w-3 h-3 bg-indigo-500 rounded-full shadow-[0_0_10px_rgba(99,102,241,0.5)]"></span>
+          <span className="w-3 h-3 bg-indigo-500 rounded-full"></span>
           {ui.portfolioTitle}
         </h3>
         <p className="text-slate-600 dark:text-slate-400 max-w-3xl leading-relaxed">
@@ -117,12 +100,12 @@ export function Portfolio() {
         </h4>
 
         <div className="mb-4">
-          <MediaCard item={mainVideo} index={0} aspect="video" />
+          <MediaCard item={mainVideo} aspect="video" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {shortVideos.map((item, i) => (
-            <MediaCard key={itemKey(item)} item={item} index={i + 1} aspect="portrait" />
+          {shortVideos.map((item) => (
+            <MediaCard key={itemKey(item)} item={item} aspect="portrait" />
           ))}
         </div>
       </div>
@@ -132,11 +115,11 @@ export function Portfolio() {
           {ui.onesikerLabel}
         </h4>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-          {onesikerItems.map((item, i) => (
-            <MediaCard key={itemKey(item)} item={item} index={i} aspect="portrait" />
+          {onesikerItems.map((item) => (
+            <MediaCard key={itemKey(item)} item={item} aspect="portrait" />
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }
