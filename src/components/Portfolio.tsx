@@ -7,8 +7,13 @@ type MediaItem =
   | { kind: "instagram"; id: string; url: string }
   | { kind: "site"; title: string; url: string; img: string };
 
-const videos: MediaItem[] = [
-  { kind: "youtube", id: "Fp3g5hr6RAU", url: "https://youtu.be/Fp3g5hr6RAU" },
+const mainVideo: MediaItem = {
+  kind: "youtube",
+  id: "Fp3g5hr6RAU",
+  url: "https://youtu.be/Fp3g5hr6RAU",
+};
+
+const shortVideos: MediaItem[] = [
   { kind: "youtube", id: "uLMkjJjTc9s", url: "https://www.youtube.com/shorts/uLMkjJjTc9s" },
   { kind: "youtube", id: "0kBfVG1fZxs", url: "https://www.youtube.com/shorts/0kBfVG1fZxs" },
 ];
@@ -26,19 +31,30 @@ function itemKey(item: MediaItem) {
   return item.kind === "site" ? item.url : item.id;
 }
 
-function MediaCard({ item, index }: { item: MediaItem; index: number }) {
+function thumbUrl(item: MediaItem, base: string) {
+  if (item.kind === "youtube") return `https://i.ytimg.com/vi/${item.id}/maxresdefault.jpg`;
+  if (item.kind === "instagram") return `${base}reels/reel-${item.id}.jpg`;
+  return `${base}${item.img}`;
+}
+
+function platformLabel(item: MediaItem) {
+  if (item.kind === "youtube") return "YouTube";
+  if (item.kind === "instagram") return "Instagram";
+  return "onesiker.org";
+}
+
+function MediaCard({
+  item,
+  index,
+  aspect,
+}: {
+  item: MediaItem;
+  index: number;
+  aspect: "video" | "portrait";
+}) {
   const BASE = import.meta.env.BASE_URL;
-  const thumbSrc =
-    item.kind === "youtube"
-      ? `https://i.ytimg.com/vi/${item.id}/hqdefault.jpg`
-      : item.kind === "instagram"
-        ? `${BASE}reels/reel-${item.id}.jpg`
-        : `${BASE}${item.img}`;
-
-  const platform =
-    item.kind === "youtube" ? "YouTube" : item.kind === "instagram" ? "Instagram" : "onesiker.org";
-
   const Icon = item.kind === "site" ? Globe : Play;
+  const aspectClass = aspect === "video" ? "aspect-video" : "aspect-[9/16]";
 
   return (
     <motion.a
@@ -49,11 +65,11 @@ function MediaCard({ item, index }: { item: MediaItem; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-30px" }}
       transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: index * 0.05 }}
-      className="group relative block aspect-square rounded-2xl overflow-hidden border border-slate-200 dark:border-zinc-800 bg-slate-100 dark:bg-zinc-900 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:dark:shadow-[0_0_40px_rgba(99,102,241,0.2)] hover:border-indigo-400 dark:hover:border-indigo-500/50"
+      className={`group relative block ${aspectClass} rounded-2xl overflow-hidden border border-slate-200 dark:border-zinc-800 bg-slate-100 dark:bg-zinc-900 transition-all duration-500 hover:-translate-y-1 hover:shadow-2xl hover:dark:shadow-[0_0_40px_rgba(99,102,241,0.2)] hover:border-indigo-400 dark:hover:border-indigo-500/50`}
     >
       <img
-        src={thumbSrc}
-        alt={platform}
+        src={thumbUrl(item, BASE)}
+        alt={platformLabel(item)}
         loading="lazy"
         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
@@ -66,7 +82,7 @@ function MediaCard({ item, index }: { item: MediaItem; index: number }) {
 
       <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/80 to-transparent">
         <span className="text-white text-xs font-semibold flex items-center gap-1.5">
-          {platform} <ExternalLink className="w-3 h-3" />
+          {platformLabel(item)} <ExternalLink className="w-3 h-3" />
         </span>
       </div>
     </motion.a>
@@ -99,9 +115,14 @@ export function Portfolio() {
         <h4 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-4">
           {ui.videosLabel}
         </h4>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {videos.map((item, i) => (
-            <MediaCard key={itemKey(item)} item={item} index={i} />
+
+        <div className="mb-4">
+          <MediaCard item={mainVideo} index={0} aspect="video" />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {shortVideos.map((item, i) => (
+            <MediaCard key={itemKey(item)} item={item} index={i + 1} aspect="portrait" />
           ))}
         </div>
       </div>
@@ -112,7 +133,7 @@ export function Portfolio() {
         </h4>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
           {onesikerItems.map((item, i) => (
-            <MediaCard key={itemKey(item)} item={item} index={i} />
+            <MediaCard key={itemKey(item)} item={item} index={i} aspect="portrait" />
           ))}
         </div>
       </div>
