@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { ExternalLink, Play, Globe } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -80,8 +81,12 @@ export function Portfolio() {
   const { ui } = useLanguage();
 
   return (
-    <section
+    <motion.section
       id="portfolio"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="col-span-1 md:col-span-12 bg-white dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 md:p-10 shadow-xl"
     >
       <div className="mb-10">
@@ -120,6 +125,6 @@ export function Portfolio() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

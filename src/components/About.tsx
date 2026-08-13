@@ -1,10 +1,15 @@
+import { motion } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 
 export function About() {
   const { t, lang } = useLanguage();
   return (
-    <section
+    <motion.section
       id="about"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
       className="col-span-1 md:col-span-4 bg-white dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-2 overflow-hidden relative flex flex-col min-h-[300px]"
     >
       <div className="flex-1 w-full rounded-[2rem] bg-slate-50 dark:bg-zinc-800 flex flex-col items-center justify-center border border-slate-200 dark:border-zinc-700 p-8 text-center relative z-10">
@@ -23,6 +28,6 @@ export function About() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

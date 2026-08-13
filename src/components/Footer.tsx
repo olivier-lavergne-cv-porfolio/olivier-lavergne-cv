@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { Mail, Linkedin, Github } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -8,7 +9,13 @@ export function Footer() {
       id="contact"
       className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-4 pb-12"
     >
-      <div className="col-span-1 md:col-span-8 bg-white dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 flex flex-col md:flex-row justify-between items-center gap-6 shadow-xl text-center md:text-left">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="col-span-1 md:col-span-8 bg-white dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 flex flex-col md:flex-row justify-between items-center gap-6 shadow-xl text-center md:text-left"
+      >
         <div>
           <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-1 tracking-tight">
             {t.name}
@@ -31,9 +38,15 @@ export function Footer() {
             <Github className="w-5 h-5" />
           </a>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="col-span-1 md:col-span-4 bg-slate-900 dark:bg-white rounded-full flex items-center justify-center font-bold text-white dark:text-black gap-2 shadow-xl cursor-pointer group py-8 md:py-0">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+        className="col-span-1 md:col-span-4 bg-slate-900 dark:bg-white rounded-full flex items-center justify-center font-bold text-white dark:text-black gap-2 shadow-xl cursor-pointer group py-8 md:py-0"
+      >
         <a href={`mailto:${t.contact.email}`} className="flex items-center gap-2 w-full h-full justify-center">
           <span className="text-xl">{ui.letsTalk}</span>
           <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
@@ -41,7 +54,7 @@ export function Footer() {
             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
           </svg>
         </a>
-      </div>
+      </motion.div>
     </footer>
   );
 }
