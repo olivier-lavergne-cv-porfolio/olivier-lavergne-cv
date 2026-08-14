@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowRight, Video, PenTool, Sparkles, TrendingUp, MonitorPlay, Code, GraduationCap, Languages, Mic } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowRight, Video, PenTool, Sparkles, TrendingUp, MonitorPlay, Code, GraduationCap, Languages, Mic, ShieldCheck } from "lucide-react";
 
 const contact = {
   email: "olivierlavergne@gmail.com",
@@ -90,7 +90,12 @@ export const CV_DATA_FR = {
     {
       category: "Création Graphique",
       icon: PenTool,
-      items: ["Photoshop", "Illustrator", "InDesign", "Pixelmator Pro", "Canva", "Topaz"]
+      items: ["Photoshop", "Lightroom", "Illustrator", "InDesign", "Pixelmator Pro", "Canva", "Topaz"]
+    },
+    {
+      category: "Droits d'usage & Propriété Intellectuelle",
+      icon: ShieldCheck,
+      items: ["Vérification & sécurisation des droits", "Images, vidéos, musiques", "Print & audiovisuel"]
     },
     {
       category: "Développement & automatisation",
@@ -202,7 +207,12 @@ export const CV_DATA_EN = {
     {
       category: "Graphic Design",
       icon: PenTool,
-      items: ["Photoshop", "Illustrator", "InDesign", "Pixelmator Pro", "Canva", "Topaz"]
+      items: ["Photoshop", "Lightroom", "Illustrator", "InDesign", "Pixelmator Pro", "Canva", "Topaz"]
+    },
+    {
+      category: "Usage Rights & Intellectual Property",
+      icon: ShieldCheck,
+      items: ["Rights verification & security", "Images, videos, music", "Print & broadcast"]
     },
     {
       category: "Development & Automation",
