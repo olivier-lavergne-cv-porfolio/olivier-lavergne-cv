@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowRight, Video, PenTool, Sparkles, TrendingUp, MonitorPlay, Code, GraduationCap, Languages, Mic, ShieldCheck } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowRight, Video, PenTool, Sparkles, TrendingUp, MonitorPlay, Code, GraduationCap, Languages, Mic, ShieldCheck, Clapperboard, Palette } from "lucide-react";
 
 const contact = {
   email: "olivierlavergne@gmail.com",
@@ -75,7 +75,20 @@ export const CV_DATA_FR = {
     {
       category: "Expertise IA Générative Créative",
       icon: Sparkles,
-      items: ["Gemini / Veo, Runway, Kling, Luma", "Pika, Seedance, Higgsfield, HeyGen", "Midjourney, Nano Banana, GPT Image, Firefly", "Workflows courts (Reels, TikTok)", "ChatGPT, Claude, Gemini, Mistral", "Veille active & test permanent"]
+      items: ["Gemini / Veo, Runway, Kling, Luma", "Pika, Seedance, Higgsfield, HeyGen", "Midjourney, Nano Banana, GPT Image, Firefly", "Workflows courts (Reels, TikTok)", "ChatGPT, Claude, Gemini, Mistral", "Veille active & test permanent"],
+      mobileOnly: true
+    },
+    {
+      category: "IA Générative Vidéo",
+      icon: Clapperboard,
+      items: ["Gemini / Veo, Runway, Kling, Luma", "Pika, Seedance, Higgsfield, HeyGen", "Workflows courts (Reels, TikTok)"],
+      desktopOnly: true
+    },
+    {
+      category: "IA Générative Image & Texte",
+      icon: Palette,
+      items: ["Midjourney, Nano Banana, GPT Image, Firefly", "ChatGPT, Claude, Gemini, Mistral", "Veille active & test permanent"],
+      desktopOnly: true
     },
     {
       category: "Vidéo & Motion",
@@ -192,7 +205,20 @@ export const CV_DATA_EN = {
     {
       category: "Creative Generative AI Expertise",
       icon: Sparkles,
-      items: ["Gemini / Veo, Runway, Kling, Luma", "Pika, Seedance, Higgsfield, HeyGen", "Midjourney, Nano Banana, GPT Image, Firefly", "Short-form workflows (Reels, TikTok)", "ChatGPT, Claude, Gemini, Mistral", "Active watch & continuous testing"]
+      items: ["Gemini / Veo, Runway, Kling, Luma", "Pika, Seedance, Higgsfield, HeyGen", "Midjourney, Nano Banana, GPT Image, Firefly", "Short-form workflows (Reels, TikTok)", "ChatGPT, Claude, Gemini, Mistral", "Active watch & continuous testing"],
+      mobileOnly: true
+    },
+    {
+      category: "Generative AI Video",
+      icon: Clapperboard,
+      items: ["Gemini / Veo, Runway, Kling, Luma", "Pika, Seedance, Higgsfield, HeyGen", "Short-form workflows (Reels, TikTok)"],
+      desktopOnly: true
+    },
+    {
+      category: "Generative AI Image & Text",
+      icon: Palette,
+      items: ["Midjourney, Nano Banana, GPT Image, Firefly", "ChatGPT, Claude, Gemini, Mistral", "Active watch & continuous testing"],
+      desktopOnly: true
     },
     {
       category: "Video & Motion",

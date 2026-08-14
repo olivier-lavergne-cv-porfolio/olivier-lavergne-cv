@@ -18,8 +18,11 @@ export function Skills() {
       </h3>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {t.skills.map((skill, i) => (
-          <div key={i} className="border border-slate-200 dark:border-zinc-800 rounded-2xl p-5">
+        {t.skills.map((skill: (typeof t.skills)[number] & { mobileOnly?: boolean; desktopOnly?: boolean }, i) => (
+          <div
+            key={i}
+            className={`border border-slate-200 dark:border-zinc-800 rounded-2xl p-5${skill.mobileOnly ? ' md:hidden' : ''}${skill.desktopOnly ? ' hidden md:block' : ''}`}
+          >
             <h4 className="text-sm font-bold text-slate-700 dark:text-slate-300 mb-3 flex items-center gap-2">
               <skill.icon className="w-4 h-4 text-indigo-600 dark:text-indigo-400" /> {skill.category}
             </h4>
