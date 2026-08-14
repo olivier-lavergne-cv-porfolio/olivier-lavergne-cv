@@ -12,7 +12,7 @@ export function Hero() {
   const contentY = useTransform(scrollY, [0, 500], reduce ? [0, 0] : [0, 60]);
 
   return (
-    <section className="col-span-1 md:col-span-8 bg-white dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-center gap-4 shadow-xl dark:shadow-2xl relative overflow-hidden">
+    <section className="col-span-1 md:col-span-8 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-center gap-4 shadow-xl dark:shadow-2xl relative overflow-hidden">
       <motion.div
         style={{ y: bgY, opacity: bgOpacity }}
         className="absolute top-0 right-0 p-8 text-6xl md:text-8xl font-black text-slate-900 dark:text-white pointer-events-none tracking-tighter"
@@ -24,11 +24,11 @@ export function Hero() {
         <span className="bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase inline-block mb-4">
           {t.name}
         </span>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-tight">
+        <h1 className="text-[clamp(2.25rem,4vw+1rem,3.75rem)] font-extrabold text-slate-900 dark:text-white leading-tight">
           <span className="text-indigo-600 dark:text-indigo-400">{t.title}</span><br/>
           {t.subtitle}
         </h1>
-        <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mt-4">
+        <p className="text-[clamp(1.05rem,1.5vw+0.5rem,1.25rem)] text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mt-4">
           {t.description}
         </p>
         <div className="mt-8 flex gap-4">

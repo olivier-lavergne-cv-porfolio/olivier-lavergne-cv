@@ -10,7 +10,7 @@ export function About() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="col-span-1 md:col-span-4 bg-white dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-2 overflow-hidden relative flex flex-col min-h-[300px]"
+      className="col-span-1 md:col-span-4 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-2 overflow-hidden relative flex flex-col min-h-[300px]"
     >
       <div className="flex-1 w-full rounded-[2rem] bg-slate-50 dark:bg-zinc-800 flex flex-col items-center justify-center border border-slate-200 dark:border-zinc-700 p-8 text-center relative z-10">
         <div className="w-24 h-24 bg-slate-200 dark:bg-slate-700 rounded-full mx-auto mb-4 border-4 border-white dark:border-zinc-900 shadow-xl flex items-center justify-center text-4xl">

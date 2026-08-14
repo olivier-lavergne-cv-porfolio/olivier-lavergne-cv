@@ -15,7 +15,7 @@ export default function App() {
   const { theme, toggleTheme } = useTheme();
 
   return (
-    <div className="min-h-dvh bg-slate-50 dark:bg-[#09090b] text-slate-800 dark:text-slate-200 p-4 md:p-6 flex flex-col font-sans selection:bg-indigo-500/30 selection:text-indigo-900 dark:selection:text-indigo-200 overflow-x-hidden">
+    <div className="min-h-dvh bg-slate-50 dark:bg-zinc-950 text-slate-800 dark:text-slate-200 p-4 md:p-6 flex flex-col font-sans selection:bg-indigo-500/30 selection:text-indigo-900 dark:selection:text-indigo-200 overflow-x-hidden">
       <ScrollProgress />
       <header className="flex justify-between items-center gap-2 sm:gap-4 mb-6 max-w-7xl mx-auto w-full shrink-0">
         <div className="flex items-center gap-2 shrink-0">

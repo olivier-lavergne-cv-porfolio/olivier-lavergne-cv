@@ -87,10 +87,10 @@ export function Portfolio() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="col-span-1 md:col-span-12 bg-white dark:bg-[#18181b] border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 md:p-10 shadow-xl"
+      className="col-span-1 md:col-span-12 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 md:p-10 shadow-xl"
     >
       <div className="mb-10">
-        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3 mb-3">
+        <h3 className="text-[clamp(1.5rem,2vw+1rem,1.875rem)] font-bold text-slate-900 dark:text-white flex items-center gap-3 mb-3">
           <span className="w-3 h-3 bg-indigo-500 rounded-full"></span>
           {ui.portfolioTitle}
         </h3>
