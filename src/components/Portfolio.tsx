@@ -52,7 +52,7 @@ function MediaCard({ item, aspect }: { item: MediaItem; aspect: "video" | "portr
     <a
       href={item.url}
       target="_blank"
-      rel="noopener"
+      rel="noopener noreferrer"
       className={`group relative block ${aspectClass} rounded-2xl overflow-hidden border border-slate-200 dark:border-zinc-800 bg-slate-100 dark:bg-zinc-900`}
     >
       <img
