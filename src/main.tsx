@@ -4,16 +4,13 @@ import { MotionConfig } from 'motion/react';
 import App from './App.tsx';
 import './index.css';
 import { LanguageProvider } from './context/LanguageContext';
-import { ThemeProvider } from './context/ThemeContext';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <MotionConfig reducedMotion="user">
-      <ThemeProvider>
-        <LanguageProvider>
-          <App />
-        </LanguageProvider>
-      </ThemeProvider>
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
     </MotionConfig>
   </StrictMode>,
 );

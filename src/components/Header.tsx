@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { Download, Sun, Moon, Menu, X } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-import { useTheme } from "../context/ThemeContext";
 
 export function Header() {
   const { lang, setLang, t, ui } = useLanguage();
-  const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
@@ -36,14 +34,6 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className="w-9 h-9 rounded-full border border-[#aaaaaa] hover:border-black flex items-center justify-center"
-            >
-              {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
-            </button>
-
             <div className="flex items-center rounded-full border border-[#aaaaaa] overflow-hidden text-xs font-normal uppercase">
               <button
                 onClick={() => setLang("fr")}

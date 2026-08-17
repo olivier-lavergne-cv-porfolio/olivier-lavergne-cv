@@ -3,6 +3,7 @@ import { useLanguage } from "../context/LanguageContext";
 
 export function Experience() {
   const { t, ui } = useLanguage();
+
   return (
     <motion.section
       id="experience"
@@ -10,22 +11,26 @@ export function Experience() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="col-span-1 md:col-span-12 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 md:p-10 shadow-xl"
+      className="font-editorial font-light bg-[#fffef7] text-black px-5 sm:px-8 py-16 flex flex-col gap-12"
     >
-      <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-3 mb-8">
-        <span className="w-3 h-3 bg-indigo-500 rounded-full"></span>
-        {ui.experienceTitle}
-      </h3>
+      <div className="text-xs font-normal uppercase text-[#666666]">{ui.experienceTitle}</div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+      <div className="flex flex-col">
         {t.experience.map((exp, i) => (
-          <div key={i} className="bg-slate-50 dark:bg-zinc-900/40 border border-slate-200 dark:border-zinc-800/80 rounded-[2rem] p-6">
-            <div className="text-indigo-600 dark:text-indigo-400 font-bold text-xs mb-3 bg-indigo-50 dark:bg-indigo-500/10 inline-block px-3 py-1 rounded-full uppercase tracking-wider">{exp.period}</div>
-            <h4 className="text-lg font-bold text-slate-900 dark:text-white leading-tight mb-1">{exp.title}</h4>
-            <div className="text-slate-600 dark:text-slate-400 text-sm font-medium mb-3">{exp.company} <span className="opacity-50 mx-1">•</span> {exp.location}</div>
-            <p className="text-slate-500 dark:text-slate-500 text-sm leading-relaxed">
-              {exp.description}
-            </p>
+          <div
+            key={i}
+            className="flex flex-col sm:flex-row gap-2 sm:gap-8 py-8 border-t border-[#aaaaaa] first:border-t-0 first:pt-0"
+          >
+            <div className="text-xs font-normal uppercase text-[#666666] sm:w-40 shrink-0">{exp.period}</div>
+            <div className="flex flex-col gap-2 flex-1">
+              <div className="text-xl font-light leading-snug">{exp.title}</div>
+              <div className="text-sm font-normal text-[#666666]">
+                {exp.company} · {exp.location}
+              </div>
+              <p className="text-sm font-normal leading-relaxed text-[#666666] max-w-[60ch] text-pretty">
+                {exp.description}
+              </p>
+            </div>
           </div>
         ))}
       </div>
