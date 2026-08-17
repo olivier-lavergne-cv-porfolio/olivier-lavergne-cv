@@ -1,6 +1,26 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+/* Self-hosted (CSP: font-src 'self') — used only by the editorial hero/header/social sections */
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Switzer';
+  src: url('/fonts/Switzer-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+.font-editorial {
+  font-family: 'Switzer', ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.018em;
+}
+
 html {
   background-color: #f8fafc;
 }
@@ -50,11 +70,6 @@ body {
     display: none !important;
   }
 
-  /* Hide the large "Let's talk" action in footer */
-  footer > div:nth-child(2) {
-    display: none !important;
-  }
-
   /* Optimize Bento grid layout into a vertical flow for printing */
   main > div.grid {
     display: flex !important;
@@ -74,12 +89,6 @@ body {
     break-inside: avoid;
     margin-bottom: 0 !important;
     color: #0f172a !important; /* slate-900 */
-  }
-
-  /* Remove gradient backgrounds and absolute decorations */
-  .bg-gradient-to-br,
-  .absolute.top-0.right-0 {
-    display: none !important;
   }
 
   /* Force high contrast text colors (overriding dark mode classes) */

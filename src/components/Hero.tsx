@@ -1,42 +1,30 @@
-import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
-import { ArrowRight } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
 export function Hero() {
-  const { t, ui } = useLanguage();
-  const reduce = useReducedMotion();
-  const { scrollY } = useScroll();
+  const { t } = useLanguage();
+  const [firstName, ...rest] = t.name.split(" ");
+  const lastName = rest.join(" ");
 
-  const bgY = useTransform(scrollY, [0, 600], reduce ? [0, 0] : [0, -180]);
-  const bgOpacity = useTransform(scrollY, [0, 400], reduce ? [0.03, 0.03] : [0.03, 0]);
-  const contentY = useTransform(scrollY, [0, 500], reduce ? [0, 0] : [0, 60]);
+  const freelanceLine = `${t.contact.location} — ${t.experience[0].company} ${t.experience[0].period.toLowerCase()}`;
+  const tagsLine = [t.skills[3].category, t.skills[4].category, t.skills[0].category].join(" · ");
 
   return (
-    <section className="col-span-1 md:col-span-8 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 md:p-10 flex flex-col justify-center gap-4 shadow-xl dark:shadow-2xl relative overflow-hidden">
-      <motion.div
-        style={{ y: bgY, opacity: bgOpacity }}
-        className="absolute top-0 right-0 p-8 text-6xl md:text-8xl font-black text-slate-900 dark:text-white pointer-events-none tracking-tighter"
-      >
-        EXPERT
-      </motion.div>
-
-      <motion.div style={{ y: contentY }} className="z-10 relative">
-        <span className="bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase inline-block mb-4">
-          {t.name}
-        </span>
-        <h1 className="text-[clamp(2.25rem,4vw+1rem,3.75rem)] font-extrabold text-slate-900 dark:text-white leading-tight">
-          <span className="text-indigo-600 dark:text-indigo-400">{t.title}</span><br/>
-          {t.subtitle}
-        </h1>
-        <p className="text-[clamp(1.05rem,1.5vw+0.5rem,1.25rem)] text-slate-600 dark:text-slate-400 max-w-xl leading-relaxed mt-4">
+    <section className="font-editorial font-light bg-[#fffef7] text-black px-5 sm:px-8 pt-16 sm:pt-24 md:pt-28 pb-16 flex flex-col gap-12">
+      <h1 className="text-[clamp(3.5rem,11vw,9.25rem)] font-light leading-[0.92] tracking-[-0.04em] m-0">
+        {firstName}
+        <br />
+        {lastName}
+      </h1>
+      <div className="grid gap-12 items-end" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))" }}>
+        <div className="text-xl font-light leading-relaxed max-w-[34ch] text-pretty">
           {t.description}
-        </p>
-        <div className="mt-8 flex gap-4">
-          <a href="#contact" className="group flex items-center justify-center gap-2 px-6 py-3 bg-slate-900 dark:bg-white text-white dark:text-zinc-950 font-bold rounded-full hover:bg-slate-800 dark:hover:bg-zinc-200 w-max">
-            {ui.startProject} <ArrowRight className="w-4 h-4" />
-          </a>
         </div>
-      </motion.div>
+        <div className="flex flex-col gap-2">
+          <div className="text-xs font-normal uppercase text-[#666666]">{freelanceLine}</div>
+          <div className="h-px bg-[#aaaaaa]"></div>
+          <div className="text-xs font-normal uppercase text-[#666666]">{tagsLine}</div>
+        </div>
+      </div>
     </section>
   );
 }

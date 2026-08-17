@@ -1,60 +1,65 @@
 import { motion } from "motion/react";
-import { Mail, Linkedin, Github } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
 export function Footer() {
   const { t, ui } = useLanguage();
+  const year = new Date().getFullYear();
+
   return (
-    <footer
-      id="contact"
-      className="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-4 pb-12"
-    >
+    <footer className="font-editorial font-light bg-[#fffef7] text-black">
       <motion.div
+        id="contact"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="col-span-1 md:col-span-8 bg-white dark:bg-zinc-900 border border-slate-200 dark:border-zinc-800 rounded-[2.5rem] p-8 flex flex-col md:flex-row justify-between items-center gap-6 shadow-xl text-center md:text-left"
+        className="grid gap-12 px-5 sm:px-8 py-16 md:py-28"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))" }}
       >
-        <div>
-          <h2 className="text-2xl font-black text-slate-900 dark:text-white mb-1 tracking-tight">
-            {t.name}
-          </h2>
-          <p className="text-slate-600 dark:text-slate-400 text-sm font-medium mb-1">
-            {t.title} - {t.subtitle}
-          </p>
-          <p className="text-indigo-600 dark:text-indigo-400 text-sm font-medium">
-            {t.contact.phone}
-          </p>
+        <div className="text-3xl sm:text-5xl font-light leading-none tracking-[-0.023em] max-w-[18ch]">
+          {ui.startProject}
         </div>
-        <div className="flex items-center gap-3">
-          <a href={`mailto:${t.contact.email}`} className="w-12 h-12 bg-slate-100 dark:bg-zinc-800 hover:bg-indigo-600 border border-slate-200 dark:border-zinc-700 rounded-full flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-white shadow-md dark:shadow-lg">
-            <Mail className="w-5 h-5" />
-          </a>
-          <a href={t.contact.linkedin} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-slate-100 dark:bg-zinc-800 hover:bg-indigo-600 border border-slate-200 dark:border-zinc-700 rounded-full flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-white shadow-md dark:shadow-lg">
-            <Linkedin className="w-5 h-5" />
-          </a>
-          <a href={t.contact.github} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-slate-100 dark:bg-zinc-800 hover:bg-indigo-600 border border-slate-200 dark:border-zinc-700 rounded-full flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-white shadow-md dark:shadow-lg">
-            <Github className="w-5 h-5" />
-          </a>
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-1">
+            <div className="text-xl font-normal">{t.name}</div>
+            <div className="text-sm font-normal text-[#666666]">
+              {t.title} — {t.subtitle}
+            </div>
+            <div className="text-sm font-normal">{t.contact.phone}</div>
+          </div>
+          <div className="flex gap-2 flex-wrap print:hidden">
+            <a
+              href={`mailto:${t.contact.email}`}
+              className="text-base font-normal text-[#fffef7] bg-black rounded-full px-6 py-3"
+            >
+              {t.contact.email}
+            </a>
+            <a
+              href={t.contact.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-base font-normal border border-[#aaaaaa] hover:border-black rounded-full px-6 py-3"
+            >
+              LinkedIn
+            </a>
+            <a
+              href={t.contact.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-base font-normal border border-[#aaaaaa] hover:border-black rounded-full px-6 py-3"
+            >
+              GitHub
+            </a>
+          </div>
         </div>
       </motion.div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
-        className="col-span-1 md:col-span-4 bg-slate-900 dark:bg-white rounded-full flex items-center justify-center font-bold text-white dark:text-black gap-2 shadow-xl cursor-pointer group py-8 md:py-0"
-      >
-        <a href={`mailto:${t.contact.email}`} className="flex items-center gap-2 w-full h-full justify-center">
-          <span className="text-xl">{ui.letsTalk}</span>
-          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-          </svg>
-        </a>
-      </motion.div>
+      <div className="border-t border-[#aaaaaa] px-5 sm:px-8 py-6 flex justify-between flex-wrap gap-4 text-xs font-normal uppercase text-[#666666]">
+        <div>
+          {t.name} — {t.contact.location}
+        </div>
+        <div>{year} ©</div>
+      </div>
     </footer>
   );
 }

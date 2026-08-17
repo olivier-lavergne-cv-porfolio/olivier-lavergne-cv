@@ -25,6 +25,10 @@ interface LanguageContextType {
     onesikerLabel: string;
     watchOn: string;
     visitSite: string;
+    social: string;
+    menu: string;
+    play: string;
+    swipeHint: string;
   }
 }
 
@@ -46,6 +50,10 @@ const UI_FR = {
   onesikerLabel: "Onesiker — Artiste contemporain",
   watchOn: "Voir sur",
   visitSite: "Visiter le site",
+  social: "Réseaux",
+  menu: "Menu",
+  play: "Lire",
+  swipeHint: "Glisse ou fais défiler →",
 };
 
 const UI_EN = {
@@ -66,6 +74,10 @@ const UI_EN = {
   onesikerLabel: "Onesiker — Contemporary Artist",
   watchOn: "Watch on",
   visitSite: "Visit site",
+  social: "Social",
+  menu: "Menu",
+  play: "Play",
+  swipeHint: "Swipe or scroll →",
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
