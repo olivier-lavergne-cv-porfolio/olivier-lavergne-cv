@@ -83,17 +83,17 @@ export function Social() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-      className="font-editorial font-light bg-[#fffef7] text-black py-16 flex flex-col gap-12 overflow-hidden"
+      className="font-editorial bg-[#fffef7] text-black py-16 flex flex-col gap-12 overflow-hidden"
     >
       <div className="px-5 sm:px-8 flex items-end justify-between gap-6 flex-wrap">
         <div className="flex flex-col gap-6">
-          <div className="text-xs font-normal uppercase text-[#666666]">{ui.social}</div>
-          <div className="text-3xl sm:text-5xl font-light leading-none tracking-[-0.023em] max-w-[22ch]">
+          <div className="text-caption uppercase text-[#666666]">{ui.social}</div>
+          <div className="text-heading max-w-[22ch]">
             {ui.videosLabel}
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <div className="text-xs font-normal uppercase text-[#666666] whitespace-nowrap">
+          <div className="text-caption uppercase text-[#666666] whitespace-nowrap">
             [ {index + 1} / {items.length} ]
           </div>
           <button
@@ -142,11 +142,11 @@ export function Social() {
                     <Icon className="w-6 h-6 text-black" />
                   </div>
                 </div>
-                <div className="absolute left-4 top-4 text-xs font-normal uppercase text-[#fffef7] border border-[#fffef773] rounded-full px-3 py-1.5">
+                <div className="absolute left-4 top-4 text-caption uppercase text-[#fffef7] border border-[#fffef773] rounded-full px-3 py-1.5">
                   {platformLabel(item)}
                 </div>
               </div>
-              <div className="flex items-center justify-between gap-2 text-xs font-normal uppercase text-[#666666]">
+              <div className="flex items-center justify-between gap-2 text-caption uppercase text-[#666666]">
                 {platformLabel(item)}
                 <ExternalLink className="w-3.5 h-3.5" />
               </div>
@@ -162,7 +162,7 @@ export function Social() {
             style={{ width: `${progress}%` }}
           ></div>
         </div>
-        <div className="text-xs font-normal uppercase text-[#666666] whitespace-nowrap">{ui.swipeHint}</div>
+        <div className="text-caption uppercase text-[#666666] whitespace-nowrap">{ui.swipeHint}</div>
       </div>
     </motion.section>
   );

@@ -47,13 +47,13 @@ export function Portfolio() {
       whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
       variants={staggerContainer}
-      className="font-editorial font-light bg-[#fffef7] text-black px-5 sm:px-8 py-16 flex flex-col gap-12"
+      className="font-editorial bg-[#fffef7] text-black px-5 sm:px-8 py-16 flex flex-col gap-12"
     >
       <motion.div variants={staggerItem} className="flex flex-col gap-3 max-w-3xl">
-        <h2 className="text-2xl sm:text-3xl font-light leading-tight tracking-[-0.02em] m-0">
+        <h2 className="text-heading-sm m-0">
           {ui.portfolioTitle}
         </h2>
-        <p className="text-base font-light leading-relaxed text-[#666666] text-pretty">
+        <p className="text-body text-[#666666] text-pretty">
           {ui.portfolioDesc}
         </p>
       </motion.div>
@@ -68,8 +68,8 @@ export function Portfolio() {
           return (
             <motion.div key={item.title} variants={staggerItem} className="flex flex-col gap-4">
               <div className="w-full aspect-[4/3]" style={{ background: art(p.c1, p.c2, p.mode) }}></div>
-              <div className="text-xl font-light leading-snug">{item.title}</div>
-              <div className="text-sm font-normal leading-relaxed text-[#666666] text-pretty">
+              <div className="text-subheading">{item.title}</div>
+              <div className="text-body-sm text-[#666666] text-pretty">
                 {item.description}
               </div>
             </motion.div>

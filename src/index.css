@@ -20,6 +20,50 @@
   letter-spacing: -0.018em;
 }
 
+/* Type scale — minor third (1.2) from a 16px base, per the refero.design style guide */
+.text-caption {
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.43;
+  letter-spacing: -0.018em;
+  font-weight: 400;
+}
+.text-body-sm {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.43;
+  letter-spacing: -0.018em;
+  font-weight: 400;
+}
+.text-body {
+  font-size: 1rem; /* 16px */
+  line-height: 1.4;
+  letter-spacing: -0.018em;
+  font-weight: 400;
+}
+.text-subheading {
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.4;
+  letter-spacing: -0.018em;
+  font-weight: 300;
+}
+.text-heading-sm {
+  font-size: 2.125rem; /* 34px */
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  font-weight: 300;
+}
+.text-heading {
+  font-size: 3.375rem; /* 54px */
+  line-height: 1;
+  letter-spacing: -0.023em;
+  font-weight: 300;
+}
+.text-display {
+  font-size: clamp(2.125rem, 7vw, 5.25rem); /* 34px → 84px, per "push display headlines to 64–84px" */
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 300;
+}
+
 html {
   background-color: #fffef7;
 }

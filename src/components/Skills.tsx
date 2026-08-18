@@ -12,9 +12,9 @@ export function Skills() {
       whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
       variants={staggerContainer}
-      className="font-editorial font-light bg-[#fffef7] text-black px-5 sm:px-8 py-16 flex flex-col gap-12"
+      className="font-editorial bg-[#fffef7] text-black px-5 sm:px-8 py-16 flex flex-col gap-12"
     >
-      <motion.div variants={staggerItem} className="text-xs font-normal uppercase text-[#666666]">
+      <motion.div variants={staggerItem} className="text-caption uppercase text-[#666666]">
         {ui.skillsTitle}
       </motion.div>
 
@@ -27,7 +27,7 @@ export function Skills() {
           const visibility = skill.mobileOnly ? "flex md:hidden" : skill.desktopOnly ? "hidden md:flex" : "flex";
           return (
             <motion.div key={i} variants={staggerItem} className={`${visibility} flex-col gap-4`}>
-              <div className="flex items-center gap-2 text-xl font-light leading-snug">
+              <div className="flex items-center gap-2 text-subheading">
                 <skill.icon className="w-4 h-4 shrink-0" />
                 {skill.category}
               </div>
@@ -35,7 +35,7 @@ export function Skills() {
                 {skill.items.map((item, j) => (
                   <span
                     key={j}
-                    className="text-xs font-normal uppercase border border-[#aaaaaa] rounded-full px-3 py-1.5"
+                    className="text-caption uppercase border border-[#aaaaaa] rounded-full px-3 py-1.5"
                   >
                     {item}
                   </span>

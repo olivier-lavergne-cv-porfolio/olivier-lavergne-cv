@@ -33,14 +33,14 @@ export function About() {
       whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
       variants={staggerContainer}
-      className="font-editorial font-light bg-[#fffef7] text-black px-5 sm:px-8 py-16 flex flex-col gap-12"
+      className="font-editorial bg-[#fffef7] text-black px-5 sm:px-8 py-16 flex flex-col gap-12"
     >
       <motion.div variants={staggerItem} className="flex flex-col gap-6 max-w-3xl">
-        <div className="text-xs font-normal uppercase text-[#666666]">{ui.expertise}</div>
-        <div className="text-2xl sm:text-3xl font-light leading-snug tracking-[-0.02em] text-pretty">
+        <div className="text-caption uppercase text-[#666666]">{ui.expertise}</div>
+        <div className="text-heading-sm text-pretty">
           {t.about.paragraphs[0]}
         </div>
-        <div className="flex flex-col gap-4 text-base font-light leading-relaxed text-[#666666] max-w-[65ch] text-pretty">
+        <div className="flex flex-col gap-4 text-body text-[#666666] max-w-[65ch] text-pretty">
           <p>{t.about.paragraphs[1]}</p>
           <p>{t.about.paragraphs[2]}</p>
         </div>
@@ -49,10 +49,10 @@ export function About() {
       <motion.div variants={staggerContainer} className="grid grid-cols-2 sm:flex sm:flex-wrap gap-8 sm:gap-16">
         {t.stats.map((stat, i) => (
           <motion.div key={i} variants={staggerItem} className="flex flex-col gap-1">
-            <div className="text-[clamp(2rem,5vw,3.375rem)] font-light leading-none tracking-[-0.02em]">
+            <div className="text-heading">
               <StatValue value={stat.value} />
             </div>
-            <div className="text-xs font-normal uppercase text-[#666666] max-w-[16ch]">{stat.label}</div>
+            <div className="text-caption uppercase text-[#666666] max-w-[16ch]">{stat.label}</div>
           </motion.div>
         ))}
       </motion.div>
