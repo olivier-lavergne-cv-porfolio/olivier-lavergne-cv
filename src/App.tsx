@@ -9,8 +9,11 @@ import { Skills } from "./components/Skills";
 import { Footer } from "./components/Footer";
 import { BackToTop } from "./components/BackToTop";
 import { ScrollProgress } from "./components/ScrollProgress";
+import { useSmoothScroll } from "./hooks/useSmoothScroll";
 
 export default function App() {
+  useSmoothScroll();
+
   return (
     <div className="min-h-dvh bg-[#fffef7] flex flex-col selection:bg-black/10 overflow-x-hidden">
       <ScrollProgress />

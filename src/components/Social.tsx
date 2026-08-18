@@ -115,6 +115,7 @@ export function Social() {
 
       <div
         ref={railRef}
+        data-lenis-prevent
         className="flex gap-6 overflow-x-auto px-5 sm:px-8 pb-2 cursor-grab [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         style={{ scrollSnapType: "x mandatory", scrollPaddingInline: "clamp(20px, 4vw, 32px)" }}
       >

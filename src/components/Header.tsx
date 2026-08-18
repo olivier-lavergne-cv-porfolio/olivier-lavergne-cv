@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { Download, Menu, X } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 
 export function Header() {
   const { lang, setLang, t, ui } = useLanguage();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
+  const lastY = useRef(0);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    if (menuOpen) return;
+    const diff = latest - lastY.current;
+    if (latest < 80) setHidden(false);
+    else if (diff > 4) setHidden(true);
+    else if (diff < -4) setHidden(false);
+    lastY.current = latest;
+  });
 
   const navLinks = [
     { href: "#about", label: ui.expertise },
@@ -15,12 +28,16 @@ export function Header() {
   ];
 
   return (
-    <header className="font-editorial font-light sticky top-0 z-50 bg-[#fffef7] text-black relative">
+    <motion.header
+      animate={{ y: hidden ? "-100%" : "0%" }}
+      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+      className="font-editorial font-light sticky top-0 z-50 bg-[#fffef7] text-black relative"
+    >
       <div className="flex items-center justify-between gap-4 flex-wrap px-5 py-4 sm:px-8">
         <div className="flex items-center gap-4">
           <div className="w-8 h-8 rounded-full bg-black shrink-0" aria-hidden="true"></div>
           <div className="text-xs font-normal uppercase leading-tight">
-            {t.title.toLowerCase()} — {t.subtitle.toLowerCase()}
+            {t.name}
           </div>
         </div>
 
@@ -84,6 +101,6 @@ export function Header() {
           ))}
         </nav>
       )}
-    </header>
+    </motion.header>
   );
 }

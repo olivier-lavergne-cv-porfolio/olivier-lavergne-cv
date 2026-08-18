@@ -1,24 +1,31 @@
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import { mainVideo, thumbUrl } from "../media";
 
 export function Showreel() {
   const { t, ui } = useLanguage();
   const BASE = import.meta.env.BASE_URL;
+  const containerRef = useRef<HTMLAnchorElement>(null);
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] });
+  const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
 
   return (
     <section className="font-editorial font-light bg-[#fffef7] pb-8">
       <a
+        ref={containerRef}
         href={mainVideo.url}
         target="_blank"
         rel="noopener noreferrer"
         className="group relative block w-full aspect-video overflow-hidden bg-[#101731]"
         style={{ minHeight: "340px" }}
       >
-        <img
+        <motion.img
           src={thumbUrl(mainVideo, BASE)}
           alt=""
           loading="lazy"
-          className="absolute inset-0 w-full h-full object-cover"
+          style={{ y }}
+          className="absolute -top-[12%] left-0 w-full h-[124%] object-cover"
         />
         <div
           className="absolute inset-0"

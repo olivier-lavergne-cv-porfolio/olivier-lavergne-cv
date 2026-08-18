@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
+import { staggerContainer, staggerItem } from "../lib/motionVariants";
 
 export function Experience() {
   const { t, ui } = useLanguage();
@@ -7,18 +8,21 @@ export function Experience() {
   return (
     <motion.section
       id="experience"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial="hidden"
+      whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      variants={staggerContainer}
       className="font-editorial font-light bg-[#fffef7] text-black px-5 sm:px-8 py-16 flex flex-col gap-12"
     >
-      <div className="text-xs font-normal uppercase text-[#666666]">{ui.experienceTitle}</div>
+      <motion.div variants={staggerItem} className="text-xs font-normal uppercase text-[#666666]">
+        {ui.experienceTitle}
+      </motion.div>
 
-      <div className="flex flex-col">
+      <motion.div variants={staggerContainer} className="flex flex-col">
         {t.experience.map((exp, i) => (
-          <div
+          <motion.div
             key={i}
+            variants={staggerItem}
             className="flex flex-col sm:flex-row gap-2 sm:gap-8 py-8 border-t border-[#aaaaaa] first:border-t-0 first:pt-0"
           >
             <div className="text-xs font-normal uppercase text-[#666666] sm:w-40 shrink-0">{exp.period}</div>
@@ -31,9 +35,9 @@ export function Experience() {
                 {exp.description}
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </motion.section>
   );
 }

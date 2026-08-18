@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
+import { staggerContainer, staggerItem } from "../lib/motionVariants";
 
 function rgba(hex: string, a: number) {
   const n = parseInt(hex.slice(1), 16);
@@ -42,35 +43,39 @@ export function Portfolio() {
   return (
     <motion.section
       id="portfolio"
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial="hidden"
+      whileInView="show"
       viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+      variants={staggerContainer}
       className="font-editorial font-light bg-[#fffef7] text-black px-5 sm:px-8 py-16 flex flex-col gap-12"
     >
-      <div className="flex flex-col gap-3 max-w-3xl">
+      <motion.div variants={staggerItem} className="flex flex-col gap-3 max-w-3xl">
         <h2 className="text-2xl sm:text-3xl font-light leading-tight tracking-[-0.02em] m-0">
           {ui.portfolioTitle}
         </h2>
         <p className="text-base font-light leading-relaxed text-[#666666] text-pretty">
           {ui.portfolioDesc}
         </p>
-      </div>
+      </motion.div>
 
-      <div className="grid gap-12" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))" }}>
+      <motion.div
+        variants={staggerContainer}
+        className="grid gap-12"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))" }}
+      >
         {t.portfolio.map((item, i) => {
           const p = PALETTE[i % PALETTE.length];
           return (
-            <div key={item.title} className="flex flex-col gap-4">
+            <motion.div key={item.title} variants={staggerItem} className="flex flex-col gap-4">
               <div className="w-full aspect-[4/3]" style={{ background: art(p.c1, p.c2, p.mode) }}></div>
               <div className="text-xl font-light leading-snug">{item.title}</div>
               <div className="text-sm font-normal leading-relaxed text-[#666666] text-pretty">
                 {item.description}
               </div>
-            </div>
+            </motion.div>
           );
         })}
-      </div>
+      </motion.div>
     </motion.section>
   );
 }
