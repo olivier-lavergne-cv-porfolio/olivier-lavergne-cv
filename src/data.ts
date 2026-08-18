@@ -135,6 +135,10 @@ export const CV_DATA_FR = {
       description: "Direction artistique, motion design et production haute cadence qualité broadcast pour la France et les US."
     }
   ],
+  webDesign: {
+    title: "onesiker.org",
+    description: "Conception du site vitrine et de la boutique e-commerce, développement du back-office et stratégie de lancement — un projet mené de A à Z."
+  },
   contact
 };
 
@@ -265,6 +269,10 @@ export const CV_DATA_EN = {
       description: "Art direction, motion design, and high-paced broadcast-quality production for France and the US."
     }
   ],
+  webDesign: {
+    title: "onesiker.org",
+    description: "Design of the showcase site and e-commerce store, back-office development, and launch strategy — a project handled end-to-end."
+  },
   contact: {
     ...contact,
     location: "Toulouse & beyond"

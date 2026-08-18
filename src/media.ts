@@ -14,14 +14,20 @@ export const shortVideos: MediaItem[] = [
   { kind: "youtube", id: "0kBfVG1fZxs", url: "https://www.youtube.com/shorts/0kBfVG1fZxs" },
 ];
 
-export const onesikerItems: MediaItem[] = [
-  { kind: "site", title: "onesiker.org", url: "https://onesiker.org", img: "onesiker-preview.png" },
+export const instagramItems: MediaItem[] = [
   { kind: "instagram", id: "DbVV4h1C8au", url: "https://www.instagram.com/reel/DbVV4h1C8au/" },
   { kind: "instagram", id: "DYbmc6UiU-X", url: "https://www.instagram.com/reel/DYbmc6UiU-X/" },
   { kind: "instagram", id: "DZhYxvCiM_7", url: "https://www.instagram.com/reel/DZhYxvCiM_7/" },
   { kind: "instagram", id: "DZNcPmYigB0", url: "https://www.instagram.com/reel/DZNcPmYigB0/" },
   { kind: "instagram", id: "DYeWSwHiHQW", url: "https://www.instagram.com/reel/DYeWSwHiHQW/" },
 ];
+
+export const webDesignItem: MediaItem = {
+  kind: "site",
+  title: "onesiker.org",
+  url: "https://onesiker.org",
+  img: "onesiker-preview.png",
+};
 
 export function itemKey(item: MediaItem) {
   return item.kind === "site" ? item.url : item.id;

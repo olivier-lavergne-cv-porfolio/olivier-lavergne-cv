@@ -8,25 +8,28 @@ function toTitleCase(str: string) {
     .join(" ");
 }
 
-function withNoBreakLastPair(str: string) {
-  const idx = str.lastIndexOf(" ");
-  if (idx === -1) return str;
-  return str.slice(0, idx) + " " + str.slice(idx + 1);
+function withNoBreak(str: string) {
+  return str.replace(/ /g, " ");
 }
 
 export function Hero() {
   const { t } = useLanguage();
+  const [titleLine1, titleLine2] = t.title.split(" / ");
 
   const freelanceLine = `${t.contact.location} — ${t.experience[0].company} ${t.experience[0].period.toLowerCase()}`;
 
   return (
-    <section className="font-editorial bg-[#fffef7] text-black px-5 sm:px-8 pt-16 sm:pt-24 md:pt-28 pb-16 flex flex-col gap-12">
+    <section className="font-editorial bg-[#fffef7] text-black px-5 sm:px-8 pt-16 sm:pt-24 md:pt-28 pb-16 flex flex-col gap-6">
       <h1 className="text-display m-0">
-        {withNoBreakLastPair(toTitleCase(t.title))}
+        {toTitleCase(titleLine1)}
         <br />
-        {toTitleCase(t.subtitle)}
+        {withNoBreak(toTitleCase(titleLine2))}
       </h1>
-      <div className="grid gap-12 items-end" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))" }}>
+      <div className="flex flex-col gap-2">
+        <div className="h-px bg-[#aaaaaa]"></div>
+        <div className="text-caption uppercase text-[#666666]">{t.subtitle}</div>
+      </div>
+      <div className="grid gap-12 items-end mt-6" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))" }}>
         <div className="text-subheading max-w-[34ch] text-pretty">
           {t.description}
         </div>

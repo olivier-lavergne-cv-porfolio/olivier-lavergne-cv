@@ -4,7 +4,7 @@ import { useLanguage } from "../context/LanguageContext";
 import { mainVideo, thumbUrl } from "../media";
 
 export function Showreel() {
-  const { t, ui } = useLanguage();
+  const { ui } = useLanguage();
   const BASE = import.meta.env.BASE_URL;
   const containerRef = useRef<HTMLAnchorElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] });
@@ -34,9 +34,6 @@ export function Showreel() {
 
         <div className="absolute left-5 sm:left-8 right-5 sm:right-8 bottom-5 sm:bottom-8 flex flex-col gap-2">
           <div className="text-caption uppercase text-[#fffef7] opacity-70">{ui.videosLabel}</div>
-          <div className="text-heading-sm text-[#fffef7] max-w-[24ch] text-pretty">
-            {t.about.highlight}
-          </div>
         </div>
 
         <div className="absolute right-5 sm:right-8 top-5 sm:top-8 text-caption uppercase text-[#fffef7] border border-[#fffef799] rounded-full px-6 py-3 group-hover:border-[#fffef7]">

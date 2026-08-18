@@ -22,7 +22,7 @@ interface LanguageContextType {
     portfolioTitle: string;
     portfolioDesc: string;
     videosLabel: string;
-    onesikerLabel: string;
+    webDesignTitle: string;
     watchOn: string;
     visitSite: string;
     social: string;
@@ -47,7 +47,7 @@ const UI_FR = {
   portfolioTitle: "Production, Réalisation & Motion Design",
   portfolioDesc: "Vingt ans de production audiovisuelle : réalisation, prise de vue, montage, motion design et sound design — enrichis par l'intégration des IA génératives dans les workflows créatifs.",
   videosLabel: "Vidéos & Motion Design",
-  onesikerLabel: "Onesiker — Artiste contemporain",
+  webDesignTitle: "Web Design",
   watchOn: "Voir sur",
   visitSite: "Visiter le site",
   social: "Réseaux",
@@ -71,7 +71,7 @@ const UI_EN = {
   portfolioTitle: "Production, Direction & Motion Design",
   portfolioDesc: "Twenty years of audiovisual production: directing, filming, editing, motion design and sound design — enriched by generative AI integration in creative workflows.",
   videosLabel: "Videos & Motion Design",
-  onesikerLabel: "Onesiker — Contemporary Artist",
+  webDesignTitle: "Web Design",
   watchOn: "Watch on",
   visitSite: "Visit site",
   social: "Social",

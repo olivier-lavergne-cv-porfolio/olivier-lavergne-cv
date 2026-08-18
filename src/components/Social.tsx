@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { ExternalLink, Play, Globe } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
-import { shortVideos, onesikerItems, itemKey, thumbUrl, platformLabel, type MediaItem } from "../media";
+import { shortVideos, instagramItems, itemKey, thumbUrl, platformLabel, type MediaItem } from "../media";
 
-const items: MediaItem[] = [...shortVideos, ...onesikerItems];
+const items: MediaItem[] = [...shortVideos, ...instagramItems];
 
 export function Social() {
   const { ui } = useLanguage();

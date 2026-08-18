@@ -37,6 +37,56 @@ const PALETTE: Array<{ c1: string; c2: string; mode: ArtMode }> = [
   { c1: "#03624c", c2: "#05070f", mode: "bands" },
 ];
 
+const ICON_PROPS = { fill: "none", stroke: "#fffef7", strokeWidth: 1.5, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+
+/* Production Vidéo IA — play button woven into a neural-network of nodes */
+function IconAIVideo() {
+  return (
+    <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full" {...ICON_PROPS} strokeOpacity={0.55}>
+      <circle cx="100" cy="100" r="34" />
+      <polygon points="90,84 90,116 118,100" fill="#fffef7" fillOpacity="0.55" stroke="none" />
+      <circle cx="40" cy="58" r="4" fill="#fffef7" fillOpacity="0.6" stroke="none" />
+      <circle cx="162" cy="55" r="4" fill="#fffef7" fillOpacity="0.6" stroke="none" />
+      <circle cx="44" cy="150" r="4" fill="#fffef7" fillOpacity="0.6" stroke="none" />
+      <circle cx="158" cy="146" r="4" fill="#fffef7" fillOpacity="0.6" stroke="none" />
+      <line x1="40" y1="58" x2="79" y2="87" />
+      <line x1="162" y1="55" x2="121" y2="86" />
+      <line x1="44" y1="150" x2="81" y2="118" />
+      <line x1="158" y1="146" x2="119" y2="117" />
+    </svg>
+  );
+}
+
+/* Airbus Defence Space — abstract aircraft silhouette over radar rings (no brand marks) */
+function IconAerospace() {
+  return (
+    <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full" {...ICON_PROPS} strokeOpacity={0.45}>
+      <circle cx="100" cy="100" r="70" />
+      <circle cx="100" cy="100" r="48" />
+      <circle cx="100" cy="100" r="26" />
+      <polygon points="100,52 113,112 100,101 87,112" fill="#fffef7" fillOpacity="0.55" stroke="none" />
+      <polygon points="58,122 100,106 142,122 100,133" fill="#fffef7" fillOpacity="0.35" stroke="none" />
+    </svg>
+  );
+}
+
+/* Spots TV M6 & MTV — broadcast monitor with a play spot and signal waves (no channel logos) */
+function IconBroadcast() {
+  return (
+    <svg viewBox="0 0 200 200" className="absolute inset-0 w-full h-full" {...ICON_PROPS} strokeOpacity={0.5}>
+      <rect x="52" y="64" width="96" height="62" rx="3" />
+      <polygon points="90,84 90,106 112,95" fill="#fffef7" fillOpacity="0.55" stroke="none" />
+      <line x1="80" y1="126" x2="80" y2="136" />
+      <line x1="120" y1="126" x2="120" y2="136" />
+      <line x1="68" y1="136" x2="132" y2="136" />
+      <path d="M152 58 Q168 75 152 92" />
+      <path d="M163 47 Q186 75 163 103" />
+    </svg>
+  );
+}
+
+const ICONS = [IconAIVideo, IconAerospace, IconBroadcast];
+
 export function Portfolio() {
   const { t, ui } = useLanguage();
 
@@ -65,9 +115,12 @@ export function Portfolio() {
       >
         {t.portfolio.map((item, i) => {
           const p = PALETTE[i % PALETTE.length];
+          const Icon = ICONS[i % ICONS.length];
           return (
             <motion.div key={item.title} variants={staggerItem} className="flex flex-col gap-4">
-              <div className="w-full aspect-[4/3]" style={{ background: art(p.c1, p.c2, p.mode) }}></div>
+              <div className="relative w-full aspect-[4/3]" style={{ background: art(p.c1, p.c2, p.mode) }}>
+                <Icon />
+              </div>
               <div className="text-subheading">{item.title}</div>
               <div className="text-body-sm text-[#666666] text-pretty">
                 {item.description}
