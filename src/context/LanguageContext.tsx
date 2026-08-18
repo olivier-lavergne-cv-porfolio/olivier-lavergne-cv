@@ -17,8 +17,11 @@ interface LanguageContextType {
     featured: string;
     letsTalk: string;
     skillsTitle: string;
+    skillsSubtitle: string;
     experienceTitle: string;
+    experienceSubtitle: string;
     videosLabel: string;
+    showreelSubtitle: string;
     webDesignTitle: string;
     watchOn: string;
     visitSite: string;
@@ -39,8 +42,11 @@ const UI_FR = {
   featured: "En Vedette",
   letsTalk: "Let's talk",
   skillsTitle: "Compétences",
+  skillsSubtitle: "De la prise de vue à l'IA générative.",
   experienceTitle: "Parcours & Expérience",
+  experienceSubtitle: "Vingt ans, six étapes.",
   videosLabel: "Vidéos & Motion Design",
+  showreelSubtitle: "Vingt ans de production, en une bande démo.",
   webDesignTitle: "Web Design",
   watchOn: "Voir sur",
   visitSite: "Visiter le site",
@@ -60,8 +66,11 @@ const UI_EN = {
   featured: "Featured",
   letsTalk: "Let's talk",
   skillsTitle: "Skills",
+  skillsSubtitle: "From filming to generative AI.",
   experienceTitle: "Career & Experience",
+  experienceSubtitle: "Twenty years, six stages.",
   videosLabel: "Videos & Motion Design",
+  showreelSubtitle: "Twenty years of production, in one reel.",
   webDesignTitle: "Web Design",
   watchOn: "Watch on",
   visitSite: "Visit site",

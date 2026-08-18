@@ -14,8 +14,9 @@ export function Skills() {
       variants={staggerContainer}
       className="font-editorial bg-[#fffef7] text-black px-5 sm:px-8 py-16 flex flex-col gap-12"
     >
-      <motion.div variants={staggerItem} className="text-caption uppercase text-[#666666]">
-        {ui.skillsTitle}
+      <motion.div variants={staggerItem} className="flex flex-col gap-3">
+        <div className="text-caption uppercase text-[#666666]">{ui.skillsTitle}</div>
+        <div className="text-heading max-w-[22ch]">{ui.skillsSubtitle}</div>
       </motion.div>
 
       <motion.div

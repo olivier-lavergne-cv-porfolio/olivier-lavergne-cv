@@ -58,7 +58,7 @@
   font-weight: 300;
 }
 .text-display {
-  font-size: clamp(2.125rem, 7vw, 5.25rem); /* 34px → 84px, per "push display headlines to 64–84px" */
+  font-size: clamp(2.5rem, 13vw, 11.5rem); /* fills the viewport width edge to edge on the Hero title */
   line-height: 1;
   letter-spacing: -0.04em;
   font-weight: 300;
