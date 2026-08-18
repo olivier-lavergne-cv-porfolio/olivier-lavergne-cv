@@ -9,7 +9,6 @@ interface LanguageContextType {
   t: typeof CV_DATA_FR;
   ui: {
     expertise: string;
-    portfolio: string;
     experience: string;
     contact: string;
     download: string;
@@ -19,8 +18,6 @@ interface LanguageContextType {
     letsTalk: string;
     skillsTitle: string;
     experienceTitle: string;
-    portfolioTitle: string;
-    portfolioDesc: string;
     videosLabel: string;
     webDesignTitle: string;
     watchOn: string;
@@ -34,7 +31,6 @@ interface LanguageContextType {
 
 const UI_FR = {
   expertise: "Expertise",
-  portfolio: "Portfolio",
   experience: "Expérience",
   contact: "Contact",
   download: "CV PDF",
@@ -44,8 +40,6 @@ const UI_FR = {
   letsTalk: "Let's talk",
   skillsTitle: "Compétences",
   experienceTitle: "Parcours & Expérience",
-  portfolioTitle: "Production, Réalisation & Motion Design",
-  portfolioDesc: "Vingt ans de production audiovisuelle : réalisation, prise de vue, montage, motion design et sound design — enrichis par l'intégration des IA génératives dans les workflows créatifs.",
   videosLabel: "Vidéos & Motion Design",
   webDesignTitle: "Web Design",
   watchOn: "Voir sur",
@@ -58,7 +52,6 @@ const UI_FR = {
 
 const UI_EN = {
   expertise: "Expertise",
-  portfolio: "Portfolio",
   experience: "Experience",
   contact: "Contact",
   download: "PDF Resume",
@@ -68,8 +61,6 @@ const UI_EN = {
   letsTalk: "Let's talk",
   skillsTitle: "Skills",
   experienceTitle: "Career & Experience",
-  portfolioTitle: "Production, Direction & Motion Design",
-  portfolioDesc: "Twenty years of audiovisual production: directing, filming, editing, motion design and sound design — enriched by generative AI integration in creative workflows.",
   videosLabel: "Videos & Motion Design",
   webDesignTitle: "Web Design",
   watchOn: "Watch on",

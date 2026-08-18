@@ -29,8 +29,7 @@ export function WebDesign() {
           href={webDesignItem.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="block w-full overflow-hidden bg-[#101731]"
-          style={{ aspectRatio: "594 / 1024", maxHeight: "640px" }}
+          className="block w-full aspect-[4/3] overflow-hidden bg-[#101731]"
         >
           <img
             src={thumbUrl(webDesignItem, BASE)}

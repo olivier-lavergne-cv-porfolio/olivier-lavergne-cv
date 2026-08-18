@@ -26,7 +26,7 @@ export const webDesignItem: MediaItem = {
   kind: "site",
   title: "onesiker.org",
   url: "https://onesiker.org",
-  img: "onesiker-preview.png",
+  img: "onesiker-hero.png",
 };
 
 export function itemKey(item: MediaItem) {

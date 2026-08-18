@@ -21,7 +21,6 @@ export function Header() {
 
   const navLinks = [
     { href: "#about", label: ui.expertise },
-    { href: "#portfolio", label: ui.portfolio },
     { href: "#webdesign", label: ui.webDesignTitle },
     { href: "#experience", label: ui.experience },
     { href: "#reseaux", label: ui.social },

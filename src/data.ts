@@ -121,20 +121,6 @@ export const CV_DATA_FR = {
       items: ["BTS Réalisateur Multimédia (CESI) — 2001", "Français (Natif)", "Anglais (Courant)"]
     }
   ],
-  portfolio: [
-    {
-      title: "Production Vidéo IA",
-      description: "Intégration d'outils IA génératifs dans les processus de production pour réduire les coûts et maximiser la qualité créative."
-    },
-    {
-      title: "Airbus Defence Space",
-      description: "Réalisation vidéo, couverture évènementielle 360° et création de contenus marketing cybersécurité."
-    },
-    {
-      title: "Spots TV M6 & MTV",
-      description: "Direction artistique, motion design et production haute cadence qualité broadcast pour la France et les US."
-    }
-  ],
   webDesign: {
     title: "onesiker.org",
     description: "Conception du site vitrine et de la boutique e-commerce, développement du back-office et stratégie de lancement — un projet mené de A à Z."
@@ -253,20 +239,6 @@ export const CV_DATA_EN = {
       category: "Education & Languages",
       icon: GraduationCap,
       items: ["Multimedia Director BTS (CESI) — 2001", "French (Native)", "English (Fluent)"]
-    }
-  ],
-  portfolio: [
-    {
-      title: "AI Video Production",
-      description: "Integration of generative AI tools into production processes to reduce costs and maximize creative quality."
-    },
-    {
-      title: "Airbus Defence Space",
-      description: "Video production, 360° event coverage, and creation of cybersecurity marketing content."
-    },
-    {
-      title: "M6 & MTV TV Spots",
-      description: "Art direction, motion design, and high-paced broadcast-quality production for France and the US."
     }
   ],
   webDesign: {
