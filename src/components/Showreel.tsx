@@ -43,7 +43,7 @@ export function Showreel() {
       </button>
 
       {open && (
-        <VideoLightbox kind="youtube" videoId={mainVideo.id} watchUrl={mainVideo.url} onClose={() => setOpen(false)} />
+        <VideoLightbox videoId={mainVideo.id} watchUrl={mainVideo.url} onClose={() => setOpen(false)} />
       )}
     </section>
   );
