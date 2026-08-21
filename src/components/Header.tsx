@@ -35,7 +35,12 @@ export function Header() {
     >
       <div className="flex items-center justify-between gap-4 flex-wrap px-5 py-4 sm:px-8">
         <div className="flex items-center gap-4">
-          <div className="w-8 h-8 rounded-full bg-black shrink-0" aria-hidden="true"></div>
+          <div className="w-8 h-8 rounded-full bg-black shrink-0 flex items-center justify-center" aria-hidden="true">
+            <svg viewBox="0 0 140 100" fillRule="evenodd" className="w-5 h-auto text-[#fffef7]" fill="currentColor">
+              <path d="M10,0 L70,0 L70,10 L80,10 L80,90 L70,90 L70,100 L10,100 L10,90 L0,90 L0,10 L10,10 Z M20,20 L60,20 L60,80 L20,80 Z" />
+              <path d="M90,0 L110,0 L110,80 L140,80 L140,100 L90,100 Z" />
+            </svg>
+          </div>
           <div className="text-caption uppercase leading-tight">
             {t.name}
           </div>
