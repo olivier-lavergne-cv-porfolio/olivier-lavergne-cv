@@ -1,14 +1,16 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import { mainVideo, thumbUrl } from "../media";
+import { VideoLightbox } from "./VideoLightbox";
 
 export function Showreel() {
   const { ui } = useLanguage();
   const BASE = import.meta.env.BASE_URL;
-  const containerRef = useRef<HTMLAnchorElement>(null);
+  const containerRef = useRef<HTMLButtonElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+  const [open, setOpen] = useState(false);
 
   return (
     <section className="font-editorial bg-[#fffef7] pb-8">
@@ -17,12 +19,10 @@ export function Showreel() {
         <div className="text-heading max-w-[22ch]">{ui.showreelSubtitle}</div>
       </div>
 
-      <a
+      <button
         ref={containerRef}
-        href={mainVideo.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group relative block w-full aspect-video overflow-hidden bg-[#101731]"
+        onClick={() => setOpen(true)}
+        className="group relative block w-full aspect-video overflow-hidden bg-[#101731] text-left"
         style={{ minHeight: "340px" }}
       >
         <motion.img
@@ -40,7 +40,11 @@ export function Showreel() {
         <div className="absolute right-5 sm:right-8 top-5 sm:top-8 text-caption uppercase text-[#fffef7] border border-[#fffef799] rounded-full px-6 py-3 group-hover:border-[#fffef7]">
           {ui.play}
         </div>
-      </a>
+      </button>
+
+      {open && (
+        <VideoLightbox videoId={mainVideo.id} watchUrl={mainVideo.url} onClose={() => setOpen(false)} />
+      )}
     </section>
   );
 }

@@ -3,7 +3,9 @@ export type MediaItem =
   | { kind: "instagram"; id: string; url: string }
   | { kind: "site"; title: string; url: string; img: string };
 
-export const mainVideo: MediaItem = {
+export type YoutubeItem = Extract<MediaItem, { kind: "youtube" }>;
+
+export const mainVideo: YoutubeItem = {
   kind: "youtube",
   id: "Fp3g5hr6RAU",
   url: "https://youtu.be/Fp3g5hr6RAU",

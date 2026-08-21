@@ -3,6 +3,7 @@ import { motion } from "motion/react";
 import { ExternalLink, Play, Globe } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { shortVideos, instagramItems, itemKey, thumbUrl, platformLabel, type MediaItem } from "../media";
+import { VideoLightbox } from "./VideoLightbox";
 
 const items: MediaItem[] = [...shortVideos, ...instagramItems];
 
@@ -10,6 +11,7 @@ export function Social() {
   const { ui } = useLanguage();
   const railRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
+  const [openVideo, setOpenVideo] = useState<Extract<MediaItem, { kind: "youtube" }> | null>(null);
   const BASE = import.meta.env.BASE_URL;
 
   useEffect(() => {
@@ -121,15 +123,9 @@ export function Social() {
       >
         {items.map((item) => {
           const Icon = item.kind === "site" ? Globe : Play;
-          return (
-            <a
-              key={itemKey(item)}
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex-none flex flex-col gap-4"
-              style={{ width: "min(78vw, 300px)", scrollSnapAlign: "start" }}
-            >
+          const isYoutube = item.kind === "youtube";
+          const content = (
+            <>
               <div className="relative w-full aspect-[9/16] overflow-hidden bg-[#101731]">
                 <img
                   src={thumbUrl(item, BASE)}
@@ -148,8 +144,27 @@ export function Social() {
               </div>
               <div className="flex items-center justify-between gap-2 text-caption uppercase text-[#666666]">
                 {platformLabel(item)}
-                <ExternalLink className="w-3.5 h-3.5" />
+                {!isYoutube && <ExternalLink className="w-3.5 h-3.5" />}
               </div>
+            </>
+          );
+          const className = "group relative flex-none flex flex-col gap-4 text-left";
+          const style = { width: "min(78vw, 300px)", scrollSnapAlign: "start" } as const;
+
+          return isYoutube ? (
+            <button key={itemKey(item)} onClick={() => setOpenVideo(item)} className={className} style={style}>
+              {content}
+            </button>
+          ) : (
+            <a
+              key={itemKey(item)}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={className}
+              style={style}
+            >
+              {content}
             </a>
           );
         })}
@@ -164,6 +179,10 @@ export function Social() {
         </div>
         <div className="text-caption uppercase text-[#666666] whitespace-nowrap">{ui.swipeHint}</div>
       </div>
+
+      {openVideo && (
+        <VideoLightbox videoId={openVideo.id} watchUrl={openVideo.url} onClose={() => setOpenVideo(null)} />
+      )}
     </motion.section>
   );
 }
