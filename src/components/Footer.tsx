@@ -49,7 +49,15 @@ export function Footer() {
       </motion.div>
 
       <div className="border-t border-[#aaaaaa] px-5 sm:px-8 py-6 text-caption uppercase text-[#666666]">
-        {t.name} — {t.contact.location}
+        © OL Creative Design —{" "}
+        <a
+          href="https://www.google.com/maps/@43.6180419,1.4366606,3a,75y,258.99h,90t/data=!3m7!1e1!3m5!1siHg9kulbr2lOLcxFxLxiTQ!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DiHg9kulbr2lOLcxFxLxiTQ%26yaw%3D258.99!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-black"
+        >
+          {t.contact.location}
+        </a>
       </div>
     </footer>
   );
