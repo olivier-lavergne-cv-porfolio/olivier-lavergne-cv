@@ -33,7 +33,7 @@ export function Showreel() {
           className="absolute -top-[12%] left-0 w-full h-[124%] object-cover"
         />
 
-        <div className="absolute right-5 sm:right-8 top-5 sm:top-8 text-caption uppercase text-[#fffef7] border border-[#fffef799] rounded-full px-6 py-3 group-hover:border-[#fffef7]">
+        <div className="absolute right-5 sm:right-8 top-5 sm:top-8 text-caption uppercase text-[#fffef7] md:text-black border border-[#fffef799] md:border-black rounded-full px-6 py-3 group-hover:border-[#fffef7] md:group-hover:border-black">
           {ui.play}
         </div>
       </button>
