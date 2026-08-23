@@ -12,7 +12,7 @@ export function Footer() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.15 }}
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className="flex flex-col gap-12 px-5 sm:px-8 py-16 md:py-28"
+        className="flex flex-col gap-12 px-5 sm:px-8 py-16"
       >
         <div className="text-caption uppercase text-[#666666]">{ui.contact}</div>
 

@@ -13,7 +13,7 @@ export function Showreel() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="font-editorial bg-[#fffef7] pb-8">
+    <section className="font-editorial bg-[#fffef7] py-16">
       <div className="px-5 sm:px-8 flex flex-col gap-3 mb-8">
         <div className="text-caption uppercase text-[#666666]">{ui.videosLabel}</div>
         <div className="text-heading max-w-[22ch]">{ui.showreelSubtitle}</div>

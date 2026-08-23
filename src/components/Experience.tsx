@@ -44,24 +44,22 @@ export function Experience() {
                 type="button"
                 onClick={() => toggle(i)}
                 aria-expanded={open}
-                className={`group w-full flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-8 text-left cursor-pointer ${i === 0 ? "pt-0" : ""}`}
+                className={`group w-full flex flex-col sm:flex-row gap-4 sm:gap-8 py-8 text-left cursor-pointer ${i === 0 ? "pt-0" : ""}`}
               >
                 <div className="text-caption uppercase text-[#666666] sm:w-40 shrink-0">{exp.period}</div>
-                <div className="flex flex-col gap-2 flex-1">
+                <div className="flex flex-col items-start gap-2 flex-1">
                   <div className="text-subheading">{exp.title}</div>
                   <div className="text-body-sm text-[#666666]">
                     {exp.company} · {exp.location}
                   </div>
+                  {/* Visual affordance only — the whole row is the real button */}
+                  <span className="mt-2 inline-flex items-center gap-2 text-caption uppercase border border-[#aaaaaa] group-hover:border-black rounded-full px-4 py-2 whitespace-nowrap transition-colors">
+                    {open ? ui.hideDetail : ui.showDetail}
+                    <ChevronDown
+                      className={`w-3.5 h-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+                    />
+                  </span>
                 </div>
-                {/* Visual affordance only — the whole row is the real button */}
-                <span
-                  className="self-start sm:self-center shrink-0 inline-flex items-center gap-2 text-caption uppercase border border-[#aaaaaa] group-hover:border-black rounded-full px-4 py-2 whitespace-nowrap transition-colors"
-                >
-                  {open ? ui.hideDetail : ui.showDetail}
-                  <ChevronDown
-                    className={`w-3.5 h-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
-                  />
-                </span>
               </button>
               <motion.div
                 initial={false}
