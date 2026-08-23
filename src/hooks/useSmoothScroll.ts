@@ -18,6 +18,15 @@ export function useSmoothScroll() {
   }, []);
 }
 
+/** Scrolls the page by a delta, staying in sync with Lenis' own target position. */
+export function scrollByY(delta: number) {
+  if (lenisInstance) {
+    lenisInstance.scrollTo(lenisInstance.targetScroll + delta, { duration: 0.8 });
+  } else {
+    window.scrollBy({ top: delta, behavior: "smooth" });
+  }
+}
+
 export function scrollToTop() {
   if (lenisInstance) {
     lenisInstance.scrollTo(0, { duration: 1.2 });

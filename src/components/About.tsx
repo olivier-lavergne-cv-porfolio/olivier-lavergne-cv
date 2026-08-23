@@ -3,42 +3,56 @@ import { animate, motion, useInView } from "motion/react";
 import { useLanguage } from "../context/LanguageContext";
 import { staggerContainer, staggerItem } from "../lib/motionVariants";
 
+const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+/**
+ * Stat values share one entrance gesture (1.2s on the site easing curve): numeric
+ * ones count up from zero, textual ones ("IA", "NYC/FR") roll through random glyphs
+ * and settle letter by letter left to right.
+ */
 function StatValue({ value }: { value: string }) {
   const match = value.match(/^(\d+)(.*)$/);
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
-  const [display, setDisplay] = useState(match ? "0" : value);
+  // Textual values start on their real text so they stay legible before the
+  // section is reached (and if the animation never runs); the roll overwrites
+  // them on its first frame.
+  const [display, setDisplay] = useState(() => (match ? "0" : value));
 
   useEffect(() => {
-    if (!match || !inView) return;
-    const target = parseInt(match[1], 10);
-    const controls = animate(0, target, {
+    if (!inView) return;
+
+    if (match) {
+      const target = parseInt(match[1], 10);
+      const controls = animate(0, target, {
+        duration: 1.2,
+        ease: [0.16, 1, 0.3, 1],
+        onUpdate: (v) => setDisplay(Math.round(v).toString()),
+      });
+      return () => controls.stop();
+    }
+
+    const chars = [...value];
+    const controls = animate(0, chars.length, {
       duration: 1.2,
       ease: [0.16, 1, 0.3, 1],
-      onUpdate: (v) => setDisplay(Math.round(v).toString()),
+      onUpdate: (settled) => {
+        setDisplay(
+          chars
+            .map((ch, i) =>
+              !/[A-Za-z]/.test(ch) || i < settled
+                ? ch
+                : GLYPHS[Math.floor(Math.random() * GLYPHS.length)]
+            )
+            .join("")
+        );
+      },
+      onComplete: () => setDisplay(value),
     });
     return () => controls.stop();
   }, [inView]);
 
-  if (!match) {
-    return (
-      <span ref={ref} className="inline-flex overflow-hidden pb-[0.1em] -mb-[0.1em]">
-        {value.split("").map((ch, i) => (
-          <motion.span
-            key={i}
-            initial={{ y: "110%" }}
-            animate={inView ? { y: "0%" } : undefined}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
-            className="inline-block"
-          >
-            {ch === " " ? " " : ch}
-          </motion.span>
-        ))}
-      </span>
-    );
-  }
-
-  return <span ref={ref}>{display + match[2]}</span>;
+  return <span ref={ref}>{match ? display + match[2] : display}</span>;
 }
 
 export function About() {

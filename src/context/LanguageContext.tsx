@@ -29,6 +29,8 @@ interface LanguageContextType {
     menu: string;
     play: string;
     swipeHint: string;
+    showDetail: string;
+    hideDetail: string;
   }
 }
 
@@ -54,6 +56,8 @@ const UI_FR = {
   menu: "Menu",
   play: "Lire",
   swipeHint: "Glisse ou fais défiler →",
+  showDetail: "Voir le détail",
+  hideDetail: "Masquer le détail",
 };
 
 const UI_EN = {
@@ -78,6 +82,8 @@ const UI_EN = {
   menu: "Menu",
   play: "Play",
   swipeHint: "Swipe or scroll →",
+  showDetail: "View details",
+  hideDetail: "Hide details",
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);

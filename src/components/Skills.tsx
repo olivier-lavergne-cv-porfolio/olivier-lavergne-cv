@@ -19,7 +19,10 @@ export function Skills() {
         <div className="text-heading max-w-[22ch]">{ui.skillsSubtitle}</div>
       </motion.div>
 
-      <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-12">
+      <motion.div
+        variants={staggerContainer}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12"
+      >
         {t.skills.map((skill: (typeof t.skills)[number] & { mobileOnly?: boolean; desktopOnly?: boolean }, i) => {
           const visibility = skill.mobileOnly ? "flex md:hidden" : skill.desktopOnly ? "hidden md:flex" : "flex";
           return (

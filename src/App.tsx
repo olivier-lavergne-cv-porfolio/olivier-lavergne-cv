@@ -15,7 +15,8 @@ export default function App() {
   useSmoothScroll();
 
   return (
-    <div className="min-h-dvh bg-[#fffef7] flex flex-col selection:bg-black/10 overflow-x-hidden">
+    // overflow-x-clip (not -hidden) so the pinned Social section's position:sticky keeps working
+    <div className="min-h-dvh bg-[#fffef7] flex flex-col selection:bg-black/10 overflow-x-clip">
       <ScrollProgress />
 
       <Header />

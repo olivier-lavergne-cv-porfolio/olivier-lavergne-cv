@@ -44,20 +44,24 @@ export function Experience() {
                 type="button"
                 onClick={() => toggle(i)}
                 aria-expanded={open}
-                className={`w-full flex flex-col sm:flex-row gap-2 sm:gap-8 py-8 text-left cursor-pointer ${i === 0 ? "pt-0" : ""}`}
+                className={`group w-full flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 py-8 text-left cursor-pointer ${i === 0 ? "pt-0" : ""}`}
               >
                 <div className="text-caption uppercase text-[#666666] sm:w-40 shrink-0">{exp.period}</div>
                 <div className="flex flex-col gap-2 flex-1">
-                  <div className="flex items-center justify-between gap-4">
-                    <div className="text-subheading">{exp.title}</div>
-                    <ChevronDown
-                      className={`w-4 h-4 shrink-0 text-[#666666] transition-transform duration-300 ${open ? "rotate-180" : ""}`}
-                    />
-                  </div>
+                  <div className="text-subheading">{exp.title}</div>
                   <div className="text-body-sm text-[#666666]">
                     {exp.company} · {exp.location}
                   </div>
                 </div>
+                {/* Visual affordance only — the whole row is the real button */}
+                <span
+                  className="self-start sm:self-center shrink-0 inline-flex items-center gap-2 text-caption uppercase border border-[#aaaaaa] group-hover:border-black rounded-full px-4 py-2 whitespace-nowrap transition-colors"
+                >
+                  {open ? ui.hideDetail : ui.showDetail}
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+                  />
+                </span>
               </button>
               <motion.div
                 initial={false}
@@ -65,7 +69,7 @@ export function Experience() {
                 transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                 className="overflow-hidden"
               >
-                <p className="text-body-sm text-[#666666] max-w-[60ch] text-pretty sm:pl-48 pb-8">
+                <p className="text-body-sm text-[#666666] max-w-[60ch] text-pretty sm:ml-48 pb-8">
                   {exp.description}
                 </p>
               </motion.div>
