@@ -22,7 +22,7 @@ export function Showreel() {
       <button
         ref={containerRef}
         onClick={() => setOpen(true)}
-        className="group relative block w-full aspect-video overflow-hidden bg-[#101731] text-left"
+        className="group relative block w-full aspect-video overflow-hidden bg-[#fffef7] text-left"
         style={{ minHeight: "340px" }}
       >
         <motion.img
@@ -32,12 +32,8 @@ export function Showreel() {
           style={{ y }}
           className="absolute -top-[12%] left-0 w-full h-[124%] object-cover"
         />
-        <div
-          className="absolute inset-0"
-          style={{ background: "linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%)" }}
-        ></div>
 
-        <div className="absolute right-5 sm:right-8 top-5 sm:top-8 text-caption uppercase text-[#fffef7] border border-[#fffef799] rounded-full px-6 py-3 group-hover:border-[#fffef7]">
+        <div className="absolute right-5 sm:right-8 top-5 sm:top-8 text-caption uppercase text-[#101731] border border-[#101731] rounded-full px-6 py-3 group-hover:border-black">
           {ui.play}
         </div>
       </button>
