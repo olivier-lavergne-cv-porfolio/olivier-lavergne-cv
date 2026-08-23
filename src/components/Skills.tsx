@@ -19,11 +19,7 @@ export function Skills() {
         <div className="text-heading max-w-[22ch]">{ui.skillsSubtitle}</div>
       </motion.div>
 
-      <motion.div
-        variants={staggerContainer}
-        className="grid gap-12"
-        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))" }}
-      >
+      <motion.div variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 gap-12">
         {t.skills.map((skill: (typeof t.skills)[number] & { mobileOnly?: boolean; desktopOnly?: boolean }, i) => {
           const visibility = skill.mobileOnly ? "flex md:hidden" : skill.desktopOnly ? "hidden md:flex" : "flex";
           return (

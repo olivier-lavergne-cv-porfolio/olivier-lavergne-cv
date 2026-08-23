@@ -43,6 +43,14 @@ export function Footer() {
               >
                 LinkedIn
               </a>
+              <a
+                href={t.contact.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-body border border-[#aaaaaa] hover:border-black rounded-full px-6 py-3"
+              >
+                Instagram
+              </a>
             </div>
           </div>
         </div>

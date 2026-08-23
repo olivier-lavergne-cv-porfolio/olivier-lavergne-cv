@@ -20,7 +20,25 @@ function StatValue({ value }: { value: string }) {
     return () => controls.stop();
   }, [inView]);
 
-  return <span ref={ref}>{match ? display + match[2] : value}</span>;
+  if (!match) {
+    return (
+      <span ref={ref} className="inline-flex overflow-hidden pb-[0.1em] -mb-[0.1em]">
+        {value.split("").map((ch, i) => (
+          <motion.span
+            key={i}
+            initial={{ y: "110%" }}
+            animate={inView ? { y: "0%" } : undefined}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
+            className="inline-block"
+          >
+            {ch === " " ? " " : ch}
+          </motion.span>
+        ))}
+      </span>
+    );
+  }
+
+  return <span ref={ref}>{display + match[2]}</span>;
 }
 
 export function About() {

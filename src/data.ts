@@ -5,7 +5,8 @@ const contact = {
   phone: "+33 6 51 04 93 25",
   location: "Toulouse & au-delà",
   linkedin: "https://linkedin.com/in/olivierlavergne",
-  github: "https://github.com/olivier-lavergne-cv-porfolio"
+  github: "https://github.com/olivier-lavergne-cv-porfolio",
+  instagram: "https://instagram.com/ol_creative_design"
 };
 
 export const CV_DATA_FR = {

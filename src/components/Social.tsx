@@ -9,14 +9,16 @@ const items: MediaItem[] = [...shortVideos, ...instagramItems];
 
 export function Social() {
   const { ui } = useLanguage();
+  const sectionRef = useRef<HTMLElement>(null);
   const railRef = useRef<HTMLDivElement>(null);
   const [index, setIndex] = useState(0);
   const [openVideo, setOpenVideo] = useState<Extract<MediaItem, { kind: "youtube" }> | null>(null);
   const BASE = import.meta.env.BASE_URL;
 
   useEffect(() => {
+    const section = sectionRef.current;
     const el = railRef.current;
-    if (!el) return;
+    if (!section || !el) return;
 
     let down = false;
     let startX = 0;
@@ -35,6 +37,9 @@ export function Social() {
     const onPointerMove = (e: PointerEvent) => {
       if (down) el.scrollLeft = startLeft - (e.clientX - startX);
     };
+    // Traps vertical wheel scrolling anywhere in the section and redirects it into
+    // horizontal rail scroll, so the page can't advance to the next section until
+    // the rail has been scrolled fully to its end (or back to its start).
     const onWheel = (e: WheelEvent) => {
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
       const atStart = el.scrollLeft <= 1;
@@ -55,7 +60,7 @@ export function Social() {
     el.addEventListener("pointerup", onPointerEnd);
     el.addEventListener("pointerleave", onPointerEnd);
     el.addEventListener("pointermove", onPointerMove);
-    el.addEventListener("wheel", onWheel, { passive: false });
+    section.addEventListener("wheel", onWheel, { passive: false });
     el.addEventListener("scroll", onScroll, { passive: true });
 
     return () => {
@@ -63,7 +68,7 @@ export function Social() {
       el.removeEventListener("pointerup", onPointerEnd);
       el.removeEventListener("pointerleave", onPointerEnd);
       el.removeEventListener("pointermove", onPointerMove);
-      el.removeEventListener("wheel", onWheel);
+      section.removeEventListener("wheel", onWheel);
       el.removeEventListener("scroll", onScroll);
     };
   }, []);
@@ -81,6 +86,8 @@ export function Social() {
   return (
     <motion.section
       id="reseaux"
+      ref={sectionRef}
+      data-lenis-prevent
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.1 }}
