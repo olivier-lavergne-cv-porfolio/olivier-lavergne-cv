@@ -81,7 +81,7 @@ export function Social() {
       >
         <div className="px-5 sm:px-8 flex items-end justify-between gap-6 flex-wrap">
           <div className="flex flex-col gap-6">
-            <div className="text-caption uppercase text-[#666666]">{ui.social}</div>
+            <div className="text-caption uppercase text-fluo">{ui.social}</div>
             <div className="text-heading max-w-[22ch]">{ui.videosLabel}</div>
           </div>
           <div className="flex items-center gap-4">

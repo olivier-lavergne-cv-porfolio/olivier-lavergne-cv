@@ -17,7 +17,7 @@ export function WebDesign() {
       className="font-editorial bg-[#fffef7] text-black py-16"
     >
       <motion.div variants={staggerItem} className="px-5 sm:px-8 flex flex-col gap-3 mb-8">
-        <div className="text-caption uppercase text-[#666666]">{ui.webDesignTitle}</div>
+        <div className="text-caption uppercase text-fluo">{ui.webDesignTitle}</div>
         <div className="text-heading max-w-[22ch]">{t.webDesign.title}</div>
       </motion.div>
 

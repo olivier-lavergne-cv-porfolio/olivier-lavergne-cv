@@ -68,7 +68,7 @@ export function About() {
       className="font-editorial bg-[#fffef7] text-black px-5 sm:px-8 py-16 flex flex-col gap-12"
     >
       <motion.div variants={staggerItem} className="flex flex-col gap-6 max-w-3xl">
-        <div className="text-caption uppercase text-[#666666]">{ui.expertise}</div>
+        <div className="text-caption uppercase text-fluo">{ui.expertise}</div>
         <div className="text-heading-sm text-pretty">
           {t.about.paragraphs[0]}
         </div>

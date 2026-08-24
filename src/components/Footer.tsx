@@ -14,7 +14,7 @@ export function Footer() {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="flex flex-col gap-12 px-5 sm:px-8 py-16"
       >
-        <div className="text-caption uppercase text-[#666666]">{ui.contact}</div>
+        <div className="text-caption uppercase text-fluo">{ui.contact}</div>
 
         <div className="grid gap-12" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 280px), 1fr))" }}>
           <div className="text-heading max-w-[18ch]">

@@ -449,7 +449,7 @@ function HeroFrame({ lines: titleLines, caption, description }: FrameProps) {
         <div className="flex flex-col gap-2">
           <div data-rule className="h-px bg-[#aaaaaa]" style={{ transformOrigin: "left center" }} />
           <div className="overflow-hidden">
-            <div data-caption className="text-caption uppercase text-[#666666]">
+            <div data-caption className="text-caption uppercase text-fluo">
               {caption}
             </div>
           </div>
