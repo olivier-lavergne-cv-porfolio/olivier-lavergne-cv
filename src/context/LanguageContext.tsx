@@ -31,6 +31,8 @@ interface LanguageContextType {
     swipeHint: string;
     showDetail: string;
     hideDetail: string;
+    showSkills: string;
+    hideSkills: string;
   }
 }
 
@@ -58,6 +60,8 @@ const UI_FR = {
   swipeHint: "Glisse ou fais défiler →",
   showDetail: "Voir le détail",
   hideDetail: "Masquer le détail",
+  showSkills: "Afficher les compétences",
+  hideSkills: "Masquer les compétences",
 };
 
 const UI_EN = {
@@ -84,6 +88,8 @@ const UI_EN = {
   swipeHint: "Swipe or scroll →",
   showDetail: "View details",
   hideDetail: "Hide details",
+  showSkills: "Show skills",
+  hideSkills: "Hide skills",
 };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);

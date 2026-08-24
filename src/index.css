@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Rose fluo du motion design du hero (PINK_A dans Hero.tsx) — utilisé pour les
+   sur-titres de section via l'utilitaire Tailwind `text-fluo`. */
+@theme {
+  --color-fluo: #ff209a;
+}
+
 /* Self-hosted (CSP: font-src 'self') — used only by the editorial hero/header/social sections */
 @font-face {
   font-family: 'Switzer';
@@ -124,6 +130,11 @@ body {
   }
 
   h1, h2, h3, h4, h5, h6 {
+    color: #000000 !important;
+  }
+
+  /* Les sur-titres roses repassent en noir à l'impression */
+  .text-fluo {
     color: #000000 !important;
   }
 }
