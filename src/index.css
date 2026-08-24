@@ -150,4 +150,17 @@ body {
   .skills-symbol {
     display: none !important;
   }
+
+  /* Même chose pour l'accordéon du parcours : les lignes sont des boutons, et
+     leur descriptif est replié par une hauteur posée en style inline */
+  .exp-toggle {
+    display: flex !important;
+  }
+  .exp-pill {
+    display: none !important;
+  }
+  .exp-panel {
+    height: auto !important;
+    overflow: visible !important;
+  }
 }
