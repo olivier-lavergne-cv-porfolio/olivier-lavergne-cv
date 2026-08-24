@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, ArrowRight, Video, PenTool, Sparkles, TrendingUp, MonitorPlay, Code, GraduationCap, Languages, Mic, ShieldCheck, Clapperboard, Palette } from "lucide-react";
+import { Mail, ArrowRight, Video, PenTool, Sparkles, TrendingUp, MonitorPlay, Code, GraduationCap, Languages, Mic, ShieldCheck, Clapperboard, Palette } from "lucide-react";
 
 const contact = {
   email: "olivierlavergne@gmail.com",
