@@ -7,12 +7,13 @@ import { staggerContainer, staggerItem } from "../lib/motionVariants";
 type Skill = { icon: React.ComponentType<{ className?: string }>; category: string; items: string[] };
 
 /**
- * Une carte par domaine : l'en-tête (icône + intitulé) est le bouton, le rond
- * +/− à droite n'est qu'une affordance. Le repli passe par grid-template-rows
- * 1fr → 0fr, ce qui anime une hauteur inconnue sans avoir à la mesurer.
+ * Une carte par domaine, repliée au départ : l'en-tête (icône + intitulé) est
+ * le bouton, le rond +/− à droite n'est qu'une affordance. Le repli passe par
+ * grid-template-rows 1fr → 0fr, ce qui anime une hauteur inconnue sans avoir à
+ * la mesurer. À l'impression les panneaux sont rouverts (cf. index.css).
  */
 function SkillCard({ skill, className }: { skill: Skill; className: string }) {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <motion.div variants={staggerItem} className={`${className} flex-col gap-4`}>
@@ -20,7 +21,7 @@ function SkillCard({ skill, className }: { skill: Skill; className: string }) {
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         aria-expanded={open}
-        className="group flex items-start justify-between gap-3 text-subheading text-left cursor-pointer"
+        className="skills-toggle group flex items-start justify-between gap-3 text-subheading text-left cursor-pointer"
       >
         <span className="flex items-baseline gap-2">
           <skill.icon className="w-4 h-4 shrink-0 translate-y-0.5" />
@@ -28,14 +29,14 @@ function SkillCard({ skill, className }: { skill: Skill; className: string }) {
         </span>
         <span
           aria-hidden="true"
-          className="shrink-0 w-8 h-8 rounded-full border border-[#aaaaaa] group-hover:border-black flex items-center justify-center transition-colors"
+          className="skills-symbol shrink-0 w-8 h-8 rounded-full border border-[#aaaaaa] group-hover:border-black flex items-center justify-center transition-colors"
         >
           {open ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
         </span>
       </button>
 
       <div
-        className={`-mt-4 grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`skills-panel -mt-4 grid transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
           open ? "grid-rows-[1fr] opacity-100 pt-4" : "grid-rows-[0fr] opacity-0"
         }`}
       >
