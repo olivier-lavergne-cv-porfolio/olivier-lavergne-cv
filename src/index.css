@@ -137,4 +137,17 @@ body {
   .text-fluo {
     color: #000000 !important;
   }
+
+  /* Les compétences sont repliées à l'écran mais doivent figurer sur le CV
+     imprimé (la règle .grid ci-dessus rouvre déjà leur hauteur) — leur intitulé
+     est un bouton, que la règle générale ci-dessus masquerait */
+  .skills-panel {
+    opacity: 1 !important;
+  }
+  .skills-toggle {
+    display: flex !important;
+  }
+  .skills-symbol {
+    display: none !important;
+  }
 }
