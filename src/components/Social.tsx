@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState } from "react";
 import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/react";
-import { ExternalLink, Play, Globe } from "lucide-react";
+import { ExternalLink, Play } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { scrollByY } from "../hooks/useSmoothScroll";
 import { shortVideos, instagramItems, itemKey, thumbUrl, platformLabel, type MediaItem } from "../media";
@@ -68,6 +68,10 @@ export function Social() {
   // counter step is distance/steps pixels of page scroll.
   const step = (dir: number) => scrollByY((dir * distance) / steps);
 
+  // Quand toutes les cartes tiennent à l'écran, rien ne défile : compteur,
+  // flèches et barre de progression n'ont alors plus de raison d'être.
+  const scrollable = distance > 0;
+
   return (
     <div
       id="reseaux"
@@ -84,7 +88,7 @@ export function Social() {
             <div className="text-caption uppercase text-fluo">{ui.social}</div>
             <div className="text-heading max-w-[22ch]">{ui.videosLabel}</div>
           </div>
-          <div className="flex items-center gap-4">
+          {scrollable && <div className="flex items-center gap-4">
             <div className="text-caption uppercase text-[#666666] whitespace-nowrap">
               [ {index + 1} / {items.length} ]
             </div>
@@ -102,12 +106,11 @@ export function Social() {
             >
               →
             </button>
-          </div>
+          </div>}
         </div>
 
         <motion.div ref={railRef} style={{ x }} className="flex gap-6 w-max px-5 sm:px-8">
           {items.map((item) => {
-            const Icon = item.kind === "site" ? Globe : Play;
             const isYoutube = item.kind === "youtube";
             const content = (
               <>
@@ -120,7 +123,7 @@ export function Social() {
                   />
                   <div className="absolute inset-0 hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/40">
                     <div className="w-14 h-14 rounded-full bg-[#fffef7]/90 flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-black" />
+                      <Play className="w-6 h-6 text-black" />
                     </div>
                   </div>
                   <div className="absolute left-4 top-4 text-caption uppercase text-[#fffef7] border border-[#fffef773] rounded-full px-3 py-1.5">
@@ -159,7 +162,7 @@ export function Social() {
           })}
         </motion.div>
 
-        <div className="px-5 sm:px-8 flex items-center gap-2">
+        {scrollable && <div className="px-5 sm:px-8 flex items-center gap-2">
           <div className="flex-1 h-px bg-[#e8e6dd] relative">
             <motion.div
               className="absolute left-0 top-0 h-px bg-black"
@@ -167,7 +170,7 @@ export function Social() {
             ></motion.div>
           </div>
           <div className="text-caption uppercase text-[#666666] whitespace-nowrap">{ui.swipeHint}</div>
-        </div>
+        </div>}
       </div>
 
       {openVideo && (
