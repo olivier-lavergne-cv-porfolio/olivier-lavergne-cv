@@ -34,7 +34,7 @@ export const CV_DATA_FR = {
       title: "Designer Marketing & Créateur de Contenus Intelligents",
       company: "Freelance",
       location: "Toulouse",
-      description: "Stratégie inbound (contenu, réseaux sociaux) et direction artistique d'identités visuelles print/digital. Coordination d'équipes agences/freelances et exécution de campagnes print, web et vidéo. Développement de la marque Onesiker (artiste contemporain) : stratégie de marque, production de contenu, site e-commerce."
+      description: "Stratégie inbound (contenu, réseaux sociaux) et direction artistique d'identités visuelles print/digital. Coordination d'équipes agences/freelances et exécution de campagnes print, web et vidéo."
     },
     {
       period: "2022 - 2024",
@@ -122,10 +122,6 @@ export const CV_DATA_FR = {
       items: ["BTS Réalisateur Multimédia (CESI) — 2001", "Français (Natif)", "Anglais (Courant)"]
     }
   ],
-  webDesign: {
-    title: "onesiker.org",
-    description: "Conception du site vitrine et de la boutique e-commerce, développement du back-office et stratégie de lancement — un projet mené de A à Z."
-  },
   contact
 };
 
@@ -154,7 +150,7 @@ export const CV_DATA_EN = {
       title: "Marketing Designer & Smart Content Creator",
       company: "Freelance",
       location: "Toulouse",
-      description: "Inbound strategy (content, social media) and art direction for print/digital visual identities. Coordination of agency/freelance teams and execution of print, web, and video campaigns. Development of the Onesiker brand (contemporary artist): brand strategy, content production, e-commerce site."
+      description: "Inbound strategy (content, social media) and art direction for print/digital visual identities. Coordination of agency/freelance teams and execution of print, web, and video campaigns."
     },
     {
       period: "2022 - 2024",
@@ -242,10 +238,6 @@ export const CV_DATA_EN = {
       items: ["Multimedia Director BTS (CESI) — 2001", "French (Native)", "English (Fluent)"]
     }
   ],
-  webDesign: {
-    title: "onesiker.org",
-    description: "Design of the showcase site and e-commerce store, back-office development, and launch strategy — a project handled end-to-end."
-  },
   contact: {
     ...contact,
     location: "Toulouse & beyond"

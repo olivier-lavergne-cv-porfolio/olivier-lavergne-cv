@@ -1,7 +1,6 @@
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { Showreel } from "./components/Showreel";
-import { WebDesign } from "./components/WebDesign";
 import { Social } from "./components/Social";
 import { About } from "./components/About";
 import { Experience } from "./components/Experience";
@@ -22,7 +21,6 @@ export default function App() {
       <Header />
       <Hero />
       <Showreel />
-      <WebDesign />
       <Social />
       <About />
       <Skills />

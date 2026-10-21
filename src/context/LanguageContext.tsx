@@ -22,9 +22,7 @@ interface LanguageContextType {
     experienceSubtitle: string;
     videosLabel: string;
     showreelSubtitle: string;
-    webDesignTitle: string;
     watchOn: string;
-    visitSite: string;
     social: string;
     menu: string;
     play: string;
@@ -49,9 +47,7 @@ const UI_FR = {
   experienceSubtitle: "Vingt ans, six étapes.",
   videosLabel: "Vidéos & Motion Design",
   showreelSubtitle: "Faire ressentir, d'abord.",
-  webDesignTitle: "Web Design",
   watchOn: "Voir sur",
-  visitSite: "Visiter le site",
   social: "Réseaux",
   menu: "Menu",
   play: "Lire",
@@ -75,9 +71,7 @@ const UI_EN = {
   experienceSubtitle: "Twenty years, six stages.",
   videosLabel: "Videos & Motion Design",
   showreelSubtitle: "Feel it first.",
-  webDesignTitle: "Web Design",
   watchOn: "Watch on",
-  visitSite: "Visit site",
   social: "Social",
   menu: "Menu",
   play: "Play",
