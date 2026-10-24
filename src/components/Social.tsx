@@ -6,7 +6,7 @@ import { scrollByY } from "../hooks/useSmoothScroll";
 import { shortVideos, instagramItems, itemKey, thumbUrl, platformLabel, type MediaItem } from "../media";
 import { VideoLightbox } from "./VideoLightbox";
 
-const items: MediaItem[] = [...shortVideos, ...instagramItems];
+const items: MediaItem[] = [...instagramItems, ...shortVideos];
 
 /**
  * Vignette d'une carte. Les vignettes Instagram sont des fichiers locaux
