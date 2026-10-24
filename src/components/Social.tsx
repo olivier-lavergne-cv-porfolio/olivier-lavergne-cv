@@ -9,6 +9,36 @@ import { VideoLightbox } from "./VideoLightbox";
 const items: MediaItem[] = [...shortVideos, ...instagramItems];
 
 /**
+ * Vignette d'une carte. Les vignettes Instagram sont des fichiers locaux
+ * (public/reels/reel-<id>.jpg) : tant qu'un fichier manque, la carte affiche
+ * un aplat au compte Instagram plutôt qu'une image cassée.
+ */
+function Thumb({ item, base, handle }: { item: MediaItem; base: string; handle: string }) {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    return (
+      <div className="absolute inset-0 bg-black flex flex-col items-center justify-center gap-4 text-[#fffef7]">
+        <div className="w-14 h-14 rounded-full border border-fluo flex items-center justify-center">
+          <Play className="w-6 h-6 text-fluo" />
+        </div>
+        <div className="text-caption uppercase">@{handle}</div>
+      </div>
+    );
+  }
+
+  return (
+    <img
+      src={thumbUrl(item, base)}
+      alt=""
+      loading="lazy"
+      onError={() => setFailed(true)}
+      className="absolute inset-0 w-full h-full object-cover"
+    />
+  );
+}
+
+/**
  * Pinned horizontal gallery: the section is a tall scroll track whose sticky
  * viewport stays put while vertical scroll is mapped 1:1 onto horizontal travel
  * of the rail. The page keeps scrolling normally once the last video is reached,
@@ -16,7 +46,7 @@ const items: MediaItem[] = [...shortVideos, ...instagramItems];
  * being blocked.
  */
 export function Social() {
-  const { ui } = useLanguage();
+  const { t, ui } = useLanguage();
   const trackRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<HTMLDivElement>(null);
@@ -87,6 +117,15 @@ export function Social() {
           <div className="flex flex-col gap-6">
             <div className="text-caption uppercase text-fluo">{ui.social}</div>
             <div className="text-heading max-w-[22ch]">{ui.videosLabel}</div>
+            <a
+              href={t.contact.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="self-start inline-flex items-center gap-2 text-body text-[#fffef7] bg-black hover:bg-[#1a1a1a] rounded-full px-6 py-3"
+            >
+              Instagram @{t.contact.instagramHandle}
+              <ExternalLink className="w-4 h-4" />
+            </a>
           </div>
           {scrollable && <div className="flex items-center gap-4">
             <div className="text-caption uppercase text-[#666666] whitespace-nowrap">
@@ -115,12 +154,7 @@ export function Social() {
             const content = (
               <>
                 <div className="relative w-full aspect-[9/16] overflow-hidden bg-[#101731]">
-                  <img
-                    src={thumbUrl(item, BASE)}
-                    alt=""
-                    loading="lazy"
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
+                  <Thumb item={item} base={BASE} handle={t.contact.instagramHandle} />
                   <div className="absolute inset-0 hidden md:flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/40">
                     <div className="w-14 h-14 rounded-full bg-[#fffef7]/90 flex items-center justify-center">
                       <Play className="w-6 h-6 text-black" />
