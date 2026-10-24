@@ -15,7 +15,11 @@ export const shortVideos: MediaItem[] = [
   { kind: "youtube", id: "0kBfVG1fZxs", url: "https://www.youtube.com/shorts/0kBfVG1fZxs" },
 ];
 
-export const instagramItems: MediaItem[] = [];
+export const instagramItems: MediaItem[] = [
+  { kind: "instagram", id: "De3pjEeR_kZ", url: "https://www.instagram.com/reel/De3pjEeR_kZ/" },
+  { kind: "instagram", id: "De3pThNR1Zw", url: "https://www.instagram.com/reel/De3pThNR1Zw/" },
+  { kind: "instagram", id: "De3pHE1Rk7x", url: "https://www.instagram.com/reel/De3pHE1Rk7x/" },
+];
 
 export function itemKey(item: MediaItem) {
   return item.id;
