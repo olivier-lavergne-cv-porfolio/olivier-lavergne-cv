@@ -51,6 +51,14 @@ export function Footer() {
               >
                 Instagram
               </a>
+              <a
+                href={t.contact.tiktok}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-body border border-[#aaaaaa] hover:border-black rounded-full px-6 py-3"
+              >
+                TikTok
+              </a>
             </div>
           </div>
         </div>

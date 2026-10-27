@@ -117,15 +117,23 @@ export function Social() {
           <div className="flex flex-col gap-6">
             <div className="text-caption uppercase text-fluo">{ui.social}</div>
             <div className="text-heading max-w-[22ch]">{ui.videosLabel}</div>
-            <a
-              href={t.contact.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="self-start inline-flex items-center gap-2 text-body text-[#fffef7] bg-black hover:bg-[#1a1a1a] rounded-full px-6 py-3"
-            >
-              Instagram @{t.contact.instagramHandle}
-              <ExternalLink className="w-4 h-4" />
-            </a>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { label: "Instagram", url: t.contact.instagram, handle: t.contact.instagramHandle },
+                { label: "TikTok", url: t.contact.tiktok, handle: t.contact.tiktokHandle },
+              ].map((account) => (
+                <a
+                  key={account.label}
+                  href={account.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-body text-[#fffef7] bg-black hover:bg-[#1a1a1a] rounded-full px-6 py-3"
+                >
+                  {account.label} @{account.handle}
+                  <ExternalLink className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
           </div>
           {scrollable && <div className="flex items-center gap-4">
             <div className="text-caption uppercase text-[#666666] whitespace-nowrap">

@@ -7,7 +7,9 @@ const contact = {
   linkedin: "https://linkedin.com/in/olivierlavergne",
   github: "https://github.com/olivier-lavergne-cv-porfolio",
   instagram: "https://instagram.com/ol_creative_design",
-  instagramHandle: "ol_creative_design"
+  instagramHandle: "ol_creative_design",
+  tiktok: "https://www.tiktok.com/@ol.creative.design",
+  tiktokHandle: "ol.creative.design"
 };
 
 export const CV_DATA_FR = {
