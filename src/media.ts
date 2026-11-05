@@ -21,6 +21,13 @@ export const instagramItems: MediaItem[] = [
   { kind: "instagram", id: "De3pHE1Rk7x", url: "https://www.instagram.com/reel/De3pHE1Rk7x/" },
 ];
 
+/** Reels ajoutés après les shorts YouTube, en fin de galerie. */
+export const moreInstagramItems: MediaItem[] = [
+  { kind: "instagram", id: "DfUYMZvNSv0", url: "https://www.instagram.com/reel/DfUYMZvNSv0/" },
+  { kind: "instagram", id: "DfSwfkut6nN", url: "https://www.instagram.com/reel/DfSwfkut6nN/" },
+  { kind: "instagram", id: "DfNc09IgsET", url: "https://www.instagram.com/reel/DfNc09IgsET/" },
+];
+
 export function itemKey(item: MediaItem) {
   return item.id;
 }

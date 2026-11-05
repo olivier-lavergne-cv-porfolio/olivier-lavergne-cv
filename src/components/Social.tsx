@@ -3,10 +3,10 @@ import { motion, useMotionValueEvent, useScroll, useTransform } from "motion/rea
 import { ExternalLink, Play } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import { scrollByY } from "../hooks/useSmoothScroll";
-import { shortVideos, instagramItems, itemKey, thumbUrl, platformLabel, type MediaItem } from "../media";
+import { shortVideos, instagramItems, moreInstagramItems, itemKey, thumbUrl, platformLabel, type MediaItem } from "../media";
 import { VideoLightbox } from "./VideoLightbox";
 
-const items: MediaItem[] = [...instagramItems, ...shortVideos];
+const items: MediaItem[] = [...instagramItems, ...shortVideos, ...moreInstagramItems];
 
 /**
  * Vignette d'une carte. Les vignettes Instagram sont des fichiers locaux
