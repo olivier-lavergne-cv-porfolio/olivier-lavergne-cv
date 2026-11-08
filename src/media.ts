@@ -26,6 +26,7 @@ export const moreInstagramItems: MediaItem[] = [
   { kind: "instagram", id: "DfUYMZvNSv0", url: "https://www.instagram.com/reel/DfUYMZvNSv0/" },
   { kind: "instagram", id: "DfSwfkut6nN", url: "https://www.instagram.com/reel/DfSwfkut6nN/" },
   { kind: "instagram", id: "DfNc09IgsET", url: "https://www.instagram.com/reel/DfNc09IgsET/" },
+  { kind: "instagram", id: "DffmgajtJM0", url: "https://www.instagram.com/reel/DffmgajtJM0/" },
 ];
 
 export function itemKey(item: MediaItem) {
